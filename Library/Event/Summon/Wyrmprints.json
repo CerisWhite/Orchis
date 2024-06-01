@@ -1,0 +1,3372 @@
+[
+  {
+    "Name": "Valiant Crown",
+    "ID": 40000001,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Petal Queen",
+    "ID": 40000002,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Bonded by a Dream",
+    "ID": 40000003,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Ring of Exaltation",
+    "ID": 40020001,
+    "Rarity": 2,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Seafood Soup",
+    "ID": 40020002,
+    "Rarity": 2,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Dragon Arcanum",
+    "ID": 40020003,
+    "Rarity": 2,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mana Fount",
+    "ID": 40020004,
+    "Rarity": 2,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Old Harp",
+    "ID": 40020005,
+    "Rarity": 2,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Scorn the Destrier",
+    "ID": 40030001,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Halo",
+    "ID": 40030002,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Teatime",
+    "ID": 40030003,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Bellathorna",
+    "ID": 40030004,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Alberian Banner",
+    "ID": 40030005,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Cry of the Horn",
+    "ID": 40030006,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Howling Predator",
+    "ID": 40030007,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Syndicate Mask",
+    "ID": 40030008,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Hallowed Mountains",
+    "ID": 40030009,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Lakeside Euphony",
+    "ID": 40030010,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Dragon's Nest",
+    "ID": 40030011,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Enchiridion",
+    "ID": 40030012,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Ironside Shield",
+    "ID": 40030013,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Winds of Saint Lotier",
+    "ID": 40030014,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Aromatherapy",
+    "ID": 40030015,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Eight-Leaf Clover",
+    "ID": 40030016,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Forbidden Relic",
+    "ID": 40030017,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Unfulfilled Visions",
+    "ID": 40030018,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Liber Grimortis",
+    "ID": 40030019,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Night Harbinger",
+    "ID": 40030020,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Tracks of Hope",
+    "ID": 40030021,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Vio Rhyse Alberia!",
+    "ID": 40030022,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Potiongrass",
+    "ID": 40030023,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Crown of Yore",
+    "ID": 40030024,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Nevermelt Ice",
+    "ID": 40030026,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Pumpkin Pail",
+    "ID": 40030027,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Halidom's Picnic",
+    "ID": 40030029,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Garuda's Feathers",
+    "ID": 40030030,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Secret Friend",
+    "ID": 40030031,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Roast Feast",
+    "ID": 40030032,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Welcome, One and All",
+    "ID": 40030033,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Blossoms Ablaze",
+    "ID": 40030034,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "To My Beloved",
+    "ID": 40030035,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Davian Wetlands",
+    "ID": 40030036,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Heretic's Laboratory",
+    "ID": 40030037,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Tiny Dragoñatas",
+    "ID": 40030038,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Order's Messenger Owl",
+    "ID": 40030039,
+    "Rarity": 3,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Flower in the Fray",
+    "ID": 40040001,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Destiny's Hand",
+    "ID": 40040002,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Sniper's Allure",
+    "ID": 40040003,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Promises in the Rain",
+    "ID": 40040004,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Fireside Gathering",
+    "ID": 40040005,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Trove of Knowledge",
+    "ID": 40040006,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Castaway's Journal",
+    "ID": 40040007,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Lord of the Skies",
+    "ID": 40040008,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "King's Countenance",
+    "ID": 40040009,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Braving the Unknown",
+    "ID": 40040010,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "What a Handful!",
+    "ID": 40040011,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "How to Flee Properly",
+    "ID": 40040012,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "One with the Shadows",
+    "ID": 40040013,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Warlust",
+    "ID": 40040014,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Armorer's Aspirations",
+    "ID": 40040015,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Revolutionary Magic",
+    "ID": 40040016,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Sisters of the Anvil",
+    "ID": 40040017,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Dueling Dancers",
+    "ID": 40040018,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Together We Stand",
+    "ID": 40040019,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Happier Times",
+    "ID": 40040020,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Paladyn Defender",
+    "ID": 40040021,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Pipe Down",
+    "ID": 40040022,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Greatwyrm Midgardsormr",
+    "ID": 40040023,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Greatwyrm Mercury",
+    "ID": 40040024,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Greatwyrm Brunhilda",
+    "ID": 40040025,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Greatwyrm Jupiter",
+    "ID": 40040026,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Greatwyrm Zodiark",
+    "ID": 40040027,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Warrioresses",
+    "ID": 40040028,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Silke Lends a Hand",
+    "ID": 40040029,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Beauty's Secret",
+    "ID": 40040030,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Samurai Siesta",
+    "ID": 40040031,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Better Together",
+    "ID": 40040032,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Fresh Perspective",
+    "ID": 40040033,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Kicking Back",
+    "ID": 40040034,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "As the Snow Falls",
+    "ID": 40040035,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Saintly Delivery",
+    "ID": 40040036,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Hanetsuki Rally",
+    "ID": 40040037,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Luck of the Draw",
+    "ID": 40040038,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Slow and Steady",
+    "ID": 40040039,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Lunar Festivities",
+    "ID": 40040040,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Dragon Dance",
+    "ID": 40040041,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Entwined Flames ",
+    "ID": 40040042,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "New World Escort",
+    "ID": 40040043,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Delightful Dancer",
+    "ID": 40040044,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "First-Rate Hospitality",
+    "ID": 40040046,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Egg-Shaped Dreams",
+    "ID": 40040047,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "His Clever Brother",
+    "ID": 40040048,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Brief Repose",
+    "ID": 40040049,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Maddened Master",
+    "ID": 40040050,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Halidom Grooms",
+    "ID": 40040051,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Taiko Tandem",
+    "ID": 40040052,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "To the Extreme!",
+    "ID": 40040053,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Beach Battle",
+    "ID": 40040054,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Preacher's Vacation",
+    "ID": 40040055,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Bustling Hut",
+    "ID": 40040056,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Hastened Squall",
+    "ID": 40040057,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Beautiful Nothingness",
+    "ID": 40040058,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Odd Sparrows",
+    "ID": 40040059,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Masquerade Mission",
+    "ID": 40040060,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Bewitching Magician",
+    "ID": 40040061,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "From Whence He Comes",
+    "ID": 40040062,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Chariot Drift",
+    "ID": 40040063,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Fluff Aplenty",
+    "ID": 40040064,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Glittering Dragonyule",
+    "ID": 40040065,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A New Year's Battle",
+    "ID": 40040066,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Game of Cat and Boar",
+    "ID": 40040067,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Plaguebringer",
+    "ID": 40040068,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Soaring Terror",
+    "ID": 40040069,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Maid Crusade",
+    "ID": 40040070,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Queen of the Knife",
+    "ID": 40040071,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Small Courage",
+    "ID": 40040072,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Widow's Lament",
+    "ID": 40040073,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Pledge of Protection",
+    "ID": 40040074,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Fallen Wings",
+    "ID": 40040075,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Happy Times",
+    "ID": 40040076,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Bouquet ",
+    "ID": 40040077,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Flowers Under the Moon",
+    "ID": 40040078,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Catch Me in the Sunflowers",
+    "ID": 40040079,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Such High Spirits!",
+    "ID": 40040080,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Fun in the Sun",
+    "ID": 40040081,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Seaside Memory",
+    "ID": 40040082,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Passion for Produce",
+    "ID": 40040083,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Treasury of Knowledge",
+    "ID": 40040084,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Dance of the Twin Blossoms",
+    "ID": 40040085,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "To My Dear Child",
+    "ID": 40040086,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Blessed Days",
+    "ID": 40040087,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Perfect Faerie Tale",
+    "ID": 40040088,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Rogues' Banquet",
+    "ID": 40040089,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Enter the Blue Rose!",
+    "ID": 40040090,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Beautiful Gunman",
+    "ID": 40040091,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Amaterasu Oblation",
+    "ID": 40040092,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Humanity's Companions",
+    "ID": 40040093,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Two Myms",
+    "ID": 40040094,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Floofiest Bed",
+    "ID": 40040095,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Kunoichi Charisma",
+    "ID": 40040096,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Having a Summer Ball",
+    "ID": 40040097,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Bloom of the Battlefield",
+    "ID": 40040098,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Amane's Babysitting Chronicles",
+    "ID": 40040099,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Choice Blend",
+    "ID": 40040100,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Gift from an Angel",
+    "ID": 40040101,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Saint Starfall's Circus",
+    "ID": 40040102,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Passion Inherited",
+    "ID": 40040103,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Nobles' Day Off",
+    "ID": 40040104,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Butler's Smile",
+    "ID": 40040105,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Hand in Hand",
+    "ID": 40040106,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "BFFs!",
+    "ID": 40040107,
+    "Rarity": 4,
+    "SlotType": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Valiant Crown",
+    "ID": 40050001,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Flash of Genius",
+    "ID": 40050002,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Evening of Luxury",
+    "ID": 40050003,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Worthy Rivals",
+    "ID": 40050004,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Auspex's Prayer",
+    "ID": 40050005,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Dragon Brethren",
+    "ID": 40050006,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Luca's Prank",
+    "ID": 40050007,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Give Me Your Wounded",
+    "ID": 40050008,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Levin's Champion",
+    "ID": 40050009,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Nightstalker",
+    "ID": 40050010,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Glorious Tempest",
+    "ID": 40050011,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "United by One Vision",
+    "ID": 40050012,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Cleo's Ruse",
+    "ID": 40050013,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Tough Love",
+    "ID": 40050014,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Crystalian Envoy",
+    "ID": 40050015,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Witch's Kitchen",
+    "ID": 40050016,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Of Tricks and Treats",
+    "ID": 40050017,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Plunder Pals",
+    "ID": 40050018,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Candy Couriers",
+    "ID": 40050019,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Jewels of the Sun",
+    "ID": 40050020,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Gentle Winds",
+    "ID": 40050021,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Gale of Beauty",
+    "ID": 40050022,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Louise's Hobbies",
+    "ID": 40050023,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Volcanic Queen",
+    "ID": 40050024,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Resounding Rendition",
+    "ID": 40050026,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Heavenly Holiday",
+    "ID": 40050027,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Wish Upon the Yuletree",
+    "ID": 40050028,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Prince of Dragonyule",
+    "ID": 40050029,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Slice of Dragonyule",
+    "ID": 40050030,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Greatest Gift",
+    "ID": 40050031,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Happy New Year!",
+    "ID": 40050032,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Heralds of Hinomoto",
+    "ID": 40050033,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Dragon and Tamer",
+    "ID": 40050034,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Stellar Show",
+    "ID": 40050035,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Astounding Trick",
+    "ID": 40050036,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Warrior Maiden",
+    "ID": 40050037,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Kung Fu Masters",
+    "ID": 40050038,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Chocolatiers",
+    "ID": 40050039,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Rose Prince",
+    "ID": 40050040,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Petal Queen",
+    "ID": 40050041,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Shining Overlord",
+    "ID": 40050042,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Solitary Light",
+    "ID": 40050043,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Partners in Truth",
+    "ID": 40050044,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Fleeting Girl",
+    "ID": 40050045,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Hitting the Books",
+    "ID": 40050046,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Heartfelt Gift",
+    "ID": 40050047,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Valentine's Venture",
+    "ID": 40050048,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "An Indelible Date",
+    "ID": 40050049,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Elegant Escort",
+    "ID": 40050050,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Take My Hand",
+    "ID": 40050051,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Honest Repose",
+    "ID": 40050052,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Forest Bonds",
+    "ID": 40050053,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Mother's Love",
+    "ID": 40050054,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Queen of the Blue Seas",
+    "ID": 40050056,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Heroes Arrive",
+    "ID": 40050057,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Bonds Between Worlds",
+    "ID": 40050058,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "After an Eternity",
+    "ID": 40050059,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Study Rabbits",
+    "ID": 40050060,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Bridal Dragon",
+    "ID": 40050061,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Indelible Summer",
+    "ID": 40050062,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Sisters' Day Out",
+    "ID": 40050063,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Dragon Smiths",
+    "ID": 40050064,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "King of the Skies",
+    "ID": 40050065,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Summer Paladyns",
+    "ID": 40050066,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Seaside Princess",
+    "ID": 40050067,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Surfing Siblings",
+    "ID": 40050068,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Twinfold Bonds",
+    "ID": 40050069,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Castle Cheer Corps",
+    "ID": 40050070,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Ruler of Darkness",
+    "ID": 40050071,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Endless Waltz",
+    "ID": 40050072,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "An Ancient Oath",
+    "ID": 40050073,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "In an Unending World",
+    "ID": 40050074,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Prayers Unto Him",
+    "ID": 40050075,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Dear Diary",
+    "ID": 40050076,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Wily Warriors: Bubble & Wood",
+    "ID": 40050077,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Wily Warriors: Air & Crash",
+    "ID": 40050078,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Wily Warriors: Metal & Quick",
+    "ID": 40050079,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Wily Warriors: Flash & Heat",
+    "ID": 40050080,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Roll On",
+    "ID": 40050081,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mega Friends",
+    "ID": 40050082,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Howling to the Heavens",
+    "ID": 40050083,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Spirit of the Season",
+    "ID": 40050084,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Wyrmclan Duo",
+    "ID": 40050085,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Dog's Day",
+    "ID": 40050086,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Blossoms in a New Year's Sky",
+    "ID": 40050087,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Felyne Hospitality",
+    "ID": 40050088,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Unexpected Requests",
+    "ID": 40050089,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Primal Crisis",
+    "ID": 40050090,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Lurker in the Woods",
+    "ID": 40050091,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Suit of Midnight",
+    "ID": 40050092,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Fires of Hate",
+    "ID": 40050093,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Berry Lovable Friends",
+    "ID": 40050094,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Breakfast at Valerio's",
+    "ID": 40050095,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Ilian Faithful",
+    "ID": 40050096,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Dazzling Duet!",
+    "ID": 40050097,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Brothers in Arms",
+    "ID": 40050098,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Synthetic Dragon",
+    "ID": 40050099,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Proper Maintenance",
+    "ID": 40050100,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Red Impulse",
+    "ID": 40050101,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Memories of Youth",
+    "ID": 40050102,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Welcome to the Halidom!",
+    "ID": 40050103,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A New Look",
+    "ID": 40050104,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Memory of a Friend",
+    "ID": 40050105,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Here Come the Sealers!",
+    "ID": 40050106,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Me and My Bestie!",
+    "ID": 40050107,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Best Buds",
+    "ID": 40050108,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Once in a Lifetime",
+    "ID": 40050109,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Summertime, Feeling Feline",
+    "ID": 40050110,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Blossoms on the Water's Edge",
+    "ID": 40050111,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Memories of Summer's Dusk",
+    "ID": 40050112,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Wings in the Night",
+    "ID": 40050113,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Day in Her Life",
+    "ID": 40050114,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Moonlight Party",
+    "ID": 40050115,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Second Anniversary",
+    "ID": 40050116,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Guardian of the Bond",
+    "ID": 40050117,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Secret Nightmare",
+    "ID": 40050118,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Free-Spirited Opera",
+    "ID": 40050119,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Welcome to the Opera!",
+    "ID": 40050120,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Man Unchanging",
+    "ID": 40050121,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Pecorine's Grand Adventure",
+    "ID": 40050122,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Meanwhile, in Landosol...",
+    "ID": 40050123,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Dragonyule Dreaming",
+    "ID": 40050124,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Cutie Competition",
+    "ID": 40050125,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Caged Desire",
+    "ID": 40050126,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Showtime!",
+    "ID": 40050127,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Sweet Surprise",
+    "ID": 40050128,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Rivalry of Kings",
+    "ID": 40050129,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Extreme Teamwork",
+    "ID": 40050130,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Holywyrm's Advent",
+    "ID": 40050131,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Springtime Breeze",
+    "ID": 40050132,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Bloody Little Queen",
+    "ID": 40050133,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Advent of the War God",
+    "ID": 40050134,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Initio's Sentinel",
+    "ID": 40050135,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Rainy Day",
+    "ID": 40050136,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Super Soaking Androids",
+    "ID": 40050137,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Superior Summer",
+    "ID": 40050138,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "In the Limelight",
+    "ID": 40050139,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "One-Winged Journey",
+    "ID": 40050140,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Bonded by a Dream",
+    "ID": 40050141,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Emissaries of the Heavens",
+    "ID": 40050142,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Third Anniversary!",
+    "ID": 40050143,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Halloween Spectacular!",
+    "ID": 40050144,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Adventure in the Past",
+    "ID": 40050145,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Going Undercover",
+    "ID": 40050146,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Dragonyule for Ilia",
+    "ID": 40050147,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Wings of Rebellion at Rest",
+    "ID": 40050148,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Royal Tea Party",
+    "ID": 40050149,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Wonderful Valentine's",
+    "ID": 40050150,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Hospitality & Harmony",
+    "ID": 40050151,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "What Dreams May Come",
+    "ID": 40050152,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Wind's Guidance",
+    "ID": 40050153,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Getting Acquainted",
+    "ID": 40050154,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "An Undying Memory",
+    "ID": 40050155,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Peaceful Waterfront",
+    "ID": 40050156,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Soaring Hope",
+    "ID": 40050157,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Unconditional Love",
+    "ID": 40050158,
+    "Rarity": 5,
+    "SlotType": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Crown of Light",
+    "ID": 40090001,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Tutelary's Destiny",
+    "ID": 40090002,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Her Beloved",
+    "ID": 40090003,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mask of Determination",
+    "ID": 40090004,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Her Beloved",
+    "ID": 40090005,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mask of Determination",
+    "ID": 40090006,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "\"A Knight's Dream\"",
+    "ID": 40090007,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Wind of Oaths",
+    "ID": 40090008,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Beneath the Boughs",
+    "ID": 40090009,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Savage Hawk",
+    "ID": 40090010,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Beneath the Boughs",
+    "ID": 40090011,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Savage Hawk",
+    "ID": 40090012,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A Mercenary's Pride",
+    "ID": 40090013,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Recital Invitation",
+    "ID": 40090014,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Thunderswift Lord's Blade",
+    "ID": 40090015,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Promised Piety",
+    "ID": 40090016,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Thunderswift Lord's Blade",
+    "ID": 40090017,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Promised Piety",
+    "ID": 40090018,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Testament of Eternity",
+    "ID": 40090019,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Treasured Memory of the Sea",
+    "ID": 40090020,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "An Unfreezing Flower",
+    "ID": 40090021,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A King's Pride",
+    "ID": 40090022,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "An Unfreezing Flower",
+    "ID": 40090023,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "A King's Pride",
+    "ID": 40090024,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Apple-licious Dreams",
+    "ID": 40090025,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Crystalline Blades",
+    "ID": 40090026,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Ravenous Fire",
+    "ID": 40090027,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Genius Tactician",
+    "ID": 40090028,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Ravenous Fire",
+    "ID": 40090029,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Genius Tactician",
+    "ID": 40090030,
+    "Rarity": 9,
+    "SlotType": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  }
+]

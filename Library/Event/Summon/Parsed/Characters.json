@@ -1,0 +1,4607 @@
+[
+  {
+    "Name": "Marty",
+    "FullName": "",
+    "ID": 10130102,
+    "Rarity": 3,
+    "Element": 1,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Orion",
+    "FullName": "Valentines Orion",
+    "ID": 10130103,
+    "Rarity": 3,
+    "Element": 1,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Valentines", "Permanent"
+    ]
+  },
+  {
+    "Name": "Zardin",
+    "FullName": "",
+    "ID": 10130201,
+    "Rarity": 3,
+    "Element": 2,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Raemond",
+    "FullName": "",
+    "ID": 10130401,
+    "Rarity": 3,
+    "Element": 4,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Rodrigo",
+    "FullName": "",
+    "ID": 10130501,
+    "Rarity": 3,
+    "Element": 5,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Euden",
+    "FullName": "",
+    "ID": 10140101,
+    "Rarity": 4,
+    "Element": 1,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Story"
+    ]
+  },
+  {
+    "Name": "Karl",
+    "FullName": "",
+    "ID": 10140102,
+    "Rarity": 4,
+    "Element": 1,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Serena",
+    "FullName": "",
+    "ID": 10140103,
+    "Rarity": 4,
+    "Element": 1,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Odetta",
+    "FullName": "Halloween Odetta",
+    "ID": 10140201,
+    "Rarity": 4,
+    "Element": 2,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Halloween", "Limited"
+    ]
+  },
+  {
+    "Name": "Ku Hai",
+    "FullName": "",
+    "ID": 10140301,
+    "Rarity": 4,
+    "Element": 3,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Hope",
+    "FullName": "Templar Hope",
+    "ID": 10140302,
+    "Rarity": 4,
+    "Element": 3,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Odetta",
+    "FullName": "",
+    "ID": 10140401,
+    "Rarity": 4,
+    "Element": 4,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Berserker",
+    "FullName": "",
+    "ID": 10140501,
+    "Rarity": 4,
+    "Element": 5,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Audric",
+    "FullName": "",
+    "ID": 10140503,
+    "Rarity": 4,
+    "Element": 5,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Naveed",
+    "FullName": "",
+    "ID": 10150101,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Marth",
+    "FullName": "",
+    "ID": 10150102,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Limited", "Fire Emblem"
+    ]
+  },
+  {
+    "Name": "Lea",
+    "FullName": "",
+    "ID": 10150103,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Berserker",
+    "FullName": "Hunter Berserker",
+    "ID": 10150104,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Limited", "Monster Hunter"
+    ]
+  },
+  {
+    "Name": "Chrom",
+    "FullName": "",
+    "ID": 10150105,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Limited", "Fire Emblem"
+    ]
+  },
+  {
+    "Name": "Grace",
+    "FullName": "Undercover Grace",
+    "ID": 10150106,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Xander",
+    "FullName": "",
+    "ID": 10150201,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Celliera",
+    "FullName": "Summer Celliera",
+    "ID": 10150202,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Permanent"
+    ]
+  },
+  {
+    "Name": "Eugene",
+    "FullName": "",
+    "ID": 10150203,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Ieyasu",
+    "FullName": "Summer Ieyasu",
+    "ID": 10150204,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Limited", "Zodiac"
+    ]
+  },
+  {
+    "Name": "Ranzal",
+    "FullName": "Gala Ranzal",
+    "ID": 10150301,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Elisanne",
+    "FullName": "Wedding Elisanne",
+    "ID": 10150302,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Wedding", "Permanent"
+    ]
+  },
+  {
+    "Name": "Leif",
+    "FullName": "Gala Leif",
+    "ID": 10150303,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Mona",
+    "FullName": "",
+    "ID": 10150304,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Persona"
+    ]
+  },
+  {
+    "Name": "Nino",
+    "FullName": "",
+    "ID": 10150305,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Euden",
+    "FullName": "Bondforged Euden",
+    "ID": 10150306,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Albert",
+    "FullName": "",
+    "ID": 10150401,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Alfonse",
+    "FullName": "",
+    "ID": 10150402,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare", "Fire Emblem"
+    ]
+  },
+  {
+    "Name": "Euden",
+    "FullName": "Gala Euden",
+    "ID": 10150403,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Pecorine",
+    "FullName": "",
+    "ID": 10150404,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Permanent"
+    ]
+  },
+  {
+    "Name": "Leif",
+    "FullName": "Civilian Leif",
+    "ID": 10150405,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Yaten",
+    "FullName": "",
+    "ID": 10150501,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Alex",
+    "FullName": "Gala Alex",
+    "ID": 10150502,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Alberius",
+    "FullName": "",
+    "ID": 10150503,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Nedrick",
+    "FullName": "Gala Nedrick",
+    "ID": 10150504,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Aoi",
+    "FullName": "",
+    "ID": 10230101,
+    "Rarity": 3,
+    "Element": 1,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Jurota",
+    "FullName": "",
+    "ID": 10230201,
+    "Rarity": 3,
+    "Element": 2,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Melody",
+    "FullName": "",
+    "ID": 10230301,
+    "Rarity": 3,
+    "Element": 3,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Edward",
+    "FullName": "Halloween Edward",
+    "ID": 10230401,
+    "Rarity": 3,
+    "Element": 4,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Halloween", "Limited"
+    ]
+  },
+  {
+    "Name": "Taro",
+    "FullName": "",
+    "ID": 10230501,
+    "Rarity": 3,
+    "Element": 5,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Laxi",
+    "FullName": "",
+    "ID": 10240101,
+    "Rarity": 4,
+    "Element": 1,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Story"
+    ]
+  },
+  {
+    "Name": "Celliera",
+    "FullName": "",
+    "ID": 10240201,
+    "Rarity": 4,
+    "Element": 2,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Ranzal",
+    "FullName": "Summer Ranzal",
+    "ID": 10240202,
+    "Rarity": 4,
+    "Element": 2,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Permanent"
+    ]
+  },
+  {
+    "Name": "Musashi",
+    "FullName": "",
+    "ID": 10240301,
+    "Rarity": 4,
+    "Element": 3,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Addis",
+    "FullName": "",
+    "ID": 10240302,
+    "Rarity": 4,
+    "Element": 3,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Yachiyo",
+    "FullName": "",
+    "ID": 10240401,
+    "Rarity": 4,
+    "Element": 4,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Hanabusa",
+    "FullName": "",
+    "ID": 10240402,
+    "Rarity": 4,
+    "Element": 4,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Durant",
+    "FullName": "",
+    "ID": 10240502,
+    "Rarity": 4,
+    "Element": 5,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Aldred",
+    "FullName": "",
+    "ID": 10240503,
+    "Rarity": 4,
+    "Element": 5,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Mikoto",
+    "FullName": "",
+    "ID": 10250101,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Rena",
+    "FullName": "",
+    "ID": 10250102,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Nobunaga",
+    "FullName": "",
+    "ID": 10250103,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Limited", "Zodiac"
+    ]
+  },
+  {
+    "Name": "Yachiyo",
+    "FullName": "Armored Yachiyo",
+    "ID": 10250104,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Valerio",
+    "FullName": "",
+    "ID": 10250201,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Akasha",
+    "FullName": "Halloween Akasha",
+    "ID": 10250202,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Halloween", "Limited"
+    ]
+  },
+  {
+    "Name": "Mascula",
+    "FullName": "Gala Mascula",
+    "ID": 10250203,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Regina",
+    "FullName": "",
+    "ID": 10250204,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Victor",
+    "FullName": "",
+    "ID": 10250301,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Tobias",
+    "FullName": "",
+    "ID": 10250302,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mitsuba",
+    "FullName": "Forager Mitsuba",
+    "ID": 10250303,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent", "Event"
+    ]
+  },
+  {
+    "Name": "Lathna",
+    "FullName": "Yukata Lathna",
+    "ID": 10250304,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Harle",
+    "FullName": "",
+    "ID": 10250305,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Zardin",
+    "FullName": "Beautician Zardin",
+    "ID": 10250401,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Luca",
+    "FullName": "Gala Luca",
+    "ID": 10250402,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Mordecai",
+    "FullName": "",
+    "ID": 10250403,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Humanoid Jupiter",
+    "FullName": "",
+    "ID": 10250404,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Ieyasu",
+    "FullName": "",
+    "ID": 10250501,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Limited", "Zodiac"
+    ]
+  },
+  {
+    "Name": "Natalie",
+    "FullName": "",
+    "ID": 10250502,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Linnea",
+    "FullName": "",
+    "ID": 10250503,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Zethia",
+    "FullName": "Gala Zethia",
+    "ID": 10250504,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Renelle",
+    "FullName": "",
+    "ID": 10330101,
+    "Rarity": 3,
+    "Element": 1,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Francesca",
+    "FullName": "",
+    "ID": 10330301,
+    "Rarity": 3,
+    "Element": 3,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Irfan",
+    "FullName": "",
+    "ID": 10330401,
+    "Rarity": 3,
+    "Element": 4,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Vice",
+    "FullName": "",
+    "ID": 10330501,
+    "Rarity": 3,
+    "Element": 5,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Vida",
+    "FullName": "",
+    "ID": 10330502,
+    "Rarity": 3,
+    "Element": 5,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Melsa",
+    "FullName": "",
+    "ID": 10340101,
+    "Rarity": 4,
+    "Element": 1,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Yuya",
+    "FullName": "",
+    "ID": 10340102,
+    "Rarity": 4,
+    "Element": 1,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Luther",
+    "FullName": "",
+    "ID": 10340201,
+    "Rarity": 4,
+    "Element": 2,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Orsem",
+    "FullName": "",
+    "ID": 10340202,
+    "Rarity": 4,
+    "Element": 2,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Renee",
+    "FullName": "",
+    "ID": 10340203,
+    "Rarity": 4,
+    "Element": 2,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Su Fang",
+    "FullName": "",
+    "ID": 10340301,
+    "Rarity": 4,
+    "Element": 3,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Fritz",
+    "FullName": "",
+    "ID": 10340401,
+    "Rarity": 4,
+    "Element": 4,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Fleur",
+    "FullName": "",
+    "ID": 10340402,
+    "Rarity": 4,
+    "Element": 4,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Orion",
+    "FullName": "",
+    "ID": 10340501,
+    "Rarity": 4,
+    "Element": 5,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Alex",
+    "FullName": "",
+    "ID": 10340502,
+    "Rarity": 4,
+    "Element": 5,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Story"
+    ]
+  },
+  {
+    "Name": "Ezelith",
+    "FullName": "",
+    "ID": 10350101,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Laxi",
+    "FullName": "Gala Laxi",
+    "ID": 10350102,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Mitsuhide",
+    "FullName": "Summer Mitsuhide",
+    "ID": 10350103,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Limited", "Zodiac"
+    ]
+  },
+  {
+    "Name": "Sheila",
+    "FullName": "",
+    "ID": 10350104,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Cleo",
+    "FullName": "Dragonyule Cleo",
+    "ID": 10350201,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Dragonyule", "Limited"
+    ]
+  },
+  {
+    "Name": "Mitsuba",
+    "FullName": "",
+    "ID": 10350202,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Tiki",
+    "FullName": "",
+    "ID": 10350203,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Limited", "Fire Emblem"
+    ]
+  },
+  {
+    "Name": "Humanoid Mercury",
+    "FullName": "",
+    "ID": 10350204,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Aoi",
+    "FullName": "Wedding Aoi",
+    "ID": 10350301,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Wedding", "Permanent"
+    ]
+  },
+  {
+    "Name": "Norwin",
+    "FullName": "Summer Norwin",
+    "ID": 10350302,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Permanent"
+    ]
+  },
+  {
+    "Name": "Notte",
+    "FullName": "Gala Notte",
+    "ID": 10350303,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Nevin",
+    "FullName": "Dragonyule Nevin",
+    "ID": 10350304,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Dragonyule", "Limited"
+    ]
+  },
+  {
+    "Name": "Mitsuhide",
+    "FullName": "",
+    "ID": 10350402,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Limited", "Zodiac"
+    ]
+  },
+  {
+    "Name": "Wu Kong",
+    "FullName": "",
+    "ID": 10350403,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Curran",
+    "FullName": "Yukata Curran",
+    "ID": 10350404,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Farren",
+    "FullName": "",
+    "ID": 10350405,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Delphi",
+    "FullName": "",
+    "ID": 10350502,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Bellina",
+    "FullName": "",
+    "ID": 10350503,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Nevin",
+    "FullName": "",
+    "ID": 10350504,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Joker",
+    "FullName": "",
+    "ID": 10350505,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Persona"
+    ]
+  },
+  {
+    "Name": "Euden",
+    "FullName": "Summer Euden",
+    "ID": 10350506,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Event", "Welfare", "Story"
+    ]
+  },
+  {
+    "Name": "Rex",
+    "FullName": "",
+    "ID": 10430201,
+    "Rarity": 3,
+    "Element": 2,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Pietro",
+    "FullName": "",
+    "ID": 10430202,
+    "Rarity": 3,
+    "Element": 2,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Johanna",
+    "FullName": "",
+    "ID": 10430301,
+    "Rarity": 3,
+    "Element": 3,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Linus",
+    "FullName": "",
+    "ID": 10430401,
+    "Rarity": 3,
+    "Element": 4,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Erik",
+    "FullName": "",
+    "ID": 10430501,
+    "Rarity": 3,
+    "Element": 5,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Vanessa",
+    "FullName": "",
+    "ID": 10440101,
+    "Rarity": 4,
+    "Element": 1,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Yue",
+    "FullName": "",
+    "ID": 10440102,
+    "Rarity": 4,
+    "Element": 1,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Karina",
+    "FullName": "",
+    "ID": 10440201,
+    "Rarity": 4,
+    "Element": 2,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Ranzal",
+    "FullName": "",
+    "ID": 10440301,
+    "Rarity": 4,
+    "Element": 3,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Story"
+    ]
+  },
+  {
+    "Name": "Luca",
+    "FullName": "Summer Luca",
+    "ID": 10440401,
+    "Rarity": 4,
+    "Element": 4,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Permanent"
+    ]
+  },
+  {
+    "Name": "Sazanka",
+    "FullName": "",
+    "ID": 10440501,
+    "Rarity": 4,
+    "Element": 5,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Limited", "Zodiac"
+    ]
+  },
+  {
+    "Name": "Ramona",
+    "FullName": "",
+    "ID": 10450101,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mym",
+    "FullName": "Halloween Mym",
+    "ID": 10450102,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Halloween", "Limited"
+    ]
+  },
+  {
+    "Name": "Ranzal",
+    "FullName": "Child Ranzal",
+    "ID": 10450103,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Gatov",
+    "FullName": "Gala Gatov",
+    "ID": 10450104,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Julietta",
+    "FullName": "Summer Julietta",
+    "ID": 10450201,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Permanent"
+    ]
+  },
+  {
+    "Name": "Elisanne",
+    "FullName": "Gala Elisanne",
+    "ID": 10450202,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Lazry",
+    "FullName": "",
+    "ID": 10450203,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Finni",
+    "FullName": "",
+    "ID": 10450204,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Lin You",
+    "FullName": "",
+    "ID": 10450301,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Melody",
+    "FullName": "Valentines Melody",
+    "ID": 10450302,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Valentines", "Limited"
+    ]
+  },
+  {
+    "Name": "Amane",
+    "FullName": "Summer Amane",
+    "ID": 10450303,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Luca",
+    "FullName": "Kimono Luca",
+    "ID": 10450304,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Shingen",
+    "FullName": "",
+    "ID": 10450305,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Limited", "Zodiac"
+    ]
+  },
+  {
+    "Name": "Julietta",
+    "FullName": "",
+    "ID": 10450401,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Malora",
+    "FullName": "Dragonyule Malora",
+    "ID": 10450402,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Dragonyule", "Limited"
+    ]
+  },
+  {
+    "Name": "Zhu Bajie",
+    "FullName": "",
+    "ID": 10450403,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Sophie",
+    "FullName": "",
+    "ID": 10450404,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare", "Persona"
+    ]
+  },
+  {
+    "Name": "Audric",
+    "FullName": "Gala Audric",
+    "ID": 10450405,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Valyx",
+    "FullName": "",
+    "ID": 10450406,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Curran",
+    "FullName": "",
+    "ID": 10450501,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Patia",
+    "FullName": "Summer Patia",
+    "ID": 10450502,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Limited"
+    ]
+  },
+  {
+    "Name": "Victor",
+    "FullName": "Dragonyule Victor",
+    "ID": 10450503,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Dragonyule", "Limited"
+    ]
+  },
+  {
+    "Name": "Alain",
+    "FullName": "",
+    "ID": 10530101,
+    "Rarity": 3,
+    "Element": 1,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Cibella",
+    "FullName": "",
+    "ID": 10530201,
+    "Rarity": 3,
+    "Element": 2,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Jakob",
+    "FullName": "",
+    "ID": 10530202,
+    "Rarity": 3,
+    "Element": 2,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Malka",
+    "FullName": "",
+    "ID": 10530401,
+    "Rarity": 3,
+    "Element": 4,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Zace",
+    "FullName": "",
+    "ID": 10530501,
+    "Rarity": 3,
+    "Element": 5,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Xuan Zang",
+    "FullName": "",
+    "ID": 10540102,
+    "Rarity": 4,
+    "Element": 1,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Emma",
+    "FullName": "",
+    "ID": 10540103,
+    "Rarity": 4,
+    "Element": 1,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Elisanne",
+    "FullName": "",
+    "ID": 10540201,
+    "Rarity": 4,
+    "Element": 2,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Story"
+    ]
+  },
+  {
+    "Name": "Gauld",
+    "FullName": "",
+    "ID": 10540202,
+    "Rarity": 4,
+    "Element": 2,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Aeleen",
+    "FullName": "",
+    "ID": 10540301,
+    "Rarity": 4,
+    "Element": 3,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Pia",
+    "FullName": "",
+    "ID": 10540302,
+    "Rarity": 4,
+    "Element": 3,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Ryozen",
+    "FullName": "",
+    "ID": 10540401,
+    "Rarity": 4,
+    "Element": 4,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Sha Wujing",
+    "FullName": "",
+    "ID": 10540402,
+    "Rarity": 4,
+    "Element": 4,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Botan",
+    "FullName": "",
+    "ID": 10540501,
+    "Rarity": 4,
+    "Element": 5,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Patia",
+    "FullName": "",
+    "ID": 10540502,
+    "Rarity": 4,
+    "Element": 5,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mym",
+    "FullName": "Gala Mym",
+    "ID": 10550101,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited",
+	  "Story"
+    ]
+  },
+  {
+    "Name": "Nadine",
+    "FullName": "",
+    "ID": 10550102,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Elisanne",
+    "FullName": "Kimono Elisanne",
+    "ID": 10550103,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Panther",
+    "FullName": "",
+    "ID": 10550104,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Persona"
+    ]
+  },
+  {
+    "Name": "Xainfried",
+    "FullName": "",
+    "ID": 10550201,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Fjorm",
+    "FullName": "",
+    "ID": 10550203,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Fire Emblem"
+    ]
+  },
+  {
+    "Name": "Catherine",
+    "FullName": "",
+    "ID": 10550204,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Tobias",
+    "FullName": "Faeblessed Tobias",
+    "ID": 10550205,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Sylas",
+    "FullName": "",
+    "ID": 10550301,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Kirsty",
+    "FullName": "",
+    "ID": 10550302,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Melsa",
+    "FullName": "Halloween Melsa",
+    "ID": 10550303,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Halloween", "Limited"
+    ]
+  },
+  {
+    "Name": "Grimnir",
+    "FullName": "",
+    "ID": 10550304,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Izumo",
+    "FullName": "",
+    "ID": 10550305,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Phares",
+    "FullName": "",
+    "ID": 10550306,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Annelie",
+    "FullName": "",
+    "ID": 10550401,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Elisanne",
+    "FullName": "Halloween Elisanne",
+    "ID": 10550402,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Halloween", "Limited"
+    ]
+  },
+  {
+    "Name": "Vanessa",
+    "FullName": "Hunter Vanessa",
+    "ID": 10550403,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Monster Hunter", "Event", "Limited"
+    ]
+  },
+  {
+    "Name": "Sharena",
+    "FullName": "",
+    "ID": 10550404,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Ryszarda",
+    "FullName": "",
+    "ID": 10550405,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Forte",
+    "FullName": "",
+    "ID": 10550501,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Lathna",
+    "FullName": "",
+    "ID": 10550502,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Leonidas",
+    "FullName": "Summer Leonidas",
+    "ID": 10550503,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Limited"
+    ]
+  },
+  {
+    "Name": "Yukimura",
+    "FullName": "",
+    "ID": 10550504,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Limited", "Zodiac"
+    ]
+  },
+  {
+    "Name": "Joe",
+    "FullName": "",
+    "ID": 10630101,
+    "Rarity": 3,
+    "Element": 1,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Waike",
+    "FullName": "",
+    "ID": 10630201,
+    "Rarity": 3,
+    "Element": 2,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Philia",
+    "FullName": "",
+    "ID": 10630301,
+    "Rarity": 3,
+    "Element": 3,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Malora",
+    "FullName": "",
+    "ID": 10630401,
+    "Rarity": 3,
+    "Element": 4,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Ezelith",
+    "FullName": "Valentines Ezelith",
+    "ID": 10640101,
+    "Rarity": 4,
+    "Element": 1,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Valentines", "Limited"
+    ]
+  },
+  {
+    "Name": "Nefaria",
+    "FullName": "Dragonyule Nefaria",
+    "ID": 10640202,
+    "Rarity": 4,
+    "Element": 2,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Dragonyule", "Limited"
+    ]
+  },
+  {
+    "Name": "Eleonora",
+    "FullName": "",
+    "ID": 10640301,
+    "Rarity": 4,
+    "Element": 3,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Joachim",
+    "FullName": "",
+    "ID": 10640302,
+    "Rarity": 4,
+    "Element": 3,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Luca",
+    "FullName": "",
+    "ID": 10640401,
+    "Rarity": 4,
+    "Element": 4,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Story"
+    ]
+  },
+  {
+    "Name": "Rawn",
+    "FullName": "",
+    "ID": 10640402,
+    "Rarity": 4,
+    "Element": 4,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Elias",
+    "FullName": "",
+    "ID": 10640403,
+    "Rarity": 4,
+    "Element": 4,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Norwin",
+    "FullName": "",
+    "ID": 10640501,
+    "Rarity": 4,
+    "Element": 5,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Sarisse",
+    "FullName": "Gala Sarisse",
+    "ID": 10650101,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Chelsea",
+    "FullName": "",
+    "ID": 10650102,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Alex",
+    "FullName": "Summer Alex",
+    "ID": 10650103,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Limited"
+    ]
+  },
+  {
+    "Name": "Laranoa",
+    "FullName": "",
+    "ID": 10650201,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Sarisse",
+    "FullName": "Hunter Sarisse",
+    "ID": 10650202,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Monster Hunter", "Event", "Limited"
+    ]
+  },
+  {
+    "Name": "Pinon",
+    "FullName": "",
+    "ID": 10650203,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Pia",
+    "FullName": "Housekeeper Pia",
+    "ID": 10650204,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Louise",
+    "FullName": "",
+    "ID": 10650301,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Hawk",
+    "FullName": "",
+    "ID": 10650302,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Meene",
+    "FullName": "",
+    "ID": 10650303,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Chelsea",
+    "FullName": "Valentines Chelsea",
+    "ID": 10650304,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Valentines", "Limited"
+    ]
+  },
+  {
+    "Name": "Humanoid Midgardsormr",
+    "FullName": "",
+    "ID": 10650305,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Cleo",
+    "FullName": "Summer Cleo",
+    "ID": 10650401,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Limited"
+    ]
+  },
+  {
+    "Name": "Mikoto",
+    "FullName": "Summer Mikoto",
+    "ID": 10650402,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Limited"
+    ]
+  },
+  {
+    "Name": "Isaac",
+    "FullName": "",
+    "ID": 10650403,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Nefaria",
+    "FullName": "",
+    "ID": 10650501,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Addis",
+    "FullName": "Valentines Addis",
+    "ID": 10650502,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Valentines", "Limited"
+    ]
+  },
+  {
+    "Name": "Chelle",
+    "FullName": "",
+    "ID": 10650503,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Story"
+    ]
+  },
+  {
+    "Name": "Karina",
+    "FullName": "Opera Karina",
+    "ID": 10650504,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Sylas",
+    "FullName": "Halloween Sylas",
+    "ID": 10650505,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 6,
+    "IsPlayable": true,
+    "Tags": [
+      "Halloween", "Limited"
+    ]
+  },
+  {
+    "Name": "Xania",
+    "FullName": "",
+    "ID": 10730101,
+    "Rarity": 3,
+    "Element": 1,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Nicolas",
+    "FullName": "",
+    "ID": 10730301,
+    "Rarity": 3,
+    "Element": 3,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Xiao Lei",
+    "FullName": "",
+    "ID": 10730401,
+    "Rarity": 3,
+    "Element": 4,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Althemia",
+    "FullName": "",
+    "ID": 10730501,
+    "Rarity": 3,
+    "Element": 5,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Sinoa",
+    "FullName": "",
+    "ID": 10740101,
+    "Rarity": 4,
+    "Element": 1,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Xander",
+    "FullName": "Dragonyule Xander",
+    "ID": 10740201,
+    "Rarity": 4,
+    "Element": 2,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Dragonyule", "Limited"
+    ]
+  },
+  {
+    "Name": "Estelle",
+    "FullName": "Summer Estelle",
+    "ID": 10740202,
+    "Rarity": 4,
+    "Element": 2,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Pipple",
+    "FullName": "",
+    "ID": 10740203,
+    "Rarity": 4,
+    "Element": 2,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Noelle",
+    "FullName": "",
+    "ID": 10740301,
+    "Rarity": 4,
+    "Element": 3,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Xainfried",
+    "FullName": "Dragonyule Xainfried",
+    "ID": 10740302,
+    "Rarity": 4,
+    "Element": 3,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Dragonyule", "Limited"
+    ]
+  },
+  {
+    "Name": "Amane",
+    "FullName": "",
+    "ID": 10740401,
+    "Rarity": 4,
+    "Element": 4,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Chitose",
+    "FullName": "",
+    "ID": 10740402,
+    "Rarity": 4,
+    "Element": 4,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Limited", "Zodiac"
+    ]
+  },
+  {
+    "Name": "Kleimann",
+    "FullName": "",
+    "ID": 10740501,
+    "Rarity": 4,
+    "Element": 5,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Maribelle",
+    "FullName": "Student Maribelle",
+    "ID": 10750101,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mega Man",
+    "FullName": "",
+    "ID": 10750102,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Nefaria",
+    "FullName": "Incognito Nefaria",
+    "ID": 10750103,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Seimei",
+    "FullName": "",
+    "ID": 10750104,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Limited", "Zodiac"
+    ]
+  },
+  {
+    "Name": "Cleo",
+    "FullName": "Yukata Cleo",
+    "ID": 10750105,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Lily",
+    "FullName": "",
+    "ID": 10750201,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Yurius",
+    "FullName": "",
+    "ID": 10750202,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Cleo",
+    "FullName": "Forager Cleo",
+    "ID": 10750203,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Emile",
+    "FullName": "Gala Emile",
+    "ID": 10750204,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Origa",
+    "FullName": "",
+    "ID": 10750205,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Maribelle",
+    "FullName": "",
+    "ID": 10750301,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Sinoa",
+    "FullName": "Summer Sinoa",
+    "ID": 10750302,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Limited"
+    ]
+  },
+  {
+    "Name": "Myriam",
+    "FullName": "",
+    "ID": 10750303,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Basileus",
+    "FullName": "",
+    "ID": 10750304,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Lucretia",
+    "FullName": "",
+    "ID": 10750401,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Peony",
+    "FullName": "",
+    "ID": 10750402,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Limited", "Fire Emblem"
+    ]
+  },
+  {
+    "Name": "Xuan Zang",
+    "FullName": "Radiant Xuan Zang",
+    "ID": 10750403,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Chelle",
+    "FullName": "Summer Chelle",
+    "ID": 10750404,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Limited"
+    ]
+  },
+  {
+    "Name": "Zethia",
+    "FullName": "Bondforged Zethia",
+    "ID": 10750405,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Veronica",
+    "FullName": "",
+    "ID": 10750501,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Fire Emblem", "Limited"
+    ]
+  },
+  {
+    "Name": "Cleo",
+    "FullName": "Gala Cleo",
+    "ID": 10750502,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Cassandra",
+    "FullName": "",
+    "ID": 10750503,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Zena",
+    "FullName": "",
+    "ID": 10750504,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Story"
+    ]
+  },
+  {
+    "Name": "Vania",
+    "FullName": "",
+    "ID": 10750505,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 7,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Aurien",
+    "FullName": "",
+    "ID": 10830101,
+    "Rarity": 3,
+    "Element": 1,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Ricardt",
+    "FullName": "",
+    "ID": 10830201,
+    "Rarity": 3,
+    "Element": 2,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Sophie",
+    "FullName": "",
+    "ID": 10830301,
+    "Rarity": 3,
+    "Element": 3,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Hope",
+    "FullName": "",
+    "ID": 10830401,
+    "Rarity": 3,
+    "Element": 4,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Estelle",
+    "FullName": "",
+    "ID": 10830402,
+    "Rarity": 3,
+    "Element": 4,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Edward",
+    "FullName": "",
+    "ID": 10830501,
+    "Rarity": 3,
+    "Element": 5,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Verica",
+    "FullName": "",
+    "ID": 10840101,
+    "Rarity": 4,
+    "Element": 1,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Lowen",
+    "FullName": "Halloween Lowen",
+    "ID": 10840102,
+    "Rarity": 4,
+    "Element": 1,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Halloween", "Limited"
+    ]
+  },
+  {
+    "Name": "Thaniel",
+    "FullName": "",
+    "ID": 10840201,
+    "Rarity": 4,
+    "Element": 2,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Aeleen",
+    "FullName": "Nurse Aeleen",
+    "ID": 10840202,
+    "Rarity": 4,
+    "Element": 2,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Lowen",
+    "FullName": "",
+    "ID": 10840301,
+    "Rarity": 4,
+    "Element": 3,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Xania",
+    "FullName": "Wedding Xania",
+    "ID": 10840302,
+    "Rarity": 4,
+    "Element": 3,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Wedding", "Permanent"
+    ]
+  },
+  {
+    "Name": "Althemia",
+    "FullName": "Halloween Althemia",
+    "ID": 10840401,
+    "Rarity": 4,
+    "Element": 4,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Halloween", "Limited"
+    ]
+  },
+  {
+    "Name": "Vixel",
+    "FullName": "",
+    "ID": 10840402,
+    "Rarity": 4,
+    "Element": 4,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Felicia",
+    "FullName": "",
+    "ID": 10840403,
+    "Rarity": 4,
+    "Element": 4,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Cleo",
+    "FullName": "",
+    "ID": 10840501,
+    "Rarity": 4,
+    "Element": 5,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Story"
+    ]
+  },
+  {
+    "Name": "Hildegarde",
+    "FullName": "Valentines Hildegarde",
+    "ID": 10850101,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Valentines", "Limited"
+    ]
+  },
+  {
+    "Name": "Cassandra",
+    "FullName": "Yukata Cassandra",
+    "ID": 10850102,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Kuzunoha",
+    "FullName": "",
+    "ID": 10850103,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Ayaha & Otoha",
+    "FullName": "",
+    "ID": 10850104,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Jiang Ziya",
+    "FullName": "",
+    "ID": 10850201,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Lily",
+    "FullName": "Dragonyule Lily",
+    "ID": 10850202,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Dragonyule", "Limited"
+    ]
+  },
+  {
+    "Name": "Sandalphon",
+    "FullName": "",
+    "ID": 10850203,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Akasha",
+    "FullName": "",
+    "ID": 10850301,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Noelle",
+    "FullName": "Formal Noelle",
+    "ID": 10850302,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Nina",
+    "FullName": "",
+    "ID": 10850303,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Hildegarde",
+    "FullName": "",
+    "ID": 10850401,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Zena",
+    "FullName": "Gala Zena",
+    "ID": 10850402,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Notte",
+    "FullName": "Kimono Notte",
+    "ID": 10850403,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Limited", "Zodiac"
+    ]
+  },
+  {
+    "Name": "Heinwald",
+    "FullName": "",
+    "ID": 10850501,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Verica",
+    "FullName": "Summer Verica",
+    "ID": 10850502,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Limited"
+    ]
+  },
+  {
+    "Name": "Grace",
+    "FullName": "",
+    "ID": 10850503,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 8,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Joe",
+    "FullName": "Sharpshooter Joe",
+    "ID": 10930401,
+    "Rarity": 3,
+    "Element": 4,
+    "Weapon": 9,
+    "IsPlayable": true,
+    "Tags": [
+      "Welfare"
+    ]
+  },
+  {
+    "Name": "Leonidas",
+    "FullName": "Gala Leonidas",
+    "ID": 10950101,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 9,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Faris",
+    "FullName": "",
+    "ID": 10950102,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 9,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Ilia",
+    "FullName": "Dragonyule Ilia",
+    "ID": 10950103,
+    "Rarity": 5,
+    "Element": 1,
+    "Weapon": 9,
+    "IsPlayable": true,
+    "Tags": [
+      "Dragonyule", "Limited"
+    ]
+  },
+  {
+    "Name": "Lapis",
+    "FullName": "",
+    "ID": 10950201,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 9,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Yoshitsune",
+    "FullName": "",
+    "ID": 10950202,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 9,
+    "IsPlayable": true,
+    "Tags": [
+      "Limited", "Zodiac"
+    ]
+  },
+  {
+    "Name": "Sarisse",
+    "FullName": "Sharpshooter Sarisse",
+    "ID": 10950203,
+    "Rarity": 5,
+    "Element": 2,
+    "Weapon": 9,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent""
+    ]
+  },
+  {
+    "Name": "Joachim",
+    "FullName": "Formal Joachim",
+    "ID": 10950301,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 9,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Saiga",
+    "FullName": "",
+    "ID": 10950302,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 9,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Cecile",
+    "FullName": "",
+    "ID": 10950303,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 9,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Ilia",
+    "FullName": "",
+    "ID": 10950401,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 9,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Eirene",
+    "FullName": "",
+    "ID": 10950402,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 9,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Laxi",
+    "FullName": "Halloween Laxi",
+    "ID": 10950403,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 9,
+    "IsPlayable": true,
+    "Tags": [
+      "Halloween", "Limited"
+    ]
+  },
+  {
+    "Name": "Chelle",
+    "FullName": "Gala Chelle",
+    "ID": 10950501,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 9,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Mym",
+    "FullName": "Summer Mym",
+    "ID": 10950502,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 9,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Limited"
+    ]
+  },
+  {
+    "Name": "Humanoid Zodiark",
+    "FullName": "",
+    "ID": 10950503,
+    "Rarity": 5,
+    "Element": 5,
+    "Weapon": 9,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Euden",
+    "FullName": "Bondforged Euden",
+    "ID": 15150306,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Euden",
+    "FullName": "",
+    "ID": 19100001,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Notte",
+    "FullName": "",
+    "ID": 19100002,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mysterious Woman",
+    "FullName": "",
+    "ID": 19100003,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Empress Zethia",
+    "FullName": "",
+    "ID": 19100004,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Aurelius",
+    "FullName": "",
+    "ID": 19100005,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Leonidas",
+    "FullName": "",
+    "ID": 19100006,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Phares",
+    "FullName": "",
+    "ID": 19100007,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Chelle",
+    "FullName": "",
+    "ID": 19100008,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Valyx",
+    "FullName": "",
+    "ID": 19100009,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Emile",
+    "FullName": "",
+    "ID": 19100010,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Loki",
+    "FullName": "",
+    "ID": 19100011,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Harle",
+    "FullName": "",
+    "ID": 19100012,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Zacharias",
+    "FullName": "",
+    "ID": 19100013,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Sarisse",
+    "FullName": "",
+    "ID": 19100014,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Morsayati",
+    "FullName": "",
+    "ID": 19100015,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Alberius",
+    "FullName": "",
+    "ID": 19100016,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Volk",
+    "FullName": "",
+    "ID": 19100017,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Kai Yan",
+    "FullName": "",
+    "ID": 19100018,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Ciella",
+    "FullName": "",
+    "ID": 19100019,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Otoha",
+    "FullName": "",
+    "ID": 19100020,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Ayaha",
+    "FullName": "",
+    "ID": 19100021,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Beren",
+    "FullName": "",
+    "ID": 19100022,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Nedrick",
+    "FullName": "",
+    "ID": 19100023,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Tartarus",
+    "FullName": "",
+    "ID": 19100024,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Gatov",
+    "FullName": "",
+    "ID": 19100025,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Origa",
+    "FullName": "",
+    "ID": 19100026,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Sheila",
+    "FullName": "",
+    "ID": 19100027,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Finlorda",
+    "FullName": "",
+    "ID": 19100028,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Jinlorda",
+    "FullName": "",
+    "ID": 19100029,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Louise",
+    "FullName": "",
+    "ID": 19100030,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Thanatos",
+    "FullName": "",
+    "ID": 19100031,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Doctor",
+    "FullName": "",
+    "ID": 19100032,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Lathna",
+    "FullName": "",
+    "ID": 19100033,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Wu Kong",
+    "FullName": "",
+    "ID": 19100034,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Barbary",
+    "FullName": "",
+    "ID": 19100035,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mao Mao",
+    "FullName": "",
+    "ID": 19100036,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Xu Fu",
+    "FullName": "",
+    "ID": 19100037,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Lazry",
+    "FullName": "",
+    "ID": 19100038,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Picaro",
+    "FullName": "",
+    "ID": 19100039,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Loki",
+    "FullName": "",
+    "ID": 19100040,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mascula",
+    "FullName": "",
+    "ID": 19100041,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Chronos",
+    "FullName": "",
+    "ID": 19100042,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Carmen",
+    "FullName": "",
+    "ID": 19100043,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Marvelous Naoto",
+    "FullName": "",
+    "ID": 19100044,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Sandy",
+    "FullName": "",
+    "ID": 19100045,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Becky",
+    "FullName": "",
+    "ID": 19100046,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Sam",
+    "FullName": "",
+    "ID": 19100047,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Styx",
+    "FullName": "",
+    "ID": 19100048,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Thórr",
+    "FullName": "",
+    "ID": 19100049,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mei Hou Wang",
+    "FullName": "",
+    "ID": 19100050,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Styx",
+    "FullName": "",
+    "ID": 19100051,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Graht",
+    "FullName": "",
+    "ID": 19100052,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Sandalphon",
+    "FullName": "",
+    "ID": 19100053,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Scylla",
+    "FullName": "",
+    "ID": 19100054,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Augus",
+    "FullName": "",
+    "ID": 19100055,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Bella",
+    "FullName": "",
+    "ID": 19100056,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Doman",
+    "FullName": "",
+    "ID": 19100057,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Basileus",
+    "FullName": "",
+    "ID": 19100058,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Anassa",
+    "FullName": "",
+    "ID": 19100059,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Lil' Barb",
+    "FullName": "",
+    "ID": 19100060,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Tiana",
+    "FullName": "",
+    "ID": 19100061,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Michael",
+    "FullName": "",
+    "ID": 19100062,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "The Captain",
+    "FullName": "",
+    "ID": 19100063,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Malinda",
+    "FullName": "",
+    "ID": 19100064,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Morsayati",
+    "FullName": "",
+    "ID": 19100065,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Replica of Alberius",
+    "FullName": "",
+    "ID": 19100066,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Xenos",
+    "FullName": "",
+    "ID": 19100067,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Zethia",
+    "FullName": "",
+    "ID": 19900001,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 8,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Leif",
+    "FullName": "",
+    "ID": 19900002,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "",
+    "FullName": "",
+    "ID": 19900003,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "",
+    "FullName": "",
+    "ID": 19900004,
+    "Rarity": 5,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Leif",
+    "FullName": "",
+    "ID": 19900005,
+    "Rarity": 5,
+    "Element": 3,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "",
+    "FullName": "",
+    "ID": 19900006,
+    "Rarity": 5,
+    "Element": 4,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Euden",
+    "FullName": "The Euden",
+    "ID": 99130001,
+    "Rarity": 3,
+    "Element": 99,
+    "Weapon": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "The"
+    ]
+  },
+  {
+    "Name": "Jurota",
+    "FullName": "",
+    "ID": 99230001,
+    "Rarity": 3,
+    "Element": 99,
+    "Weapon": 2,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Francesca",
+    "FullName": "",
+    "ID": 99330001,
+    "Rarity": 3,
+    "Element": 99,
+    "Weapon": 3,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Linus",
+    "FullName": "",
+    "ID": 99430001,
+    "Rarity": 3,
+    "Element": 99,
+    "Weapon": 4,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Zace",
+    "FullName": "",
+    "ID": 99530001,
+    "Rarity": 3,
+    "Element": 99,
+    "Weapon": 5,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Waike",
+    "FullName": "",
+    "ID": 99630001,
+    "Rarity": 3,
+    "Element": 99,
+    "Weapon": 6,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Althemia",
+    "FullName": "",
+    "ID": 99730001,
+    "Rarity": 3,
+    "Element": 99,
+    "Weapon": 7,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Sophie",
+    "FullName": "",
+    "ID": 99830001,
+    "Rarity": 3,
+    "Element": 99,
+    "Weapon": 8,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "",
+    "FullName": "",
+    "ID": 99900009,
+    "Rarity": 3,
+    "Element": 1,
+    "Weapon": 9,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Joe",
+    "FullName": "Sharpshooter Joe",
+    "ID": 99930001,
+    "Rarity": 3,
+    "Element": 99,
+    "Weapon": 9,
+    "IsPlayable": false,
+    "Tags": [
+      "Sharpshooter"
+    ]
+  }
+]

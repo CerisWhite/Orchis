@@ -1,0 +1,2054 @@
+[
+  {
+    "Name": "Homura",
+    "FullName": "",
+    "ID": 20030101,
+    "Rarity": 3,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Cinder Drake",
+    "FullName": "",
+    "ID": 20030102,
+    "Rarity": 3,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Kindling Imp",
+    "FullName": "",
+    "ID": 20030103,
+    "Rarity": 3,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Fubuki",
+    "FullName": "",
+    "ID": 20030201,
+    "Rarity": 3,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Snow Drake",
+    "FullName": "",
+    "ID": 20030202,
+    "Rarity": 3,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Wellspring Imp",
+    "FullName": "",
+    "ID": 20030203,
+    "Rarity": 3,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Tsumuji",
+    "FullName": "",
+    "ID": 20030301,
+    "Rarity": 3,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Gust Drake",
+    "FullName": "",
+    "ID": 20030302,
+    "Rarity": 3,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Zephyr Imp",
+    "FullName": "",
+    "ID": 20030303,
+    "Rarity": 3,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Hinata",
+    "FullName": "",
+    "ID": 20030401,
+    "Rarity": 3,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Moon Drake",
+    "FullName": "",
+    "ID": 20030402,
+    "Rarity": 3,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Astral Imp",
+    "FullName": "",
+    "ID": 20030403,
+    "Rarity": 3,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Hikage",
+    "FullName": "",
+    "ID": 20030501,
+    "Rarity": 3,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Gloom Drake",
+    "FullName": "",
+    "ID": 20030502,
+    "Rarity": 3,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Pallid Imp",
+    "FullName": "",
+    "ID": 20030503,
+    "Rarity": 3,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Brunhilda",
+    "FullName": "",
+    "ID": 20040101,
+    "Rarity": 4,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Story", "Shop"
+    ]
+  },
+  {
+    "Name": "Phoenix",
+    "FullName": "",
+    "ID": 20040102,
+    "Rarity": 4,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Ifrit",
+    "FullName": "",
+    "ID": 20040103,
+    "Rarity": 4,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mercury",
+    "FullName": "",
+    "ID": 20040201,
+    "Rarity": 4,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Story", "Shop"
+    ]
+  },
+  {
+    "Name": "Poliʻahu",
+    "FullName": "",
+    "ID": 20040202,
+    "Rarity": 4,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Vodyanoy",
+    "FullName": "",
+    "ID": 20040203,
+    "Rarity": 4,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Midgardsormr",
+    "FullName": "",
+    "ID": 20040301,
+    "Rarity": 4,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Story", "Shop"
+    ]
+  },
+  {
+    "Name": "Roc",
+    "FullName": "",
+    "ID": 20040302,
+    "Rarity": 4,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Stribog",
+    "FullName": "",
+    "ID": 20040303,
+    "Rarity": 4,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Jupiter",
+    "FullName": "",
+    "ID": 20040401,
+    "Rarity": 4,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Story", "Shop"
+    ]
+  },
+  {
+    "Name": "Unicorn",
+    "FullName": "",
+    "ID": 20040402,
+    "Rarity": 4,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Lindworm",
+    "FullName": "",
+    "ID": 20040403,
+    "Rarity": 4,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Silke",
+    "FullName": "Halloween Silke",
+    "ID": 20040405,
+    "Rarity": 4,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Halloween", "Limited"
+    ]
+  },
+  {
+    "Name": "Zodiark",
+    "FullName": "",
+    "ID": 20040501,
+    "Rarity": 4,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Story", "Shop"
+    ]
+  },
+  {
+    "Name": "Juggernaut",
+    "FullName": "",
+    "ID": 20040502,
+    "Rarity": 4,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Silke",
+    "FullName": "",
+    "ID": 20040503,
+    "Rarity": 4,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Bronze Fafnir",
+    "FullName": "",
+    "ID": 20040504,
+    "Rarity": 4,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Shop"
+    ]
+  },
+  {
+    "Name": "Silver Fafnir",
+    "FullName": "",
+    "ID": 20040505,
+    "Rarity": 4,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Shop"
+    ]
+  },
+  {
+    "Name": "Agni",
+    "FullName": "",
+    "ID": 20050101,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "High Brunhilda",
+    "FullName": "",
+    "ID": 20050102,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Shop"
+    ]
+  },
+  {
+    "Name": "Pele",
+    "FullName": "",
+    "ID": 20050103,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Cerberus",
+    "FullName": "",
+    "ID": 20050104,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Erasmus",
+    "FullName": "",
+    "ID": 20050105,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Prometheus",
+    "FullName": "",
+    "ID": 20050106,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Konohana Sakuya",
+    "FullName": "",
+    "ID": 20050107,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Arctos",
+    "FullName": "",
+    "ID": 20050108,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Apollo",
+    "FullName": "",
+    "ID": 20050109,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Kagutsuchi",
+    "FullName": "",
+    "ID": 20050110,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Rathalos",
+    "FullName": "",
+    "ID": 20050111,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare", "Monster Hunter"
+    ]
+  },
+  {
+    "Name": "Dreadking Rathalos",
+    "FullName": "",
+    "ID": 20050112,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Limited", "Monster Hunter"
+    ]
+  },
+  {
+    "Name": "Mars",
+    "FullName": "Gala Mars",
+    "ID": 20050113,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Horus",
+    "FullName": "",
+    "ID": 20050114,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mini Hildy",
+    "FullName": "Mini Hildy",
+    "ID": 20050115,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Welfare"
+    ]
+  },
+  {
+    "Name": "Gozu Tenno",
+    "FullName": "",
+    "ID": 20050116,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Zodiac", "Limited"
+    ]
+  },
+  {
+    "Name": "Reborn Agni",
+    "FullName": "Gala Reborn Agni",
+    "ID": 20050117,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Uriel",
+    "FullName": "",
+    "ID": 20050118,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Primal Brunhilda",
+    "FullName": "",
+    "ID": 20050119,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Poseidon",
+    "FullName": "",
+    "ID": 20050201,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "High Mercury",
+    "FullName": "",
+    "ID": 20050202,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Shop"
+    ]
+  },
+  {
+    "Name": "Leviathan",
+    "FullName": "",
+    "ID": 20050203,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Siren",
+    "FullName": "",
+    "ID": 20050204,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Jeanne d'Arc",
+    "FullName": "Dragonyule Jeanne",
+    "ID": 20050205,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Dragonyule"
+    ]
+  },
+  {
+    "Name": "Peng Lai",
+    "FullName": "",
+    "ID": 20050206,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Simurgh",
+    "FullName": "",
+    "ID": 20050207,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Maritimus",
+    "FullName": "Halloween Maritimus",
+    "ID": 20050208,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Halloween", "Limited"
+    ]
+  },
+  {
+    "Name": "Kamuy",
+    "FullName": "",
+    "ID": 20050209,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Nimis",
+    "FullName": "",
+    "ID": 20050210,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Gaibhne & Creidhne",
+    "FullName": "",
+    "ID": 20050211,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Styx",
+    "FullName": "",
+    "ID": 20050212,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Reborn Poseidon",
+    "FullName": "Gala Reborn Poseidon",
+    "ID": 20050213,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Gabriel",
+    "FullName": "",
+    "ID": 20050214,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mini Mercs",
+    "FullName": "",
+    "ID": 20050215,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Welfare"
+    ]
+  },
+  {
+    "Name": "Marishiten",
+    "FullName": "Summer Marishiten",
+    "ID": 20050216,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Limited"
+    ]
+  },
+  {
+    "Name": "Beast Ciella",
+    "FullName": "Gala Beast Ciella",
+    "ID": 20050217,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Zephyr",
+    "FullName": "",
+    "ID": 20050301,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "High Midgardsormr",
+    "FullName": "",
+    "ID": 20050302,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Shop"
+    ]
+  },
+  {
+    "Name": "Sylvia",
+    "FullName": "",
+    "ID": 20050303,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Garuda",
+    "FullName": "",
+    "ID": 20050304,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Long Long",
+    "FullName": "",
+    "ID": 20050305,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Pazuzu",
+    "FullName": "",
+    "ID": 20050306,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Yulong",
+    "FullName": "",
+    "ID": 20050307,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Freyja",
+    "FullName": "",
+    "ID": 20050308,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Vayu",
+    "FullName": "",
+    "ID": 20050309,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mini Mids",
+    "FullName": "Mini Mids",
+    "ID": 20050310,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Welfare"
+    ]
+  },
+  {
+    "Name": "Hastur",
+    "FullName": "",
+    "ID": 20050311,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "AC-011 Garland",
+    "FullName": "",
+    "ID": 20050312,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Ariel",
+    "FullName": "",
+    "ID": 20050313,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Konohana Sakuya",
+    "FullName": "Summer Konohana Sakuya",
+    "ID": 20050314,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Limited"
+    ]
+  },
+  {
+    "Name": "Midgardsormr Zero",
+    "FullName": "",
+    "ID": 20050315,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Reborn Zephyr",
+    "FullName": "Gala Reborn Zephyr",
+    "ID": 20050316,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Menoetius",
+    "FullName": "",
+    "ID": 20050317,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent", "Valentines"
+    ]
+  },
+  {
+    "Name": "Rose Queen",
+    "FullName": "",
+    "ID": 20050318,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Beast Volk",
+    "FullName": "Gala Beast Volk",
+    "ID": 20050319,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Fudo Myo-o",
+    "FullName": "",
+    "ID": 20050320,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Limited", "Zodiac"
+    ]
+  },
+  {
+    "Name": "Michael",
+    "FullName": "",
+    "ID": 20050321,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Jeanne d'Arc",
+    "FullName": "",
+    "ID": 20050401,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "High Jupiter",
+    "FullName": "",
+    "ID": 20050402,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Shop"
+    ]
+  },
+  {
+    "Name": "Corsaint Phoenix",
+    "FullName": "",
+    "ID": 20050403,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Gilgamesh",
+    "FullName": "",
+    "ID": 20050404,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Cupid",
+    "FullName": "",
+    "ID": 20050405,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Shishimai",
+    "FullName": "",
+    "ID": 20050406,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Zodiac"
+    ]
+  },
+  {
+    "Name": "Liger",
+    "FullName": "",
+    "ID": 20050407,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Takemikazuchi",
+    "FullName": "",
+    "ID": 20050408,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Siren",
+    "FullName": "Pop-Star Siren",
+    "ID": 20050409,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Daikokuten",
+    "FullName": "",
+    "ID": 20050410,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Limited", "Zodiac"
+    ]
+  },
+  {
+    "Name": "Tie Shan Gongzhu",
+    "FullName": "",
+    "ID": 20050411,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Thor",
+    "FullName": "Gala Thor",
+    "ID": 20050412,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Lumière Pandora",
+    "FullName": "",
+    "ID": 20050413,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Reborn Jeanne",
+    "FullName": "Gala Reborn Jeanne",
+    "ID": 20050414,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Raphael",
+    "FullName": "",
+    "ID": 20050415,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Cat Sìth",
+    "FullName": "Summer Cat Sìth",
+    "ID": 20050416,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Summer", "Limited"
+    ]
+  },
+  {
+    "Name": "Mini Jupi",
+    "FullName": "",
+    "ID": 20050417,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Welfare"
+    ]
+  },
+  {
+    "Name": "Chronos Nyx",
+    "FullName": "Gala Chronos Nyx",
+    "ID": 20050418,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Elysium",
+    "FullName": "Gala Elysium",
+    "ID": 20050419,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Nidhogg",
+    "FullName": "",
+    "ID": 20050501,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "High Zodiark",
+    "FullName": "",
+    "ID": 20050502,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Shop"
+    ]
+  },
+  {
+    "Name": "Phantom",
+    "FullName": "",
+    "ID": 20050504,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Maritimus",
+    "FullName": "",
+    "ID": 20050505,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Marishiten",
+    "FullName": "",
+    "ID": 20050506,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Limited", "Zodiac"
+    ]
+  },
+  {
+    "Name": "Gold Fafnir",
+    "FullName": "",
+    "ID": 20050507,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Shop"
+    ]
+  },
+  {
+    "Name": "Nyarlathotep",
+    "FullName": "",
+    "ID": 20050508,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Shinobi",
+    "FullName": "",
+    "ID": 20050509,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Chthonius",
+    "FullName": "",
+    "ID": 20050510,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Parallel Zodiark",
+    "FullName": "",
+    "ID": 20050511,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Ebisu",
+    "FullName": "",
+    "ID": 20050512,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Fatalis",
+    "FullName": "",
+    "ID": 20050513,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Limited", "Monster Hunter"
+    ]
+  },
+  {
+    "Name": "Epimetheus",
+    "FullName": "",
+    "ID": 20050514,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mini Zodi",
+    "FullName": "Mini Zodi",
+    "ID": 20050515,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Welfare"
+    ]
+  },
+  {
+    "Name": "Andromeda",
+    "FullName": "",
+    "ID": 20050516,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Barbatos",
+    "FullName": "",
+    "ID": 20050517,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Welfare"
+    ]
+  },
+  {
+    "Name": "Azazel",
+    "FullName": "",
+    "ID": 20050518,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Cat Sìth",
+    "FullName": "Gala Cat Sìth",
+    "ID": 20050519,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Ramiel",
+    "FullName": "",
+    "ID": 20050520,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Giovanni",
+    "FullName": "",
+    "ID": 20050521,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Arsène",
+    "FullName": "",
+    "ID": 20050522,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Event", "Limited", "Persona"
+    ]
+  },
+  {
+    "Name": "High Chthonius",
+    "FullName": "",
+    "ID": 20050523,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Reborn Nidhogg",
+    "FullName": "Gala Reborn Nidhogg",
+    "ID": 20050524,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Bahamut",
+    "FullName": "Gala Bahamut",
+    "ID": 20050525,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Elysium",
+    "FullName": "",
+    "ID": 21000001,
+    "Rarity": 5,
+    "Element": 99,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Chthonius",
+    "FullName": "",
+    "ID": 21000002,
+    "Rarity": 5,
+    "Element": 99,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Notte",
+    "FullName": "",
+    "ID": 21000003,
+    "Rarity": 5,
+    "Element": 99,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Tsukuyomi",
+    "FullName": "",
+    "ID": 21000004,
+    "Rarity": 5,
+    "Element": 99,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Primordial Midgardsormr",
+    "FullName": "",
+    "ID": 21000005,
+    "Rarity": 5,
+    "Element": 99,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Midgardsormr",
+    "FullName": "",
+    "ID": 21000006,
+    "Rarity": 5,
+    "Element": 99,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Fafnir",
+    "FullName": "",
+    "ID": 29800001,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Fafnir",
+    "FullName": "",
+    "ID": 29800002,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Fafnir",
+    "FullName": "",
+    "ID": 29800003,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Brunhilda",
+    "FullName": "",
+    "ID": 29900001,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Brunhilda",
+    "FullName": "",
+    "ID": 29900002,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Rush",
+    "FullName": "",
+    "ID": 29900003,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Nyarlathotep",
+    "FullName": "",
+    "ID": 29900004,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Puppy",
+    "FullName": "",
+    "ID": 29900005,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Divine Dragon",
+    "FullName": "",
+    "ID": 29900006,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Cat Sìth",
+    "FullName": "",
+    "ID": 29900007,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mars",
+    "FullName": "",
+    "ID": 29900008,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Cat Sìth",
+    "FullName": "",
+    "ID": 29900009,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "",
+    "FullName": "",
+    "ID": 29900010,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "",
+    "FullName": "",
+    "ID": 29900011,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "",
+    "FullName": "",
+    "ID": 29900012,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "",
+    "FullName": "",
+    "ID": 29900013,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Metamorphosis",
+    "FullName": "",
+    "ID": 29900014,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Midgardsormr",
+    "FullName": "",
+    "ID": 29900015,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mercury",
+    "FullName": "",
+    "ID": 29900016,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Heavenly Wings",
+    "FullName": "",
+    "ID": 29900017,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Metamorphosis",
+    "FullName": "",
+    "ID": 29900018,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Cat Sìth",
+    "FullName": "Summer Cat Sìth",
+    "ID": 29900019,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": false,
+    "Tags": [
+      "Summer"
+    ]
+  },
+  {
+    "Name": "",
+    "FullName": "",
+    "ID": 29900020,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Jupiter",
+    "FullName": "",
+    "ID": 29900021,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Zodiark",
+    "FullName": "",
+    "ID": 29900022,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Beast Form",
+    "FullName": "",
+    "ID": 29900023,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Mercury",
+    "FullName": "",
+    "ID": 29900024,
+    "Rarity": 5,
+    "Element": 2,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Thor",
+    "FullName": "Gala Thor",
+    "ID": 29900025,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": false,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Bahamut",
+    "FullName": "Gala Bahamut",
+    "ID": 29900026,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": false,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Primal Midgardsormr",
+    "FullName": "",
+    "ID": 29900027,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Phantom",
+    "FullName": "",
+    "ID": 29940301,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Gozu Tenno",
+    "FullName": "",
+    "ID": 29950116,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Uriel",
+    "FullName": "",
+    "ID": 29950121,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Menoetius",
+    "FullName": "",
+    "ID": 29950317,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Fudo Myo-o",
+    "FullName": "",
+    "ID": 29950320,
+    "Rarity": 5,
+    "Element": 3,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Cupid",
+    "FullName": "",
+    "ID": 29950405,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Raphael",
+    "FullName": "",
+    "ID": 29950415,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Cat Sìth",
+    "FullName": "Summer Cat Sìth",
+    "ID": 29950416,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": false,
+    "Tags": [
+      "Summer"
+    ]
+  },
+  {
+    "Name": "Azazel",
+    "FullName": "",
+    "ID": 29950518,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Arsène",
+    "FullName": "",
+    "ID": 29950522,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "High Chthonius",
+    "FullName": "",
+    "ID": 29950523,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": false,
+    "Tags": [
+      "Permanent"
+    ]
+  },
+  {
+    "Name": "Reborn Nidhogg",
+    "FullName": "Gala Reborn Nidhogg",
+    "ID": 29950524,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": false,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Bahamut",
+    "FullName": "Gala Bahamut",
+    "ID": 29950525,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": false,
+    "Tags": [
+      "Gala",
+      "Limited"
+    ]
+  },
+  {
+    "Name": "Fallen Angel Raphael",
+    "FullName": "Fallen Angel Raphael",
+    "ID": 29990001,
+    "Rarity": 5,
+    "Element": 4,
+    "IsPlayable": true,
+    "Tags": [
+      "Fallen"
+    ]
+  },
+  {
+    "Name": "Fallen Angel Ramiel",
+    "FullName": "Fallen Angel Ramiel",
+    "ID": 29990002,
+    "Rarity": 5,
+    "Element": 5,
+    "IsPlayable": true,
+    "Tags": [
+      "Fallen"
+    ]
+  },
+  {
+    "Name": "Beast Ayaha & Otoha",
+    "FullName": "Beast Ayaha & Otoha",
+    "ID": 29990003,
+    "Rarity": 5,
+    "Element": 1,
+    "IsPlayable": false,
+    "Tags": [
+      "Beast"
+    ]
+  }
+]

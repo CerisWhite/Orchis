@@ -1,0 +1,57 @@
+[
+  {
+    "id": 40000001,
+    "param_group": 40501,
+    "ability_group": 40501
+  },
+  {
+    "id": 40000002,
+    "param_group": 40502,
+    "ability_group": 40502
+  },
+  {
+    "id": 40000003,
+    "param_group": 40503,
+    "ability_group": 40503
+  },
+  {
+    "id": 40020001,
+    "param_group": 40101,
+    "ability_group": 40101
+  },
+  {
+    "id": 40030024,
+    "param_group": 40201,
+    "ability_group": 40201
+  },
+  {
+    "id": 40040009,
+    "param_group": 40301,
+    "ability_group": 40301
+  },
+  {
+    "id": 40040075,
+    "param_group": 40302,
+    "ability_group": 40302
+  },
+  {
+    "id": 40040089,
+    "param_group": 40303,
+    "ability_group": 40303
+  },
+  {
+    "id": 40050006,
+    "param_group": 40403,
+    "ability_group": 40403
+  },
+  {
+    "id": 40050033,
+    "param_group": 40402,
+    "ability_group": 40402
+  },
+  {
+    "id": 40050074,
+    "param_group": 40401,
+    "ability_group": 40401
+  }
+]

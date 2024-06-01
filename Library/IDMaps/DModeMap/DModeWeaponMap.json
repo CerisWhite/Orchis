@@ -1,0 +1,668 @@
+{
+  "1": {
+    "30100190": {
+      "param_group": 0,
+      "ability_group": 0,
+      "skill_group": 0,
+      "is_default": true
+    },
+    "30110190": {
+      "param_group": 30101,
+      "ability_group": 30101,
+      "skill_group": 30101,
+      "is_default": false
+    },
+    "30120190": {
+      "param_group": 30201,
+      "ability_group": 30201,
+      "skill_group": 30201,
+      "is_default": false
+    },
+    "30130190": {
+      "param_group": 30301,
+      "ability_group": 30301,
+      "skill_group": 30301,
+      "is_default": false
+    },
+    "30130290": {
+      "param_group": 30302,
+      "ability_group": 30302,
+      "skill_group": 30302,
+      "is_default": false
+    },
+    "30130390": {
+      "param_group": 30303,
+      "ability_group": 30303,
+      "skill_group": 30303,
+      "is_default": false
+    },
+    "30140190": {
+      "param_group": 30401,
+      "ability_group": 30401,
+      "skill_group": 30401,
+      "is_default": false
+    },
+    "30140290": {
+      "param_group": 30402,
+      "ability_group": 30402,
+      "skill_group": 30402,
+      "is_default": false
+    },
+    "30140390": {
+      "param_group": 30403,
+      "ability_group": 30403,
+      "skill_group": 30403,
+      "is_default": false
+    },
+    "30150190": {
+      "param_group": 30501,
+      "ability_group": 30501,
+      "skill_group": 30501,
+      "is_default": false
+    },
+    "30150290": {
+      "param_group": 30502,
+      "ability_group": 30502,
+      "skill_group": 30502,
+      "is_default": false
+    },
+    "30150390": {
+      "param_group": 30503,
+      "ability_group": 30503,
+      "skill_group": 30503,
+      "is_default": false
+    }
+  },
+  "2": {
+    "30200190": {
+      "param_group": 0,
+      "ability_group": 0,
+      "skill_group": 0,
+      "is_default": true
+    },
+    "30210190": {
+      "param_group": 30101,
+      "ability_group": 30101,
+      "skill_group": 30101,
+      "is_default": false
+    },
+    "30220190": {
+      "param_group": 30201,
+      "ability_group": 30201,
+      "skill_group": 30201,
+      "is_default": false
+    },
+    "30230190": {
+      "param_group": 30301,
+      "ability_group": 30301,
+      "skill_group": 30301,
+      "is_default": false
+    },
+    "30230290": {
+      "param_group": 30302,
+      "ability_group": 30302,
+      "skill_group": 30302,
+      "is_default": false
+    },
+    "30230390": {
+      "param_group": 30303,
+      "ability_group": 30303,
+      "skill_group": 30303,
+      "is_default": false
+    },
+    "30240190": {
+      "param_group": 30401,
+      "ability_group": 30401,
+      "skill_group": 30401,
+      "is_default": false
+    },
+    "30240290": {
+      "param_group": 30402,
+      "ability_group": 30402,
+      "skill_group": 30402,
+      "is_default": false
+    },
+    "30240390": {
+      "param_group": 30403,
+      "ability_group": 30403,
+      "skill_group": 30403,
+      "is_default": false
+    },
+    "30250190": {
+      "param_group": 30501,
+      "ability_group": 30501,
+      "skill_group": 30501,
+      "is_default": false
+    },
+    "30250290": {
+      "param_group": 30502,
+      "ability_group": 30502,
+      "skill_group": 30502,
+      "is_default": false
+    },
+    "30250390": {
+      "param_group": 30503,
+      "ability_group": 30503,
+      "skill_group": 30503,
+      "is_default": false
+    }
+  },
+  "3": {
+    "30300190": {
+      "param_group": 0,
+      "ability_group": 0,
+      "skill_group": 0,
+      "is_default": true
+    },
+    "30310190": {
+      "param_group": 30101,
+      "ability_group": 30101,
+      "skill_group": 30101,
+      "is_default": false
+    },
+    "30320190": {
+      "param_group": 30201,
+      "ability_group": 30201,
+      "skill_group": 30201,
+      "is_default": false
+    },
+    "30330190": {
+      "param_group": 30301,
+      "ability_group": 30301,
+      "skill_group": 30301,
+      "is_default": false
+    },
+    "30330290": {
+      "param_group": 30302,
+      "ability_group": 30302,
+      "skill_group": 30302,
+      "is_default": false
+    },
+    "30330390": {
+      "param_group": 30303,
+      "ability_group": 30303,
+      "skill_group": 30303,
+      "is_default": false
+    },
+    "30340190": {
+      "param_group": 30401,
+      "ability_group": 30401,
+      "skill_group": 30401,
+      "is_default": false
+    },
+    "30340290": {
+      "param_group": 30402,
+      "ability_group": 30402,
+      "skill_group": 30402,
+      "is_default": false
+    },
+    "30340390": {
+      "param_group": 30403,
+      "ability_group": 30403,
+      "skill_group": 30403,
+      "is_default": false
+    },
+    "30350190": {
+      "param_group": 30501,
+      "ability_group": 30501,
+      "skill_group": 30501,
+      "is_default": false
+    },
+    "30350290": {
+      "param_group": 30502,
+      "ability_group": 30502,
+      "skill_group": 30502,
+      "is_default": false
+    },
+    "30350390": {
+      "param_group": 30503,
+      "ability_group": 30503,
+      "skill_group": 30503,
+      "is_default": false
+    }
+  },
+  "4": {
+    "30400190": {
+      "param_group": 0,
+      "ability_group": 0,
+      "skill_group": 0,
+      "is_default": true
+    },
+    "30410190": {
+      "param_group": 30101,
+      "ability_group": 30101,
+      "skill_group": 30101,
+      "is_default": false
+    },
+    "30420190": {
+      "param_group": 30201,
+      "ability_group": 30201,
+      "skill_group": 30201,
+      "is_default": false
+    },
+    "30430190": {
+      "param_group": 30301,
+      "ability_group": 30301,
+      "skill_group": 30301,
+      "is_default": false
+    },
+    "30430290": {
+      "param_group": 30302,
+      "ability_group": 30302,
+      "skill_group": 30302,
+      "is_default": false
+    },
+    "30430390": {
+      "param_group": 30303,
+      "ability_group": 30303,
+      "skill_group": 30303,
+      "is_default": false
+    },
+    "30440190": {
+      "param_group": 30401,
+      "ability_group": 30401,
+      "skill_group": 30401,
+      "is_default": false
+    },
+    "30440290": {
+      "param_group": 30402,
+      "ability_group": 30402,
+      "skill_group": 30402,
+      "is_default": false
+    },
+    "30440390": {
+      "param_group": 30403,
+      "ability_group": 30403,
+      "skill_group": 30403,
+      "is_default": false
+    },
+    "30450190": {
+      "param_group": 30501,
+      "ability_group": 30501,
+      "skill_group": 30501,
+      "is_default": false
+    },
+    "30450290": {
+      "param_group": 30502,
+      "ability_group": 30502,
+      "skill_group": 30502,
+      "is_default": false
+    },
+    "30450390": {
+      "param_group": 30503,
+      "ability_group": 30503,
+      "skill_group": 30503,
+      "is_default": false
+    }
+  },
+  "5": {
+    "30500190": {
+      "param_group": 0,
+      "ability_group": 0,
+      "skill_group": 0,
+      "is_default": true
+    },
+    "30510190": {
+      "param_group": 30101,
+      "ability_group": 30101,
+      "skill_group": 30101,
+      "is_default": false
+    },
+    "30520190": {
+      "param_group": 30201,
+      "ability_group": 30201,
+      "skill_group": 30201,
+      "is_default": false
+    },
+    "30530190": {
+      "param_group": 30301,
+      "ability_group": 30301,
+      "skill_group": 30301,
+      "is_default": false
+    },
+    "30530290": {
+      "param_group": 30302,
+      "ability_group": 30302,
+      "skill_group": 30302,
+      "is_default": false
+    },
+    "30530390": {
+      "param_group": 30303,
+      "ability_group": 30303,
+      "skill_group": 30303,
+      "is_default": false
+    },
+    "30540190": {
+      "param_group": 30401,
+      "ability_group": 30401,
+      "skill_group": 30401,
+      "is_default": false
+    },
+    "30540290": {
+      "param_group": 30402,
+      "ability_group": 30402,
+      "skill_group": 30402,
+      "is_default": false
+    },
+    "30540390": {
+      "param_group": 30403,
+      "ability_group": 30403,
+      "skill_group": 30403,
+      "is_default": false
+    },
+    "30550190": {
+      "param_group": 30501,
+      "ability_group": 30501,
+      "skill_group": 30501,
+      "is_default": false
+    },
+    "30550290": {
+      "param_group": 30502,
+      "ability_group": 30502,
+      "skill_group": 30502,
+      "is_default": false
+    },
+    "30550390": {
+      "param_group": 30503,
+      "ability_group": 30503,
+      "skill_group": 30503,
+      "is_default": false
+    }
+  },
+  "6": {
+    "30600190": {
+      "param_group": 0,
+      "ability_group": 0,
+      "skill_group": 0,
+      "is_default": true
+    },
+    "30610190": {
+      "param_group": 30101,
+      "ability_group": 30101,
+      "skill_group": 30101,
+      "is_default": false
+    },
+    "30620190": {
+      "param_group": 30201,
+      "ability_group": 30201,
+      "skill_group": 30201,
+      "is_default": false
+    },
+    "30630190": {
+      "param_group": 30301,
+      "ability_group": 30301,
+      "skill_group": 30301,
+      "is_default": false
+    },
+    "30630290": {
+      "param_group": 30302,
+      "ability_group": 30302,
+      "skill_group": 30302,
+      "is_default": false
+    },
+    "30630390": {
+      "param_group": 30303,
+      "ability_group": 30303,
+      "skill_group": 30303,
+      "is_default": false
+    },
+    "30640190": {
+      "param_group": 30401,
+      "ability_group": 30401,
+      "skill_group": 30401,
+      "is_default": false
+    },
+    "30640290": {
+      "param_group": 30402,
+      "ability_group": 30402,
+      "skill_group": 30402,
+      "is_default": false
+    },
+    "30640390": {
+      "param_group": 30403,
+      "ability_group": 30403,
+      "skill_group": 30403,
+      "is_default": false
+    },
+    "30650190": {
+      "param_group": 30501,
+      "ability_group": 30501,
+      "skill_group": 30501,
+      "is_default": false
+    },
+    "30650290": {
+      "param_group": 30502,
+      "ability_group": 30502,
+      "skill_group": 30502,
+      "is_default": false
+    },
+    "30650390": {
+      "param_group": 30503,
+      "ability_group": 30503,
+      "skill_group": 30503,
+      "is_default": false
+    }
+  },
+  "7": {
+    "30700190": {
+      "param_group": 0,
+      "ability_group": 0,
+      "skill_group": 0,
+      "is_default": true
+    },
+    "30710190": {
+      "param_group": 30101,
+      "ability_group": 30101,
+      "skill_group": 30101,
+      "is_default": false
+    },
+    "30720190": {
+      "param_group": 30201,
+      "ability_group": 30201,
+      "skill_group": 30201,
+      "is_default": false
+    },
+    "30730190": {
+      "param_group": 30301,
+      "ability_group": 30301,
+      "skill_group": 30301,
+      "is_default": false
+    },
+    "30730290": {
+      "param_group": 30302,
+      "ability_group": 30302,
+      "skill_group": 30302,
+      "is_default": false
+    },
+    "30730390": {
+      "param_group": 30303,
+      "ability_group": 30303,
+      "skill_group": 30303,
+      "is_default": false
+    },
+    "30740190": {
+      "param_group": 30401,
+      "ability_group": 30401,
+      "skill_group": 30401,
+      "is_default": false
+    },
+    "30740290": {
+      "param_group": 30402,
+      "ability_group": 30402,
+      "skill_group": 30402,
+      "is_default": false
+    },
+    "30740390": {
+      "param_group": 30403,
+      "ability_group": 30403,
+      "skill_group": 30403,
+      "is_default": false
+    },
+    "30750190": {
+      "param_group": 30501,
+      "ability_group": 30501,
+      "skill_group": 30501,
+      "is_default": false
+    },
+    "30750290": {
+      "param_group": 30502,
+      "ability_group": 30502,
+      "skill_group": 30502,
+      "is_default": false
+    },
+    "30750390": {
+      "param_group": 30503,
+      "ability_group": 30503,
+      "skill_group": 30503,
+      "is_default": false
+    }
+  },
+  "8": {
+    "30800190": {
+      "param_group": 0,
+      "ability_group": 0,
+      "skill_group": 0,
+      "is_default": true
+    },
+    "30810190": {
+      "param_group": 30101,
+      "ability_group": 30101,
+      "skill_group": 30101,
+      "is_default": false
+    },
+    "30820190": {
+      "param_group": 30201,
+      "ability_group": 30201,
+      "skill_group": 30201,
+      "is_default": false
+    },
+    "30830190": {
+      "param_group": 30301,
+      "ability_group": 30301,
+      "skill_group": 30301,
+      "is_default": false
+    },
+    "30830290": {
+      "param_group": 30302,
+      "ability_group": 30302,
+      "skill_group": 30302,
+      "is_default": false
+    },
+    "30830390": {
+      "param_group": 30303,
+      "ability_group": 30303,
+      "skill_group": 30303,
+      "is_default": false
+    },
+    "30840190": {
+      "param_group": 30401,
+      "ability_group": 30401,
+      "skill_group": 30401,
+      "is_default": false
+    },
+    "30840290": {
+      "param_group": 30402,
+      "ability_group": 30402,
+      "skill_group": 30402,
+      "is_default": false
+    },
+    "30840390": {
+      "param_group": 30403,
+      "ability_group": 30403,
+      "skill_group": 30403,
+      "is_default": false
+    },
+    "30850190": {
+      "param_group": 30501,
+      "ability_group": 30501,
+      "skill_group": 30501,
+      "is_default": false
+    },
+    "30850290": {
+      "param_group": 30502,
+      "ability_group": 30502,
+      "skill_group": 30502,
+      "is_default": false
+    },
+    "30850390": {
+      "param_group": 30503,
+      "ability_group": 30503,
+      "skill_group": 30503,
+      "is_default": false
+    }
+  },
+  "9": {
+    "30900190": {
+      "param_group": 0,
+      "ability_group": 0,
+      "skill_group": 0,
+      "is_default": true
+    },
+    "30910190": {
+      "param_group": 30101,
+      "ability_group": 30101,
+      "skill_group": 30101,
+      "is_default": false
+    },
+    "30920190": {
+      "param_group": 30201,
+      "ability_group": 30201,
+      "skill_group": 30201,
+      "is_default": false
+    },
+    "30930190": {
+      "param_group": 30301,
+      "ability_group": 30301,
+      "skill_group": 30301,
+      "is_default": false
+    },
+    "30930290": {
+      "param_group": 30302,
+      "ability_group": 30302,
+      "skill_group": 30302,
+      "is_default": false
+    },
+    "30930390": {
+      "param_group": 30303,
+      "ability_group": 30303,
+      "skill_group": 30303,
+      "is_default": false
+    },
+    "30940190": {
+      "param_group": 30401,
+      "ability_group": 30401,
+      "skill_group": 30401,
+      "is_default": false
+    },
+    "30940290": {
+      "param_group": 30402,
+      "ability_group": 30402,
+      "skill_group": 30402,
+      "is_default": false
+    },
+    "30940390": {
+      "param_group": 30403,
+      "ability_group": 30403,
+      "skill_group": 30403,
+      "is_default": false
+    },
+    "30950190": {
+      "param_group": 30501,
+      "ability_group": 30501,
+      "skill_group": 30501,
+      "is_default": false
+    },
+    "30950290": {
+      "param_group": 30502,
+      "ability_group": 30502,
+      "skill_group": 30502,
+      "is_default": false
+    },
+    "30950390": {
+      "param_group": 30503,
+      "ability_group": 30503,
+      "skill_group": 30503,
+      "is_default": false
+    }
+  }
+}
