@@ -11,7 +11,7 @@ const EventMap = require('../IDMaps/EventMap.js');
 const FortMap = require('../IDMaps/FortMap.js');
 
 const fs = require('fs');
-const LoginBonusMap = JSON.parse(fs.readFileSync('./Library/Event/LoginBonusMap.json'));
+const LoginBonusMap = JSON.parse(fs.readFileSync('../Event/LoginBonusMap.json'));
 
 async function GetUserSave(IDToken) {
 	const Answer = await fetch('https://baas.lukefz.xyz/gameplay/v1/savefile', {
@@ -400,12 +400,12 @@ function DungeonRecord(UserSessionRecord, UserIndexRecord, DungeonKey, PlayData,
 	let BoostPoints = DropTable[6];
 	let FirstReward = [];
 	const FinalQuestData = {
-		'quest_id': UserSessionRecord['DungeonRecord']['LastQuestID'],
+		'quest_id': QuestID,
 		'state': 3,
 		'is_mission_clear_1': 1,
 		'is_mission_clear_2': 1,
 		'is_mission_clear_3': 1,
-		'play_count': GetPlayerQuestPlayCount(UserSessionRecord['DungeonRecord']['LastQuestID'], UserIndexRecord) + 1,
+		'play_count': GetPlayerQuestPlayCount(QuestID, UserIndexRecord) + 1,
 		'daily_play_count': 1,
 		'weekly_play_count': 1,
 		'last_daily_reset_time': Math.floor(Date.now() / 1000),	
