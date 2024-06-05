@@ -6722,7 +6722,7 @@ Orchis.post("/utility/create_guild", async (req,res) => {
 	
 	res.end("Created Guild with ID " + NewGuildID + "\n");
 });
-Orchis.post("/utility/upload_new_hash", errorhandler(async (req,res) => {
+Orchis.post("/asset/upload_new_hash", errorhandler(async (req,res) => {
 	if (req.get('passphrase') != ServerConfig['AssetPass']) { res.end('Authentication failed.\n'); return; }
 	if (req.get('content-type') != 'application/json') { res.end("Define content-type.\n"); }
 	fs.writeFileSync("./Library/Event/AssetList.json", JSON.stringify(req.body, null, 2));
