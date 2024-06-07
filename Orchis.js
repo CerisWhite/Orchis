@@ -4963,6 +4963,7 @@ Orchis.post([iOS_Version + "/dungeon_start/start_multi", Android_Version + "/dun
 	res.locals.UserSessionRecord['DungeonRecord']['LastDungeonSupportCharacter'][0] = [];
 	res.locals.UserSessionRecord['DungeonRecord']['LastDungeonSupportCharacter'][1] = [];
 	res.locals.UserSessionRecord['DungeonRecord']['DropTable'] = QuestMap.GetQuestDrops(QuestID, EventList, PartyListData[0]['party_unit_list']);
+	res.locals.UserSessionRecord['DungeonRecord']['Repeat'] = {};
 	let ReviveLimit = QuestMap.GetQuestInfo(QuestID, "revives"); if (ReviveLimit == undefined) { ReviveLimit = 0; }
 	res.locals.ResponseBody['data'] = {
 		'ingame_data': {
