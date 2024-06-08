@@ -14902,21 +14902,35 @@ function WeaponCost(WeaponID, Buildup, UserIndexRecord) {
 		else {
 			const UpgradeData = WeaponUpgradeInfoMap[String(WeaponInfoMap[String(WeaponID)]['upgrade_group'])][String(Buildup[y]['buildup_piece_type'])][String(Buildup[y]['step'])];
 			const UpgradeCost = UpgradeData['step_cost'];
-			for (let i in UpgradeCost) {
-				if (Buildup[y]['is_use_dedicated_material'] == 1) { continue; }
-				switch(UpgradeCost[i]['entity_type']) {
-					case 4:
-						UserIndexRecord['user_data']['coin'] -= UpgradeCost[i]['quantity'];
-						break;
-					case 8:
-						const MaterialIndex = UserIndexRecord['material_list'].findIndex(x => x.material_id == UpgradeCost[i]['entity_id']);
-						UserIndexRecord['material_list'][MaterialIndex]['quantity'] -= UpgradeCost[i]['quantity'];
-						const UpdateIndex = UpdateMaterialList.findIndex(x => x.material_id == UpgradeCost[i]['entity_id']);
-						if (UpdateIndex != -1) {
-							UpdateMaterialList[UpdateIndex] = UserIndexRecord['material_list'][MaterialIndex];
-						}
-						else { UpdateMaterialList.push(UserIndexRecord['material_list'][MaterialIndex]); }
-						break;
+			const WeaponRarity = WeaponInfoMap[String(WeaponID)]['rarity'];
+			if (Buildup[y]['is_use_dedicated_material'] == 1) {
+				let UpgradeItem = 112002001;
+				if (WeaponRarity == 6) { UpgradeItem = 112003001; }
+				const UpgradeIndex = UserIndexRecord['material_list'].findIndex(x => x.material_id == UpgradeItem);
+				UserIndexRecord['material_list'][UpgradeIndex]['quantity'] -= 1;
+				
+				const UpdateIndex = UpdateMaterialList.findIndex(x => x.material_id == UpgradeItem);
+				if (UpdateIndex != -1) {
+					UpdateMaterialList[UpdateIndex] = UserIndexRecord['material_list'][UpgradeIndex];
+				}
+				else { UpdateMaterialList.push(UserIndexRecord['material_list'][UpgradeIndex]); }
+			}
+			else {
+				for (let i in UpgradeCost) {
+					switch(UpgradeCost[i]['entity_type']) {
+						case 4:
+							UserIndexRecord['user_data']['coin'] -= UpgradeCost[i]['quantity'];
+							break;
+						case 8:
+							const MaterialIndex = UserIndexRecord['material_list'].findIndex(x => x.material_id == UpgradeCost[i]['entity_id']);
+							UserIndexRecord['material_list'][MaterialIndex]['quantity'] -= UpgradeCost[i]['quantity'];
+							const UpdateIndex = UpdateMaterialList.findIndex(x => x.material_id == UpgradeCost[i]['entity_id']);
+							if (UpdateIndex != -1) {
+								UpdateMaterialList[UpdateIndex] = UserIndexRecord['material_list'][MaterialIndex];
+							}
+							else { UpdateMaterialList.push(UserIndexRecord['material_list'][MaterialIndex]); }
+							break;
+					}
 				}
 			}
 			if (UpgradeData['reward_skin_no'] != 0) {

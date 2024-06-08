@@ -11860,19 +11860,20 @@ function WyrmprintBuild(PrintID, Buildup, Augments, UserIndexRecord) {
 		let MaterialList = [];
 		switch(Buildup[i]['buildup_piece_type']) {
 			case 1: // Unbind
-				UserIndexRecord['user_data']['dew_point'] -= WyrmprintBuildMap[String(PrintData['build_group'])][Buildup[i]['buildup_piece_type']][Buildup[i]['step']]['dew_cost'];
-				MaterialList = WyrmprintBuildMap[String(PrintData['build_group'])][Buildup[i]['buildup_piece_type']][Buildup[i]['step']]['material_cost'];
-				if (WyrmprintBuildMap[String(PrintData['build_group'])][Buildup[i]['buildup_piece_type']][Buildup[i]['step']]['unique_cost'] != 0) {
-					if (Buildup[i]['is_use_dedicated_material'] == 1) {
-						const Rarity = WyrmprintInfoMap[String(PrintID)]['rarity'];
-						let UpgradeItem = 114001001;
-						if (Rarity == 5) { UpgradeItem = 114002001; }
-						
-						const UpgradeItemIndex = MaterialList.findIndex(x => x.id == UpgradeItem);
-						if (UpgradeItemIndex == -1) { MaterialList.push({ 'id': UpgradeItem, 'quantity': 1 }); }
-						else { MaterialList[UpgradeItemIndex]['quantity'] += 1; }
-					}
-					else {
+				if (Buildup[i]['is_use_dedicated_material'] == 1) {
+					const Rarity = WyrmprintInfoMap[String(PrintID)]['rarity'];
+					let UpgradeItem = 114001001;
+					if (Rarity == 5) { UpgradeItem = 114002001; }
+					
+					const UpgradeItemIndex = MaterialList.findIndex(x => x.id == UpgradeItem);
+					if (UpgradeItemIndex == -1) { MaterialList.push({ 'id': UpgradeItem, 'quantity': 1 }); }
+					else { MaterialList[UpgradeItemIndex]['quantity'] += 1; }
+					continue;
+				}
+				else {
+					UserIndexRecord['user_data']['dew_point'] -= WyrmprintBuildMap[String(PrintData['build_group'])][Buildup[i]['buildup_piece_type']][Buildup[i]['step']]['dew_cost'];
+					MaterialList = WyrmprintBuildMap[String(PrintData['build_group'])][Buildup[i]['buildup_piece_type']][Buildup[i]['step']]['material_cost'];
+					if (WyrmprintBuildMap[String(PrintData['build_group'])][Buildup[i]['buildup_piece_type']][Buildup[i]['step']]['unique_cost'] != 0) {
 						MaterialList.push({
 							'id': PrintData['unique_material'],
 							'quantity': WyrmprintBuildMap[String(PrintData['build_group'])][Buildup[i]['buildup_piece_type']][Buildup[i]['step']]['unique_cost']
