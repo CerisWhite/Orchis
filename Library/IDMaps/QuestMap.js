@@ -237,8 +237,11 @@ function GetQuestDrops(QuestID, EventList, PartyData) {
 		UnitAbilityList.push(CharacterMap.GetCharacterInfo(CurrentCharacter, "ability_2")[String(PartyData[p]['chara_data']['ability_2_level'])]);
 		UnitAbilityList.push(CharacterMap.GetCharacterInfo(CurrentCharacter, "ability_3")[String(PartyData[p]['chara_data']['ability_3_level'])]);
 		if (CurrentDragon != undefined && CurrentDragon != 0) {
-			UnitAbilityList.push(DragonMap.GetDragonInfo(CurrentDragon, "ability_1")[String(PartyData[p]['dragon_data']['ability_1_level'])]);
-			UnitAbilityList.push(DragonMap.GetDragonInfo(CurrentDragon, "ability_2")[String(PartyData[p]['dragon_data']['ability_2_level'])]);
+			try {
+				UnitAbilityList.push(DragonMap.GetDragonInfo(CurrentDragon, "ability_1")[String(PartyData[p]['dragon_data']['ability_1_level'])]);
+				UnitAbilityList.push(DragonMap.GetDragonInfo(CurrentDragon, "ability_2")[String(PartyData[p]['dragon_data']['ability_2_level'])]);
+			}
+			catch {}
 		}
 		
 		UnitAbilityList.push(WyrmprintMap.GetWyrmprintInfo(PrintList1[0]['ability_crest_id'], "ability_1")[String(PrintList1[0]['ability_1_level'])]);
@@ -427,8 +430,11 @@ function GetQuestDropsSkip(QuestID, PlayCount, EventList, PartyData) {
 		UnitAbilityList.push(CharacterMap.GetCharacterInfo(CurrentCharacter, "ability_2")[String(PartyData[p]['chara_data']['ability_2_level'])]);
 		UnitAbilityList.push(CharacterMap.GetCharacterInfo(CurrentCharacter, "ability_3")[String(PartyData[p]['chara_data']['ability_3_level'])]);
 		if (CurrentDragon != undefined && CurrentDragon != 0) {
-			UnitAbilityList.push(DragonMap.GetDragonInfo(CurrentDragon, "ability_1")[String(PartyData[p]['dragon_data']['ability_1_level'])]);
-			UnitAbilityList.push(DragonMap.GetDragonInfo(CurrentDragon, "ability_2")[String(PartyData[p]['dragon_data']['ability_2_level'])]);
+			try {
+				UnitAbilityList.push(DragonMap.GetDragonInfo(CurrentDragon, "ability_1")[String(PartyData[p]['dragon_data']['ability_1_level'])]);
+				UnitAbilityList.push(DragonMap.GetDragonInfo(CurrentDragon, "ability_2")[String(PartyData[p]['dragon_data']['ability_2_level'])]);
+			}
+			catch {}
 		}
 		
 		UnitAbilityList.push(WyrmprintMap.GetWyrmprintInfo(PrintList1[0]['ability_crest_id'], "ability_1")[String(PrintList1[0]['ability_1_level'])]);
