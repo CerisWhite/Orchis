@@ -6093,6 +6093,19 @@ Orchis.post([iOS_Version + "/suggestion/set", Android_Version + "/suggestion/set
 				break;
 			case "ResetAll":
 				res.locals.UserIndexRecord = IndexTools.GenerateDefaultSaveData(res.locals.UserIndexRecord['user_data']['name'], res.locals.UserSessionRecord['ViewerID']);
+				res.locals.UserIndexRecord['user_data']['tutorial_status'] = 301; // Issue with first quest helpers?
+				res.locals.UserSessionRecord['Event'] = {
+					'Raid': {},
+					'Build': {},
+					'Story': {},
+					'CLB01': {},
+					'MegaMan': {},
+					'MonsterHunter': {},
+					'Special': {},
+					'Combat': {},
+					'ABR': {},
+					'Earn': {}
+				}
 				break;
 			case "ResetAllForRealz":
 				res.locals.UserSessionRecord = DefaultSessionRecord(res.locals.UserSessionRecord['ViewerID'], {'sub': res.locals.UserSessionRecord['BaasID']});
