@@ -2142,7 +2142,7 @@ Orchis.post([iOS_Version + "/dragon/buy_gift_to_send", Android_Version + "/drago
 	res.locals.UserIndexRecord['dragon_reliability_list'][DragonIndex]['reliability_level'] = BondData[1][0];
 	res.locals.UserIndexRecord['dragon_reliability_list'][DragonIndex]['reliability_total_exp'] = BondData[1][1];
 	res.locals.UserIndexRecord['dragon_reliability_list'][DragonIndex]['last_contact_time'] = Math.floor(Date.now() / 1000);
-	for (let s in BondData[3]) { res.locals.UserIndexRecord['unit_story_list'].push(BondData[3][s]); }
+	for (const s in BondData[3]) { res.locals.UserIndexRecord['unit_story_list'].push(BondData[3][s]); }
 	const Parsed = DataManager.ItemParser(BondData[4], res.locals.UserSessionRecord, res.locals.UserIndexRecord, "entity");
 	res.locals.UserSessionRecord = Parsed[0]; res.locals.UserIndexRecord = Parsed[1];
 	res.locals.ResponseBody['data'] = {
@@ -2171,7 +2171,7 @@ Orchis.post([iOS_Version + "/dragon/buy_gift_to_send_multiple", Android_Version 
 	let NewStory = [];
 	let Gifts = [];
 	let MergedGifts = [];
-	for (let x in GiftList) {
+	for (const x in GiftList) {
 		const GiftID = GiftList[x];
 		const GiftIndex = res.locals.UserSessionRecord['FortData']['DragonGiftList'].findIndex(x => x.dragon_gift_id == GiftID);
 		res.locals.UserIndexRecord['user_data']['coin'] -= res.locals.UserSessionRecord['FortData']['DragonGiftList'][GiftIndex]['price'];
@@ -2186,13 +2186,13 @@ Orchis.post([iOS_Version + "/dragon/buy_gift_to_send_multiple", Android_Version 
 		res.locals.UserIndexRecord['dragon_reliability_list'][DragonIndex]['reliability_total_exp'] = BondData[1][1];
 		res.locals.UserIndexRecord['dragon_reliability_list'][DragonIndex]['last_contact_time'] = Math.floor(Date.now() / 1000);
 		let CycleBondReward = [];
-		for (let r in BondData[2]) { CycleBondReward.push(BondData[2][r]); }
-		for (let s in BondData[3]) {
+		for (const r in BondData[2]) { CycleBondReward.push(BondData[2][r]); }
+		for (const s in BondData[3]) {
 			res.locals.UserIndexRecord['unit_story_list'].push(BondData[3][s]);
 			NewStory.push(BondData[3][s]);
 		}
 		let CycleGift = [];
-		for (let g in BondData[4]) {
+		for (const g in BondData[4]) {
 			const InGifts = MergedGifts.findIndex(u => u.entity_id == BondData[4][g]['entity_id']);
 			if (InGifts == -1) { MergedGifts.push(BondData[4][g]); }
 			else { MergedGifts[InGifts]['entity_quantity'] += BondData[4][g]['entity_quantity']; }
@@ -2239,7 +2239,7 @@ Orchis.post([iOS_Version + "/dragon/send_gift", Android_Version + "/dragon/send_
 	res.locals.UserIndexRecord['dragon_reliability_list'][DragonIndex]['reliability_total_exp'] = BondData[1][1];
 	res.locals.UserIndexRecord['dragon_reliability_list'][DragonIndex]['last_contact_time'] = Math.floor(Date.now() / 1000);
 	let NewStory = [];
-	for (let s in BondData[3]) { res.locals.UserIndexRecord['unit_story_list'].push(BondData[3][s]); }
+	for (const s in BondData[3]) { res.locals.UserIndexRecord['unit_story_list'].push(BondData[3][s]); }
 	const Parsed = DataManager.ItemParser(BondData[4], res.locals.UserSessionRecord, res.locals.UserIndexRecord, "entity");
 	res.locals.UserSessionRecord = Parsed[0]; res.locals.UserIndexRecord = Parsed[1];
 	res.locals.ResponseBody['data'] = {
@@ -2282,12 +2282,12 @@ Orchis.post([iOS_Version + "/dragon/send_gift_multiple", Android_Version + "/dra
 		res.locals.UserIndexRecord['dragon_reliability_list'][DragonIndex]['reliability_level'] = BondData[1][0];
 		res.locals.UserIndexRecord['dragon_reliability_list'][DragonIndex]['reliability_total_exp'] = BondData[1][1];
 		res.locals.UserIndexRecord['dragon_reliability_list'][DragonIndex]['last_contact_time'] = Math.floor(Date.now() / 1000);
-		for (let r in BondData[2]) { BondReward.push(BondData[2][r]); }
-		for (let s in BondData[3]) {
+		for (const r in BondData[2]) { BondReward.push(BondData[2][r]); }
+		for (const s in BondData[3]) {
 			res.locals.UserIndexRecord['unit_story_list'].push(BondData[3][s]);
 			NewStory.push(BondData[3][s]);
 		}
-		for (let g in BondData[4]) {
+		for (const g in BondData[4]) {
 			const InGifts = Gifts.findIndex(u => u.entity_id == BondData[4][g]['entity_id']);
 			if (InGifts == -1) { Gifts.push(BondData[4][g]); }
 			else { Gifts[InGifts]['entity_quantity'] += BondData[4][g]['entity_quantity']; }
