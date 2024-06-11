@@ -5184,7 +5184,7 @@ function CreateDragonFromGift(KeyID, ID, Level) {
         "get_time": Math.floor(Date.now() / 1000),
         "skill_1_level": 1,
         "ability_1_level": 1,
-        "ability_2_level": 0,
+        "ability_2_level": 1,
         "limit_break_count": 0
 	}
 	return DragonTemplate;
