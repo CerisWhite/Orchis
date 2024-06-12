@@ -11,7 +11,7 @@ const EventMap = require('../IDMaps/EventMap.js');
 const FortMap = require('../IDMaps/FortMap.js');
 
 const fs = require('fs');
-const LoginBonusMap = JSON.parse(fs.readFileSync('../Event/LoginBonusMap.json'));
+const LoginBonusMap = JSON.parse(fs.readFileSync('./Library/Event/LoginBonusMap.json'));
 
 async function GetUserSave(IDToken) {
 	const Answer = await fetch('https://baas.lukefz.xyz/gameplay/v1/savefile', {
