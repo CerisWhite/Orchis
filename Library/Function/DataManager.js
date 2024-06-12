@@ -1663,6 +1663,7 @@ function ItemParser(ItemTable, UserSessionRecord, UserIndexRecord, TableType, Qu
 				}
 				if (FortMap.IsDecorative(ItemTable[y][IDName])) {
 					BuildTemplate['fort_plant_detail_id'] = parseInt(String(ItemTable[y][IDName] + "00"));
+					BuildTempalte['level'] = 0;
 				}
 				if (FortMap.IsIncome(ItemTable[y][IDName])) {
 					BuildTemplate['last_income_date'] = Math.floor(Date.now() / 1000) - 10000;
