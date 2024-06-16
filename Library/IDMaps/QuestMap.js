@@ -199,7 +199,9 @@ const FactorAbilities = [ // 1 = PlayerXP, 2 = CharacterXP, 3 = Coin, 4 = Mana, 
 	{ 'id': 110200005, 'type': 6, 'value': 0.75, 'event': 20818 }, { 'id': 110200006, 'type': 6, 'value': 0.25, 'event': 20817 },
 	{ 'id': 110200007, 'type': 6, 'value': 0.5, 'event': 20817 }, { 'id': 110200008, 'type': 6, 'value': 0.75, 'event': 20817 },
 	{ 'id': 110200009, 'type': 6, 'value': 0.25, 'event': 20820 }, { 'id': 110200010, 'type': 6, 'value': 0.5, 'event': 20820 },
-	{ 'id': 110200011, 'type': 6, 'value': 0.75, 'event': 20820 }
+	{ 'id': 110200011, 'type': 6, 'value': 0.75, 'event': 20820 },
+	
+	{ 'id': 110101, 'type': 3, 'value': 1.0 }
 ]
 
 function GetQuestDrops(QuestID, EventList, PartyData) {
