@@ -121,6 +121,7 @@ else {
 			'ca': "/path/to/chain.pem"
 		}
 	}
+	fs.writeFileSync('./config.json', JSON.stringify(ServerConfig, null, 2));
 }
 
 const StaticData = require('./Library/Function/StaticData.js');
