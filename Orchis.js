@@ -11,8 +11,8 @@ const zlib = require('zlib');
 const jwt_decode = require('jwt-decode');
 const Fluoresce = require('fluoresce');
 process.on('uncaughtException', function (error) {
-   console.log(error.stack);
-   LogFile.write(error.stack + "\n");
+	console.log(Date.now() + ": " + error.stack);
+	LogFile.write(Date.now() + ": " + error.stack + "\n");
 });
 var Orchis = express();
 let ServerConfig = {}

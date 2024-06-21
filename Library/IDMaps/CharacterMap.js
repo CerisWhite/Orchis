@@ -4282,7 +4282,7 @@ const CharacterInfoMap = {
     },
     "ability_1": {
       "1": 210000603,
-      "2": 210000604,
+      "2": 110101,
       "3": 0,
       "4": 0
     },
@@ -16618,7 +16618,62 @@ const CharacterInfoMap = {
       "3": 0,
       "4": 0
     }
-  }
+  },
+  "10990001": {
+    "name": "Mordecai",
+    "chara_id": 10990001,
+    "story_id": "N/A",
+    "rarity": 5,
+    "elemental_type": 5,
+    "has_spiral": false,
+    "shared_skill_number": 0,
+    "base_health": 46,
+    "base_attack": 26,
+    "lvl1_health": 46,
+    "lvl1_attack": 26,
+    "lvl2_health": 66,
+    "lvl2_attack": 37,
+    "max_health": 468,
+    "max_attack": 265,
+    "weapon_type": 2,
+    "mana_circle_name": "MC_0501",
+    "mana_piece_id": 5014,
+    "limit_break_id": 1050104,
+    "base_id": 110369,
+    "alt_id": 1,
+    "coability": {
+      "1": 101020005,
+      "2": 101020006,
+      "3": 101020007,
+      "4": 101020008,
+      "5": 991000001
+    },
+    "chain_ability": {
+      "1": 400000433,
+      "2": 400000434,
+      "3": 400000435,
+      "4": 400000436,
+      "5": 100058
+    },
+    "ability_1": {
+      "1": 1381,
+      "2": 910006,
+      "3": 0,
+      "4": 0
+    },
+    "ability_2": {
+      "1": 110020704,
+      "2": 910001,
+      "3": 0,
+      "4": 0
+    },
+    "ability_3": {
+      "1": 1391,
+      "2": 910003,
+      "3": 0,
+      "4": 0
+    }
+  },
 }
 
 function GetCharacterInfo(CharacterID, Attribute) {
