@@ -6131,6 +6131,31 @@ Orchis.post([iOS_Version + "/suggestion/set", Android_Version + "/suggestion/set
 				res.locals.UserIndexRecord['user_data']['crystal'] += Amount;
 			}
 		}
+		else if (Split[0] == "Character" && Split[1] != undefined) {
+			let CharacterName = "";
+			let c = 1; while (c < Split.length) {
+				CharacterName += Split[c];
+				c++;
+			}
+			const CharacterID = CharacterMap.CharacterIDByName(CharacterName);
+			if (CharacterID != 0 && res.locals.UserIndexRecord['chara_list'].findIndex(y => y.chara_id == CharacterID) == -1) {
+				res.locals.UserIndexRecord['chara_list'].push(CharacterMap.CreateCharacterFromGift(CharacterID, 1));
+				const CharacterStory = CharacterMap.GenerateUnitStory(CharacterID);
+				if (CharacterStory[1] != undefined) { res.locals.UserIndexRecord['unit_story_list'].push(CharacterStory[0]); }
+			}
+		}
+		else if (Split[0] == "Dragon" && Split[1] != undefined) {
+			let DragonName = "";
+			let c = 1; while (c < Split.length) {
+				DragonName += Split[c];
+				c++;
+			}
+			const DragonID = DragonMap.DragonIDByName(DragonName);
+			if (DragonID != 0) {
+				const KeyID = res.locals.UserIndexRecord['dragon_list'][res.locals.UserIndexRecord['dragon_list'].length - 1]['dragon_key_id'] + 1;
+				res.locals.UserIndexRecord['dragon_list'].push(DragonMap.CreateDragonFromGift(KeyID, DragonID, 1));
+			}
+		}
 		res.locals.UpdatedIndexRecord = true;
 		res.locals.ResponseBody = { 'data_headers': { 'result_code': 101 }, 'data': { 'result_code': 101 } }
 	}
@@ -6441,8 +6466,8 @@ Orchis.post("/utility/inject_session_data", errorhandler(async (req,res) => {
 Orchis.post("/utility/inject_index_data", errorhandler(async (req,res) => {
 	if (req.get('viewerid') == undefined) { res.end('No Viewer ID presented.\n'); return; }
 	if (req.get('content-type') != 'application/json') { res.end("Define content-type.\n"); }
-	const RecievedData = req.body; let UserIndexRecord = {};
-	UserIndexRecord = RecievedData['data']; UserIndexRecord['user_data']['viewer_id'] = parseInt(req.get('viewerid'));
+	let UserIndexRecord = req.body;
+	UserIndexRecord['user_data']['viewer_id'] = parseInt(req.get('viewerid'));
 	await WriteIndexRecord(req.get('viewerid'), UserIndexRecord);
 	res.end('Injected index for ViewerID ' + String(req.get('viewerid')) + '\n');
 }));

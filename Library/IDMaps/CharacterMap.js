@@ -340,7 +340,7 @@ const CharacterInfoMap = {
     }
   },
   "10140101": {
-    "name": "The Prince",
+    "name": "The Euden",
     "chara_id": 10140101,
     "story_id": "N/A",
     "rarity": 4,
@@ -1660,7 +1660,7 @@ const CharacterInfoMap = {
     }
   },
   "10150306": {
-    "name": "Bondforged Prince",
+    "name": "Bondforged Euden",
     "chara_id": 10150306,
     "story_id": 100001141,
     "rarity": 5,
@@ -1825,7 +1825,7 @@ const CharacterInfoMap = {
     }
   },
   "10150403": {
-    "name": "Gala Prince",
+    "name": "Gala Euden",
     "chara_id": 10150403,
     "story_id": 100001081,
     "rarity": 5,
@@ -6060,7 +6060,7 @@ const CharacterInfoMap = {
     }
   },
   "10350506": {
-    "name": "Summer Prince",
+    "name": "Summer Euden",
     "chara_id": 10350506,
     "story_id": 100001121,
     "rarity": 5,
@@ -16620,7 +16620,7 @@ const CharacterInfoMap = {
     }
   },
   "10990001": {
-    "name": "Mordecai",
+    "name": "Gala Mordecai",
     "chara_id": 10990001,
     "story_id": "N/A",
     "rarity": 5,
@@ -16673,7 +16673,7 @@ const CharacterInfoMap = {
       "3": 0,
       "4": 0
     }
-  },
+  }
 }
 
 function GetCharacterInfo(CharacterID, Attribute) {

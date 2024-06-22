@@ -31,6 +31,7 @@ function ReadUserData(Destination, UserID) {
 	}
 	else if (fs.existsSync(path.join(process.cwd(), DBDir, Destination, UserID + ".gz"))) {
 		MasterObject[Destination][UserID] = JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(process.cwd(), DBDir, Destination, UserID + ".gz"))));
+		MasterObject[Destination][UserID]['warmtime'] = Math.floor(Date.now() / 1000);
 		MasterObject[Destination][UserID]['lastinteraction'] = Math.floor(Date.now() / 1000);
 		Response = MasterObject[Destination][UserID]['data'];
 	}
@@ -38,7 +39,7 @@ function ReadUserData(Destination, UserID) {
 }
 function WriteUserData(Destination, UserID, Data) {
 	if (MasterObject[Destination] == undefined) { return JSON.stringify({'exists': false}); }
-	if (MasterObject[Destination][UserID] == undefined) { MasterObject[Destination][UserID] = {}; }
+	if (MasterObject[Destination][UserID] == undefined) { MasterObject[Destination][UserID] = { 'warmtime': Math.floor(Date.now() / 1000) }; }
 	MasterObject[Destination][UserID]['data'] = Data;
 	MasterObject[Destination][UserID]['lastinteraction'] = Math.floor(Date.now() / 1000);
 	return JSON.stringify({});
@@ -147,13 +148,20 @@ async function ForceSaveDatabase(Database) {
 async function ColdLoop() {
 	while (true) {
 	while (IsForceSave == 0) {
-		await Delay(600000);
+		await Delay(60000);
 		const DBList = Object.keys(MasterObject);
 		for (let ent in DBList) {
 			const ExistData = MasterObject[DBList[ent]];
 			const ExpectPath = path.join(process.cwd(), DBDir, DBList[ent]);
 			const UserList = Object.keys(ExistData);
 			for (let u in UserList) {
+				if (ExistData[UserList[u]]['warmtime'] < (Math.floor(Date.now() / 1000) - 300)) {
+					const UserData = ExistData[UserList[u]];
+					const UserName = UserList[u] + ".gz";
+					const UserPath = path.join(process.cwd(), DBDir, DBList[ent], UserName);
+					fs.writeFileSync(UserPath, zlib.gzipSync(JSON.stringify(UserData)));
+					MasterObject[DBList[ent]][UserList[u]]['warmtime'] = Math.floor(Date.now() / 1000);
+				}
 				if (ExistData[UserList[u]]['lastinteraction'] < (Math.floor(Date.now() / 1000) - 600)) {
 					const UserData = ExistData[UserList[u]];
 					const UserName = UserList[u] + ".gz";
