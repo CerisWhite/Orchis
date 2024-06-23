@@ -6132,9 +6132,9 @@ Orchis.post([iOS_Version + "/suggestion/set", Android_Version + "/suggestion/set
 			}
 		}
 		else if (Split[0] == "Character" && Split[1] != undefined) {
-			let CharacterName = "";
-			let c = 1; while (c < Split.length) {
-				CharacterName += Split[c];
+			let CharacterName = Split[1];
+			let c = 2; while (c < Split.length) {
+				CharacterName += " " + Split[c];
 				c++;
 			}
 			const CharacterID = CharacterMap.CharacterIDByName(CharacterName);
@@ -6145,15 +6145,18 @@ Orchis.post([iOS_Version + "/suggestion/set", Android_Version + "/suggestion/set
 			}
 		}
 		else if (Split[0] == "Dragon" && Split[1] != undefined) {
-			let DragonName = "";
-			let c = 1; while (c < Split.length) {
-				DragonName += Split[c];
+			let DragonName = Split[1];
+			let c = 2; while (c < Split.length) {
+				DragonName += " " + Split[c];
 				c++;
 			}
 			const DragonID = DragonMap.DragonIDByName(DragonName);
 			if (DragonID != 0) {
 				const KeyID = res.locals.UserIndexRecord['dragon_list'][res.locals.UserIndexRecord['dragon_list'].length - 1]['dragon_key_id'] + 1;
 				res.locals.UserIndexRecord['dragon_list'].push(DragonMap.CreateDragonFromGift(KeyID, DragonID, 1));
+				if (res.locals.UserIndexRecord['dragon_reliability_list'].findIndex(y => y.dragon_id == DragonID) == -1) {
+					res.locals.UserIndexRecord['dragon_reliability_list'].push(DragonMap.GenerateDragonReliability(DragonID));
+				}
 			}
 		}
 		res.locals.UpdatedIndexRecord = true;
@@ -6469,7 +6472,7 @@ Orchis.post("/utility/inject_index_data", errorhandler(async (req,res) => {
 	let UserIndexRecord = req.body;
 	UserIndexRecord['user_data']['viewer_id'] = parseInt(req.get('viewerid'));
 	await WriteIndexRecord(req.get('viewerid'), UserIndexRecord);
-	res.end('Injected index for ViewerID ' + String(req.get('viewerid')) + '\n');
+	res.end('Injected index for ViewerID ' + req.get('viewerid') + '\n');
 }));
 Orchis.post("/utility/inject_kscape_data", errorhandler(async (req,res) => {
 	if (req.get('viewerid') == undefined) { res.end('No Viewer ID presented.\n'); return; }
