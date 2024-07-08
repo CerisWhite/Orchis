@@ -348,6 +348,7 @@ async function RecordManager (req, res, next) {
 	if (TimeFile[req.url] == undefined) { TimeFile[req.url] = []; }
 	res.locals.TimeTrack = Date.now();
 	
+	res.locals.Error = 0;
 	res.locals.ResponseBody = {
 		'data_headers': { 'result_code': 1 },
 		'data': {}
@@ -3296,6 +3297,7 @@ Orchis.post([iOS_Version + "/weapon_body/buildup_piece", Android_Version + "/wea
 	let UpdateMaterialList = [];
 	let UpdateSkinList = [];
 	const CostData = WeaponMap.WeaponCost(WeaponID, WeaponBuildup, res.locals.UserIndexRecord);
+	if (CostData[3] != 0) { res.locals.Error = CostData[3]; next(); }
 	res.locals.UserIndexRecord = CostData[0];
 	const UpgradeData = WeaponMap.WeaponBuild(WeaponID, WeaponBuildup, WeaponData, res.locals.UserIndexRecord['weapon_passive_ability_list']);
 	res.locals.ResponseBody['data']['update_data_list'] = {
@@ -6469,7 +6471,7 @@ Orchis.post("/utility/inject_session_data", errorhandler(async (req,res) => {
 Orchis.post("/utility/inject_index_data", errorhandler(async (req,res) => {
 	if (req.get('viewerid') == undefined) { res.end('No Viewer ID presented.\n'); return; }
 	if (req.get('content-type') != 'application/json') { res.end("Define content-type.\n"); }
-	let UserIndexRecord = req.body;
+	const RecievedData = req.body; let UserIndexRecord = RecievedData['data'];
 	UserIndexRecord['user_data']['viewer_id'] = parseInt(req.get('viewerid'));
 	await WriteIndexRecord(req.get('viewerid'), UserIndexRecord);
 	res.end('Injected index for ViewerID ' + req.get('viewerid') + '\n');
@@ -6944,6 +6946,13 @@ async function FinalizeResponse(req, res, next) {
 			}
 		}
 	}*/
+	
+	if (res.locals.Error != 0) {
+		res.locals.ResponseBody = {
+			'data_headers': { 'result_code': res.locals.Error },
+			'data': { 'result_code': res.locals.Error }
+		}
+	}
 	
 	if (res.locals.UpdatedSessionRecord == true) {
 		await WriteSessionRecord(req.get('sid'), res.locals.UserSessionRecord);

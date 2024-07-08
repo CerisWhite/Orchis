@@ -14841,10 +14841,11 @@ function CreateWeaponFromGift(ID) {
 function WeaponCost(WeaponID, Buildup, UserIndexRecord) {
 	let UpdateMaterialList = [];
 	let WeaponSkinList = [];
-	for (let y in Buildup) {
+	let Error = 0;
+	for (const y in Buildup) {
 		if (Buildup[y]['buildup_piece_type'] == 7) {
 			const LevelUpData = WeaponLevelInfoMap[String(WeaponInfoMap[String(WeaponID)]['rarity'])][String(Buildup[y]['step'])];
-			for (let v in LevelUpData['step_cost']) {
+			for (const v in LevelUpData['step_cost']) {
 				switch(LevelUpData['step_cost'][v]['entity_type']) {
 					case 4:
 						UserIndexRecord['user_data']['coin'] -= LevelUpData['step_cost'][v]['quantity'];
@@ -14901,6 +14902,7 @@ function WeaponCost(WeaponID, Buildup, UserIndexRecord) {
 		}
 		else {
 			const UpgradeData = WeaponUpgradeInfoMap[String(WeaponInfoMap[String(WeaponID)]['upgrade_group'])][String(Buildup[y]['buildup_piece_type'])][String(Buildup[y]['step'])];
+			if (UpgradeData == undefined) { return [ UserIndexRecord, [], [], 6103 ]; }
 			const UpgradeCost = UpgradeData['step_cost'];
 			const WeaponRarity = WeaponInfoMap[String(WeaponID)]['rarity'];
 			if (Buildup[y]['is_use_dedicated_material'] == 1) {
@@ -14944,7 +14946,7 @@ function WeaponCost(WeaponID, Buildup, UserIndexRecord) {
 			}
 		}
 	}
-	return [UserIndexRecord, UpdateMaterialList, WeaponSkinList]
+	return [UserIndexRecord, UpdateMaterialList, WeaponSkinList, Error]
 }
 
 function WeaponBuild(WeaponID, Buildup, PreviousWeaponData, UserPassiveList) {

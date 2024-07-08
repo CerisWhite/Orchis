@@ -17449,7 +17449,9 @@ const Blacklist = [ 10140101, 10150402, 10140503, 10240101, 10240201, 10240302,
 					19900001, 19900002, 19900003, 19900004, 19900005, 19900006,
 					19100017, 19100018, 19100019, 19100020, 19100021, 19100021,
 					19100022, 19100023, 19100024, 19100067,
-					10550101, 10750102 ]
+					10550101, 10750102,
+
+					10990001 ]
 function DrawCharacter() {
 	let RandomNumber = Math.floor(Math.random() * Object.keys(CharacterInfoMap).length);
 	let RandomCharacterID = Object.keys(CharacterInfoMap)[RandomNumber];

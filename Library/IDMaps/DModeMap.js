@@ -3786,9 +3786,10 @@ function CreateExpeditionTalismans(UserSessionRecord, UserIndexRecord) {
 		else if (TalismanAbilityList.length == 2) { TalismanAbilityList[2] = 0; AdditionalHP = 50; AdditionalATK = 25; }
 			
 		const TalismanData = TalismanIDMap.find(x => x.character_id == CharacterID);
-			
+		let TalismanKeyID = 1;
+		if (UserIndexRecord['talisman_list'].length != 0) {  UserIndexRecord['talisman_list'][UserIndexRecord['talisman_list'].length - 1]['talisman_key_id'] + 1; }
 		const CurrentTalisman = {
-			"talisman_key_id": UserIndexRecord['talisman_list'][UserIndexRecord['talisman_list'].length - 1]['talisman_key_id'] + 1,
+			"talisman_key_id": TalismanKeyID,
 			"talisman_id": TalismanData['talisman_id'],
 			"is_lock": 0,
 			"is_new": 1,
