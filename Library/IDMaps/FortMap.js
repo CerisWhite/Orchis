@@ -22859,7 +22859,7 @@ const FacilityInfoMap = {
     "stamina_max_time": 0,
     "stamina_max": 0,
     "event_effect_args": 0,
-    "next_level_id": 10060131,
+    "next_level_id": 0,
     "level_up_time": 388800,
     "level_up_rupies": 1700000,
     "level_up_materials": [
@@ -23810,7 +23810,7 @@ const FacilityInfoMap = {
     "stamina_max_time": 0,
     "stamina_max": 0,
     "event_effect_args": 0,
-    "next_level_id": 10060231,
+    "next_level_id": 0,
     "level_up_time": 388800,
     "level_up_rupies": 1700000,
     "level_up_materials": [
@@ -24761,7 +24761,7 @@ const FacilityInfoMap = {
     "stamina_max_time": 0,
     "stamina_max": 0,
     "event_effect_args": 0,
-    "next_level_id": 10060331,
+    "next_level_id": 0,
     "level_up_time": 388800,
     "level_up_rupies": 1700000,
     "level_up_materials": [
@@ -25712,7 +25712,7 @@ const FacilityInfoMap = {
     "stamina_max_time": 0,
     "stamina_max": 0,
     "event_effect_args": 0,
-    "next_level_id": 10060431,
+    "next_level_id": 0,
     "level_up_time": 388800,
     "level_up_rupies": 1700000,
     "level_up_materials": [
@@ -26663,7 +26663,7 @@ const FacilityInfoMap = {
     "stamina_max_time": 0,
     "stamina_max": 0,
     "event_effect_args": 0,
-    "next_level_id": 10060531,
+    "next_level_id": 0,
     "level_up_time": 388800,
     "level_up_rupies": 1700000,
     "level_up_materials": [
@@ -29543,7 +29543,7 @@ const FacilityInfoMap = {
     "stamina_max_time": 0,
     "stamina_max": 0,
     "event_effect_args": 0,
-    "next_level_id": 10100231,
+    "next_level_id": 0,
     "level_up_time": 388800,
     "level_up_rupies": 440000,
     "level_up_materials": [
@@ -31433,7 +31433,7 @@ const FacilityInfoMap = {
     "stamina_max_time": 0,
     "stamina_max": 0,
     "event_effect_args": 0,
-    "next_level_id": 10100431,
+    "next_level_id": 0,
     "level_up_time": 388800,
     "level_up_rupies": 440000,
     "level_up_materials": [
@@ -32378,7 +32378,7 @@ const FacilityInfoMap = {
     "stamina_max_time": 0,
     "stamina_max": 0,
     "event_effect_args": 0,
-    "next_level_id": 10100531,
+    "next_level_id": 0,
     "level_up_time": 388800,
     "level_up_rupies": 440000,
     "level_up_materials": [
@@ -35311,7 +35311,7 @@ const FacilityInfoMap = {
     "stamina_max_time": 0,
     "stamina_max": 0,
     "event_effect_args": 175,
-    "next_level_id": 10150136,
+    "next_level_id": 0,
     "level_up_time": 43200,
     "level_up_rupies": 6000,
     "level_up_materials": [
@@ -39383,7 +39383,7 @@ const FacilityInfoMap = {
     "stamina_max_time": 0,
     "stamina_max": 0,
     "event_effect_args": 0,
-    "next_level_id": 10190316,
+    "next_level_id": 0,
     "level_up_time": 172800,
     "level_up_rupies": 100000,
     "level_up_materials": [
@@ -39841,7 +39841,7 @@ const FacilityInfoMap = {
     "stamina_max_time": 0,
     "stamina_max": 0,
     "event_effect_args": 0,
-    "next_level_id": 10190416,
+    "next_level_id": 0,
     "level_up_time": 172800,
     "level_up_rupies": 100000,
     "level_up_materials": [
@@ -40299,7 +40299,7 @@ const FacilityInfoMap = {
     "stamina_max_time": 0,
     "stamina_max": 0,
     "event_effect_args": 0,
-    "next_level_id": 10190516,
+    "next_level_id": 0,
     "level_up_time": 172800,
     "level_up_rupies": 100000,
     "level_up_materials": [
@@ -42062,7 +42062,7 @@ const FacilityInfoMap = {
     "stamina_max_time": 0,
     "stamina_max": 0,
     "event_effect_args": 0,
-    "next_level_id": 10230131,
+    "next_level_id": 0,
     "level_up_time": 388800,
     "level_up_rupies": 440000,
     "level_up_materials": [
@@ -42887,7 +42887,7 @@ const FacilityInfoMap = {
     "stamina_max_time": 0,
     "stamina_max": 0,
     "event_effect_args": 0,
-    "next_level_id": 10230231,
+    "next_level_id": 0,
     "level_up_time": 388800,
     "level_up_rupies": 440000,
     "level_up_materials": [
@@ -43712,7 +43712,7 @@ const FacilityInfoMap = {
     "stamina_max_time": 0,
     "stamina_max": 0,
     "event_effect_args": 0,
-    "next_level_id": 10230331,
+    "next_level_id": 0,
     "level_up_time": 388800,
     "level_up_rupies": 440000,
     "level_up_materials": [
@@ -44537,7 +44537,7 @@ const FacilityInfoMap = {
     "stamina_max_time": 0,
     "stamina_max": 0,
     "event_effect_args": 0,
-    "next_level_id": 10230431,
+    "next_level_id": 0,
     "level_up_time": 388800,
     "level_up_rupies": 440000,
     "level_up_materials": [
@@ -45362,7 +45362,7 @@ const FacilityInfoMap = {
     "stamina_max_time": 0,
     "stamina_max": 0,
     "event_effect_args": 0,
-    "next_level_id": 10230531,
+    "next_level_id": 0,
     "level_up_time": 388800,
     "level_up_rupies": 440000,
     "level_up_materials": [
