@@ -2082,7 +2082,8 @@ Orchis.post([iOS_Version + "/dragon/set_lock", Android_Version + "/dragon/set_lo
 Orchis.post([iOS_Version + "/dragon/limit_break", Android_Version + "/dragon/limit_break"], errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const KeyID = MsgPackData['base_dragon_key_id']; const GrowList = MsgPackData['limit_break_grow_list'];
 	const DragonIndex = res.locals.UserIndexRecord['dragon_list'].findIndex(x => x.dragon_key_id === KeyID);
-	const PreviousData = res.locals.UserIndexRecord['dragon_list'][DragonIndex]; const UpdateData = DragonMap.LimitBreakDragon(res.locals.UserIndexRecord, KeyID, PreviousData, GrowList, res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album']);
+	const PreviousData = res.locals.UserIndexRecord['dragon_list'][DragonIndex];
+	const UpdateData = DragonMap.LimitBreakDragon(res.locals.UserIndexRecord, KeyID, PreviousData, GrowList, res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album']);
 	res.locals.ResponseBody['data'] = {
 		'delete_data_list': {
 			'delete_dragon_list': UpdateData[1]
@@ -2102,17 +2103,20 @@ Orchis.post([iOS_Version + "/dragon/limit_break", Android_Version + "/dragon/lim
 Orchis.post([iOS_Version + "/dragon/buildup", Android_Version + "/dragon/buildup"], errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const KeyID = MsgPackData['base_dragon_key_id']; const GrowList = MsgPackData['grow_material_list']; 
 	const DragonIndex = res.locals.UserIndexRecord['dragon_list'].find(x => x.dragon_key_id === KeyID);
-	const UpdateData = DragonMap.BuildDragon(KeyID, GrowList, DragonIndex, res.locals.UserIndexRecord);
+	const UpdateData = DragonMap.BuildDragon(KeyID, GrowList, DragonIndex, res.locals.UserIndexRecord, res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album']);
 	res.locals.ResponseBody['data'] = {
 		'update_data_list': {
 			'dragon_list': [ UpdateData[0] ],
-			'material_list': UpdateData[3]
+			'material_list': UpdateData[3],
+			'album_dragon_list': UpdateData[4]
 		},
 		'delete_data_list': {
 			'delete_dragon_list': UpdateData[1]
 		}
 	}
-	await WriteIndexRecord(String(res.locals.UserSessionRecord['ViewerID']), UpdateData[2]);
+	res.locals.UserIndexRecord = UpdateData[2];
+	res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'] = UpdateData[5];
+	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
 Orchis.post([iOS_Version + "/dragon/get_contact_data", Android_Version + "/dragon/get_contact_data"], async (req, res, next) => {

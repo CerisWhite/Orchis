@@ -5296,7 +5296,7 @@ function LimitBreakDragon(UserIndexRecord, KeyID, PreviousData, GrowList, AlbumB
         "max_level": DragonTemplate['level'],
 		"max_limit_break_count": DragonTemplate['limit_break_count']
 	}
-	AlbumBonusIndex = AlbumBonus.findIndex(x => x.elemental_type == Element);
+	const AlbumBonusIndex = AlbumBonus.findIndex(x => x.elemental_type == Element);
 	const AlbumIndex = UserIndexRecord['album_dragon_list'].findIndex(x => x.dragon_id == PreviousData['dragon_id']);
 	if (AlbumIndex == -1) {
 		AlbumList.push(AlbumTemplate);
@@ -5315,10 +5315,11 @@ function LimitBreakDragon(UserIndexRecord, KeyID, PreviousData, GrowList, AlbumB
 	return [DragonTemplate, DeleteList, MaterialList, UserIndexRecord, AlbumList, AlbumBonus];
 }
 
-function BuildDragon(KeyID, Buildup, PreviousData, UserIndexRecord) {
+function BuildDragon(KeyID, Buildup, PreviousData, UserIndexRecord, AlbumBonus) {
 	const Rarity = GetDragonInfo(PreviousData['dragon_id'], "rarity");
 	let MaterialList = [];
 	let DeleteList = [];
+	let AlbumList = [];
 	var DragonTemplate = {
 		"dragon_key_id": KeyID,
         "dragon_id": PreviousData['dragon_id'],
@@ -5403,31 +5404,30 @@ function BuildDragon(KeyID, Buildup, PreviousData, UserIndexRecord) {
 				break;
 		}
 	}
-	let AlbumBonus = 0.0;
-	switch(Rarity) {
-		case 3:
-			if (PreviousData['level'] < 60 && DragonTemplate['level'] >= 60) { AlbumBonus += 0.1; }
-			break;
-		case 4:
-			if (PreviousData['level'] < 80 && DragonTemplate['level'] >= 80) { AlbumBonus += 0.1; }
-			break;
-		case 5:
-			const HasSpiral = GetDragonInfo(PreviousData['dragon_id'], "has_spiral");
-			if (HasSpiral == true) {
-				if (PreviousData['level'] < 100 && DragonTemplate['level'] >= 100) { AlbumBonus += 0.1; }
-				if (PreviousData['level'] < 120 && DragonTemplate['level'] >= 120) { AlbumBonus += 0.1; }
-			}
-			else {
-				if (PreviousData['level'] < 100 && DragonTemplate['level'] >= 100) { AlbumBonus += 0.1; }
-			}
-			break;
+	var AlbumTemplate = {
+		"dragon_id": PreviousData['dragon_id'],
+        "max_level": DragonTemplate['level'],
+		"max_limit_break_count": DragonTemplate['limit_break_count']
 	}
-	const BonusIndex = UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'].findIndex(x => x.elemental_type == GetDragonInfo(DragonTemplate['dragon_id'], "element"));
-	UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'][BonusIndex]['hp'] += AlbumBonus;
-	UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'][BonusIndex]['attack'] += AlbumBonus;
+	const Element = GetDragonInfo(PreviousData['dragon_id'], "element");
+	const AlbumBonusIndex = AlbumBonus.findIndex(x => x.elemental_type == Element);
+	const AlbumIndex = UserIndexRecord['album_dragon_list'].findIndex(x => x.dragon_id == PreviousData['dragon_id']);
+	if (AlbumIndex == -1) {
+		AlbumList.push(AlbumTemplate);
+		UserIndexRecord['album_dragon_list'].push(AlbumTemplate);
+		if (DragonTemplate['level'] >= 100) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
+		if (DragonTemplate['level'] == 120) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
+	}
+	else {
+		if (UserIndexRecord['album_dragon_list'][AlbumIndex]['max_level'] < DragonTemplate['level']) {
+			if (DragonTemplate['level'] >= 100) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
+			if (DragonTemplate['level'] == 120) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
+			UserIndexRecord['album_dragon_list'][AlbumIndex]['max_level'] = DragonTemplate['level']
+		}
+	}
 	const NewIndex = UserIndexRecord['dragon_list'].findIndex(x => x.dragon_key_id == KeyID);
 	UserIndexRecord['dragon_list'][NewIndex] = DragonTemplate;
-	return [DragonTemplate, DeleteList, UserIndexRecord, MaterialList];
+	return [DragonTemplate, DeleteList, UserIndexRecord, MaterialList, AlbumList, AlbumBonus];
 }
 
 function DragonRewards(DragonElement, DragonRarity, EssenceID) {
