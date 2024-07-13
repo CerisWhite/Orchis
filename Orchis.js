@@ -28,6 +28,7 @@ else {
 		'ZenaPort': 9362,
 		'ZenaToken': "",
 		'PhotonURL': "127.0.0.1:9001",
+		'PhotonToken': "",
 		'StateURL': "",
 		'AssetPass': "",
 		'BasicIndex': "./static/index.html",
@@ -5032,7 +5033,7 @@ Orchis.post([iOS_Version + "/dungeon_record/record", Android_Version + "/dungeon
 Orchis.post([iOS_Version + "/dungeon_record/record_multi", Android_Version + "/dungeon_record/record_multi"], errorhandler(async (req, res, next) => {
 	let UserSessionRecord = "";
 	let UserIndexRecord = "";
-	if (req.get('Authorization') != "Bearer Ceryphim_Photon") {
+	if (req.get('Authorization') != ServerConfig['PhotonToken']) {
 		if (req.get('sid') == undefined) { res.status(401); res.end("Rejected.\n"); return; }
 		else {
 			const SIDExists = await Fluoresce.Exists("MasterSessionRecord", req.get('sid'));
