@@ -1609,12 +1609,13 @@ Orchis.post([iOS_Version + "/summon/request", Android_Version + "/summon/request
 					if (res.locals.UserIndexRecord['dragon_reliability_list'].findIndex(x => x.dragon_id === DrawData['id']) == -1) {
 						if (UpdateInfo['dragon_reliability_list'] == undefined) { UpdateInfo['dragon_reliability_list'] = []; }
 						IsNew = true; const NewReliability = DragonMap.GenerateDragonReliability(DrawData['id']);
-						UpdateInfo['dragon_reliability_list'].push(NewReliability); res.locals.UserIndexRecord['dragon_reliability_list'].push(NewReliability); }
-					const DragonElement = DragonMap.GetDragonInfo(DrawData['id'], "element");
-					const DragonBonusIndex = res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'].findIndex(x => x.elemental_type == DragonElement);
-					res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'][DragonBonusIndex]['hp'] += 0.1;
-					res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'][DragonBonusIndex]['attack'] += 0.1;
-					UpdateInfo['fort_bonus_list'] = res.locals.UserIndexRecord['fort_bonus_list'];
+						UpdateInfo['dragon_reliability_list'].push(NewReliability); res.locals.UserIndexRecord['dragon_reliability_list'].push(NewReliability);
+						const DragonElement = DragonMap.GetDragonInfo(DrawData['id'], "element");
+						const DragonBonusIndex = res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'].findIndex(x => x.elemental_type == DragonElement);
+						res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'][DragonBonusIndex]['hp'] += 0.1;
+						res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'][DragonBonusIndex]['attack'] += 0.1;
+						UpdateInfo['fort_bonus_list'] = res.locals.UserIndexRecord['fort_bonus_list'];
+					}
 					NewEntityList.push({ 'entity_type': 7, 'entity_id': DrawData['id'] }); }
 				break;
 			case 2:
