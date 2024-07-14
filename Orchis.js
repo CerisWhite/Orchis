@@ -2645,7 +2645,7 @@ Orchis.post([iOS_Version + "/quest/read_story", Android_Version + "/quest/read_s
 					res.locals.ResponseBody['data']['update_data_list']['unit_story_list'].push(CharacterStoryData[0]);
 					res.locals.ResponseBody['data']['entity_result']['new_get_entity_list'].push({ 'entity_type': 1, 'entity_id': CharacterID });
 						
-					if (!EventMap.EventFriendList[String(CharacterID)]['is_compendium']) {
+					if (!EventMap.EventFriendList[String(CharacterID)]['is_compendium'] && EventMap.EventInfoMap[EventID]['no_friend_point'] != true) {
 						res.locals.UserSessionRecord['Event'][EventType][EventID]['Friendship'] = [
 							{
 								'chara_id': CharacterID,

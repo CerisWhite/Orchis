@@ -316,6 +316,7 @@ const EventInfoMap = {
     "event_character": 10350506,
     "has_friend": true,
     "friend_join_story": 2043501,
+	"no_friend_point": true,
     "event_trade_id": 0
   },
   "20436": {
@@ -471,6 +472,7 @@ const EventInfoMap = {
     "event_character": 10350506,
     "has_friend": true,
     "friend_join_story": 2045201,
+	"no_friend_point": true,
     "event_trade_id": 0
   },
   "20453": {
