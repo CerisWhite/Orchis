@@ -358,6 +358,7 @@ async function RecordManager (req, res, next) {
 	
 	if (req.url.includes("/../")) { res.end(); return; }
 	else if (req.url.endsWith("/tool/auth")) { next(); return; }
+	else if (req.url.endsWith("/asset/")) { next(); return; }
 	else if (req.url.endsWith("/maintenance/get_text")) { next(); return; }
 	else if (req.url.includes("/heroparam/")) { next(); return; }
 	else if (req.url.includes("/dungeon_record/record_multi")) { next(); return; }
