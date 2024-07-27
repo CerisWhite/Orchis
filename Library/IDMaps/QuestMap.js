@@ -601,7 +601,25 @@ function GenerateOddsList(QuestID, UserSessionRecord, Step) {
 	const VariationID = String(QuestInfoMap['variation']);
 	let EnemyList = [];
 	if (QuestEnemyList[QuestInfoMap['area_info'][Step]['scene_path']] == undefined) { EnemyList = []; }
-	else { EnemyList = QuestEnemyList[QuestInfoMap['area_info'][Step]['scene_path']][QuestInfoMap['area_info'][Step]['area_name']][VariationID]; }
+	else {
+		const EnemyID = QuestEnemyList[QuestInfoMap['area_info'][Step]['scene_path']][QuestInfoMap['area_info'][Step]['area_name']][VariationID];
+		for (const e in EnemyID) {
+			EnemyList.push({
+				"param_id": EnemyID[e],
+				"is_pop": 1,
+				"is_rare": 0,
+				"piece": 0,
+				"enemy_drop_list": [
+					{
+						"drop_list": [],
+						"coin": 0,
+						"mana": 0
+					}
+				],
+				"enemy_idx": parseInt(e)
+			});
+		}
+	}
 	if (QuestID == 204270302) { for (let x in EnemyList) { EnemyList[x]['is_rare'] = 1; } }
 	
 	let AreaOddsTemplate = {
@@ -1249,7 +1267,24 @@ function GetEXP(QuestID) {
 function GetEarnPoint(QuestID, PlayData) {
 	var QuestInfoMap = JSON.parse(fs.readFileSync('./Library/IDMaps/Quest/' + String(QuestID) + ".json"));
 	const VariationID = String(QuestInfoMap['variation']);
-	const EnemyList = QuestEnemyList[QuestInfoMap['area_info'][0]['scene_path']][QuestInfoMap['area_info'][0]['area_name']][VariationID];
+	const EnemyList = [];
+	const EnemyID = QuestEnemyList[QuestInfoMap['area_info'][0]['scene_path']][QuestInfoMap['area_info'][0]['area_name']][VariationID];
+	for (const e in EnemyID) {
+		EnemyList.push({
+			"param_id": EnemyID[e],
+			"is_pop": 1,
+			"is_rare": 0,
+			"piece": 0,
+			"enemy_drop_list": [
+				{
+					"drop_list": [],
+					"coin": 0,
+					"mana": 0
+				}
+			],
+			"enemy_idx": parseInt(e)
+		});
+	}
 	
 	let ScoringList = [];
 	let ScoreTotal = 0;

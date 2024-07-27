@@ -5061,8 +5061,6 @@ Orchis.post([iOS_Version + "/dungeon_record/record_multi", Android_Version + "/d
 	res.locals.UpdatedSessionRecord = true;
 	res.locals.UserIndexRecord = ResultData[1];
 	res.locals.UpdatedIndexRecord = true;
-	let OutData = JSON.stringify(MsgPackData, null, 2) + "\n" + res.locals.UserSessionRecord['DungeonRecord']['LastQuestID'];
-	fs.writeFileSync('./example.json', OutData);
 	const QuestID = String(res.locals.UserSessionRecord['DungeonRecord']['LastQuestID']);
 	if (ExceptionList.includes(QuestID) || !NoTrackList.includes(QuestID.slice(0, 3))) {
 		WriteDPSRecord(res.locals.UserSessionRecord['ViewerID'], ResultData[3]);

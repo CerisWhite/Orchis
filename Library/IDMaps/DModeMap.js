@@ -3206,18 +3206,18 @@ function GenerateKaleidoData(UserSessionRecord, PlayRecord) {
 	let EnemyList = QuestEnemyList[ScenePath][AreaName]["1"];
 	if (Floor == 45 || Floor == 50) {
 		EnemyList = [
-			{ 'param_id': EnemyList[0]['param_id'] },
-			{ 'param_id': EnemyList[0]['param_id'] + 1 },
-			{ 'param_id': EnemyList[0]['param_id'] + 1 },
-			{ 'param_id': EnemyList[0]['param_id'] + 1 },
-			{ 'param_id': EnemyList[0]['param_id'] + 1 },
-			{ 'param_id': EnemyList[0]['param_id'] + 2 },
-			{ 'param_id': EnemyList[0]['param_id'] + 2 },
-			{ 'param_id': EnemyList[0]['param_id'] + 2 },
-			{ 'param_id': EnemyList[0]['param_id'] + 2 },
-			{ 'param_id': EnemyList[0]['param_id'] + 3 },
-			{ 'param_id': EnemyList[0]['param_id'] + 4 },
-			{ 'param_id': EnemyList[0]['param_id'] + 5 },
+			EnemyList[0],
+			EnemyList[0] + 1,
+			EnemyList[0] + 1,
+			EnemyList[0] + 1,
+			EnemyList[0] + 1,
+			EnemyList[0] + 2,
+			EnemyList[0] + 2,
+			EnemyList[0] + 2,
+			EnemyList[0] + 2,
+			EnemyList[0] + 3,
+			EnemyList[0] + 4,
+			EnemyList[0] + 5,
 		]
 	}
 	
@@ -3240,7 +3240,7 @@ function GenerateKaleidoData(UserSessionRecord, PlayRecord) {
 			'enemy_idx': parseInt(e),
 			'is_pop': 1,
 			'level': EnemyLevel,
-			'param_id': EnemyList[parseInt(e)]['param_id'],
+			'param_id': EnemyList[e],
 			'dmode_drop_list': []
 		}
 		if (Math.round(Math.random() * 15) >= 12 || BossFloor.includes(Floor)) {

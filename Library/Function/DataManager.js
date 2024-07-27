@@ -385,8 +385,10 @@ function MergeDropTable(Table1, Table2) {
 }
 function DungeonRecord(UserSessionRecord, UserIndexRecord, DungeonKey, PlayData, EventList, IsMulti, RepeatFlag) {
 	const QuestID = UserSessionRecord['DungeonRecord']['LastQuestID'];
-	const QuestBase = String(QuestID).slice(0, 3);
 	const EventID = String(QuestID).slice(0, 5);
+	const QuestBase = String(QuestID).slice(0, 3);
+	const QuestSuffix = String(QuestID).slice(-3);
+	
 	let GrowthTable = [];
 	let FullGrowthTable = [];
 	let FriendshipTable = [];
@@ -617,7 +619,6 @@ function DungeonRecord(UserSessionRecord, UserIndexRecord, DungeonKey, PlayData,
 	JSONDict['update_data_list']['user_data'] = UserIndexRecord['user_data'];
 	JSONDict['update_data_list']['chara_list'] = FullGrowthTable;
 	if (QuestBase == 204) {
-		const QuestSuffix = String(QuestID).slice(-3);
 		if (QuestSuffix == 302 || QuestSuffix == 501 || QuestSuffix == 602 || QuestSuffix == 604 || QuestSuffix == 606) {
 			UserSessionRecord['Event']['Raid'][EventID]['UserData']['advent_item_quantity_1'] -= 5;
 		}
@@ -628,7 +629,7 @@ function DungeonRecord(UserSessionRecord, UserIndexRecord, DungeonKey, PlayData,
 			UserSessionRecord['Event']['Raid'][EventID]['UserData']['advent_item_quantity_2'] -= 1;
 		}
 		
-		if (QuestSuffix == 501 && QuestIndex == -1) {
+		if (QuestSuffix == 501 && UserSessionRecord['Event']['Raid'][EventID]['Passive'][0] == undefined) {
 			UserSessionRecord['Event']['Raid'][EventID]['Passive'] = {
 				'event_id': parseInt(EventID),
 				'event_passive_grow_list': [
@@ -645,7 +646,7 @@ function DungeonRecord(UserSessionRecord, UserIndexRecord, DungeonKey, PlayData,
 					{'passive_id': parseInt(EventID + "11"), 'progress': 1}
 				]
 			}
-			JSONDict['ingame_result_data']['event_passive_up_list'] = [ UserSessionRecord['Event']['Raid'][EventID]['Passive'] ];
+			JSONDict['ingame_result_data']['event_passive_up_list'] = UserSessionRecord['Event']['Raid'][EventID]['Passive']['event_passive_grow_list'];
 			JSONDict['update_data_list']['event_passive_list'] = [ UserSessionRecord['Event']['Raid'][EventID]['Passive'] ];
 			JSONDict['update_data_list']['raid_event_user_list'] = UserSessionRecord['Event']['Raid'][EventID]['UserData'];
 		}
