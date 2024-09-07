@@ -1,5 +1,11 @@
 // Quest Map
-var fs = require('fs');
+const fs = require('fs');
+const QuestList = fs.readdirSync('Library/IDMaps/Quest');
+let QuestData = {};
+for (const q in QuestList) {
+	QuestData[QuestList[q].slice(0, QuestList[q].length - 5)] = JSON.parse(fs.readFileSync('Library/IDMaps/Quest/' + QuestList[q]));
+}
+
 const CharacterMap = require('./CharacterMap.js');
 const DragonMap = require('./DragonMap.js');
 const WyrmprintMap = require('./WyrmprintMap.js');
@@ -8,22 +14,19 @@ const EventMap = require('./EventMap.js');
 const Rotations = JSON.parse(fs.readFileSync('./Library/Event/QuestMainRotationBonusDrops.json'));
 const QuestEnemyList = JSON.parse(fs.readFileSync('./Library/Event/QuestEnemyList.json'));
 
-const ScoreList = JSON.parse(fs.readFileSync('./Library/IDMaps/EnemyMap/QuestScoringEnemy.json'));
-const EnemyParam = JSON.parse(fs.readFileSync('./Library/IDMaps/EnemyMap/EnemyParam.json'));
-const EnemyData = JSON.parse(fs.readFileSync('./Library/IDMaps/EnemyMap/EnemyData.json'));
+const ScoreList = JSON.parse(fs.readFileSync('./Library/IDMaps/Master/QuestScoringEnemy.json'));
+const EnemyParam = JSON.parse(fs.readFileSync('./Library/IDMaps/Master/EnemyParam.json'));
+const EnemyData = JSON.parse(fs.readFileSync('./Library/IDMaps/Master/EnemyData.json'));
 
 function GetQuestInfo(QuestID, Attribute) {
-	try {
-		var QuestInfoMap = JSON.parse(fs.readFileSync('./Library/IDMaps/Quest/' + String(QuestID) + ".json"));
-		return QuestInfoMap[Attribute];
-	}
-	catch {
-		console.log("Faulty Quest ID " + QuestID);
-	}
+	if (QuestData[String(QuestID)] == undefined) { return 0; }
+	if (Attribute == undefined) { return QuestData[String(QuestID)]; }
+	return QuestData[String(QuestID)][Attribute];
 }
 
-async function IsQuestTypeMatchMulti(TabType, QuestID) {
-	//const QuestData = JSON.parse(await QuestZip.entryData(String(QuestID) + ".json"));
+function IsQuestTypeMatchMulti(TabType, QuestID) {
+	/* Due to lack of players, this is disabled lol
+	
 	const QuestBase = String(QuestID).slice(0, 3);
 	if (TabType == 2) {
 		if (QuestBase == 204) { // raid
@@ -79,6 +82,8 @@ async function IsQuestTypeMatchMulti(TabType, QuestID) {
 		if (!EventBase.includes(QuestBase)) { return true; }
 	}
 	return false;
+	*/
+	return true;
 }
 
 const IntervalTypes = [
@@ -204,7 +209,7 @@ const FactorAbilities = [ // 1 = PlayerXP, 2 = CharacterXP, 3 = Coin, 4 = Mana, 
 	{ 'id': 110101, 'type': 3, 'value': 1.0 }
 ]
 
-function GetQuestDrops(QuestID, EventList, PartyData) {
+function GetQuestDrops(QuestID, EventList, PartyData, BetCount) {
 	let CoinCount = 0;
 	let ManaCount = 0;
 	let WyrmiteCount = 10;
@@ -218,7 +223,7 @@ function GetQuestDrops(QuestID, EventList, PartyData) {
 	let ManaUpFactor = 0.0;
 	let EventPointFactor = 0.0;
 	let EventMaterialFactor = 0.0;
-	const QuestInfoMap = JSON.parse(fs.readFileSync('./Library/IDMaps/Quest/' + String(QuestID) + ".json"));
+	const QuestInfoMap = GetQuestInfo(QuestID);
 	
 	const RightNow = Math.floor(Date.now() / 1000);
 	const DropMultiplier = GetMultiplier(QuestID);
@@ -290,7 +295,8 @@ function GetQuestDrops(QuestID, EventList, PartyData) {
 		const DropData = QuestInfoMap['ChestDropInfo'][i];
 		if (DropData['type'] == 4) { CoinCount += DropData['max']; }
 		else if (DropData['type'] == 8 || DropData['type'] == 12 || DropData['type'] == 15 || DropData['type'] == 17 ||
-				DropData['type'] == 20 || DropData['type'] == 22 || DropData['type'] == 25 || DropData['type'] == 34 || DropData['type'] == 39) {
+				DropData['type'] == 20 || DropData['type'] == 22 || DropData['type'] == 25 || DropData['type'] == 34 ||
+				DropData['type'] == 39 || DropData['type'] == 40) {
 			let Roll = Math.floor(Math.random() * 100) + 1;
 			if (DropData['extra'] == true) {
 				if (Roll >= 95) {
@@ -327,7 +333,8 @@ function GetQuestDrops(QuestID, EventList, PartyData) {
 		const DropData = QuestInfoMap['EnemyDropInfo'][y];
 		if (DropData['type'] == 4) { CoinCount += DropData['max']; }
 		else if (DropData['type'] == 8 || DropData['type'] == 12 || DropData['type'] == 15 || DropData['type'] == 17 ||
-				DropData['type'] == 20 || DropData['type'] == 22 || DropData['type'] == 25 || DropData['type'] == 34 || DropData['type'] == 39) {
+				DropData['type'] == 20 || DropData['type'] == 22 || DropData['type'] == 25 || DropData['type'] == 34 ||
+				DropData['type'] == 39 || DropData['type'] == 40) {
 			let Roll = Math.floor(Math.random() * 100) + 1;
 			if (DropData['extra'] == true) {
 				if (Roll >= 95) {
@@ -396,7 +403,7 @@ function GetQuestDrops(QuestID, EventList, PartyData) {
 	ManaCount += Math.floor(ManaCount * ManaUpFactor);
 	
 	let AstralRaid = false;
-	for (let a in EventList['astralraid']) { if (EventList['astralraid'][a]['start'] < RightNow && EventList['astralraid'][a]['end'] > RightNow) {AstralRaid = true;} }
+	//for (let a in EventList['astralraid']) { if (EventList['astralraid'][a]['start'] < RightNow && EventList['astralraid'][a]['end'] > RightNow) {AstralRaid = true;} }
 	if (AstralRaid == false) {const Amount = Math.floor(Math.random() * 3 + 3); DropTable.push({'type':26,'id':10101,'quantity':Amount,'place':0,'factor':0})}
 	return [DropTable, CoinCount, ManaCount,
 			WyrmiteCount, CoinBonusCount, EventPoint, BoostEventPoint, PlayerXPFactor, CharacterXPFactor];
@@ -415,7 +422,7 @@ function GetQuestDropsSkip(QuestID, PlayCount, EventList, PartyData) {
 	let ManaUpFactor = 0.0;
 	let EventPointFactor = 0.0;
 	let EventMaterialFactor = 0.0;
-	const QuestInfoMap = JSON.parse(fs.readFileSync('./Library/IDMaps/Quest/' + String(QuestID) + ".json"));
+	const QuestInfoMap = GetQuestInfo(QuestID);
 	
 	const QuestBase = parseInt(String(QuestID).slice(0, 3));
 	const EventID = parseInt(String(QuestID).slice(0, 5));
@@ -488,7 +495,8 @@ function GetQuestDropsSkip(QuestID, PlayCount, EventList, PartyData) {
 			const DropData = QuestInfoMap['ChestDropInfo'][i];
 			if (DropData['type'] == 4) { CoinCount += DropData['max']; }
 			else if (DropData['type'] == 8 || DropData['type'] == 12 || DropData['type'] == 15 || DropData['type'] == 17 ||
-				DropData['type'] == 20 || DropData['type'] == 22 || DropData['type'] == 25 || DropData['type'] == 34 || DropData['type'] == 39) {
+				DropData['type'] == 20 || DropData['type'] == 22 || DropData['type'] == 25 || DropData['type'] == 34 ||
+				DropData['type'] == 39 || DropData['type'] == 40) {
 				let Roll = Math.floor(Math.random() * 100) + 1;
 				if (DropData['extra'] == true) {
 					if (Roll >= 95) {
@@ -521,7 +529,8 @@ function GetQuestDropsSkip(QuestID, PlayCount, EventList, PartyData) {
 			const DropData = QuestInfoMap['EnemyDropInfo'][y];
 			if (DropData['type'] == 4) { CoinCount += DropData['max']; }
 			else if (DropData['type'] == 8 || DropData['type'] == 12 || DropData['type'] == 15 || DropData['type'] == 17 ||
-				DropData['type'] == 20 || DropData['type'] == 22 || DropData['type'] == 25 || DropData['type'] == 34 || DropData['type'] == 39) {
+				DropData['type'] == 20 || DropData['type'] == 22 || DropData['type'] == 25 || DropData['type'] == 34 ||
+				DropData['type'] == 39 || DropData['type'] == 40) {
 				let Roll = Math.floor(Math.random() * 100) + 1;
 				if (DropData['extra'] == true) {
 					if (Roll >= 95) {
@@ -590,37 +599,34 @@ function GetQuestDropsSkip(QuestID, PlayCount, EventList, PartyData) {
 	ManaCount += Math.floor(ManaCount * ManaUpFactor);
 	
 	let AstralRaid = false;
-	for (let a in EventList['astralraid']) { if (EventList['astralraid'][a]['start'] < RightNow && EventList['astralraid'][a]['end'] > RightNow) {AstralRaid = true;} }
+	//for (let a in EventList['astralraid']) { if (EventList['astralraid'][a]['start'] < RightNow && EventList['astralraid'][a]['end'] > RightNow) {AstralRaid = true;} }
 	if (AstralRaid == false) {const Amount = Math.floor(Math.random() * 3 + 3); DropTable.push({'type':26,'id':10101,'quantity':Amount,'place':0,'factor':0})}
 	return [DropTable, CoinCount, ManaCount,
 			WyrmiteCount, CoinBonusCount, EventPoint, BoostEventPoint, PlayerXPFactor, CharacterXPFactor];
 }
 
 function GenerateOddsList(QuestID, UserSessionRecord, Step) {
-	var QuestInfoMap = JSON.parse(fs.readFileSync('./Library/IDMaps/Quest/' + String(QuestID) + ".json"));
+	const QuestInfoMap = GetQuestInfo(QuestID);
 	const VariationID = String(QuestInfoMap['variation']);
 	let EnemyList = [];
-	if (QuestEnemyList[QuestInfoMap['area_info'][Step]['scene_path']] == undefined) { EnemyList = []; }
-	else {
-		const EnemyID = QuestEnemyList[QuestInfoMap['area_info'][Step]['scene_path']][QuestInfoMap['area_info'][Step]['area_name']][VariationID];
-		for (const e in EnemyID) {
-			EnemyList.push({
-				"param_id": EnemyID[e],
-				"is_pop": 1,
-				"is_rare": 0,
-				"piece": 0,
-				"enemy_drop_list": [
-					{
-						"drop_list": [],
-						"coin": 0,
-						"mana": 0
-					}
-				],
-				"enemy_idx": parseInt(e)
-			});
-		}
+	const EnemyIDs = QuestEnemyList[QuestInfoMap['area_info'][Step]['scene_path']][QuestInfoMap['area_info'][Step]['area_name']][VariationID];
+	for (const e in EnemyIDs) {
+		EnemyList.push({
+			"param_id": EnemyIDs[e],
+			"is_pop": 1,
+			"is_rare": 0,
+			"piece": 0,
+			"enemy_drop_list": [
+				{
+					"drop_list": [],
+					"coin": 0,
+					"mana": 0
+				}
+			],
+			"enemy_idx": parseInt(e)
+		});
 	}
-	if (QuestID == 204270302) { for (let x in EnemyList) { EnemyList[x]['is_rare'] = 1; } }
+	if (QuestID == 204270302) { for (const x in EnemyList) { EnemyList[x]['is_rare'] = 1; } }
 	
 	let AreaOddsTemplate = {
 		'area_index': Step,
@@ -1243,8 +1249,7 @@ function RewardEssence(QuestID) {
 }
 
 function GetFirstReward(QuestID) {
-	const QuestInfoMap = JSON.parse(fs.readFileSync('./Library/IDMaps/Quest/' + String(QuestID) + ".json"));
-	return QuestInfoMap['first_clear'];
+	return GetQuestInfo(QuestID, 'first_clear');
 }
 
 function GetEXP(QuestID) {
@@ -1265,7 +1270,7 @@ function GetEXP(QuestID) {
 }
 
 function GetEarnPoint(QuestID, PlayData) {
-	var QuestInfoMap = JSON.parse(fs.readFileSync('./Library/IDMaps/Quest/' + String(QuestID) + ".json"));
+	const QuestInfoMap = GetQuestInfo(QuestID);
 	const VariationID = String(QuestInfoMap['variation']);
 	const EnemyList = [];
 	const EnemyID = QuestEnemyList[QuestInfoMap['area_info'][0]['scene_path']][QuestInfoMap['area_info'][0]['area_name']][VariationID];
@@ -1314,22 +1319,5 @@ function GetEarnPoint(QuestID, PlayData) {
 	}
 	return [ScoreTotal, ScoringList];
 }
-
-/*
-function QuestIDByName(QuestName) {
-	let i = 0;
-	var QuestInfoMap = JSON.parse(fs.fileReadSync('./Quest/' + String(QuestID) + ".json"));
-	while (i < Object.keys(QuestInfoMap).length) {
-		const QuestID = Object.keys(QuestInfoMap)[i];
-		if (QuestInfoMap[QuestID]['name'] == QuestName) {
-			return parseInt(Object.keys(QuestInfoMap)[i]);
-		}
-		else {
-			i++;
-		}
-	}
-	return 1;
-}
-*/
 
 module.exports = { GetQuestInfo, IsQuestTypeMatchMulti, GetQuestDrops, GetQuestDropsSkip, FormatWallDrops, RewardChest, CheckMissionClear, HasRewardCharacter, RewardCharacter, HasRewardDragon, RewardDragon, HasRewardFacility, RewardFacility, GetFirstReward, GetEarnPoint, GenerateOddsList, GetEXP }

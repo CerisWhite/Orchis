@@ -11908,6 +11908,9 @@ function WyrmprintBuild(PrintID, Buildup, Augments, UserIndexRecord) {
 		for (const m in MaterialList) {
 			const MatIndex = UserIndexRecord['material_list'].findIndex(x => x.material_id == MaterialList[m]['id']);
 			const UpdateMatIndex = UpdateList.findIndex(x => x.material_id == MaterialList[m]['id']);
+			if (MatIndex == -1) {
+				continue;
+			}
 			UserIndexRecord['material_list'][MatIndex]['quantity'] -= MaterialList[m]['quantity'];
 			if (UpdateMatIndex != -1) { UpdateList[UpdateMatIndex]['quantity'] = UserIndexRecord['material_list'][MatIndex]['quantity']; }
 			else { UpdateList.push(UserIndexRecord['material_list'][MatIndex]); }

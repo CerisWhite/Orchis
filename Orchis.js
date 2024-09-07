@@ -1,5 +1,4 @@
 const express = require('express');
-const errorhandler = require('express-async-handler');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const crypto = require('crypto');
@@ -10,25 +9,27 @@ const https = require('https');
 const zlib = require('zlib');
 const jwt_decode = require('jwt-decode');
 const Fluoresce = require('fluoresce');
+global.errorhandler = e => function r(...t){let l=e(...t),n=t[t.length-1];return Promise.resolve(l).catch(n)};
 process.on('uncaughtException', function (error) {
 	console.log(Date.now() + ": " + error.stack);
 	LogFile.write(Date.now() + ": " + error.stack + "\n");
 });
-var Orchis = express();
-let ServerConfig = {}
+global.ServerConfig = {}
 if (fs.existsSync('./config.json')) {
-	ServerConfig = JSON.parse(fs.readFileSync('./config.json'));
+	global.ServerConfig = JSON.parse(fs.readFileSync('./config.json'));
 }
 else {
-	ServerConfig = {
+	global.ServerConfig = {
 		'URL': "127.0.0.1",
 		'Port': 9000,
 		'ZenaEnabled': false,
 		'ZenaHost': "127.0.0.1",
 		'ZenaPort': 9362,
 		'ZenaToken': "",
+		'Overcharge': false,
 		'PhotonURL': "127.0.0.1:9001",
 		'PhotonToken': "",
+		'BaaS': "baas.lukefz.xyz",
 		'StateURL': "",
 		'AssetPass': "",
 		'BasicIndex': "./static/index.html",
@@ -122,8 +123,12 @@ else {
 			'ca': "/path/to/chain.pem"
 		}
 	}
-	fs.writeFileSync('./config.json', JSON.stringify(ServerConfig, null, 2));
+	fs.writeFileSync('./config.json', JSON.stringify(global.ServerConfig, null, 2));
+	console.log("config.json has been generated. Please edit it accordingly.");
+	return;
 }
+
+var Orchis = express();
 
 const StaticData = require('./Library/Function/StaticData.js');
 const IndexTools = require('./Library/Function/IndexTools.js');
@@ -141,8 +146,8 @@ const ShopMap = require('./Library/IDMaps/ShopMap.js');
 const FortMap = require('./Library/IDMaps/FortMap.js');
 
 let AssetList = JSON.parse(fs.readFileSync('./Library/Event/AssetList.json'));
-let IndexPage = fs.readFileSync(ServerConfig['AdvancedIndex']);
-let BasicIndexPage = fs.readFileSync(ServerConfig['BasicIndex']);
+let IndexPage = fs.readFileSync(global.ServerConfig['AdvancedIndex']);
+let BasicIndexPage = fs.readFileSync(global.ServerConfig['BasicIndex']);
 let MaintXML = fs.readFileSync('./static/maintenance.xml');
 let SupportData = JSON.parse(fs.readFileSync('./Library/Event/Support.json'));
 let ActiveBonusList = JSON.parse(fs.readFileSync('./Library/Event/EventBonus.json'));
@@ -161,7 +166,7 @@ const Passphrase = crypto.createHash('md5').update(String(Math.floor(Date.now() 
 fs.writeFileSync('./passphrase.txt', Passphrase + "\n");
 const iOS_Version = "/2.19.0_20220719103923"; const Android_Version = "/2.19.0_20220714193707";
 const GlobalExpireContext = 'Tue, 1 Jan 2030 00:00:00 GMT';
-const GlobalDeployHashContext = "Ceryph"; const CurrentServerURL = ServerConfig['ServerURL'];
+const GlobalDeployHashContext = "Ceryph"; const CurrentServerURL = global.ServerConfig['ServerURL'];
 const DBDir = "./Library/Fluoresce/database/";
 let GatherMedalReset = Math.floor(Date.now() / 1000) - (new Date().getDay() * 86400);
 let IsMaintenance = 0;
@@ -270,6 +275,11 @@ function GetCurrentDate() {
 	const date = new Date();
 	return date.toUTCString();
 }
+
+global.LogFile = fs.createWriteStream('./Library/Log/URL_' + LastServerReset + '.txt');
+let TimeFile = {};
+let TimeFilePath = './Library/Log/TimeTrack_' + LastServerReset + '.json';
+
 function ResHeaders(DataLength) {
 	const Headers = { 
 		'content-type': 'application/x-msgpack',
@@ -293,20 +303,52 @@ function PadLeft(Source, Count, Value) {
 }
 
 async function SendToZena(URLPath, Data) {
-	if (ServerConfig['ZenaEnabled'] != true) { return; }
+	if (global.ServerConfig['ZenaEnabled'] != true) { return; }
 	const OutRequest = http.request({
-		host: ServerConfig['ZenaHost'],
-		port: ServerConfig['ZenaPort'],
+		host: global.ServerConfig['ZenaHost'],
+		port: global.ServerConfig['ZenaPort'],
 		method: 'POST',
 		path: URLPath,
 		headers: {
 			'Content-Type': "application/json",
-			'Authorization': ServerConfig['ZenaToken']
+			'Authorization': global.ServerConfig['ZenaToken']
 		}
 	});
 	OutRequest.write(Data);
 	OutRequest.end();
 	return;
+}
+async function Overcharge(Data) {
+	if (global.ServerConfig['ZenaEnabled'] != true) { return Data['Party']['party_setting_list']; }
+	const Overcharged = await new Promise((resolve, reject) => {
+		const OutRequest = http.request({
+			host: global.ServerConfig['ZenaHost'],
+			port: global.ServerConfig['ZenaPort'],
+			method: 'POST',
+			path: "/zena/overcharge",
+			headers: {
+				'Content-Type': "application/json",
+				'Authorization': global.ServerConfig['ZenaToken']
+			}
+		}, (res) => {
+			let ResponseData = "";
+			res.on('data', function (chunk) {
+				ResponseData += chunk;
+			});
+			res.on('end', function () {
+				try {
+					const Decoded = JSON.parse(ResponseData);
+					resolve(Decoded);
+				} catch (e) {
+					console.log(e);
+					return Data['Party']['party_setting_list'];
+				}
+			});
+		});
+		OutRequest.write(JSON.stringify(Data));
+		OutRequest.end();
+	});
+	return Overcharged;
 }
 async function ReadSessionRecord(SessionID) {
 	const SessionData = await Fluoresce.Read("MasterSessionRecord", SessionID);
@@ -341,9 +383,6 @@ async function WriteGuildRecord(GuildID, Data) {
 	return;
 }
 
-let LogFile = fs.createWriteStream('./Library/Log/URL_' + LastServerReset + '.txt');
-let TimeFile = {};
-let TimeFilePath = './Library/Log/TimeTrack_' + LastServerReset + '.json';
 async function RecordManager (req, res, next) {
 	LogFile.write(req.url + "\n");
 	if (TimeFile[req.url] == undefined) { TimeFile[req.url] = []; }
@@ -416,17 +455,17 @@ Orchis.use(express.static('static'));
 Orchis.use(RecordManager);
 Orchis.disable('x-powered-by');
 let server = {};
-if (ServerConfig['SSL'] == true) {
+if (global.ServerConfig['SSL'] == true) {
 	server = https.createServer({
-			key: fs.readFileSync(ServerConfig['Certs']['key']),
-			cert: fs.readFileSync(ServerConfig['Certs']['cert']),
-			ca: fs.readFileSync(ServerConfig['Certs']['ca'])
-		}, Orchis).listen(ServerConfig['Port'], function() {
+			key: fs.readFileSync(global.ServerConfig['Certs']['key']),
+			cert: fs.readFileSync(global.ServerConfig['Certs']['cert']),
+			ca: fs.readFileSync(global.ServerConfig['Certs']['ca'])
+		}, Orchis).listen(global.ServerConfig['Port'], function() {
 		console.log("Orchis system, clear. Server passphrase is " + Passphrase);
 	});	
 }
 else {
-	server = http.createServer(Orchis).listen(ServerConfig['Port'], function() {
+	server = http.createServer(Orchis).listen(global.ServerConfig['Port'], function() {
 		console.log("Orchis system, clear. Passphrase: " + Passphrase);
 	});
 }
@@ -435,7 +474,7 @@ Orchis.post(["/api/v1/Session", "/api/v1/MeasurementEvent"], async (req, res, ne
 function ErasePartyList() {
 	let FinalPartyList = [];
 	let i = 0; while (i <= 53) {
-		var DefaultPartySettings = {
+		const DefaultPartySettings = {
 				"party_no": i + 1,
 				"party_name": "",
 				"party_setting_list": [
@@ -570,18 +609,18 @@ function DefaultSessionRecord(ViewerID, TokenData) {
 		"is_auto_lock_amulet_ssr": 0
 	}
 	const DefaultSmithData = {
-		'max_carpenter_count': 5,
-	   	'carpenter_num': 2,
+		'max_carpenter_count': 99,
+	   	'carpenter_num': 99,
 	   	'working_carpenter_num': 0
 	}
 	const DefaultProductionData = {
 		'RP_Production': {
-		   	'speed': 0,
-		   	'max': 0
+		   	'speed': 0.03,
+		   	'max': 50000
 	   	},
 	   	"DF_Production": {
-		   	'speed': 0,
-		   	'max': 0
+		   	'speed': 0.03,
+		   	'max': 18
 	   	},
 	   	"ST_Production": {
 		   	'speed': 0.03,
@@ -951,8 +990,8 @@ async function PeriodicSave() {
 			SaveDatabases();
 		}
 		AssetList = JSON.parse(fs.readFileSync('./Library/Event/AssetList.json'));
-		IndexPage = await fs.readFile(ServerConfig['AdvancedIndex']);
-		BasicIndexPage = fs.readFileSync(ServerConfig['BasicIndex']);
+		IndexPage = await fs.readFile(global.ServerConfig['AdvancedIndex']);
+		BasicIndexPage = fs.readFileSync(global.ServerConfig['BasicIndex']);
 		MaintXML = await fs.readFile('./static/maintenance.xml');
 		SupportData = JSON.parse(fs.readFileSync('./Library/Event/Support.json'));
 		ActiveBonusList = JSON.parse(fs.readFileSync('./Library/Event/EventBonus.json'));
@@ -978,7 +1017,7 @@ async function ServerReset() {
 		fs.writeFileSync(TimeFilePath, JSON.stringify(TimeFile, null, 2));
 		TimeFile = {};
 		TimeFilePath = './Library/Log/TimeTrack_' + LastServerReset + '.json';
-		LogFile = fs.createWriteStream('./Library/Log/URL_' + LastServerReset + '.txt');
+		global.LogFile = fs.createWriteStream('./Library/Log/URL_' + LastServerReset + '.txt');
 	}
 } 
 
@@ -1058,10 +1097,11 @@ Orchis.post([iOS_Version + "/tool/auth", Android_Version + "/tool/auth"], errorh
 	}
 	if (TokenData['sav:a'] == true && TokenData['sav:ts'] > UserSessionRecord['SaveUpdatedAt']) {
 		try {
-			const UserIndex = await DataManager.GetUserSave(IDToken);
+			const UserIndex = await DataManager.GetUserSave(IDToken, global.ServerConfig['BaaS']);
 			let UserIndexRecord = {}
 			UserIndexRecord = UserIndex['data'];
 			UserIndexRecord = DataManager.CleanIndex(UserIndexRecord);
+			UserIndexRecord = DataManager.ClearInvalidKeyIDs(UserIndexRecord);
 			UserIndexRecord['user_data']['viewer_id'] = UserIDRecord['ViewerID'];
 			UserIndexRecord['user_data']['last_login_time'] = UserSessionRecord['LastLogin'];
 			UserIndexRecord['user_data']['create_time'] = UserSessionRecord['CreatedAt'];
@@ -1071,6 +1111,7 @@ Orchis.post([iOS_Version + "/tool/auth", Android_Version + "/tool/auth"], errorh
 			UserIndexRecord['weapon_passive_ability_list'] = IndexTools.VoidPassives;
 			UserSessionRecord['SaveUpdatedAt'] = Math.floor(Date.now() / 1000);
 			await WriteIndexRecord(String(UserIDRecord['ViewerID']), UserIndexRecord);
+			await Fluoresce.Write("MasterTeamRecord", UserIDRecord['ViewerID'], {});
 		} catch (err) { console.log('Failed import for ID ' + UserIDRecord['ViewerID'] + ": " + err); }
 	}
 	UserSessionRecord['LastLogin'] = Math.floor(Date.now() / 1000);
@@ -1153,6 +1194,7 @@ Orchis.post([iOS_Version + "/version/get_resource_version", Android_Version + "/
 					break;
 				}
 			}
+			
 			if (Duplicate == false) {
 				AnalyticsData.push(AnalyticsTemplate);
 			}
@@ -1185,11 +1227,86 @@ Orchis.post([iOS_Version + "/load/index", Android_Version + "/load/index"], erro
 		res.end(msgpack.pack({'data_headers':{'result_code':117},'data':{'result_code': 117}})); return;
 	}
 	else {
+		for (const x in res.locals.UserIndexRecord['party_list']) {
+			if (res.locals.UserIndexRecord['party_list'][x]['party_setting_list'] == undefined) {
+				res.locals.UserIndexRecord['party_list'][x]['party_setting_list'] = [
+					{
+						"unit_no": 1,
+						"chara_id": 10140101,
+						"equip_dragon_key_id": 0,
+						"equip_weapon_body_id": 0,
+						"equip_weapon_skin_id": 0,
+						"equip_crest_slot_type_1_crest_id_1": 0,
+						"equip_crest_slot_type_1_crest_id_2": 0,
+						"equip_crest_slot_type_1_crest_id_3": 0,
+						"equip_crest_slot_type_2_crest_id_1": 0,
+						"equip_crest_slot_type_2_crest_id_2": 0,
+						"equip_crest_slot_type_3_crest_id_1": 0,
+						"equip_crest_slot_type_3_crest_id_2": 0,
+						"equip_talisman_key_id": 0,
+						"edit_skill_1_chara_id": 0,
+						"edit_skill_2_chara_id": 0
+					},
+					{
+						"unit_no": 2,
+						"chara_id": 0,
+						"equip_dragon_key_id": 0,
+						"equip_weapon_body_id": 0,
+						"equip_weapon_skin_id": 0,
+						"equip_crest_slot_type_1_crest_id_1": 0,
+						"equip_crest_slot_type_1_crest_id_2": 0,
+						"equip_crest_slot_type_1_crest_id_3": 0,
+						"equip_crest_slot_type_2_crest_id_1": 0,
+						"equip_crest_slot_type_2_crest_id_2": 0,
+						"equip_crest_slot_type_3_crest_id_1": 0,
+						"equip_crest_slot_type_3_crest_id_2": 0,
+						"equip_talisman_key_id": 0,
+						"edit_skill_1_chara_id": 0,
+						"edit_skill_2_chara_id": 0
+					},
+					{
+						"unit_no": 3,
+						"chara_id": 0,
+						"equip_dragon_key_id": 0,
+						"equip_weapon_body_id": 0,
+						"equip_weapon_skin_id": 0,
+						"equip_crest_slot_type_1_crest_id_1": 0,
+						"equip_crest_slot_type_1_crest_id_2": 0,
+						"equip_crest_slot_type_1_crest_id_3": 0,
+						"equip_crest_slot_type_2_crest_id_1": 0,
+						"equip_crest_slot_type_2_crest_id_2": 0,
+						"equip_crest_slot_type_3_crest_id_1": 0,
+						"equip_crest_slot_type_3_crest_id_2": 0,
+						"equip_talisman_key_id": 0,
+						"edit_skill_1_chara_id": 0,
+						"edit_skill_2_chara_id": 0
+					},
+					{
+						"unit_no": 4,
+						"chara_id": 0,
+						"equip_dragon_key_id": 0,
+						"equip_weapon_body_id": 0,
+						"equip_weapon_skin_id": 0,
+						"equip_crest_slot_type_1_crest_id_1": 0,
+						"equip_crest_slot_type_1_crest_id_2": 0,
+						"equip_crest_slot_type_1_crest_id_3": 0,
+						"equip_crest_slot_type_2_crest_id_1": 0,
+						"equip_crest_slot_type_2_crest_id_2": 0,
+						"equip_crest_slot_type_3_crest_id_1": 0,
+						"equip_crest_slot_type_3_crest_id_2": 0,
+						"equip_talisman_key_id": 0,
+						"edit_skill_1_chara_id": 0,
+						"edit_skill_2_chara_id": 0
+					}
+				]
+			}
+			res.locals.UpdatedIndexRecord = true;
+		}
 		res.locals.ResponseBody['data'] = res.locals.UserIndexRecord;
-		res.locals.ResponseBody['data']['treasure_trade_all_list'] = ShopMap.TreasureTrade;
+		//res.locals.ResponseBody['data']['treasure_trade_all_list'] = ShopMap.TreasureTrade;
 		res.locals.ResponseBody['data']['mission_notice'] = DataManager.GetMissionNotice(res.locals.UserSessionRecord);
 		res.locals.ResponseBody['data']['server_time'] = Math.floor(Date.now() / 1000);
-		res.locals.ResponseBody['data']['multi_server'] = { 'host': ServerConfig['PhotonURL'], 'app_id': "" };
+		res.locals.ResponseBody['data']['multi_server'] = { 'host': global.ServerConfig['PhotonURL'], 'app_id': "" };
 		
 		if (res.locals.UserSessionRecord['CustomPhotonURL'] != undefined && res.locals.UserSessionRecord['CustomPhotonURL'] != false) {
 			res.locals.ResponseBody['data']['multi_server'] = { 'host': res.locals.UserSessionRecord['CustomPhotonURL'], 'app_id': "" };
@@ -1223,7 +1340,7 @@ Orchis.post([iOS_Version + "/login/index", Android_Version + "/login/index"], er
 }));
 
 Orchis.post([iOS_Version + "/webview_version/url_list", Android_Version + "/webview_version/url_list"], async (req, res, next) => {
-	res.locals.ResponseBody['data']['webview_url_list'] = ServerConfig['PageURLs'];
+	res.locals.ResponseBody['data']['webview_url_list'] = global.ServerConfig['PageURLs'];
 	next();
 });
 Orchis.post([iOS_Version + "/mypage/info", Android_Version + "/mypage/info"], async (req, res, next) => {	
@@ -1863,10 +1980,10 @@ Orchis.post([iOS_Version + "/chara/buildup", Android_Version + "/chara/buildup"]
 	const CharacterIndex = res.locals.UserIndexRecord['chara_list'].findIndex(x => x.chara_id === CharacterID);
 	const NewData = CharacterMap.LevelUp(CharacterID, GrowList, res.locals.UserIndexRecord['chara_list'][CharacterIndex]);
 	let UpdateMaterial = [];
-	for (let w in GrowList) {
+	for (const w in GrowList) {
 		const MaterialIndex = res.locals.UserIndexRecord['material_list'].findIndex(x => x.material_id == GrowList[w]['id']);
 		res.locals.UserIndexRecord['material_list'][MaterialIndex]['quantity'] -= GrowList[w]['quantity'];
-		UpdateMaterial.push(res.locals.UserIndexRecord['material_list'][MaterialIndex]);
+		UpdateMaterial.push({'material_id': GrowList[w]['id'], 'quantity': res.locals.UserIndexRecord['material_list'][MaterialIndex]['quantity']});
 	}
 	const BonusIndex = res.locals.UserIndexRecord['fort_bonus_list']['chara_bonus_by_album'].findIndex(x => x.elemental_type == CharacterMap.GetCharacterInfo(CharacterID, "elemental_type"));
 	res.locals.UserIndexRecord['fort_bonus_list']['chara_bonus_by_album'][BonusIndex]['hp'] += NewData[1];
@@ -1889,12 +2006,12 @@ Orchis.post([iOS_Version + "/chara/buildup_mana", Android_Version + "/chara/buil
 	const CharacterIndex = res.locals.UserIndexRecord['chara_list'].findIndex(x => x.chara_id === CharacterID); const CharacterData = res.locals.UserIndexRecord['chara_list'][CharacterIndex];
 	const NewData = CharacterMap.RaiseManaCircle(CharacterID, MCList, 0, CharacterData, res.locals.UserIndexRecord['unit_story_list'], IsConviction);
 	let UpdateMaterial = [];
-	for (let u in NewData[2]) {
+	for (const u in NewData[2]) {
 		switch(NewData[2][u]['type']) {
 			case 8:
 				const MatIndex = res.locals.UserIndexRecord['material_list'].findIndex(x => x.material_id == NewData[2][u]['id']);
 				res.locals.UserIndexRecord['material_list'][MatIndex]['quantity'] -= NewData[2][u]['count'];
-				UpdateMaterial.push(res.locals.UserIndexRecord['material_list'][MatIndex]);
+				UpdateMaterial.push({'material_id': NewData[2][u]['id'], 'quantity': res.locals.UserIndexRecord['material_list'][MatIndex]['quantity']});
 				break;
 			case 14:
 				if (NewData[2][u]['count'] != 0) { res.locals.UserIndexRecord['user_data']['dew_point'] -= NewData[2][u]['count']; }
@@ -1937,14 +2054,14 @@ Orchis.post([iOS_Version + "/chara/limit_break", Android_Version + "/chara/limit
 	if (LimitBreakCount == 5) { res.locals.UserIndexRecord['chara_list'][CharacterIndex]['additional_max_level'] = 5; }
 	const LimitBreakCost = CharacterMap.RaiseLimit(CharacterID, LimitBreakCount);
 	let UpdateMaterial = [];
-	for (let u in LimitBreakCost) {
+	for (const u in LimitBreakCost) {
 		switch(LimitBreakCost[u]['type']) {
 			case 8:
 				if (LimitBreakCost[u]['id'] == 0) { break; }
 				const MatIndex = res.locals.UserIndexRecord['material_list'].findIndex(x => x.material_id == LimitBreakCost[u]['id']);
 				if (MatIndex == -1) { res.end(msgpack.pack({'data_headers':{'result_code':10010},'data':{'result_code':10010}})); return; }
 				res.locals.UserIndexRecord['material_list'][MatIndex]['quantity'] -= LimitBreakCost[u]['quantity'];
-				UpdateMaterial.push(res.locals.UserIndexRecord['material_list'][MatIndex]);
+				UpdateMaterial.push({'material_id': LimitBreakCost[u]['id'], 'quantity': res.locals.UserIndexRecord['material_list'][MatIndex]['quantity']});
 				break;
 			case 14:
 				if (LimitBreakCost[u]['quantity'] != 0) { res.locals.UserIndexRecord['user_data']['dew_point'] -= LimitBreakCost[u]['quantity']; }
@@ -1966,13 +2083,13 @@ Orchis.post([iOS_Version + "/chara/limit_break_and_buildup_mana", Android_Versio
 	const CharacterIndex = res.locals.UserIndexRecord['chara_list'].findIndex(x => x.chara_id === CharacterID); const CharacterData = res.locals.UserIndexRecord['chara_list'][CharacterIndex];
 	const LimitBreakCount = MsgPackData['next_limit_break_count']; const NewData = CharacterMap.RaiseManaCircle(CharacterID, MCList, LimitBreakCount, CharacterData, res.locals.UserIndexRecord['unit_story_list'], IsConviction);
 	let UpdateMaterial = [];
-	for (let u in NewData[2]) {
+	for (const u in NewData[2]) {
 		switch(NewData[2][u]['type']) {
 			case 8:
 				if (NewData[2][u]['id'] == 0) { break; }
 				const MatIndex = res.locals.UserIndexRecord['material_list'].findIndex(x => x.material_id == NewData[2][u]['id']);
 				res.locals.UserIndexRecord['material_list'][MatIndex]['quantity'] -= NewData[2][u]['count'];
-				UpdateMaterial.push(res.locals.UserIndexRecord['material_list'][MatIndex]);
+				UpdateMaterial.push({'material_id': NewData[2][u]['id'], 'quantity': res.locals.UserIndexRecord['material_list'][MatIndex]['quantity']});
 				break;
 			case 14:
 				if (NewData[2][u]['count'] != 0) { res.locals.UserIndexRecord['user_data']['dew_point'] -= NewData[2][u]['count']; }
@@ -2010,11 +2127,9 @@ Orchis.post([iOS_Version + "/chara/limit_break_and_buildup_mana", Android_Versio
 Orchis.post([iOS_Version + "/chara/unlock_edit_skill", Android_Version + "/chara/unlock_edit_skill"], errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const CharacterID = MsgPackData['chara_id']; 
 	const CharacterIndex = res.locals.UserIndexRecord['chara_list'].findIndex(x => x.chara_id == CharacterID);
-	const CharacterData = res.locals.UserIndexRecord['chara_list'][CharacterIndex];
-	const NewData = CharacterMap.UnlockSharedSkill(CharacterID, CharacterData);
-	res.locals.UserIndexRecord['chara_list'][CharacterIndex] = NewData;
+	res.locals.UserIndexRecord['chara_list'][CharacterIndex]['is_unlock_edit_skill'] = 1;
 	res.locals.ResponseBody['data']['update_data_list'] = {
-		'chara_list': [ NewData ],
+		'chara_list': [ res.locals.UserIndexRecord['chara_list'][CharacterIndex] ],
 		'material_list': []
 	}
 	res.locals.UpdatedIndexRecord = true;
@@ -2083,42 +2198,30 @@ Orchis.post([iOS_Version + "/dragon/set_lock", Android_Version + "/dragon/set_lo
 	next();
 }));
 Orchis.post([iOS_Version + "/dragon/limit_break", Android_Version + "/dragon/limit_break"], errorhandler(async (req, res, next) => {
-	const MsgPackData = msgpack.unpack(req.body); const KeyID = MsgPackData['base_dragon_key_id']; const GrowList = MsgPackData['limit_break_grow_list'];
-	const DragonIndex = res.locals.UserIndexRecord['dragon_list'].findIndex(x => x.dragon_key_id === KeyID);
-	const PreviousData = res.locals.UserIndexRecord['dragon_list'][DragonIndex];
-	const UpdateData = DragonMap.LimitBreakDragon(res.locals.UserIndexRecord, KeyID, PreviousData, GrowList, res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album']);
+	const MsgPackData = msgpack.unpack(req.body); const KeyID = MsgPackData['base_dragon_key_id']; const GrowList = MsgPackData['limit_break_grow_list']; 
+	const UpdateData = DragonMap.LimitBreakDragon(res.locals.UserIndexRecord, KeyID, GrowList, res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album']);
+	res.locals.UserIndexRecord = UpdateData[0];
 	res.locals.ResponseBody['data'] = {
+		'update_data_list': UpdateData[1],
 		'delete_data_list': {
-			'delete_dragon_list': UpdateData[1]
-		},
-		'update_data_list': {
-			'dragon_list': [ UpdateData[0] ],
-			'material_list': UpdateData[2],
-			'album_dragon_list': UpdateData[4]
+			'delete_dragon_list': UpdateData[2]
 		}
 	}
-	res.locals.UserIndexRecord = UpdateData[3];
-	const NewIndex = res.locals.UserIndexRecord['dragon_list'].findIndex(x => x.dragon_key_id === KeyID); res.locals.UserIndexRecord['dragon_list'][NewIndex] = UpdateData[0];
-	res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'] = UpdateData[5];
+	res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'] = UpdateData[3];
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
 Orchis.post([iOS_Version + "/dragon/buildup", Android_Version + "/dragon/buildup"], errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const KeyID = MsgPackData['base_dragon_key_id']; const GrowList = MsgPackData['grow_material_list']; 
-	const DragonIndex = res.locals.UserIndexRecord['dragon_list'].find(x => x.dragon_key_id === KeyID);
-	const UpdateData = DragonMap.BuildDragon(KeyID, GrowList, DragonIndex, res.locals.UserIndexRecord, res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album']);
+	const UpdateData = DragonMap.BuildDragon(res.locals.UserIndexRecord, KeyID, GrowList, res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album']);
+	res.locals.UserIndexRecord = UpdateData[0];
 	res.locals.ResponseBody['data'] = {
-		'update_data_list': {
-			'dragon_list': [ UpdateData[0] ],
-			'material_list': UpdateData[3],
-			'album_dragon_list': UpdateData[4]
-		},
+		'update_data_list': UpdateData[1],
 		'delete_data_list': {
-			'delete_dragon_list': UpdateData[1]
+			'delete_dragon_list': UpdateData[2]
 		}
 	}
-	res.locals.UserIndexRecord = UpdateData[2];
-	res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'] = UpdateData[5];
+	res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'] = UpdateData[3];
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
@@ -2390,7 +2493,24 @@ Orchis.post([iOS_Version + "/party/set_party_setting", Android_Version + "/party
 	if (PartyNumber <= 0 || PartyNumber >= 55 || typeof PartyNumber === "string") { res.end(msgpack.pack({'data_headers':{'result_code':117},'data':{'result_code':117}})); return; }
 	const PartyName = MsgPackData['party_name'];
 	if (PartyName.length > 12) { PartyName == PartyName.substring(0, 12); }
-	const PartyData = MsgPackData['request_party_setting_list'];
+	let PartyData = MsgPackData['request_party_setting_list'];
+	if (MsgPackData['is_entrust'] == 1 && global.ServerConfig['Overcharge'] == true) {
+		PartyData = await Overcharge({
+			'Party': {
+				'party_no': MsgPackData['party_no'],
+				'party_setting_list': MsgPackData['request_party_setting_list'],
+				'element': MsgPackData['entrust_element']
+			},
+			'Index': {
+				'chara_list': res.locals.UserIndexRecord['chara_list'],
+				'dragon_list': res.locals.UserIndexRecord['dragon_list'],
+				'weapon_body_list': res.locals.UserIndexRecord['weapon_body_list'],
+				'ability_crest_list': res.locals.UserIndexRecord['ability_crest_list'],
+				'party_list': res.locals.UserIndexRecord['party_list']
+			}
+		});
+		if (PartyData == undefined) { PartyData = MsgPackData['request_party_setting_list']; }
+	}
 	res.locals.ResponseBody['data']['update_data_list'] = {
 		'party_list': [
 			{
@@ -2400,8 +2520,9 @@ Orchis.post([iOS_Version + "/party/set_party_setting", Android_Version + "/party
 			}
 		]
 	}
-	res.locals.UserIndexRecord['party_list'][PartyNumber - 1]['party_name'] = PartyName;
-	res.locals.UserIndexRecord['party_list'][PartyNumber - 1]['party_setting_list'] = PartyData;
+	const PartyIndex = res.locals.UserIndexRecord['party_list'].findIndex(z => z.party_no == MsgPackData['party_no']);
+	res.locals.UserIndexRecord['party_list'][PartyIndex]['party_name'] = PartyName;
+	res.locals.UserIndexRecord['party_list'][PartyIndex]['party_setting_list'] = PartyData;
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
@@ -2558,122 +2679,129 @@ Orchis.post([iOS_Version + "/quest/read_story", Android_Version + "/quest/read_s
 		}
 	}
 	const StoryIndex = res.locals.UserIndexRecord['quest_story_list'].findIndex(x => x.quest_story_id == ReadStory);
-	if (StoryIndex == -1 || res.locals.UserIndexRecord['quest_story_list'][StoryIndex]['state'] != 1) {
-		if (StoryIndex == -1) { res.locals.UserIndexRecord['quest_story_list'].push({'quest_story_id': ReadStory, 'state': 1}); }
-		else if (res.locals.UserIndexRecord['quest_story_list'][StoryIndex]['state'] != 1) {
-			res.locals.UserIndexRecord['quest_story_list'][StoryIndex]['state'] = 1;
-		}
+	if (StoryIndex == -1) { res.locals.UserIndexRecord['quest_story_list'].push({'quest_story_id': ReadStory, 'state': 1}); }
+	else if (res.locals.UserIndexRecord['quest_story_list'][StoryIndex]['state'] != 1) {
+		res.locals.UserIndexRecord['quest_story_list'][StoryIndex]['state'] = 1;
+	}
 		
-		if (QuestMap.HasRewardCharacter(ReadStory) == true) {
-			const RewardData = QuestMap.RewardCharacter(ReadStory);
-			const CharacterIndex = res.locals.UserIndexRecord['chara_list'].findIndex(x => x.chara_id == RewardData['entity_id']);
-			if (CharacterIndex == -1) {
-				res.locals.ResponseBody['data']['entity_result']['new_get_entity_list'].push(RewardData);
-				res.locals.UserIndexRecord['chara_list'].push(CharacterMap.CreateCharacterFromGift(RewardData['entity_id'], 1));
-				const NewIndex = res.locals.UserIndexRecord['chara_list'].findIndex(x => x.chara_id == RewardData['entity_id']);
-				res.locals.UserIndexRecord['chara_list'][NewIndex]['is_unlock_edit_skill'] = 1;
-				res.locals.ResponseBody['data']['update_data_list']['chara_list'] = [];
-				res.locals.ResponseBody['data']['update_data_list']['chara_list'].push(res.locals.UserIndexRecord['chara_list'][NewIndex]);
-				res.locals.ResponseBody['data']['quest_story_reward_list'].push({'entity_type': RewardData['entity_type'], 'entity_id': RewardData['entity_id'],
-																  'entity_level': 1, 'entity_limit_break_count': 0, 'entity_quantity': 1});
-				const UnitStoryData = CharacterMap.GenerateUnitStory(RewardData['entity_id']);
-				if (UnitStoryData[0] != undefined) {
-					res.locals.ResponseBody['data']['update_data_list']['unit_story_list'] = [];
-					res.locals.ResponseBody['data']['update_data_list']['unit_story_list'].push(UnitStoryData[0], UnitStoryData[1], UnitStoryData[2], UnitStoryData[3], UnitStoryData[4]);
-					res.locals.UserIndexRecord['unit_story_list'].push(UnitStoryData[0], UnitStoryData[1], UnitStoryData[2], UnitStoryData[3], UnitStoryData[4]); }
-				const CharacterElement = CharacterMap.GetCharacterInfo(RewardData['entity_id'], 'elemental_type');
-				const CharacterBonusIndex = res.locals.UserIndexRecord['fort_bonus_list']['chara_bonus_by_album'].findIndex(x => x.elemental_type == CharacterElement);
-				res.locals.UserIndexRecord['fort_bonus_list']['chara_bonus_by_album'][CharacterBonusIndex]['hp'] += 0.1;
-				res.locals.UserIndexRecord['fort_bonus_list']['chara_bonus_by_album'][CharacterBonusIndex]['attack'] += 0.1;
-			}
-		}
-		if (QuestMap.HasRewardDragon(ReadStory) == true) {
-			const RewardData = QuestMap.RewardDragon(ReadStory);
+	if (QuestMap.HasRewardCharacter(ReadStory) == true) {
+		const RewardData = QuestMap.RewardCharacter(ReadStory);
+		const CharacterIndex = res.locals.UserIndexRecord['chara_list'].findIndex(x => x.chara_id == RewardData['entity_id']);
+		if (CharacterIndex == -1) {
 			res.locals.ResponseBody['data']['entity_result']['new_get_entity_list'].push(RewardData);
-			let NextID = 39999;
-			if (res.locals.UserIndexRecord['dragon_list'].length != 0) { NextID = res.locals.UserIndexRecord['dragon_list'][res.locals.UserIndexRecord['dragon_list'].length - 1]['dragon_key_id'] + 1; }
-			res.locals.UpdatedSessionRecord = true;
-			res.locals.UserIndexRecord['dragon_list'].push(DragonMap.CreateDragonFromGift(NextID, RewardData['entity_id'], 1));
-			const NewIndex = res.locals.UserIndexRecord['dragon_list'].findIndex(x => x.dragon_key_id == NextID);
-			res.locals.ResponseBody['data']['update_data_list']['dragon_list'] = [];
-			res.locals.ResponseBody['data']['update_data_list']['dragon_list'].push(res.locals.UserIndexRecord['dragon_list'][NewIndex]);
+			res.locals.UserIndexRecord['chara_list'].push(CharacterMap.CreateCharacterFromGift(RewardData['entity_id'], 1));
+			const NewIndex = res.locals.UserIndexRecord['chara_list'].findIndex(x => x.chara_id == RewardData['entity_id']);
+			res.locals.UserIndexRecord['chara_list'][NewIndex]['is_unlock_edit_skill'] = 1;
+			res.locals.ResponseBody['data']['update_data_list']['chara_list'] = [];
+			res.locals.ResponseBody['data']['update_data_list']['chara_list'].push(res.locals.UserIndexRecord['chara_list'][NewIndex]);
 			res.locals.ResponseBody['data']['quest_story_reward_list'].push({'entity_type': RewardData['entity_type'], 'entity_id': RewardData['entity_id'],
 															  'entity_level': 1, 'entity_limit_break_count': 0, 'entity_quantity': 1});
-			res.locals.ResponseBody['data']['update_data_list']['dragon_reliability_list'] = [];
-			res.locals.ResponseBody['data']['update_data_list']['dragon_reliability_list'].push(DragonMap.GenerateDragonReliability(RewardData['entity_id']));
-			res.locals.UserIndexRecord['dragon_reliability_list'].push(DragonMap.GenerateDragonReliability(RewardData['entity_id']));
-			const DragonElement = DragonMap.GetDragonInfo(RewardData['entity_id'], "element");
-			const DragonBonusIndex = res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'].findIndex(x => x.elemental_type == DragonElement);
-			res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'][DragonBonusIndex]['hp'] += 0.1;
-			res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'][DragonBonusIndex]['attack'] += 0.1;
+			const UnitStoryData = CharacterMap.GenerateUnitStory(RewardData['entity_id']);
+			if (UnitStoryData[0] != undefined) {
+				res.locals.ResponseBody['data']['update_data_list']['unit_story_list'] = [];
+				res.locals.ResponseBody['data']['update_data_list']['unit_story_list'].push(UnitStoryData[0], UnitStoryData[1], UnitStoryData[2], UnitStoryData[3], UnitStoryData[4]);
+				res.locals.UserIndexRecord['unit_story_list'].push(UnitStoryData[0], UnitStoryData[1], UnitStoryData[2], UnitStoryData[3], UnitStoryData[4]); }
+			const CharacterElement = CharacterMap.GetCharacterInfo(RewardData['entity_id'], 'elemental_type');
+			const CharacterBonusIndex = res.locals.UserIndexRecord['fort_bonus_list']['chara_bonus_by_album'].findIndex(x => x.elemental_type == CharacterElement);
+			res.locals.UserIndexRecord['fort_bonus_list']['chara_bonus_by_album'][CharacterBonusIndex]['hp'] += 0.1;
+			res.locals.UserIndexRecord['fort_bonus_list']['chara_bonus_by_album'][CharacterBonusIndex]['attack'] += 0.1;
 		}
-		if (QuestMap.HasRewardFacility(ReadStory) == true) {
-			res.locals.ResponseBody['data']['update_data_list']['build_list'] = [];
-			const RewardData = QuestMap.RewardFacility(ReadStory);
-			for (let z in RewardData) {
-				const BuildID = res.locals.UserIndexRecord['build_list'][res.locals.UserIndexRecord['build_list'].length - 1]['build_id'] + 1;
-				const Template = {
-					"build_id": BuildID,
-					"fort_plant_detail_id": parseInt(String(RewardData[z]) + "01"),
-					"position_x": -1,
-					"position_z": -1,
-					"build_status": 0,
-					"build_start_date": 0,
-					"build_end_date": 0,
-					"level": 1,
-					"plant_id": RewardData[z],
-					"is_new": 0,
-					"remain_time": 0,
-					"last_income_date": -1
-				}
-				res.locals.UserIndexRecord['build_list'].push(Template);
-				res.locals.ResponseBody['data']['update_data_list']['build_list'].push(Template);
-			}
-		}
-		
-		const QuestBase = String(ReadStory).slice(0, 3);
-		if (QuestBase == 204 || QuestBase == 214) {
-			let EventType = "Raid"; if (QuestBase == 214) { EventType = "CLB01"; }
-			const EventID = String(ReadStory).slice(0, 5);
-			if (EventMap.EventFriendStory(EventID) == ReadStory) {
-				const CharacterID = EventMap.EventInfoMap[EventID]['event_character'];
-				if (res.locals.UserIndexRecord['chara_list'].findIndex(x => x.chara_id == CharacterID) == -1) {
-					const CharacterData = CharacterMap.CreateCharacterFromGift(CharacterID, 1);
-					const CharacterStoryData = CharacterMap.GenerateUnitStory(CharacterID);
-					res.locals.UserIndexRecord['chara_list'].push(CharacterData);
-					res.locals.UserIndexRecord['unit_story_list'].push(CharacterStoryData[0]);
-					res.locals.ResponseBody['data']['update_data_list']['chara_list'].push(CharacterData);
-					res.locals.ResponseBody['data']['update_data_list']['unit_story_list'].push(CharacterStoryData[0]);
-					res.locals.ResponseBody['data']['entity_result']['new_get_entity_list'].push({ 'entity_type': 1, 'entity_id': CharacterID });
-						
-					if (!EventMap.EventFriendList[String(CharacterID)]['is_compendium'] && EventMap.EventInfoMap[EventID]['no_friend_point'] != true) {
-						res.locals.UserSessionRecord['Event'][EventType][EventID]['Friendship'] = [
-							{
-								'chara_id': CharacterID,
-								'total_point': 0,
-								'is_temporary': 1
-							}
-						]
-					}
-					else {
-						res.locals.UserSessionRecord['Event'][EventType][EventID]['Friendship'] = [
-							{
-								'chara_id': CharacterID,
-								'total_point': 500,
-								'is_temporary': 0
-							}
-						]
-					}
-				}
-				res.locals.UpdatedSessionRecord = true;
-				res.locals.UpdatedIndexRecord = true;
-			}
-		}
-		
-		res.locals.UserIndexRecord['user_data']['crystal'] += 25;
-		res.locals.ResponseBody['data']['quest_story_reward_list'].push({"entity_type": 23, "entity_id": 0, "entity_quantity": 25});
-		res.locals.ResponseBody['data']['update_data_list']['user_data'] = res.locals.UserIndexRecord['user_data'];
 	}
+	if (QuestMap.HasRewardDragon(ReadStory) == true) {
+		const RewardData = QuestMap.RewardDragon(ReadStory);
+		res.locals.ResponseBody['data']['entity_result']['new_get_entity_list'].push(RewardData);
+		let NextID = 39999;
+		if (res.locals.UserIndexRecord['dragon_list'].length != 0) { NextID = res.locals.UserIndexRecord['dragon_list'][res.locals.UserIndexRecord['dragon_list'].length - 1]['dragon_key_id'] + 1; }
+		res.locals.UpdatedSessionRecord = true;
+		res.locals.UserIndexRecord['dragon_list'].push(DragonMap.CreateDragonFromGift(NextID, RewardData['entity_id'], 1));
+		const NewIndex = res.locals.UserIndexRecord['dragon_list'].findIndex(x => x.dragon_key_id == NextID);
+		res.locals.ResponseBody['data']['update_data_list']['dragon_list'] = [];
+		res.locals.ResponseBody['data']['update_data_list']['dragon_list'].push(res.locals.UserIndexRecord['dragon_list'][NewIndex]);
+		res.locals.ResponseBody['data']['quest_story_reward_list'].push({'entity_type': RewardData['entity_type'], 'entity_id': RewardData['entity_id'],
+														  'entity_level': 1, 'entity_limit_break_count': 0, 'entity_quantity': 1});
+		res.locals.ResponseBody['data']['update_data_list']['dragon_reliability_list'] = [];
+		res.locals.ResponseBody['data']['update_data_list']['dragon_reliability_list'].push(DragonMap.GenerateDragonReliability(RewardData['entity_id']));
+		res.locals.UserIndexRecord['dragon_reliability_list'].push(DragonMap.GenerateDragonReliability(RewardData['entity_id']));
+		const DragonElement = DragonMap.GetDragonInfo(RewardData['entity_id'], "element");
+		const DragonBonusIndex = res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'].findIndex(x => x.elemental_type == DragonElement);
+		res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'][DragonBonusIndex]['hp'] += 0.1;
+		res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album'][DragonBonusIndex]['attack'] += 0.1;
+	}
+	if (QuestMap.HasRewardFacility(ReadStory) == true) {
+		res.locals.ResponseBody['data']['update_data_list']['build_list'] = [];
+		const RewardData = QuestMap.RewardFacility(ReadStory);
+		for (let z in RewardData) {
+			const BuildID = res.locals.UserIndexRecord['build_list'][res.locals.UserIndexRecord['build_list'].length - 1]['build_id'] + 1;
+			const Template = {
+				"build_id": BuildID,
+				"fort_plant_detail_id": parseInt(String(RewardData[z]) + "01"),
+				"position_x": -1,
+				"position_z": -1,
+				"build_status": 0,
+				"build_start_date": 0,
+				"build_end_date": 0,
+				"level": 1,
+				"plant_id": RewardData[z],
+				"is_new": 0,
+				"remain_time": 0,
+				"last_income_date": -1
+			}
+			res.locals.UserIndexRecord['build_list'].push(Template);
+			res.locals.ResponseBody['data']['update_data_list']['build_list'].push(Template);
+		}
+	}
+		
+	const QuestBase = String(ReadStory).slice(0, 3);
+	if (QuestBase == 204 || QuestBase == 214) {
+		let EventType = "Raid"; if (QuestBase == 214) { EventType = "CLB01"; }
+		const EventID = String(ReadStory).slice(0, 5);
+		if (EventMap.EventInfoMap[EventID]['friend_join_story'] == ReadStory) {
+			const CharacterID = EventMap.EventInfoMap[EventID]['event_character'];
+			if (res.locals.UserIndexRecord['chara_list'].findIndex(x => x.chara_id == CharacterID) == -1) {
+				const CharacterData = CharacterMap.CreateCharacterFromGift(CharacterID, 1);
+				const CharacterStoryData = CharacterMap.GenerateUnitStory(CharacterID);
+				res.locals.UserIndexRecord['chara_list'].push(CharacterData);
+				res.locals.UserIndexRecord['unit_story_list'].push(CharacterStoryData[0]);
+				res.locals.ResponseBody['data']['update_data_list']['chara_list'].push(CharacterData);
+				res.locals.ResponseBody['data']['update_data_list']['unit_story_list'].push(CharacterStoryData[0]);
+				res.locals.ResponseBody['data']['entity_result']['new_get_entity_list'].push({ 'entity_type': 1, 'entity_id': CharacterID });
+						
+				if (!EventMap.EventFriendList[String(CharacterID)]['is_compendium'] && EventMap.EventInfoMap[EventID]['no_friend_point'] != true) {
+					res.locals.UserSessionRecord['Event'][EventType][EventID]['Friendship'] = [
+						{
+							'chara_id': CharacterID,
+							'total_point': 0,
+							'is_temporary': 1
+						}
+					]
+				}
+				else {
+					res.locals.UserSessionRecord['Event'][EventType][EventID]['Friendship'] = [
+						{
+							'chara_id': CharacterID,
+							'total_point': 500,
+							'is_temporary': 0
+						}
+					]
+				}
+			}
+			else {
+				res.locals.UserSessionRecord['Event'][EventType][EventID]['Friendship'] = [
+					{
+						'chara_id': CharacterID,
+						'total_point': 500,
+						'is_temporary': 0
+					}
+				]
+			}
+			res.locals.UpdatedSessionRecord = true;
+			res.locals.UpdatedIndexRecord = true;
+		}
+	}
+		
+	res.locals.UserIndexRecord['user_data']['crystal'] += 25;
+	res.locals.ResponseBody['data']['quest_story_reward_list'].push({"entity_type": 23, "entity_id": 0, "entity_quantity": 25});
+	res.locals.ResponseBody['data']['update_data_list']['user_data'] = res.locals.UserIndexRecord['user_data'];
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
@@ -4806,13 +4934,14 @@ Orchis.post([iOS_Version + "/dungeon_start/start", Android_Version + "/dungeon_s
 		else { res.locals.UserSessionRecord['DungeonRecord']['Repeat']['track'] += 1; }
 	}
 	else { res.locals.UserSessionRecord['DungeonRecord']['Repeat']['active'] = 0; }
-		
 	if (SupportViewerID != 0) {
 		const SupportAccountRecord = await Fluoresce.Read("MasterAccountRecord", SupportViewerID);
 		SupportSessionRecord = await ReadSessionRecord(SupportAccountRecord['SessionID']); SupportIndexRecord = await ReadIndexRecord(SupportViewerID);
 		res.locals.UserSessionRecord['DungeonRecord']['LastDungeonSupportPlayer'].push({'viewer_id': SupportViewerID, 'get_mana_point': 25, 'is_friend': 1, 'apply_send_status': 0});
 		res.locals.UserSessionRecord['DungeonRecord']['LastDungeonSupportCharacter'] = DataManager.PopulateSupportData(SupportSessionRecord, SupportIndexRecord);
-		PartyListData[0]['support_data'] = res.locals.UserSessionRecord['DungeonRecord']['LastDungeonSupportCharacter'][0]; }
+		PartyListData[0]['support_data'] = res.locals.UserSessionRecord['DungeonRecord']['LastDungeonSupportCharacter'][0];
+	}
+	res.locals.UpdatedSessionRecord = true;
 	let ReviveLimit = QuestMap.GetQuestInfo(QuestID, "revives"); if (ReviveLimit == undefined) { ReviveLimit = 0; }
 	res.locals.ResponseBody['data'] = {
 		'ingame_data': {
@@ -4851,7 +4980,6 @@ Orchis.post([iOS_Version + "/dungeon_start/start", Android_Version + "/dungeon_s
 		res.locals.UserIndexRecord['quest_list'].push(QuestEntry);
 		res.locals.UpdatedIndexRecord = true;
 	}
-	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
 Orchis.post([iOS_Version + "/dungeon_start/start_assign_unit", Android_Version + "/dungeon_start/start_assign_unit"], errorhandler(async (req, res, next) => {
@@ -4948,7 +5076,7 @@ Orchis.post([iOS_Version + "/dungeon_start/start_multi", Android_Version + "/dun
 	const MsgPackData = msgpack.unpack(req.body); const QuestID = MsgPackData['quest_id']; if (typeof QuestID === 'string') { res.end(); return; }
 	const PartyNo_List = MsgPackData['party_no_list'];
 	LogFile.write("Starting Quest " + QuestID + "\n");
-	const FromStateManager = await fetch( ServerConfig['StateURL'] + "get/ishost/" + ViewerID, { method: "GET" });
+	const FromStateManager = await fetch( global.ServerConfig['StateURL'] + "get/ishost/" + ViewerID, { method: "GET" });
 	let StateManagerResponse = false; 
 	if (FromStateManager.status != 200) { StateManagerResponse = false; }
 	else { StateManagerResponse = await FromStateManager.json(); }
@@ -5020,7 +5148,7 @@ Orchis.post([iOS_Version + "/dungeon_record/record", Android_Version + "/dungeon
 	const PlayData = MsgPackData['play_record'];
 	const DungeonKey = MsgPackData['dungeon_key'];
 	res.locals.UserSessionRecord['Endeavour']['Tracker']['Daily']['Quests'] += 1;
-	let ResultData = DataManager.DungeonRecord(res.locals.UserSessionRecord, res.locals.UserIndexRecord, DungeonKey, PlayData, EventList, false, MsgPackData['repeat_state']);
+	let ResultData = DataManager.DungeonRecord(res.locals.UserSessionRecord, res.locals.UserIndexRecord, DungeonKey, PlayData, EventList, false, MsgPackData['repeat_state'], 0);
 	res.locals.ResponseBody['data'] = ResultData[0];
 	res.locals.UserIndexRecord = ResultData[1];
 	res.locals.UserSessionRecord = ResultData[2];
@@ -5035,7 +5163,7 @@ Orchis.post([iOS_Version + "/dungeon_record/record", Android_Version + "/dungeon
 Orchis.post([iOS_Version + "/dungeon_record/record_multi", Android_Version + "/dungeon_record/record_multi"], errorhandler(async (req, res, next) => {
 	let UserSessionRecord = "";
 	let UserIndexRecord = "";
-	if (req.get('Authorization') != ServerConfig['PhotonToken']) {
+	if (req.get('Authorization') != global.ServerConfig['PhotonToken']) {
 		if (req.get('sid') == undefined) { res.status(401); res.end("Rejected.\n"); return; }
 		else {
 			const SIDExists = await Fluoresce.Exists("MasterSessionRecord", req.get('sid'));
@@ -5055,7 +5183,8 @@ Orchis.post([iOS_Version + "/dungeon_record/record_multi", Android_Version + "/d
 	const PlayData = MsgPackData['play_record'];
 	const DungeonKey = MsgPackData['dungeon_key'];
 	UserSessionRecord['Endeavour']['Tracker']['Daily']['Quests'] += 1;
-	const ResultData = DataManager.DungeonRecord(UserSessionRecord, UserIndexRecord, DungeonKey, PlayData, EventList, true, 0);
+	const ResultData = DataManager.DungeonRecord(UserSessionRecord, UserIndexRecord, DungeonKey, PlayData, EventList, true, 0, MsgPackData['astral_bet_count']);
+	fs.writeFileSync('./CO-OP.json', JSON.stringify({'req': MsgPackData, 'res': ResultData}, null, 2));
 	res.locals.ResponseBody['data'] = ResultData[0];
 	res.locals.UserSessionRecord = ResultData[2];
 	res.locals.UpdatedSessionRecord = true;
@@ -5208,7 +5337,7 @@ Orchis.post([iOS_Version + "/matching/check_penalty_user", Android_Version + "/m
 Orchis.post([iOS_Version + "/matching/get_room_list", Android_Version + "/matching/get_room_list"], errorhandler(async (req, res, next) => {
 	if (res.locals.UserSessionRecord['VanillaAssets'] == true) { res.end(EmptyRooms); return; }
 	const MsgPackData = msgpack.unpack(req.body);
-	const FromStateManager = await fetch( ServerConfig['StateURL'] + "get/gamelist", { method: "GET" });
+	const FromStateManager = await fetch( global.ServerConfig['StateURL'] + "get/gamelist", { method: "GET" });
 	if (FromStateManager.status != 200) {
 		res.end(msgpack.pack({ 'data_headers': { 'result_code': 1 }, 'data': {
 			'room_list': [],
@@ -5220,7 +5349,7 @@ Orchis.post([iOS_Version + "/matching/get_room_list", Android_Version + "/matchi
 	const RoomList = await FromStateManager.json();
 	let NewRoomList = [];
 	for (let y in RoomList) {
-		const IsMatch = await QuestMap.IsQuestTypeMatchMulti(MsgPackData['tab_type'], RoomList[y]['questId']);
+		const IsMatch = true; //QuestMap.IsQuestTypeMatchMulti(MsgPackData['tab_type'], RoomList[y]['questId']);
 		if (IsMatch) {
 			let CurrentPlayers = [];
 			for (let z in RoomList[y]['players']) {
@@ -5284,7 +5413,7 @@ Orchis.post([iOS_Version + "/matching/get_room_list_by_quest_id", Android_Versio
 	if (res.locals.UserSessionRecord['VanillaAssets'] == true) { res.end(EmptyRooms); return; }
 	const MsgPackData = msgpack.unpack(req.body); const QuestID = parseInt(MsgPackData['quest_id']);
 	if (isNaN(QuestID) || QuestID==undefined || QuestID==0){res.end(msgpack.pack({'data_headers':{'result_code':121},'data':{'result':121}}));return;}
-	const FromStateManager = await fetch( ServerConfig['StateURL'] + "get/gamelist?questId=" + QuestID, { method: "GET" });
+	const FromStateManager = await fetch( global.ServerConfig['StateURL'] + "get/gamelist?questId=" + QuestID, { method: "GET" });
 	if (FromStateManager.status != 200) {
 		res.end(msgpack.pack({ 'data_headers': { 'result_code': 1 }, 'data': {
 			'room_list': [],
@@ -5349,7 +5478,7 @@ Orchis.post([iOS_Version + "/matching/get_room_list_by_quest_id", Android_Versio
 Orchis.post([iOS_Version + "/matching/get_room_name", Android_Version + "/matching/get_room_name"], errorhandler(async (req, res, next) => {
 	if (res.locals.UserSessionRecord['VanillaAssets'] == true) { res.end(EmptyRooms); return; }
 	const MsgPackData = msgpack.unpack(req.body); const RoomID = MsgPackData['room_id'];
-	const FromStateManager = await fetch( ServerConfig['StateURL'] + "get/byid/" + RoomID, { method: "GET" });
+	const FromStateManager = await fetch( global.ServerConfig['StateURL'] + "get/byid/" + RoomID, { method: "GET" });
 	if (FromStateManager.status != 200) {
 		res.end(msgpack.pack({ 'data_headers': { 'result_code': 1 }, 'data': {
 			'room_list': {}
@@ -6114,10 +6243,13 @@ Orchis.post([iOS_Version + "/suggestion/set", Android_Version + "/suggestion/set
 					'ABR': {},
 					'Earn': {}
 				}
+				await Fluoresce.Write("MasterTeamRecord", res.locals.UserSessionRecord['ViewerID'], {});
+				res.locals.UpdatedSessionRecord = true;
 				break;
 			case "ResetAllForRealz":
 				res.locals.UserSessionRecord = DefaultSessionRecord(res.locals.UserSessionRecord['ViewerID'], {'sub': res.locals.UserSessionRecord['BaasID']});
 				res.locals.UserSessionRecord['SaveUpdatedAt'] = Math.floor(Date.now() / 1000);
+				await Fluoresce.Write("MasterTeamRecord", res.locals.UserSessionRecord['ViewerID'], {});
 				res.locals.UpdatedSessionRecord = true;
 				res.locals.UserIndexRecord = IndexTools.GenerateResetSaveData(res.locals.UserIndexRecord['user_data']['name'], res.locals.UserSessionRecord['ViewerID']);
 				break;
@@ -6126,6 +6258,13 @@ Orchis.post([iOS_Version + "/suggestion/set", Android_Version + "/suggestion/set
 					res.locals.UserSessionRecord['VanillaAssets'] = true;
 				}
 				else { res.locals.UserSessionRecord['VanillaAssets'] = false; }
+				res.locals.UpdatedSessionRecord = true;
+				break;
+			case "Stamina":
+				if (res.locals.UserSessionRecord['Stamina'] == undefined || res.locals.UserSessionRecord['Stamina'] == false) {
+					res.locals.UserSessionRecord['Stamina'] = true;
+				}
+				else { res.locals.UserSessionRecord['Stamina'] = false; }
 				res.locals.UpdatedSessionRecord = true;
 				break;
 		}
@@ -6339,7 +6478,7 @@ Orchis.get("/damagestats", errorhandler(async (req,res) => {
 	
 }));
 Orchis.get("/zena/get_team_data", errorhandler(async (req,res) => {
-	if (req.get('Authorization') != ServerConfig['ZenaToken']) { res.end("Authentication Failed.\n"); return; }
+	if (req.get('Authorization') != global.ServerConfig['ZenaToken']) { res.end("Authentication Failed.\n"); return; }
 	const ViewerID = req.query.id;
 	const TeamID = parseInt(req.query.teamnum);
 	const TeamID2 = parseInt(req.query.teamnum2);
@@ -6363,7 +6502,7 @@ Orchis.get("/zena/get_team_data", errorhandler(async (req,res) => {
 	res.end(JSON.stringify(Response));
 }));
 Orchis.post("/zena/send_guild_message", errorhandler(async (req,res) => {
-	if (req.get('Authorization') != ServerConfig['ZenaToken']) { res.end("Authentication Failed.\n"); return; }
+	if (req.get('Authorization') != global.ServerConfig['ZenaToken']) { res.end("Authentication Failed.\n"); return; }
 	const JSONData = req.body;
 	const NextMessageID = MasterGuildDatabase["10001"]['Chat'][0]['chat_message_id'] + 1;
 	let ChatMessageTemplate = {};
@@ -6448,6 +6587,29 @@ Orchis.post("/zena/send_guild_message", errorhandler(async (req,res) => {
 	}
 	MasterGuildDatabase["10001"]['Chat'].unshift(ChatMessageTemplate);
 	res.end();
+}));
+Orchis.post("/zena/requestindex", errorhandler(async (req,res) => {
+	const ViewerID = req.query.id;
+	const IsExists = await Fluoresce.Exists("MasterIndexRecord", String(ViewerID));
+	if (IsExists == false) {
+		res.end(JSON.stringify({
+			'Exists': false,
+			'Index': {}
+		}));
+		return;
+	}
+	res.locals.UserIndexRecord = await Fluoresce.DirectRead("MasterIndexRecord", String(ViewerID));
+	res.end(JSON.stringify({
+		'Exists': true,
+		'Index': {
+			'chara_list': res.locals.UserIndexRecord['chara_list'],
+			'dragon_list': res.locals.UserIndexRecord['dragon_list'],
+			'weapon_body_list': res.locals.UserIndexRecord['weapon_body_list'],
+			'ability_crest_list': res.locals.UserIndexRecord['ability_crest_list'],
+			'party_list': res.locals.UserIndexRecord['party_list']
+		}
+	}));
+	return;
 }));
 
 Orchis.post("/utility/graceful_shutdown", async (req,res) => {
@@ -6773,7 +6935,7 @@ Orchis.post("/utility/create_guild", async (req,res) => {
 	res.end("Created Guild with ID " + NewGuildID + "\n");
 });
 Orchis.post("/asset/upload_new_hash", errorhandler(async (req,res) => {
-	if (req.get('passphrase') != ServerConfig['AssetPass']) { res.end('Authentication failed.\n'); return; }
+	if (req.get('passphrase') != global.ServerConfig['AssetPass']) { res.end('Authentication failed.\n'); return; }
 	if (req.get('content-type') != 'application/json') { res.end("Define content-type.\n"); }
 	fs.writeFileSync("./Library/Event/AssetList.json", JSON.stringify(req.body, null, 2));
 	res.end("Accepted new AssetList\n");

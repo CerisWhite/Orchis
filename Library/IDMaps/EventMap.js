@@ -408,7 +408,8 @@ const EventInfoMap = {
     "event_character": 10750203,
     "has_friend": true,
     "friend_join_story": 2044501,
-    "event_trade_id": 0
+    "event_trade_id": 0,
+	'conviction_id': 205001004
   },
   "20446": {
     "id": 20446,
@@ -2390,7 +2391,7 @@ const EventFriendList = {
     "friend_id": 10350506
   },
   "10450303": {
-    "event_id": 39001,
+    "event_id": 20454,
     "friend_id": 10450303
   },
   "10450404": {
@@ -115938,7 +115939,7 @@ function EventTradeTemplate(EventTradeGroupID) {
 				"event_trade_id": TradeEntryID,
 				"trade_group_id": EventTradeGroupID,
 				"read_story_count": 0,
-				"tab_group_id": EventData['trade_list'][e]['tab_id'],
+				"tab_group_id": EventData['trade_list'][e]['tab_group_id'],
 				"priority": Priority,
 				"commence_date": 0,
 				"complete_date": 0,
@@ -115949,8 +115950,10 @@ function EventTradeTemplate(EventTradeGroupID) {
 				"destination_entity_type": EventData['trade_list'][e]['destination_entity_type'],
 				"destination_entity_id": EventData['trade_list'][e]['destination_entity_id'],
 				"destination_entity_quantity": EventData['trade_list'][e]['destination_entity_quantity'],
-				"need_entity_list": TradeEntryList
+				"need_entity_list": EventData['trade_list'][e]['need_entity_list']
 			}
+			TradeTemplate.push(Template);
+			Tracker += 1;
 		}
 	}
 	return TradeTemplate;
@@ -115962,7 +115965,9 @@ function EventTrade(UserSessionRecord, UserIndexRecord, EventID, MsgPackData) {
 	const TradeIndex = TradeInfo.findIndex(x => x.event_trade_id == TradeID);
 	const TradeTypeName = GetEventTypeName(EventID);
 	const EventInfo = EventInfoMap[EventID];
-	let UpdateData = {};
+	let UpdateData = {
+		'material_list': []
+	};
 	const PastTradeIndex = UserSessionRecord['Event'][TradeTypeName][EventID]['TradeList'].findIndex(x => x.event_trade_id == TradeID);
 	if (PastTradeIndex != -1) {
 		UserSessionRecord['Event'][TradeTypeName][EventID]['TradeList'][PastTradeIndex]['trade_count'] += TradeCount;
@@ -115973,7 +115978,7 @@ function EventTrade(UserSessionRecord, UserIndexRecord, EventID, MsgPackData) {
 			'trade_count': TradeCount
 		});
 	}
-	for (let x in TradeInfo[TradeIndex]['need_entity_list']) {
+	for (const x in TradeInfo[TradeIndex]['need_entity_list']) {
 		const CurrentTradeInfo = TradeInfo[TradeIndex]['need_entity_list'][x];
 		switch(CurrentTradeInfo['entity_type']) {
 			case 4:
@@ -115982,11 +115987,17 @@ function EventTrade(UserSessionRecord, UserIndexRecord, EventID, MsgPackData) {
 			case 8:
 				const ItemIndex = UserIndexRecord['material_list'].findIndex(x => x.material_id == CurrentTradeInfo['entity_id']);
 				UserIndexRecord['material_list'][ItemIndex]['quantity'] -= CurrentTradeInfo['entity_quantity'] * TradeCount;
-				if (UpdateData['material_list'] == undefined) { UpdateData['material_list'] = []; }
-				UpdateData['material_list'].push(UserIndexRecord['material_list'][ItemIndex]); break;
+				UpdateData['material_list'].push({'material_id': CurrentTradeInfo['entity_id'], 'quantity': UserIndexRecord['material_list'][ItemIndex]['quantity']});
+			break;
 			case 17:
 				const TicketIndex = UserIndexRecord['summon_ticket_list'].findIndex(x => x.summon_ticket_id == CurrentTradeInfo['entity_id']);
 				UserIndexRecord['summon_ticket_list'][TicketIndex]['quantity'] -= (CurrentTradeInfo['entity_quantity'] * TradeCount);
+				UpdateData['summon_ticket_list'].push({
+					'key_id': UserIndexRecord['summon_ticket_list'][TicketIndex]['key_id'],
+					'summon_ticket_id': UserIndexRecord['summon_ticket_list'][TicketIndex]['summon_ticket_id'],
+					'quantity': UserIndexRecord['summon_ticket_list'][TicketIndex]['quantity'],
+					'use_limit_time': UserIndexRecord['summon_ticket_list'][TicketIndex]['use_limit_time'] != undefined ? UserIndexRecord['summon_ticket_list'][TicketIndex]['quantity']['use_limit_time'] : 0
+				});
 				break;
 			case 22:
 				const MatIndex = EventInfo['build_event_items'].findIndex(x => x.event_item_id == CurrentTradeInfo['entity_id']);
@@ -116013,6 +116024,20 @@ function EventTrade(UserSessionRecord, UserIndexRecord, EventID, MsgPackData) {
 						break;
 					case 10201:
 						UserSessionRecord['Event'][TradeTypeName][EventID]['UserData']['user_clb_01_event_item_list'][2]['event_item_value'] -= CurrentTradeInfo['entity_quantity'] * TradeCount;
+						break;
+				}
+				break;
+			case 40:
+				switch(parseInt(String(CurrentTradeInfo['entity_id']).slice(-1))) {
+					case 1:
+						break;
+					case 2:
+						break;
+					case 3:
+						UserSessionRecord['Event'][TradeTypeName][EventID]['UserData']['exchange_item_01'] -= CurrentTradeInfo['entity_quantity'] * TradeCount;
+						break;
+					case 4:
+						UserSessionRecord['Event'][TradeTypeName][EventID]['UserData']['exchange_item_02'] -= CurrentTradeInfo['entity_quantity'] * TradeCount;
 						break;
 				}
 				break;
@@ -116078,7 +116103,31 @@ function EventTrade(UserSessionRecord, UserIndexRecord, EventID, MsgPackData) {
 					break;
 			}
 			break;
+		case 40:
+			switch(String(CurrentTradeInfo['entity_id']).slice(-1)) {
+				case 1:
+					break;
+				case 2:
+					UserSessionRecord['Event'][TradeTypeName][EventID]['UserData']['advent_item_quantity_01'] += TradeInfo[TradeIndex]['destination_entity_quantity'] * TradeCount;
+					break;
+				case 3:
+					UserSessionRecord['Event'][TradeTypeName][EventID]['UserData']['exchange_item_01'] += TradeInfo[TradeIndex]['destination_entity_quantity'] * TradeCount;
+					break;
+				case 4:
+					UserSessionRecord['Event'][TradeTypeName][EventID]['UserData']['exchange_item_02'] += TradeInfo[TradeIndex]['destination_entity_quantity'] * TradeCount;
+					break;
+				}
+				break;
 	}
+	let UserListName = "";
+	switch(TradeTypeName) {
+		case "Build": UserListName = "build"; break;
+		case "Earn": UserListName = "earn"; break;
+		case "Raid": UserListName = "raid"; break;
+		case "CLB01": UserListName = "clb_01"; break;
+	}
+	UpdateData[UserListName + '_event_user_list'] = [ UserSessionRecord['Event'][TradeTypeName][EventID]['UserData'] ];
+	
 	return [UserSessionRecord, UserIndexRecord, TradeInfo, TradeTypeName, UpdateData];
 }
 function GetEventTrade(EventID) { return EventTradeTemplate(EventInfoMap[String(EventID)]['event_trade_id']); }

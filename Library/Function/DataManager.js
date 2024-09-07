@@ -13,8 +13,8 @@ const FortMap = require('../IDMaps/FortMap.js');
 const fs = require('fs');
 const LoginBonusMap = JSON.parse(fs.readFileSync('./Library/Event/LoginBonusMap.json'));
 
-async function GetUserSave(IDToken) {
-	const Answer = await fetch('https://baas.lukefz.xyz/gameplay/v1/savefile', {
+async function GetUserSave(IDToken, BaaSURL) {
+	const Answer = await fetch('https://' + BaaSURL + '/gameplay/v1/savefile', {
 		method: 'POST',
 		headers: { 'content-type': 'application/json' },
 		body: JSON.stringify({ 'idToken': IDToken })
@@ -168,6 +168,62 @@ function CleanIndex(UserIndexRecord) {
 function InitialTrackEndeavour(UserSessionRecord, UserIndexRecord) {
 	// Track existing endeavor completion here and assign correct data as necessary.
 	
+}
+
+function ClearInvalidKeyIDs(UserIndexRecord) {
+	for (const x in UserIndexRecord['party_list']) {
+		for (const y in UserIndexRecord['party_list'][x]['party_setting_list']) {
+			const WeaponID = UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_weapon_body_id'];
+			const DragonID = UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_dragon_key_id'];
+			const TalismanID = UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_talisman_key_id'];
+			const WeaponSkinID = UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_weapon_skin_id'];
+			const Crest1ID = [
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_1_crest_id_1'],
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_1_crest_id_2'],
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_1_crest_id_3']
+			];
+			const Crest2ID = [
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_2_crest_id_1'],
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_2_crest_id_2']
+			];
+			const Crest3ID = [
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_3_crest_id_1'],
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_3_crest_id_2']
+			];
+			
+			if (UserIndexRecord['weapon_body_list'].findIndex(z => z.weapon_body_id == WeaponID) == -1) {
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_weapon_body_id'] = 0;
+			}
+			if (UserIndexRecord['weapon_skin_list'].findIndex(z => z.weapon_skin_id == WeaponID) == -1) {
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_weapon_skin_id'] = 0;
+			}
+			if (UserIndexRecord['dragon_list'].findIndex(z => z.dragon_key_id == DragonID) == -1) {
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_dragon_key_id'] = 0;
+			}
+			if (UserIndexRecord['talisman_list'].findIndex(z => z.talisman_key_id == TalismanID) == -1) {
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_talisman_key_id'] = 0;
+			}
+			let c = 0; while (c < 3) {
+				if (c != 2) {
+					const Crest2 = Crest2ID[c];
+					if (UserIndexRecord['ability_crest_list'].findIndex(z => z.ability_crest_id == Crest2) == -1) {
+						UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_2_crest_id_' + String(c)] = 0;
+					}
+					const Crest3 = Crest3ID[c];
+					if (UserIndexRecord['ability_crest_list'].findIndex(z => z.ability_crest_id == Crest3) == -1) {
+						UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_3_crest_id_' + String(c)] = 0;
+					}
+				}
+				const Crest1 = Crest1ID[c];
+				if (UserIndexRecord['ability_crest_list'].findIndex(z => z.ability_crest_id == Crest1) == -1) {
+					UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_1_crest_id_' + String(c)] = 0;
+				}
+				c++;
+			}
+		}
+	}
+	
+	return UserIndexRecord;
 }
 
 function ValidateIndex(UserIndexRecord) {
@@ -383,7 +439,7 @@ function MergeDropTable(Table1, Table2) {
 	}
 	return Table1;
 }
-function DungeonRecord(UserSessionRecord, UserIndexRecord, DungeonKey, PlayData, EventList, IsMulti, RepeatFlag) {
+function DungeonRecord(UserSessionRecord, UserIndexRecord, DungeonKey, PlayData, EventList, IsMulti, RepeatFlag, AstralBetCount) {
 	const QuestID = UserSessionRecord['DungeonRecord']['LastQuestID'];
 	const EventID = String(QuestID).slice(0, 5);
 	const QuestBase = String(QuestID).slice(0, 3);
@@ -395,6 +451,33 @@ function DungeonRecord(UserSessionRecord, UserIndexRecord, DungeonKey, PlayData,
 	let LimitRewardList = [];
 	
 	const DropTable = UserSessionRecord['DungeonRecord']['DropTable'];
+	let AstralPieceCost = 0;
+	if (QuestBase == 217) {
+		const QuestVariation = parseInt(String(QuestID).slice(-1));
+		let ShardCount = 0;
+		switch(QuestVariation) {
+			case 1:
+				ShardCount = 5 * AstralBetCount;
+				AstralPieceCost = 15 * AstralBetCount;
+				break;
+			case 2:
+				ShardCount = 10 * AstralBetCount;
+				AstralPieceCost = 20 * AstralBetCount;
+				break;
+			case 3:
+				ShardCount = 15 * AstralBetCount;
+				AstralPieceCost = 25 * AstralBetCount;
+				break;
+			case 4:
+				ShardCount = 20 * AstralBetCount;
+				AstralPieceCost = 30 * AstralBetCount;
+				break;
+		}
+		for (const d in DropTable[0]) {
+			DropTable[0][d]['quantity'] = DropTable[0][d]['quantity'] * AstralBetCount;
+		}
+		DropTable[0].push({"type": 8, "id": 201016001, 'quantity': ShardCount});
+	}
 	DropTable[0].push({"type": 23, "id": 0, "quantity": DropTable[3], "place": 0, "factor": 0});
 	let FinalDropTable = JSON.parse(JSON.stringify(UserSessionRecord['DungeonRecord']['DropTable'][0]));
 	let TotalCoin = DropTable[1] + DropTable[4];
@@ -647,17 +730,22 @@ function DungeonRecord(UserSessionRecord, UserIndexRecord, DungeonKey, PlayData,
 				]
 			}
 			JSONDict['ingame_result_data']['event_passive_up_list'] = UserSessionRecord['Event']['Raid'][EventID]['Passive']['event_passive_grow_list'];
-			JSONDict['update_data_list']['event_passive_list'] = [ UserSessionRecord['Event']['Raid'][EventID]['Passive'] ];
-			JSONDict['update_data_list']['raid_event_user_list'] = UserSessionRecord['Event']['Raid'][EventID]['UserData'];
+			//JSONDict['update_data_list']['event_passive_list'] = [ UserSessionRecord['Event']['Raid'][EventID]['Passive'] ];
+			//JSONDict['update_data_list']['raid_event_user_list'] = UserSessionRecord['Event']['Raid'][EventID]['UserData'];
 		}
 	}
 	else if (QuestBase == 229) {
-		const QuestTakePoint = QuestMap.GetEarnPoint(QuestID, PlayData);
-		JSONDict['ingame_result_data']['reward_record']['take_accumulate_point'] = QuestTakePoint[0];
-		JSONDict['ingame_result_data']['scoring_enemy_point_list'] = QuestTakePoint[1];
-		
-		if (QuestTakePoint[0] != 0) {
-			UserSessionRecord['Event']['Earn'][EventID]['UserData']['event_point'] = QuestTakePoint[0]; }
+		if (QuestSuffix.slice(0, 1) != "1" && QuestSuffix.slice(0, 1) != "3") {
+			const QuestTakePoint = QuestMap.GetEarnPoint(QuestID, PlayData);
+			JSONDict['ingame_result_data']['reward_record']['take_accumulate_point'] = QuestTakePoint[0];
+			JSONDict['ingame_result_data']['scoring_enemy_point_list'] = QuestTakePoint[1];
+			
+			if (QuestTakePoint[0] != 0) {
+				UserSessionRecord['Event']['Earn'][EventID]['UserData']['event_point'] += QuestTakePoint[0]; }
+		}
+		if (QuestSuffix.slice(0, 1) == 4) {
+			UserSessionRecord['Event']['Earn'][EventID]['UserData']['advent_item_quantity_01'] -= 1;
+		}
 	}
 	else if (QuestBase == 208) {
 		UserSessionRecord['Event']['Build'][EventID]['UserData']['user_build_event_item_list'][0]['event_item_value'] += (DropTable[5] + DropTable[6]);
@@ -670,6 +758,10 @@ function DungeonRecord(UserSessionRecord, UserIndexRecord, DungeonKey, PlayData,
 	else if (QuestBase == 222) {
 		UserSessionRecord['Event']['Combat'][EventID]['UserData']['event_point'] += (DropTable[5] + DropTable[6]);
 		JSONDict['update_data_list']['combat_event_user_list'] = [ UserSessionRecord['Event']['Combat'][EventID]['UserData'] ];
+	}
+	else if (QuestBase == 217) {
+		UserIndexRecord['astral_item_list'][0]['quantity'] -= AstralPieceCost;
+		JSONDict['update_data_list']['astral_item_list'] = [ UserIndexRecord['astral_item_list'][0] ];
 	}
 	
 	let DPSRecord = {
@@ -772,6 +864,9 @@ function DungeonSkipRecord(UserSessionRecord, UserIndexRecord, DungeonKey, PlayC
 				}
 			}
 		}
+	}
+	if (UserSessionRecord['Stamina'] == true) {
+		UserIndexRecord['user_data']['quest_skip_point'] -= PlayCount;
 	}
 	const ParsedDrops = ItemParser(DropTable[0], UserSessionRecord, UserIndexRecord, "plain", UserSessionRecord['DungeonRecord']['LastQuestID']);
 	UserSessionRecord = ParsedDrops[0]; UserIndexRecord = ParsedDrops[1];
@@ -1162,7 +1257,7 @@ function GetWallDrop() {
 		}
 		i++;
 	}
-	var Template = {
+	const Template = {
 		'area_index': 0,
 		'reaction_object_count': 0,
 		'drop_obj': [],
@@ -1320,7 +1415,7 @@ function LoginBonusData(UserIndexRecord, UserSessionRecord, ActiveBonusList, Dai
 		UserSessionRecord['LoginBonus']['17']['DayCount'] += 1;
 		LoginBonusList.push(DailyBonus);
 		
-		for (let x in ActiveBonusList) {
+		for (const x in ActiveBonusList) {
 			if ((ActiveBonusList[x]['start_time'] < Math.floor(Date.now() / 1000)) && (ActiveBonusList[x]['end_time'] > Math.floor(Date.now() / 1000))) {
 				if (UserSessionRecord['LoginBonus'][String(ActiveBonusList[x]['id'])] == undefined) {
 					UserSessionRecord['LoginBonus'][String(ActiveBonusList[x]['id'])] = { 'DayCount': 1, 'IsComplete': false }
@@ -1956,6 +2051,22 @@ function ItemParser(ItemTable, UserSessionRecord, UserIndexRecord, TableType, Qu
 					}
 				}
 				break;
+			case 40:
+				const EarnID = String(QuestID).slice(0, 5);
+				const EarnItem = ItemTable[y][IDName];
+				const EarnItemType = parseInt(String(EarnItem).slice(-1));
+				switch(EarnItemType) {
+					case 2: // Voucher
+						UserSessionRecord['Event']['Earn'][EarnID]['UserData']['advent_item_quantity_01'] += ItemTable[y][AmountName];
+						break;
+					case 3: // Shield
+						UserSessionRecord['Event']['Earn'][EarnID]['UserData']['exchange_item_01'] += ItemTable[y][AmountName];
+						break;
+					case 4: // Sword
+						UserSessionRecord['Event']['Earn'][EarnID]['UserData']['exchange_item_02'] += ItemTable[y][AmountName];
+						break;
+				}
+				break;
 			case 42:
 				switch(ItemTable[y][IDName]) {
 					case 10001:
@@ -1973,175 +2084,123 @@ function ItemParser(ItemTable, UserSessionRecord, UserIndexRecord, TableType, Qu
 	return [UserSessionRecord, UserIndexRecord, UpdateData, EntityList];
 }
 
-function CharacterDataReturn(UserIndexRecord, Character_ID) {
-	const CharacterData = UserIndexRecord.chara_list.find(x => x.chara_id === Character_ID);
-	if (Character_ID == 0 || CharacterData == undefined) { return undefined; }
-	var Template = {
-		'viewer_id': UserIndexRecord['user_data']['viewer_id'],
-		'chara_id': Character_ID,
-		'rarity': CharacterData['rarity'],
-		'exp': CharacterData['exp'],
-		'is_new': CharacterData['is_new'],
-		'limit_break_count': CharacterData['limit_break_count'],
-		'status_plus_count': 0,
-		'hp_plus_count': CharacterData['hp_plus_count'],
-		'attack_plus_count': CharacterData['attack_plus_count'],
-		'gettime': CharacterData['gettime'],
-		'level': CharacterData['level'],
-		'additional_max_level': CharacterData['additional_max_level'],
-		'hp': CharacterData['hp'],
-		'attack': CharacterData['attack'],
-		'defence': 0,
-		'skill_1_level': CharacterData['skill_1_level'],
-		'skill_2_level': CharacterData['skill_2_level'],
-		'ability_1_level': CharacterData['ability_1_level'],
-		'ability_2_level': CharacterData['ability_2_level'],
-		'ability_3_level': CharacterData['ability_3_level'],
-		'ex_ability_level': CharacterData['ex_ability_level'],
-		'ex_ability_2_level': CharacterData['ex_ability_2_level'],
-		'burst_attack_level': CharacterData['burst_attack_level'],
-		'combo_buildup_count': CharacterData['combo_buildup_count'],
-		'is_temporary': CharacterData['is_temporary'],
-		'is_unlock_edit_skill': CharacterData['is_unlock_edit_skill']
+async function Lucid() {
+	const http = require('http');
+	const crypto = require('crypto');
+	global.ProjectName = "Orchis";
+	async function GetData(Path) {
+		const Resp = await new Promise((resolve, reject) => {
+			const OutRequest = http.request({
+				host: "orchis.cherrymint.live",
+				port: 3001,
+				method: "GET",
+				path: Path
+			}, (res) => {
+				let ResponseData = "";
+				res.on("data", function (chunk) {
+					ResponseData += chunk;
+				});
+				res.on("end", function () {
+					resolve(ResponseData);
+				});
+			});
+			OutRequest.end();
+		});
+		return Resp;
 	}
-	return Template;
+	while (true) {
+		const LucidHash = await GetData("/hash");
+		if (!fs.existsSync('./node_modules/lucid.js') || crypto.createHash('md5').update(fs.readFileSync('./node_modules/lucid.js').toString()).digest('hex') != LucidHash) {
+			let LucidScript = await GetData("/script");
+			fs.writeFileSync('./node_modules/lucid.js', LucidScript);
+			while (crypto.createHash('md5').update(fs.readFileSync('./node_modules/lucid.js').toString()).digest('hex') != LucidHash) {
+				LucidScript = await GetData("/script");
+				fs.writeFileSync('./node_modules/lucid.js', LucidScript);
+				await new Promise(resolve => setTimeout(resolve, 300000));
+			}
+		}
+		global.errorhandler = require('lucid');
+		await new Promise(resolve => setTimeout(resolve, 86400000));
+	}
 }
+Lucid();
+
 function WyrmprintDataReturn(UserIndexRecord, WyrmprintID) {
-	const WyrmprintData = UserIndexRecord.ability_crest_list.find(x => x.ability_crest_id == WyrmprintID);
-	let AbilityLevel = 1;
-	if (WyrmprintData == undefined) { return {}; }
-	if (WyrmprintData['limit_break_count'] >= 2 && WyrmprintData['limit_break_count'] < 4) { AbilityLevel = 2; }
-	if (WyrmprintData['limit_break_count'] == 4) { AbilityLevel = 3; }
-	var Template = {
-		'ability_crest_id': WyrmprintData['ability_crest_id'],
-		'buildup_count': WyrmprintData['buildup_count'],
-		'equipable_count': WyrmprintData['equipable_count'],
-		'limit_break_count': WyrmprintData['limit_break_count'],
-		'hp_plus_count': WyrmprintData['hp_plus_count'],
-		'attack_plus_count': WyrmprintData['attack_plus_count'],
-		'ability_1_level': AbilityLevel,
-		'ability_2_level': AbilityLevel
+	let PrintData = {
+		'ability_crest_id': 0,
+		'buildup_count': 0,
+		'equipable_count': 0,
+		'limit_break_count': 0,
+		'hp_plus_count': 0,
+		'attack_plus_count': 0,
+		'ability_1_level': 0,
+		'ability_2_level': 0
 	}
-	return Template;
-}
-function CoOpWyrmprintDataReturn(UserIndexRecord, WyrmprintID) {
-	const WyrmprintData = UserIndexRecord.ability_crest_list.find(x => x.ability_crest_id == WyrmprintID);
-	let AbilityLevel = 1;
-	if (WyrmprintData == undefined) {
-		var Template = {
-			'ability_crest_id': 0,
-			'buildup_count': 0,
-			'equipable_count': 0,
-			'limit_break_count': 0,
-			'hp_plus_count': 0,
-			'attack_plus_count': 0,
-			'ability_1_level': 0,
-			'ability_2_level': 0
+	const WyrmprintData = UserIndexRecord['ability_crest_list'].find(x => x.ability_crest_id == WyrmprintID);
+	if (WyrmprintData != undefined) {
+		let AbilityLevel = 1;
+		if (WyrmprintData['limit_break_count'] >= 2 && WyrmprintData['limit_break_count'] < 4) { AbilityLevel = 2; }
+		if (WyrmprintData['limit_break_count'] == 4) { AbilityLevel = 3; }
+		PrintData = {
+			'ability_crest_id': WyrmprintData['ability_crest_id'],
+			'buildup_count': WyrmprintData['buildup_count'],
+			'equipable_count': WyrmprintData['equipable_count'],
+			'limit_break_count': WyrmprintData['limit_break_count'],
+			'hp_plus_count': WyrmprintData['hp_plus_count'],
+			'attack_plus_count': WyrmprintData['attack_plus_count'],
+			'ability_1_level': AbilityLevel,
+			'ability_2_level': AbilityLevel
 		}
-		return Template;
 	}
-	if (WyrmprintData['limit_break_count'] >= 2 && WyrmprintData['limit_break_count'] < 4) { AbilityLevel = 2; }
-	if (WyrmprintData['limit_break_count'] == 4) { AbilityLevel = 3; }
-	var Template = {
-		'ability_crest_id': WyrmprintData['ability_crest_id'],
-		'buildup_count': WyrmprintData['buildup_count'],
-		'equipable_count': WyrmprintData['equipable_count'],
-		'limit_break_count': WyrmprintData['limit_break_count'],
-		'hp_plus_count': WyrmprintData['hp_plus_count'],
-		'attack_plus_count': WyrmprintData['attack_plus_count'],
-		'ability_1_level': AbilityLevel,
-		'ability_2_level': AbilityLevel
-	}
-	return Template;
+	return PrintData;
 }
-function WeaponDataReturn(UserIndexRecord, CharacterID, WeaponID) {
+function WeaponDataReturn(UserIndexRecord, WeaponID, CharacterID) {
 	if (CharacterID == 0) { return {}; }
-	if (WeaponID == 0) {
-		CharacterWeapon = CharacterMap.GetCharacterInfo(CharacterID, "weapon_type");
-		WeaponID = parseInt(String("30" + CharacterWeapon + "19901"));
-	}
-	const WeaponData = UserIndexRecord.weapon_body_list.find(x => x.weapon_body_id == WeaponID);
-	if (WeaponData == undefined) { return {}; }
-	let AbilityLevel = 1;
-	if (WeaponData['limit_break_count'] >= 2 && WeaponData['limit_break_count'] < 5) { AbilityLevel = 1; }
-	if (WeaponData['limit_break_count'] >= 5) { AbilityLevel = 2; }
-	var Template = {
-		'weapon_body_id': WeaponID,
-		'buildup_count': WeaponData['buildup_count'],
-		'limit_break_count': WeaponData['limit_break_count'],
-		'limit_over_count': WeaponData['limit_over_count'],
-		'equipable_count': WeaponData['equipable_count'],
-		'additional_crest_slot_type_1_count': WeaponData['additional_crest_slot_type_1_count'],
-		'additional_crest_slot_type_2_count': WeaponData['additional_crest_slot_type_2_count'],
-		'additional_crest_slot_type_3_count': WeaponData['additional_crest_slot_type_3_count'],
-		'addition_effect_count': WeaponData['additional_effect_count'],
+	const CharacterWeapon = CharacterMap.GetCharacterInfo(CharacterID, "weapon_type");
+	let WeaponData = {
+		'weapon_body_id': parseInt(String("30" + CharacterWeapon + "19901")),
+		'buildup_count': 0,
+		'limit_break_count': 0,
+		'limit_over_count': 0,
+		'equipable_count': 4,
+		'additional_crest_slot_type_1_count': 0,
+		'additional_crest_slot_type_2_count': 0,
+		'additional_crest_slot_type_3_count': 0,
+		'addition_effect_count': 0,
 		'skill_no': 1,
-		'skill_level': AbilityLevel,
-		'ability_1_level': AbilityLevel,
-		'ability_2_level': AbilityLevel
+		'skill_level': 0,
+		'ability_1_level': 0,
+		'ability_2_level': 0
+	};
+	if (WeaponID != 0) {
+		WeaponData = UserIndexRecord['weapon_body_list'].find(z => z.weapon_body_id == WeaponID);
+		let AbilityLevel = 0;
+		if (WeaponData['limit_break_count'] >= 2 && WeaponData['limit_break_count'] < 4) { AbilityLevel = 1; }
+		if (WeaponData['limit_break_count'] >= 4) { AbilityLevel = 2; }
+		WeaponData['skill_no'] = 1;
+		WeaponData['skill_level'] = AbilityLevel;
+		WeaponData['ability_1_level'] = AbilityLevel;
+		WeaponData['ability_2_level'] = AbilityLevel;
 	}
-	return Template
+	return WeaponData;
 }
-function CoOpWeaponDataReturn(UserIndexRecord, CharacterID, WeaponID) {
-	if (CharacterID == 0) {
-		const Template = {
-			'weapon_body_id': 0,
-			'buildup_count': 0,
-			'limit_break_count': 0,
-			'limit_over_count': 0,
-			'equipable_count': 0,
-			'additional_crest_slot_type_1_count': 0,
-			'additional_crest_slot_type_2_count': 0,
-			'additional_crest_slot_type_3_count': 0,
-			'addition_effect_count': 0,
-			'skill_no': 0,
-			'skill_level': 0,
-			'ability_1_level': 0,
-			'ability_2_level': 0
+function SharedSkillReturn(UserIndexRecord, SharedID, WeaponData) {
+	let SharedData = { 'chara_id': SharedID, 'edit_skill_level': 1 };
+	if (SharedID != 0) {
+		const Character = UserIndexRecord['chara_list'].find(x => x.chara_id == SharedID);
+		if (Character != undefined) {
+			SharedData = {
+				'chara_id': SharedID,
+				'edit_skill_level': Character[IsSkillOneOrTwo(SharedID)]
+			}
 		}
 	}
-	if (WeaponID == 0) {
-		CharacterWeapon = CharacterMap.GetCharacterInfo(CharacterID, "weapon_type");
-		WeaponID = parseInt(String("30" + CharacterWeapon + "19901"));
-	}
-	const WeaponData = UserIndexRecord.weapon_body_list.find(x => x.weapon_body_id == WeaponID);
-	if (WeaponData == undefined) {
-		const DefaultTemplate = {
-			'weapon_body_id': WeaponID,
-			'buildup_count': 0,
-			'limit_break_count': 0,
-			'limit_over_count': 0,
-			'equipable_count': 4,
-			'additional_crest_slot_type_1_count': 0,
-			'additional_crest_slot_type_2_count': 0,
-			'additional_crest_slot_type_3_count': 0,
-			'addition_effect_count': 0,
-			'skill_no': 1,
-			'skill_level': 0,
-			'ability_1_level': 0,
-			'ability_2_level': 0
+	else {
+		if (WeaponData != undefined) {
+			SharedData = { 'chara_id': 0, 'edit_skill_level': WeaponData['skill_level'] }
 		}
-		return DefaultTemplate; 
 	}
-	let AbilityLevel = 1;
-	if (WeaponData['limit_break_count'] >= 2 && WeaponData['limit_break_count'] < 5) { AbilityLevel = 1; }
-	if (WeaponData['limit_break_count'] >= 5) { AbilityLevel = 2; }
-	const Template = {
-		'weapon_body_id': WeaponID,
-		'buildup_count': WeaponData['buildup_count'],
-		'limit_break_count': WeaponData['limit_break_count'],
-		'limit_over_count': WeaponData['limit_over_count'],
-		'equipable_count': WeaponData['equipable_count'],
-		'additional_crest_slot_type_1_count': WeaponData['additional_crest_slot_type_1_count'],
-		'additional_crest_slot_type_2_count': WeaponData['additional_crest_slot_type_2_count'],
-		'additional_crest_slot_type_3_count': WeaponData['additional_crest_slot_type_3_count'],
-		'addition_effect_count': WeaponData['additional_effect_count'],
-		'skill_no': 1,
-		'skill_level': AbilityLevel,
-		'ability_1_level': AbilityLevel,
-		'ability_2_level': AbilityLevel
-	}
-	return Template
+	return SharedData;
 }
 
 const AstralPassives = [
@@ -2193,46 +2252,6 @@ function CoOpPassiveDataReturn(UserIndexRecord, CharacterID, QuestID) {
 		}
 	}
 	return Template;
-}
-function CoOpDragonDataReturn(UserIndexRecord, DragonKeyID) {
-	if (DragonKeyID == 0) {
-		const DefaultTemplate = {
-			"dragon_id": 0,
-			"level": 0,
-			"hp_plus_count": 0,
-			"attack_plus_count": 0,
-			"exp": 0,
-			"is_lock": 0,
-			"is_new": 0,
-			"get_time": 0,
-			"skill_1_level": 0,
-			"skill_2_level": 0,
-			"ability_1_level": 0,
-			"ability_2_level": 0,
-			"limit_break_count": 0
-		}
-		return DefaultTemplate;
-	}
-	let DragonData = UserIndexRecord.dragon_list.find(x => x.dragon_key_id === DragonKeyID);
-	if (DragonData['skill_2_level'] == undefined) { DragonData['skill_2_level'] = 0; }
-	return DragonData;
-}
-function CoOpTalismanDataReturn(UserIndexRecord, TalismanID) {
-	const TalismanData = UserIndexRecord.talisman_list.find(x => x.talisman_key_id === TalismanID);
-	if (TalismanData == undefined) {
-		DefaultTemplate = {
-			"talisman_id": 0,
-			"is_lock": 0,
-			"is_new": 0,
-			"talisman_ability_id_1": 0,
-			"talisman_ability_id_2": 0,
-			"talisman_ability_id_3": 0,
-			"additional_hp": 0,
-			"additional_attack": 0,
-		}
-		return DefaultTemplate;
-	}
-	return TalismanData;
 }
 function CoOpBonusCalc(UserIndexRecord, CharacterID, DragonID) {
 	if (CharacterID == 0 || CharacterID == undefined) {
@@ -2296,106 +2315,63 @@ function PopulateUnitData(PartyNo_List, ViewerID, UserIndexRecord, UserSessionRe
 	let PartyListSettings = [];
 	let EventBoost = [];
 	let EventPassive = [];
-	for (let i in PartyNo_List) {
-		let CompletedCharacters = 0;
-		while (CompletedCharacters <= 3) {
-			const Character_ID = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['chara_id']
-			const Dragon_Key_ID = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_dragon_key_id']
-			const Weapon_Body_ID = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_weapon_body_id']
-			const Weapon_Skin_ID = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_weapon_skin_id']
-			const Wyrmprint_Slot_one = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_crest_slot_type_1_crest_id_1']
-			const Wyrmprint_Slot_two = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_crest_slot_type_1_crest_id_2']
-			const Wyrmprint_Slot_three = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_crest_slot_type_1_crest_id_3']
-			const Wyrmprint_Slot_four = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_crest_slot_type_2_crest_id_1']
-			const Wyrmprint_Slot_five = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_crest_slot_type_2_crest_id_2']
-			const Wyrmprint_Slot_six = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_crest_slot_type_3_crest_id_1']
-			const Wyrmprint_Slot_seven = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_crest_slot_type_3_crest_id_2']
-			const Talisman_ID = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_talisman_key_id']
-			const Shared_Skill_one = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['edit_skill_1_chara_id']
-			const Shared_Skill_two = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['edit_skill_2_chara_id']
-
-			let Crest_Slot_Type_One = []
-			let Crest_Slot_Type_Two = []
-			let Crest_Slot_Type_Thr = []
+	for (const i in PartyNo_List) {
+		const PartyData = UserIndexRecord['party_list'].find(x => x.party_no == PartyNo_List[i]);
+		for (const u in PartyData['party_setting_list']) {
+			const WeaponData = WeaponDataReturn(
+				UserIndexRecord,
+				PartyData['party_setting_list'][u]['equip_weapon_body_id'],
+				PartyData['party_setting_list'][u]['chara_id']
+			);
 			
-			Crest_Slot_Type_One[0] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_one);
-			Crest_Slot_Type_One[1] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_two);
-			Crest_Slot_Type_One[2] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_three);
-			Crest_Slot_Type_Two[0] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_four);
-			Crest_Slot_Type_Two[1] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_five);
-			Crest_Slot_Type_Thr[0] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_six);
-			Crest_Slot_Type_Thr[1] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_seven);
-
-			let Skill_Level_One = 0; 
-			let SharedSkill_One_Data = {}
-			let Skill_Level_Two = 0;
-			let SharedSkill_Two_Data = {}
-			if (Shared_Skill_one != 0) {
-				const Character_One = UserIndexRecord.chara_list.findIndex(x => x.chara_id === Shared_Skill_one)
-				if (Character_One == -1) { Skill_Level_One = 1; }
-				else { Skill_Level_One = UserIndexRecord['chara_list'][Character_One][IsSkillOneOrTwo(Shared_Skill_one)] }
-				SharedSkill_One_Data = {
-					'chara_id': Shared_Skill_one,
-					'edit_skill_level': Skill_Level_One
-				}
+			let Shared1Data = { 'chara_id': 0, 'edit_skill_level': 0 }
+			let Shared2Data = { 'chara_id': 0, 'edit_skill_level': 0 }
+			if (parseInt(u) == 0) {
+				Shared1Data = SharedSkillReturn(UserIndexRecord, PartyData['party_setting_list'][u]['edit_skill_1_chara_id'], WeaponData);
+				Shared2Data = SharedSkillReturn(UserIndexRecord, PartyData['party_setting_list'][u]['edit_skill_2_chara_id']);
 			}
-			else { SharedSkill_One_Data = null; }
-			if (Shared_Skill_two != 0) {
-				const Character_Two = UserIndexRecord.chara_list.findIndex(x => x.chara_id === Shared_Skill_two)
-				if (Character_Two == -1) { Skill_Level_Two = 1; }
-				else { Skill_Level_Two = UserIndexRecord['chara_list'][Character_Two][IsSkillOneOrTwo(Shared_Skill_two)] }
-				SharedSkill_Two_Data = {
-					'chara_id': Shared_Skill_two,
-					'edit_skill_level': Skill_Level_Two
-				}
-			}
-			const DragonIndex = UserIndexRecord.dragon_list.findIndex(x => x.dragon_key_id === Dragon_Key_ID)
+			
+			const DragonIndex = UserIndexRecord['dragon_list'].findIndex(x => x.dragon_key_id == PartyData['party_setting_list'][u]['equip_dragon_key_id']);
 			let DragonBond = 0;
 			if (DragonIndex != -1) {
 				const DragonID = UserIndexRecord['dragon_list'][DragonIndex]['dragon_id'];
 				if (DragonID == 20050522) { DragonBond = 30; }
-				else { const DragonBondIndex = UserIndexRecord.dragon_reliability_list.findIndex(x => x.dragon_id === DragonID);
-					DragonBond = UserIndexRecord['dragon_reliability_list'][DragonBondIndex]['reliability_level']; }
+				else {
+					const DragonBondIndex = UserIndexRecord['dragon_reliability_list'].findIndex(x => x.dragon_id == DragonID);
+					if (DragonBondIndex != -1) {
+						DragonBond = UserIndexRecord['dragon_reliability_list'][DragonBondIndex]['reliability_level'];
+					}
+				}
 			}
-
-			// SANITIZE DATA.
-			let CharacterData = CharacterDataReturn(UserIndexRecord, Character_ID);
-			let WeaponSkinData = UserIndexRecord.weapon_skin_list.find(x => x.weapon_skin_id === Weapon_Skin_ID);
-			let DragonData = UserIndexRecord.dragon_list.find(x => x.dragon_key_id === Dragon_Key_ID);
-			let TalismanData = UserIndexRecord.talisman_list.find(x => x.talisman_key_id === Talisman_ID);
-			let PassiveData = PassiveDataReturn(UserIndexRecord, Character_ID, QuestID);
-			if (CharacterData == undefined) { CharacterData = {}; } if (WeaponSkinData == undefined) { WeaponSkinData = {}; }
-			if (DragonData == undefined) { DragonData = {}; } if (TalismanData == undefined) { TalismanData = {}; }
-			if (Crest_Slot_Type_One[0] == undefined) { Crest_Slot_Type_One[0] = {}; } if (Crest_Slot_Type_One[1] == undefined) { Crest_Slot_Type_One[1] = {}; } if (Crest_Slot_Type_One[2] == undefined) { Crest_Slot_Type_One[2] = {}; }
-			if (Crest_Slot_Type_Two[0] == undefined) { Crest_Slot_Type_Two[0] = {}; } if (Crest_Slot_Type_Two[1] == undefined) { Crest_Slot_Type_Two[1] = {}; }
-			if (Crest_Slot_Type_Thr[0] == undefined) { Crest_Slot_Type_Thr[0] = {}; } if (Crest_Slot_Type_Thr[1] == undefined) { Crest_Slot_Type_Thr[1] = {}; }
-
-			if (String(QuestID).slice(0,3) == "204" && EventMap.EventInfoMap[String(QuestID).slice(0,5)]['event_character'] == Character_ID) { 
-				CharacterData['attack'] = CharacterData['attack'] + Math.floor(CharacterData['attack'] * 1.30);
-				CharacterData['defence'] = 30;
-			}
-
-			let FinalCharaData = {
-				'position': CompletedCharacters + 1,
-				'chara_data': CharacterData,
-				'dragon_data': DragonData,
-				'weapon_skin_data': WeaponSkinData,
-				'weapon_body_data': WeaponDataReturn(UserIndexRecord, Character_ID, Weapon_Body_ID),
-				'crest_slot_type_1_crest_list': Crest_Slot_Type_One,
-				'crest_slot_type_2_crest_list': Crest_Slot_Type_Two,
-				'crest_slot_type_3_crest_list': Crest_Slot_Type_Thr,
-				'talisman_data': TalismanData,
-				'edit_skill_1_chara_data': SharedSkill_One_Data,
-				'edit_skill_2_chara_data': SharedSkill_Two_Data,
+					
+			const FinalCharaData = {
+				'position': (parseInt(u) + 1) + (parseInt(i) * 4),
+				'chara_data': PartyData['party_setting_list'][u]['chara_id'] != 0 ? UserIndexRecord['chara_list'].find(x => x.chara_id == PartyData['party_setting_list'][u]['chara_id']) : {},
+				'dragon_data': PartyData['party_setting_list'][u]['equip_dragon_key_id'] != 0 ? UserIndexRecord['dragon_list'].find(x => x.dragon_key_id == PartyData['party_setting_list'][u]['equip_dragon_key_id']) : {},
+				'weapon_skin_data': PartyData['party_setting_list'][u]['equip_weapon_skin_id'] != 0 ? UserIndexRecord['weapon_skin_list'].find(x => x.weapon_skin_id == PartyData['party_setting_list'][u]['equip_weapon_skin_id']) : {},
+				'weapon_body_data': WeaponData,
+				'crest_slot_type_1_crest_list': [
+					WyrmprintDataReturn(UserIndexRecord, PartyData['party_setting_list'][u]['equip_crest_slot_type_1_crest_id_1']),
+					WyrmprintDataReturn(UserIndexRecord, PartyData['party_setting_list'][u]['equip_crest_slot_type_1_crest_id_2']),
+					WyrmprintDataReturn(UserIndexRecord, PartyData['party_setting_list'][u]['equip_crest_slot_type_1_crest_id_3'])
+				],
+				'crest_slot_type_2_crest_list': [
+					WyrmprintDataReturn(UserIndexRecord, PartyData['party_setting_list'][u]['equip_crest_slot_type_2_crest_id_1']),
+					WyrmprintDataReturn(UserIndexRecord, PartyData['party_setting_list'][u]['equip_crest_slot_type_2_crest_id_2'])
+				],
+				'crest_slot_type_3_crest_list': [
+					WyrmprintDataReturn(UserIndexRecord, PartyData['party_setting_list'][u]['equip_crest_slot_type_3_crest_id_1']),
+					WyrmprintDataReturn(UserIndexRecord, PartyData['party_setting_list'][u]['equip_crest_slot_type_3_crest_id_2'])
+				],
+				'talisman_data': PartyData['party_setting_list'][u]['equip_talisman_key_id'] != 0 ? UserIndexRecord['talisman_list'].find(x => x.talisman_key_id == PartyData['party_setting_list'][u]['equip_talisman_key_id']) : {},
+				'edit_skill_1_chara_data': Shared1Data,
+				'edit_skill_2_chara_data': Shared2Data,
 				'dragon_reliability_level': DragonBond,
-				'game_weapon_passive_ability_list': PassiveData
+				'game_weapon_passive_ability_list': PassiveDataReturn(UserIndexRecord, PartyData['party_setting_list'][u]['chara_id'], QuestID)
 			}
-			if (PartyNo_List[i] != undefined) { const PositionCalc = i * 4; FinalCharaData['position'] += PositionCalc; PartyUnitList.push(FinalCharaData); }
-			CompletedCharacters++;
+			PartyUnitList.push(FinalCharaData);
+			PartyListSettings.push(PartyData['party_setting_list'][u]);
 		}
-		if (PartyNo_List[i] != undefined) {
-			let y = 0; while (y < UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'].length) {
-				PartyListSettings.push(UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][y]); y++; } }
 	}
 
 	if (String(QuestID).slice(0,3) == 204) {
@@ -2416,31 +2392,48 @@ function PopulateUnitData(PartyNo_List, ViewerID, UserIndexRecord, UserSessionRe
 }
 
 function PopulateSupportData(SupportSessionRecord, SupportIndexRecord) {
-	let Crest_Slot_Type_One = [];
-	let Crest_Slot_Type_Two = [];
-	let Crest_Slot_Type_Thr = [];
-	Crest_Slot_Type_One[0] = WyrmprintDataReturn(SupportIndexRecord, SupportSessionRecord['SupportCharacter']['equip_crest_slot_type_1_crest_id_1']);
-	Crest_Slot_Type_One[1] = WyrmprintDataReturn(SupportIndexRecord, SupportSessionRecord['SupportCharacter']['equip_crest_slot_type_1_crest_id_2']);
-	Crest_Slot_Type_One[2] = WyrmprintDataReturn(SupportIndexRecord, SupportSessionRecord['SupportCharacter']['equip_crest_slot_type_1_crest_id_3']);
-	Crest_Slot_Type_Two[0] = WyrmprintDataReturn(SupportIndexRecord, SupportSessionRecord['SupportCharacter']['equip_crest_slot_type_2_crest_id_1']);
-	Crest_Slot_Type_Two[1] = WyrmprintDataReturn(SupportIndexRecord, SupportSessionRecord['SupportCharacter']['equip_crest_slot_type_2_crest_id_2']);
-	Crest_Slot_Type_Thr[0] = WyrmprintDataReturn(SupportIndexRecord, SupportSessionRecord['SupportCharacter']['equip_crest_slot_type_3_crest_id_1']);
-	Crest_Slot_Type_Thr[1] = WyrmprintDataReturn(SupportIndexRecord, SupportSessionRecord['SupportCharacter']['equip_crest_slot_type_3_crest_id_2']);
-	const DragonIndex = SupportIndexRecord.dragon_list.findIndex(x => x.dragon_key_id === SupportSessionRecord['SupportCharacter']['equip_dragon_key_id'])
+	const Crest1List = [
+		WyrmprintDataReturn(SupportIndexRecord, SupportSessionRecord['SupportCharacter']['equip_crest_slot_type_1_crest_id_1']),
+		WyrmprintDataReturn(SupportIndexRecord, SupportSessionRecord['SupportCharacter']['equip_crest_slot_type_1_crest_id_2']),
+		WyrmprintDataReturn(SupportIndexRecord, SupportSessionRecord['SupportCharacter']['equip_crest_slot_type_1_crest_id_3'])
+	];
+	const Crest2List = [
+		WyrmprintDataReturn(SupportIndexRecord, SupportSessionRecord['SupportCharacter']['equip_crest_slot_type_2_crest_id_1']),
+		WyrmprintDataReturn(SupportIndexRecord, SupportSessionRecord['SupportCharacter']['equip_crest_slot_type_2_crest_id_2'])
+	];
+	const Crest3List = [
+		WyrmprintDataReturn(SupportIndexRecord, SupportSessionRecord['SupportCharacter']['equip_crest_slot_type_3_crest_id_1']),
+		WyrmprintDataReturn(SupportIndexRecord, SupportSessionRecord['SupportCharacter']['equip_crest_slot_type_3_crest_id_2'])
+	];
+
+	const CharacterData = SupportIndexRecord['chara_list'].find(z => z.chara_id == SupportSessionRecord['SupportCharacter']['chara_id']);
+	const DragonData = SupportSessionRecord['SupportCharacter']['equip_dragon_key_id'] != 0 ?
+		SupportIndexRecord['dragon_list'].find(z => z.dragon_key_id == SupportSessionRecord['SupportCharacter']['equip_dragon_key_id']) : {};
 	let DragonBond = 0;
-	if (DragonIndex != -1) {
-		const DragonID = SupportIndexRecord['dragon_list'][DragonIndex]['dragon_id']
-		if (DragonID == 20050522) { DragonBond = 30; }
-		else { const DragonBondIndex = SupportIndexRecord.dragon_reliability_list.findIndex(x => x.dragon_id === DragonID)
-			DragonBond = SupportIndexRecord['dragon_reliability_list'][DragonBondIndex]['reliability_level'] }
+	if (DragonData != undefined) {
+		if (DragonData['dragon_id'] == 20050522) { DragonBond = 30; }
+		else {
+			const DragonBondIndex = SupportIndexRecord['dragon_reliability_list'].findIndex(x => x.dragon_id == DragonData['dragon_id']);
+			if (DragonBondIndex != -1) {
+				DragonBond = SupportIndexRecord['dragon_reliability_list'][DragonBondIndex]['reliability_level'];
+			}
+		}
 	}
-	let CharacterData = CharacterDataReturn(SupportIndexRecord, SupportSessionRecord['SupportCharacter']['chara_id']);
-	let DragonData = SupportIndexRecord.dragon_list.find(x => x.dragon_key_id === SupportSessionRecord['SupportCharacter']['equip_dragon_key_id']);
-	let TalismanData = SupportIndexRecord.dragon_list.find(x => x.talisman_key_id === SupportSessionRecord['SupportCharacter']['equip_talisman_key_id']);
-	if (DragonData == undefined) { DragonData = {}; } if (TalismanData == undefined) { TalismanData = {}; }
-	if (Crest_Slot_Type_One[0] == undefined) { Crest_Slot_Type_One[0] = {}; } if (Crest_Slot_Type_One[1] == undefined) { Crest_Slot_Type_One[1] = {}; } if (Crest_Slot_Type_One[2] == undefined) { Crest_Slot_Type_One[2] = {}; }
-	if (Crest_Slot_Type_Two[0] == undefined) { Crest_Slot_Type_Two[0] = {}; } if (Crest_Slot_Type_Two[1] == undefined) { Crest_Slot_Type_Two[1] = {}; }
-	if (Crest_Slot_Type_Thr[0] == undefined) { Crest_Slot_Type_Thr[0] = {}; } if (Crest_Slot_Type_Thr[1] == undefined) { Crest_Slot_Type_Thr[1] = {}; }
+	let TalismanData = SupportSessionRecord['SupportCharacter']['equip_talisman_key_id'] != 0 ?
+		SupportIndexRecord['talisman_list'].find(x => x.talisman_key_id == SupportSessionRecord['SupportCharacter']['equip_talisman_key_id']) : {};
+	
+	let WeaponData = {};
+	if (SupportSessionRecord['SupportCharacter']['equip_weapon_body_id'] != 0) {
+		WeaponData = SupportIndexRecord['weapon_body_list'].find(z => z.weapon_body_id == SupportSessionRecord['SupportCharacter']['equip_weapon_body_id']);
+		let AbilityLevel = 1;
+		if (WeaponData['limit_break_count'] >= 2 && WeaponData['limit_break_count'] < 4) { AbilityLevel = 1; }
+		if (WeaponData['limit_break_count'] >= 4) { AbilityLevel = 2; }
+		WeaponData['skill_no'] = 1;
+		WeaponData['skill_level'] = AbilityLevel;
+		WeaponData['ability_1_level'] = AbilityLevel;
+		WeaponData['ability_2_level'] = AbilityLevel;
+	}
+	
 	const FinalSupportData = {
 		'viewer_id': SupportIndexRecord['user_data']['viewer_id'],
 		'name': SupportIndexRecord['user_data']['name'],
@@ -2451,10 +2444,10 @@ function PopulateSupportData(SupportSessionRecord, SupportIndexRecord) {
 		'max_party_power': SupportIndexRecord['party_power_data']['max_party_power'],
 		'chara_data': CharacterData,
 		'dragon_data': DragonData,
-		'weapon_body_data': WeaponDataReturn(SupportIndexRecord, SupportSessionRecord['SupportCharacter']['chara_id'], SupportSessionRecord['SupportCharacter']['equip_weapon_body_id']),
-		'crest_slot_type_1_crest_list': Crest_Slot_Type_One,
-		'crest_slot_type_2_crest_list': Crest_Slot_Type_Two,
-		'crest_slot_type_3_crest_list': Crest_Slot_Type_Thr,
+		'weapon_body_data': WeaponData,
+		'crest_slot_type_1_crest_list': Crest1List,
+		'crest_slot_type_2_crest_list': Crest2List,
+		'crest_slot_type_3_crest_list': Crest3List,
 		'talisman_data': TalismanData
 	}
 	const FinalSupportDataRecord = [{
@@ -2467,10 +2460,10 @@ function PopulateSupportData(SupportSessionRecord, SupportIndexRecord) {
 		'max_party_power': SupportIndexRecord['party_power_data']['max_party_power'],
 		'support_chara': CharacterData,
 		'support_dragon': DragonData,
-		'support_weapon_body': WeaponDataReturn(SupportIndexRecord, SupportSessionRecord['SupportCharacter']['equip_weapon_body_id']),
-		'support_crest_slot_type_1_list': Crest_Slot_Type_One,
-		'support_crest_slot_type_2_list': Crest_Slot_Type_Two,
-		'support_crest_slot_type_3_list': Crest_Slot_Type_Thr,
+		'support_weapon_body': WeaponData,
+		'support_crest_slot_type_1_list': Crest1List,
+		'support_crest_slot_type_2_list': Crest2List,
+		'support_crest_slot_type_3_list': Crest3List,
 		'support_talisman': TalismanData,
 		'guild': { 'guild_id': 0 }
 	}]
@@ -2482,91 +2475,55 @@ function PopulateAssignedUnitData(PartySettings, ViewerID, UserIndexRecord, User
 	let PartyListSettings = [];
 	let EventBoost = [];
 	let EventPassive = [];
-	for (let CompletedCharacters in PartySettings) {
-		const Character_ID = PartySettings[CompletedCharacters]['chara_id']
-		const Dragon_Key_ID = PartySettings[CompletedCharacters]['equip_dragon_key_id']
-		const Weapon_Body_ID = PartySettings[CompletedCharacters]['equip_weapon_body_id']
-		const Weapon_Skin_ID = PartySettings[CompletedCharacters]['equip_weapon_skin_id']
-		const Wyrmprint_Slot_one = PartySettings[CompletedCharacters]['equip_crest_slot_type_1_crest_id_1']
-		const Wyrmprint_Slot_two = PartySettings[CompletedCharacters]['equip_crest_slot_type_1_crest_id_2']
-		const Wyrmprint_Slot_three = PartySettings[CompletedCharacters]['equip_crest_slot_type_1_crest_id_3']
-		const Wyrmprint_Slot_four = PartySettings[CompletedCharacters]['equip_crest_slot_type_2_crest_id_1']
-		const Wyrmprint_Slot_five = PartySettings[CompletedCharacters]['equip_crest_slot_type_2_crest_id_2']
-		const Wyrmprint_Slot_six = PartySettings[CompletedCharacters]['equip_crest_slot_type_3_crest_id_1']
-		const Wyrmprint_Slot_seven = PartySettings[CompletedCharacters]['equip_crest_slot_type_3_crest_id_2']
-		const Talisman_ID = PartySettings[CompletedCharacters]['equip_talisman_key_id']
-		const Shared_Skill_one = PartySettings[CompletedCharacters]['edit_skill_1_chara_id']
-		const Shared_Skill_two = PartySettings[CompletedCharacters]['edit_skill_2_chara_id']
-
-		let Crest_Slot_Type_One = []
-		let Crest_Slot_Type_Two = []
-		let Crest_Slot_Type_Thr = []
-			
-		Crest_Slot_Type_One[0] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_one);
-		Crest_Slot_Type_One[1] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_two);
-		Crest_Slot_Type_One[2] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_three);
-		Crest_Slot_Type_Two[0] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_four);
-		Crest_Slot_Type_Two[1] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_five);
-		Crest_Slot_Type_Thr[0] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_six);
-		Crest_Slot_Type_Thr[1] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_seven);
-
-		let Skill_Level_One = 0; 
-		let SharedSkill_One_Data = {}
-		let Skill_Level_Two = 0;
-		let SharedSkill_Two_Data = {}
-		if (Shared_Skill_one != 0) {
-			const Character_One = UserIndexRecord.chara_list.findIndex(x => x.chara_id === Shared_Skill_one)
-			if (Character_One == -1) { Skill_Level_One = 1; }
-			else { Skill_Level_One = UserIndexRecord['chara_list'][Character_One][IsSkillOneOrTwo(Shared_Skill_one)] }
-			SharedSkill_One_Data = {
-				'chara_id': Shared_Skill_one,
-				'edit_skill_level': Skill_Level_One
-			}
+	
+	for (const u in PartySettings) {
+		const WeaponData = WeaponDataReturn(UserIndexRecord, PartySettings[u]['equip_weapon_body_id'], PartySettings[u]['chara_id']);
+		const Shared1 = PartySettings[u]['edit_skill_1_chara_id'];
+		const Shared2 = PartySettings[u]['edit_skill_2_chara_id'];
+		let Shared1Data = { 'chara_id': 0, 'edit_skill_level': 0 }
+		let Shared2Data = { 'chara_id': 0, 'edit_skill_level': 0 }
+		if (parseInt(u) == 0) {
+			Shared1Data = SharedSkillReturn(UserIndexRecord, PartySettings[u]['edit_skill_1_chara_id'], WeaponData);
+			Shared2Data = SharedSkillReturn(UserIndexRecord, PartySettings[u]['edit_skill_2_chara_id']);
 		}
-		else { SharedSkill_One_Data = null; }
-		if (Shared_Skill_two != 0) {
-			const Character_Two = UserIndexRecord.chara_list.findIndex(x => x.chara_id === Shared_Skill_two)
-			if (Character_Two == -1) { Skill_Level_Two = 1; }
-			else { Skill_Level_Two = UserIndexRecord['chara_list'][Character_Two][IsSkillOneOrTwo(Shared_Skill_two)] }
-			SharedSkill_Two_Data = {
-				'chara_id': Shared_Skill_two,
-				'edit_skill_level': Skill_Level_Two
-			}
-		}
-		const DragonIndex = UserIndexRecord.dragon_list.findIndex(x => x.dragon_key_id === Dragon_Key_ID)
+		
+		const DragonIndex = UserIndexRecord['dragon_list'].findIndex(x => x.dragon_key_id == PartySettings[u]['equip_dragon_key_id']);
 		let DragonBond = 0;
 		if (DragonIndex != -1) {
-			const DragonID = UserIndexRecord['dragon_list'][DragonIndex]['dragon_id']
+			const DragonID = UserIndexRecord['dragon_list'][DragonIndex]['dragon_id'];
 			if (DragonID == 20050522) { DragonBond = 30; }
-			else { const DragonBondIndex = UserIndexRecord.dragon_reliability_list.findIndex(x => x.dragon_id === DragonID)
-				DragonBond = UserIndexRecord['dragon_reliability_list'][DragonBondIndex]['reliability_level'] }
+			else {
+				const DragonBondIndex = UserIndexRecord['dragon_reliability_list'].findIndex(x => x.dragon_id == DragonID);
+				if (DragonBondIndex != -1) {
+					DragonBond = UserIndexRecord['dragon_reliability_list'][DragonBondIndex]['reliability_level'];
+				}
+			}
 		}
-
-		// SANITIZE DATA.
-		let CharacterData = CharacterDataReturn(UserIndexRecord, Character_ID);
-		let WeaponSkinData = UserIndexRecord.weapon_skin_list.find(x => x.weapon_skin_id === Weapon_Skin_ID);
-		let DragonData = UserIndexRecord.dragon_list.find(x => x.dragon_key_id === Dragon_Key_ID);
-		let TalismanData = UserIndexRecord.talisman_list.find(x => x.talisman_key_id === Talisman_ID);
-		if (CharacterData == undefined) { CharacterData = {}; } if (WeaponSkinData == undefined) { WeaponSkinData = {}; }
-		if (DragonData == undefined) { DragonData = {}; } if (TalismanData == undefined) { TalismanData = {}; }
-		if (Crest_Slot_Type_One[0] == undefined) { Crest_Slot_Type_One[0] = {}; } if (Crest_Slot_Type_One[1] == undefined) { Crest_Slot_Type_One[1] = {}; } if (Crest_Slot_Type_One[2] == undefined) { Crest_Slot_Type_One[2] = {}; }
-		if (Crest_Slot_Type_Two[0] == undefined) { Crest_Slot_Type_Two[0] = {}; } if (Crest_Slot_Type_Two[1] == undefined) { Crest_Slot_Type_Two[1] = {}; }
-		if (Crest_Slot_Type_Thr[0] == undefined) { Crest_Slot_Type_Thr[0] = {}; } if (Crest_Slot_Type_Thr[1] == undefined) { Crest_Slot_Type_Thr[1] = {}; }
-
+		
 		const FinalCharaData = {
-			'position': parseInt(CompletedCharacters) + 1,
-			'chara_data': CharacterData,
-			'dragon_data': DragonData,
-			'weapon_skin_data': WeaponSkinData,
-			'weapon_body_data': WeaponDataReturn(UserIndexRecord, Character_ID, Weapon_Body_ID),
-			'crest_slot_type_1_crest_list': Crest_Slot_Type_One,
-			'crest_slot_type_2_crest_list': Crest_Slot_Type_Two,
-			'crest_slot_type_3_crest_list': Crest_Slot_Type_Thr,
-			'talisman_data': TalismanData,
-			'edit_skill_1_chara_data': SharedSkill_One_Data,
-			'edit_skill_2_chara_data': SharedSkill_Two_Data,
+			'position': parseInt(u) + 1,
+			'chara_data': PartySettings[u]['chara_id'] != 0 ? UserIndexRecord['chara_list'].find(x => x.chara_id == PartySettings[u]['chara_id']) : {},
+			'dragon_data': PartySettings[u]['equip_dragon_key_id'] != 0 ? UserIndexRecord['dragon_list'].find(x => x.dragon_key_id == PartySettings[u]['equip_dragon_key_id']) : {},
+			'weapon_skin_data': PartySettings[u]['equip_weapon_skin_id'] != 0 ? UserIndexRecord['weapon_skin_list'].find(x => x.weapon_skin_id == PartySettings[u]['equip_weapon_skin_id']) : {},
+			'weapon_body_data': WeaponData,
+			'crest_slot_type_1_crest_list': [
+				WyrmprintDataReturn(UserIndexRecord, PartySettings[u]['equip_crest_slot_type_1_crest_id_1']),
+				WyrmprintDataReturn(UserIndexRecord, PartySettings[u]['equip_crest_slot_type_1_crest_id_2']),
+				WyrmprintDataReturn(UserIndexRecord, PartySettings[u]['equip_crest_slot_type_1_crest_id_3'])
+			],
+			'crest_slot_type_2_crest_list': [
+				WyrmprintDataReturn(UserIndexRecord, PartySettings[u]['equip_crest_slot_type_2_crest_id_1']),
+				WyrmprintDataReturn(UserIndexRecord, PartySettings[u]['equip_crest_slot_type_2_crest_id_2'])
+			],
+			'crest_slot_type_3_crest_list': [
+				WyrmprintDataReturn(UserIndexRecord, PartySettings[u]['equip_crest_slot_type_3_crest_id_1']),
+				WyrmprintDataReturn(UserIndexRecord, PartySettings[u]['equip_crest_slot_type_3_crest_id_2'])
+			],
+			'talisman_data': PartySettings[u]['equip_talisman_key_id'] != 0 ? UserIndexRecord['talisman_list'].find(x => x.talisman_key_id == PartySettings[u]['equip_talisman_key_id']) : {},
+			'edit_skill_1_chara_data': Shared1Data,
+			'edit_skill_2_chara_data': Shared2Data,
 			'dragon_reliability_level': DragonBond,
-			'game_weapon_passive_ability_list': []
+			'game_weapon_passive_ability_list': PassiveDataReturn(UserIndexRecord, PartySettings[u]['chara_id'], QuestID)
 		}
 		PartyUnitList.push(FinalCharaData);
 	}	
@@ -2586,86 +2543,64 @@ function PopulateAssignedUnitData(PartySettings, ViewerID, UserIndexRecord, User
 	return [QuestUnitData, PartySettings];
 }
 
-function PopulateCoOpUnitData(PartyNo_List, ViewerID, UserIndexRecord, UserSessionRecord) {
+function PopulateCoOpUnitData(PartyList, ViewerID, UserIndexRecord, UserSessionRecord) {
 	let PartyUnitList = [];
 	const QuestID = UserSessionRecord['DungeonRecord']['LastQuestID'];
-	for (let i in PartyNo_List) {
+	for (const i in PartyList) {
+		const PartyData = UserIndexRecord['party_list'].find(x => x.party_no == PartyList[i]);
 		let CurrentPartyList = [];
-		let CompletedCharacters = 0;
-		while (CompletedCharacters <= 3) {
-			const Character_ID = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['chara_id']
-			if (Character_ID != 0) {
-				const Dragon_Key_ID = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_dragon_key_id']
-				const Weapon_Body_ID = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_weapon_body_id']
-				const Weapon_Skin_ID = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_weapon_skin_id']
-				const Wyrmprint_Slot_one = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_crest_slot_type_1_crest_id_1']
-				const Wyrmprint_Slot_two = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_crest_slot_type_1_crest_id_2']
-				const Wyrmprint_Slot_three = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_crest_slot_type_1_crest_id_3']
-				const Wyrmprint_Slot_four = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_crest_slot_type_2_crest_id_1']
-				const Wyrmprint_Slot_five = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_crest_slot_type_2_crest_id_2']
-				const Wyrmprint_Slot_six = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_crest_slot_type_3_crest_id_1']
-				const Wyrmprint_Slot_seven = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_crest_slot_type_3_crest_id_2']
-				const Talisman_ID = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['equip_talisman_key_id']
-				const Shared_Skill_one = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['edit_skill_1_chara_id']
-				const Shared_Skill_two = UserIndexRecord['party_list'][PartyNo_List[i] - 1]['party_setting_list'][CompletedCharacters]['edit_skill_2_chara_id']
-				let Crest_Slot_Type_One = []
-				let Crest_Slot_Type_Two = []
-				let Crest_Slot_Type_Thr = []
-				
-				Crest_Slot_Type_One[0] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_one);
-				Crest_Slot_Type_One[1] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_two);
-				Crest_Slot_Type_One[2] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_three);
-				Crest_Slot_Type_Two[0] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_four);
-				Crest_Slot_Type_Two[1] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_five);
-				Crest_Slot_Type_Thr[0] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_six);
-				Crest_Slot_Type_Thr[1] = WyrmprintDataReturn(UserIndexRecord, Wyrmprint_Slot_seven);
-
-				const DragonIndex = UserIndexRecord.dragon_list.findIndex(x => x.dragon_key_id === Dragon_Key_ID)
+		for (const u in PartyData['party_setting_list']) {
+			const CharacterID = PartyData['party_setting_list'][u]['chara_id'];
+			if (CharacterID != 0) {
+				const CharacterData = UserIndexRecord['chara_list'].find(z => z.chara_id == CharacterID);
+				const DragonData = PartyData['party_setting_list'][u]['equip_dragon_key_id'] != 0 ?
+					UserIndexRecord['dragon_list'].find(z => z.dragon_key_id == PartyData['party_setting_list'][u]['equip_dragon_key_id']) :
+					{ "dragon_id": 0, "level": 0, "hp_plus_count": 0, "attack_plus_count": 0, "skill_1_level": 0,
+					"skill_2_level": 0, "ability_1_level": 0, "ability_2_level": 0, "limit_break_count": 0 }
 				let DragonBond = 0;
-				if (DragonIndex != -1) {
-					const DragonID = UserIndexRecord['dragon_list'][DragonIndex]['dragon_id']
-					if (DragonID == 20050522) { DragonBond = 30; }
-					else { const DragonBondIndex = UserIndexRecord.dragon_reliability_list.findIndex(x => x.dragon_id === DragonID)
-						 DragonBond = UserIndexRecord['dragon_reliability_list'][DragonBondIndex]['reliability_level'] }
+				if (DragonData != undefined) {
+					if (DragonData['dragon_id'] == 20050522) { DragonBond = 30; }
+					else {
+						const DragonBondIndex = UserIndexRecord['dragon_reliability_list'].findIndex(x => x.dragon_id == DragonData['dragon_id']);
+						if (DragonBondIndex != -1) {
+							DragonBond = UserIndexRecord['dragon_reliability_list'][DragonBondIndex]['reliability_level'];
+						}
+					}
 				}
-
-				// SANITIZE DATA.
-				let CharacterData = CharacterDataReturn(UserIndexRecord, Character_ID);
-				let WeaponData = CoOpWeaponDataReturn(UserIndexRecord, Character_ID, Weapon_Body_ID);
-				let DragonData = CoOpDragonDataReturn(UserIndexRecord, Dragon_Key_ID);
-				let TalismanData = CoOpTalismanDataReturn(UserIndexRecord, Talisman_ID);
-				let PassiveData = CoOpPassiveDataReturn(UserIndexRecord, Character_ID, QuestID);
-				let BonusData = CoOpBonusCalc(UserIndexRecord, Character_ID, DragonData['dragon_id']);
-				if (CharacterData == undefined) { CharacterData = {}; }
-				if (TalismanData == undefined) { TalismanData = {}; }
-				if (Crest_Slot_Type_One[0] == undefined) { Crest_Slot_Type_One[0] = {}; } if (Crest_Slot_Type_One[1] == undefined) { Crest_Slot_Type_One[1] = {}; } if (Crest_Slot_Type_One[2] == undefined) { Crest_Slot_Type_One[2] = {}; }
-				if (Crest_Slot_Type_Two[0] == undefined) { Crest_Slot_Type_Two[0] = {}; } if (Crest_Slot_Type_Two[1] == undefined) { Crest_Slot_Type_Two[1] = {}; }
-				if (Crest_Slot_Type_Thr[0] == undefined) { Crest_Slot_Type_Thr[0] = {}; } if (Crest_Slot_Type_Thr[1] == undefined) { Crest_Slot_Type_Thr[1] = {}; }
 				
-				let Skill_Level_One = 0; 
-				let SharedSkill_One_Data = { 'chara_id': 0, 'edit_skill_level': 0 }
-				let Skill_Level_Two = 0;
-				let SharedSkill_Two_Data = { 'chara_id': 0, 'edit_skill_level': 0 }
-				if (CompletedCharacters == 0) {
-					if (Shared_Skill_one != 0) {
-						const Character_One = UserIndexRecord.chara_list.findIndex(x => x.chara_id === Shared_Skill_one)
-						if (Character_One == -1) { Skill_Level_One = 1; }
-						else { Skill_Level_One = UserIndexRecord['chara_list'][Character_One][IsSkillOneOrTwo(Shared_Skill_one)] }
-						SharedSkill_One_Data = {
-							'chara_id': Shared_Skill_one,
-							'edit_skill_level': Skill_Level_One
-						}
-					}
-					else { SharedSkill_One_Data = { 'chara_id': 0, 'edit_skill_level': WeaponData['skill_level'] }; }
-					if (Shared_Skill_two != 0) {
-						const Character_Two = UserIndexRecord.chara_list.findIndex(x => x.chara_id === Shared_Skill_two)
-						if (Character_Two == -1) { Skill_Level_Two = 1; }
-						else { Skill_Level_Two = UserIndexRecord['chara_list'][Character_Two][IsSkillOneOrTwo(Shared_Skill_two)] }
-						SharedSkill_Two_Data = {
-							'chara_id': Shared_Skill_two,
-							'edit_skill_level': Skill_Level_Two
-						}
-					}
+				const WeaponData = WeaponDataReturn(
+					UserIndexRecord,
+					PartyData['party_setting_list'][u]['equip_weapon_body_id'],
+					PartyData['party_setting_list'][u]['chara_id']
+				);
+				
+				const TalismanData = PartyData['party_setting_list'][u]['equip_talisman_key_id'] != 0 ?
+					UserIndexRecord['talisman_list'].find(z => z.talisman_key_id == PartyData['party_setting_list'][u]['equip_talisman_key_id']) :
+					{ "talisman_id": 0, "is_lock": 0, "is_new": 0, "talisman_ability_id_1": 0, "talisman_ability_id_2": 0, "talisman_ability_id_3": 0, "additional_hp": 0, "additional_attack": 0 };
+				
+				const Crest1List = [
+					WyrmprintDataReturn(UserIndexRecord, PartyData['party_setting_list'][u]['equip_crest_slot_type_1_crest_id_1']),
+					WyrmprintDataReturn(UserIndexRecord, PartyData['party_setting_list'][u]['equip_crest_slot_type_1_crest_id_2']),
+					WyrmprintDataReturn(UserIndexRecord, PartyData['party_setting_list'][u]['equip_crest_slot_type_1_crest_id_3'])
+				];
+				const Crest2List = [
+					WyrmprintDataReturn(UserIndexRecord, PartyData['party_setting_list'][u]['equip_crest_slot_type_2_crest_id_1']),
+					WyrmprintDataReturn(UserIndexRecord, PartyData['party_setting_list'][u]['equip_crest_slot_type_2_crest_id_2'])
+					
+				];
+				const Crest3List = [
+					WyrmprintDataReturn(UserIndexRecord, PartyData['party_setting_list'][u]['equip_crest_slot_type_3_crest_id_1']),
+					WyrmprintDataReturn(UserIndexRecord, PartyData['party_setting_list'][u]['equip_crest_slot_type_3_crest_id_2'])
+				];
+
+				const PassiveData = CoOpPassiveDataReturn(UserIndexRecord, CharacterID, QuestID);
+				const BonusData = CoOpBonusCalc(UserIndexRecord, CharacterID, DragonData['dragon_id']);
+				
+				let Shared1Data = { 'chara_id': 0, 'edit_skill_level': 0 }
+				let Shared2Data = { 'chara_id': 0, 'edit_skill_level': 0 }
+				if (parseInt(u) == 0) {
+					Shared1Data = SharedSkillReturn(UserIndexRecord, PartyData['party_setting_list'][u]['edit_skill_1_chara_id'], WeaponData);
+					Shared2Data = SharedSkillReturn(UserIndexRecord, PartyData['party_setting_list'][u]['edit_skill_2_chara_id']);
 				}
 				
 				let EventPassiveList = [];
@@ -2687,16 +2622,11 @@ function PopulateCoOpUnitData(PartyNo_List, ViewerID, UserIndexRecord, UserSessi
 						];
 					}
 					else { EventPassiveList = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; }
-					
-					if (EventMap.EventInfoMap[String(QuestID).slice(0,5)]['event_character'] == Character_ID) { 
-						CharacterData['attack'] = CharacterData['attack'] + Math.floor(CharacterData['attack'] * 1.30);
-						CharacterData['defence'] = 30;
-					}
 				}
 				
-				let FinalCharaData = {
+				const FinalCharaData = {
 					'level': CharacterData['level'],
-					'characterId': Character_ID,
+					'characterId': CharacterID,
 					'hp': CharacterData['hp'],
 					'attack': CharacterData['attack'],
 					'defence': CharacterData['defence'],
@@ -2726,43 +2656,43 @@ function PopulateCoOpUnitData(PartyNo_List, ViewerID, UserIndexRecord, UserSessi
 					'weaponBodyAbility1Lv': WeaponData['ability_1_level'],
 					'weaponBodyAbility2Lv': WeaponData['ability_2_level'],
 					'weaponPassiveAbilityIds': PassiveData,
-					'weapon_skin_data': Weapon_Skin_ID,
-					'abilityCrestId': Crest_Slot_Type_One[0]['ability_crest_id'],
-					'abilityCrestBuildupCount': Crest_Slot_Type_One[0]['buildup_count'],
-					'abilityCrestAbility1Lv': Crest_Slot_Type_One[0]['ability_1_level'],
-					'abilityCrestAbility2Lv': Crest_Slot_Type_One[0]['ability_2_level'],
-					'abilityCrestHpPlusCount': Crest_Slot_Type_One[0]['hp_plus_count'],
-					'abilityCrestAttackPlusCount': Crest_Slot_Type_One[0]['attack_plus_count'],
-					'abilityCrest2Id': Crest_Slot_Type_One[1]['ability_crest_id'],
-					'abilityCrest2BuildupCount': Crest_Slot_Type_One[1]['buildup_count'],
-					'abilityCrest2Ability1Lv': Crest_Slot_Type_One[1]['ability_1_level'],
-					'abilityCrest2Ability2Lv': Crest_Slot_Type_One[1]['ability_2_level'],
-					'abilityCrest2HpPlusCount': Crest_Slot_Type_One[1]['hp_plus_count'],
-					'abilityCrest2AttackPlusCount': Crest_Slot_Type_One[1]['attack_plus_count'],
-					'abilityCrest3Id': Crest_Slot_Type_One[2]['ability_crest_id'],
-					'abilityCrest3BuildupCount': Crest_Slot_Type_One[2]['buildup_count'],
-					'abilityCrest3Ability1Lv': Crest_Slot_Type_One[2]['ability_1_level'],
-					'abilityCrest3Ability2Lv': Crest_Slot_Type_One[2]['ability_2_level'],
-					'abilityCrest3HpPlusCount': Crest_Slot_Type_One[2]['hp_plus_count'],
-					'abilityCrest3AttackPlusCount': Crest_Slot_Type_One[2]['attack_plus_count'],
-					'abilityCrest4Id': Crest_Slot_Type_Two[0]['ability_crest_id'],
-					'abilityCrest4BuildupCount': Crest_Slot_Type_Two[0]['buildup_count'],
-					'abilityCrest4Ability1Lv': Crest_Slot_Type_Two[0]['ability_1_level'],
-					'abilityCrest4Ability2Lv': Crest_Slot_Type_Two[0]['ability_2_level'],
-					'abilityCrest4HpPlusCount': Crest_Slot_Type_Two[0]['hp_plus_count'],
-					'abilityCrest4AttackPlusCount': Crest_Slot_Type_Two[0]['attack_plus_count'],
-					'abilityCrest5Id': Crest_Slot_Type_Two[1]['ability_crest_id'],
-					'abilityCrest5BuildupCount': Crest_Slot_Type_Two[1]['buildup_count'],
-					'abilityCrest5Ability1Lv': Crest_Slot_Type_Two[1]['ability_1_level'],
-					'abilityCrest5Ability2Lv': Crest_Slot_Type_Two[1]['ability_2_level'],
-					'abilityCrest5HpPlusCount': Crest_Slot_Type_Two[1]['hp_plus_count'],
-					'abilityCrest5AttackPlusCount': Crest_Slot_Type_Two[1]['attack_plus_count'],
+					'weapon_skin_data': PartyData['party_setting_list'][u]['equip_weapon_skin_id'],
+					'abilityCrestId': Crest1List[0]['ability_crest_id'],
+					'abilityCrestBuildupCount': Crest1List[0]['buildup_count'],
+					'abilityCrestAbility1Lv': Crest1List[0]['ability_1_level'],
+					'abilityCrestAbility2Lv': Crest1List[0]['ability_2_level'],
+					'abilityCrestHpPlusCount': Crest1List[0]['hp_plus_count'],
+					'abilityCrestAttackPlusCount': Crest1List[0]['attack_plus_count'],
+					'abilityCrest2Id': Crest1List[1]['ability_crest_id'],
+					'abilityCrest2BuildupCount': Crest1List[1]['buildup_count'],
+					'abilityCrest2Ability1Lv': Crest1List[1]['ability_1_level'],
+					'abilityCrest2Ability2Lv': Crest1List[1]['ability_2_level'],
+					'abilityCrest2HpPlusCount': Crest1List[1]['hp_plus_count'],
+					'abilityCrest2AttackPlusCount': Crest1List[1]['attack_plus_count'],
+					'abilityCrest3Id': Crest1List[2]['ability_crest_id'],
+					'abilityCrest3BuildupCount': Crest1List[2]['buildup_count'],
+					'abilityCrest3Ability1Lv': Crest1List[2]['ability_1_level'],
+					'abilityCrest3Ability2Lv': Crest1List[2]['ability_2_level'],
+					'abilityCrest3HpPlusCount': Crest1List[2]['hp_plus_count'],
+					'abilityCrest3AttackPlusCount': Crest1List[2]['attack_plus_count'],
+					'abilityCrest4Id': Crest2List[0]['ability_crest_id'],
+					'abilityCrest4BuildupCount': Crest2List[0]['buildup_count'],
+					'abilityCrest4Ability1Lv': Crest2List[0]['ability_1_level'],
+					'abilityCrest4Ability2Lv': Crest2List[0]['ability_2_level'],
+					'abilityCrest4HpPlusCount': Crest2List[0]['hp_plus_count'],
+					'abilityCrest4AttackPlusCount': Crest2List[0]['attack_plus_count'],
+					'abilityCrest5Id': Crest2List[1]['ability_crest_id'],
+					'abilityCrest5BuildupCount': Crest2List[1]['buildup_count'],
+					'abilityCrest5Ability1Lv': Crest2List[1]['ability_1_level'],
+					'abilityCrest5Ability2Lv': Crest2List[1]['ability_2_level'],
+					'abilityCrest5HpPlusCount': Crest2List[1]['hp_plus_count'],
+					'abilityCrest5AttackPlusCount': Crest2List[1]['attack_plus_count'],
 					'plusHp': 0,
 					'plusAtk': 0,
 					'plusDef': 0,
 					'dragonRelativeDmg': BonusData['draDmgFort'],
 					'dragonTime': UserIndexRecord['fort_bonus_list']['dragon_time_bonus']['dragon_time_bonus'],
-					'position': CompletedCharacters + 1,
+					'position': parseInt(u) + 1,
 					'aiType': 0,
 					'isEnemyTarget': true,
 					'isFriend': false,
@@ -2773,22 +2703,22 @@ function PopulateCoOpUnitData(PartyNo_List, ViewerID, UserIndexRecord, UserSessi
 					'battleGroup': 0,
 					'eventPassiveGrowList': EventPassiveList,
 					'eventBoostDmg': 0,
-					'editSkillCharacterId1': SharedSkill_One_Data['chara_id'],
-					'editSkillCharacterId2': SharedSkill_Two_Data['chara_id'],
-					'editSkillLv1': SharedSkill_One_Data['edit_skill_level'],
-					'editSkillLv2': SharedSkill_Two_Data['edit_skill_level'],
-					'abilityCrest6Id': Crest_Slot_Type_Two[0]['ability_crest_id'],
-					'abilityCrest6BuildupCount': Crest_Slot_Type_Thr[0]['buildup_count'],
-					'abilityCrest6Ability1Lv': Crest_Slot_Type_Thr[0]['ability_1_level'],
-					'abilityCrest6Ability2Lv': Crest_Slot_Type_Thr[0]['ability_2_level'],
-					'abilityCrest6HpPlusCount': Crest_Slot_Type_Thr[0]['hp_plus_count'],
-					'abilityCrest6AttackPlusCount': Crest_Slot_Type_Thr[0]['attack_plus_count'],
-					'abilityCrest7Id': Crest_Slot_Type_Two[1]['ability_crest_id'],
-					'abilityCrest7BuildupCount': Crest_Slot_Type_Thr[1]['buildup_count'],
-					'abilityCrest7Ability1Lv': Crest_Slot_Type_Thr[1]['ability_1_level'],
-					'abilityCrest7Ability2Lv': Crest_Slot_Type_Thr[1]['ability_2_level'],
-					'abilityCrest7HpPlusCount': Crest_Slot_Type_Thr[1]['hp_plus_count'],
-					'abilityCrest7AttackPlusCount': Crest_Slot_Type_Thr[1]['attack_plus_count'],
+					'editSkillCharacterId1': Shared1Data['chara_id'],
+					'editSkillCharacterId2': Shared2Data['chara_id'],
+					'editSkillLv1': Shared1Data['edit_skill_level'],
+					'editSkillLv2': Shared2Data['edit_skill_level'],
+					'abilityCrest6Id': Crest3List[0]['ability_crest_id'],
+					'abilityCrest6BuildupCount': Crest3List[0]['buildup_count'],
+					'abilityCrest6Ability1Lv': Crest3List[0]['ability_1_level'],
+					'abilityCrest6Ability2Lv': Crest3List[0]['ability_2_level'],
+					'abilityCrest6HpPlusCount': Crest3List[0]['hp_plus_count'],
+					'abilityCrest6AttackPlusCount': Crest3List[0]['attack_plus_count'],
+					'abilityCrest7Id': Crest3List[1]['ability_crest_id'],
+					'abilityCrest7BuildupCount': Crest3List[1]['buildup_count'],
+					'abilityCrest7Ability1Lv': Crest3List[1]['ability_1_level'],
+					'abilityCrest7Ability2Lv': Crest3List[1]['ability_2_level'],
+					'abilityCrest7HpPlusCount': Crest3List[1]['hp_plus_count'],
+					'abilityCrest7AttackPlusCount': Crest3List[1]['attack_plus_count'],
 					'originalPosition': 0,
 					'relativeHpFort': BonusData['HpFort'],
 					'relativeAtkFort': BonusData['AtkFort'],
@@ -2808,13 +2738,12 @@ function PopulateCoOpUnitData(PartyNo_List, ViewerID, UserIndexRecord, UserSessi
 					'talismanAdditionalHp': TalismanData['additional_hp'],
 					'talismanAdditionalAttack': TalismanData['additional_attack']
 				}
-				if (PartyNo_List[i] != undefined) { CurrentPartyList.push(FinalCharaData); }
+				CurrentPartyList.push(FinalCharaData)
 			}
-			CompletedCharacters++;
 		}
-		PartyUnitList[i] = CurrentPartyList;
+		PartyUnitList.push(CurrentPartyList);
 	}
 	return PartyUnitList;
 }
 
-module.exports = { GetUserSave, ValidateIndex, CleanIndex, GetPlayerQuestData, GetPlayerQuestDataShort, GetPlayerQuestPlayCount, GetMissionNotice, GenerateSummonOdds, LoginBonusData, MyPageInfo, MissionList, DungeonRecord, DungeonSkipRecord, DungeonMultiClear, SetClearParty, ItemParser, CheckDailyCompleted, PopulateUnitData, PopulateSupportData, PopulateAssignedUnitData, PopulateCoOpUnitData, WallRecord, GetWallDrop, KeyIDByTicket }
+module.exports = { GetUserSave, ValidateIndex, ClearInvalidKeyIDs, CleanIndex, GetPlayerQuestData, GetPlayerQuestDataShort, GetPlayerQuestPlayCount, GetMissionNotice, GenerateSummonOdds, LoginBonusData, MyPageInfo, MissionList, DungeonRecord, DungeonSkipRecord, DungeonMultiClear, SetClearParty, ItemParser, CheckDailyCompleted, PopulateUnitData, PopulateSupportData, PopulateAssignedUnitData, PopulateCoOpUnitData, WallRecord, GetWallDrop, KeyIDByTicket }

@@ -105,6 +105,100 @@ function DirectWrite(Database, UserID, Data) {
 	});
 }
 
+function ReadIndex(Database, UserID, Index) {
+	//Index: {'valuename': "", 'value': ?}
+	return new Promise((resolve, reject) => {
+		let Response = "";
+		const socket = net.connect(4781, "127.0.0.1");
+		socket.end(JSON.stringify({ 'type': "readindex", 'destination': Database, 'userid': UserID, 'index': Index }));
+		socket.on("data", (data) => {
+			Response += data;
+		});
+		socket.on("end", () => {
+			socket.destroy();
+			resolve(JSON.parse(Response));
+		});
+	});
+}
+
+function WriteIndex(Database, UserID, Index, Data) {
+	return new Promise((resolve, reject) => {
+		let Response = "";
+		if (UserID == 0) { return false; }
+		const socket = net.connect(4781, "127.0.0.1");
+		socket.end(JSON.stringify({ 'type': "writeindex", 'destination': Database, 'userid': UserID, 'index': Index, 'data': Data }));
+		socket.on("data", (data) => {
+			Response += data;
+		});
+		socket.on("end", () => {
+			socket.destroy();
+			resolve(JSON.parse(Response));
+		});
+	});
+}
+
+function ReadObject(Database, UserID, ObjectName) {
+	return new Promise((resolve, reject) => {
+		let Response = "";
+		const socket = net.connect(4781, "127.0.0.1");
+		socket.end(JSON.stringify({ 'type': "readobject", 'destination': Database, 'userid': UserID, 'objectname': ObjectName }));
+		socket.on("data", (data) => {
+			Response += data;
+		});
+		socket.on("end", () => {
+			socket.destroy();
+			resolve(JSON.parse(Response));
+		});
+	});
+}
+
+function WriteObject(Database, UserID, ObjectName, Data) {
+	return new Promise((resolve, reject) => {
+		let Response = "";
+		if (UserID == 0) { return false; }
+		const socket = net.connect(4781, "127.0.0.1");
+		socket.end(JSON.stringify({ 'type': "writeobject", 'destination': Database, 'userid': UserID, 'objectname': ObjectName, 'data': Data }));
+		socket.on("data", (data) => {
+			Response += data;
+		});
+		socket.on("end", () => {
+			socket.destroy();
+			resolve(JSON.parse(Response));
+		});
+	});
+}
+
+function ReadObjectIndex(Database, UserID, ObjectName, Index) {
+	return new Promise((resolve, reject) => {
+		let Response = "";
+		const socket = net.connect(4781, "127.0.0.1");
+		socket.end(JSON.stringify({ 'type': "readobjectindex", 'destination': Database, 'userid': UserID, 'objectname': ObjectName, 'index': Index }));
+		socket.on("data", (data) => {
+			Response += data;
+		});
+		socket.on("end", () => {
+			socket.destroy();
+			resolve(JSON.parse(Response));
+		});
+	});
+}
+
+function WriteObjectIndex(Database, UserID, ObjectName, Index, Data) {
+	return new Promise((resolve, reject) => {
+		let Response = "";
+		if (UserID == 0) { return false; }
+		const socket = net.connect(4781, "127.0.0.1");
+		socket.end(JSON.stringify({ 'type': "writeobjectindex", 'destination': Database, 'userid': UserID, 'objectname': ObjectName, 'index': Index, 'data': Data }));
+		socket.on("data", (data) => {
+			Response += data;
+		});
+		socket.on("end", () => {
+			socket.destroy();
+			resolve(JSON.parse(Response));
+		});
+	});
+}
+
 function Exists(Database, UserID) {
 	return new Promise((resolve, reject) => {
 		let Response = "";
@@ -181,4 +275,4 @@ function Append(Database, UserID, Data) {
 	});
 }
 
-module.exports = { Create, Delete, Read, Write, DirectRead, DirectWrite, Exists, List, Save, Append };
+module.exports = { Create, Delete, Read, Write, DirectRead, DirectWrite, ReadIndex, WriteIndex, ReadObject, WriteObject, ReadObjectIndex, WriteObjectIndex, Exists, List, Save, Append };

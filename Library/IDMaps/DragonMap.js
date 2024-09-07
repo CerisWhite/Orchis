@@ -5246,188 +5246,152 @@ function GenerateDragonHackedSaveTemplate(LastAssignedDragonID) {
 	return [FullDragonTemplate];
 }
 
-function LimitBreakDragon(UserIndexRecord, KeyID, PreviousData, GrowList, AlbumBonus) {
+function LimitBreakDragon(UserIndexRecord, HostKeyID, GrowList, AlbumBonus) {
+	let HostDragon = UserIndexRecord['dragon_list'].find(x => x.dragon_key_id == HostKeyID);
+	let UpdateList = {
+		'dragon_list': [],
+		'material_list': [],
+		'album_dragon_list': []
+	};
 	let DeleteList = [];
-	let MaterialList = [];
-	let AlbumList = [];
-	const Rarity = GetDragonInfo(PreviousData['dragon_id'], "rarity");
-	const Element = GetDragonInfo(PreviousData['dragon_id'], "element");
-	var DragonTemplate = {
-		"dragon_key_id": KeyID,
-        "dragon_id": PreviousData['dragon_id'],
-        "level": PreviousData['level'],
-        "hp_plus_count": PreviousData['hp_plus_count'],
-        "attack_plus_count": PreviousData['attack_plus_count'],
-        "exp": PreviousData['exp'],
-        "is_lock": PreviousData['is_lock'],
-        "is_new": 0,
-        "get_time": PreviousData['get_time'],
-        "skill_1_level": PreviousData['skill_1_level'],
-        "ability_1_level": PreviousData['ability_1_level'],
-        "ability_2_level": PreviousData['ability_2_level'],
-        "limit_break_count": PreviousData['limit_break_count']
-	}
-	for (let i in GrowList) {
-		switch(GrowList[i]['limit_break_item_type']) {
+	
+	for (const x in GrowList) {
+		switch(GrowList[x]['limit_break_item_type']) {
 			case 1:
-				const DragonIndex = UserIndexRecord['dragon_list'].findIndex(x => x.dragon_key_id === GrowList[i]['target_id']);
-				UserIndexRecord['dragon_list'].splice(DragonIndex, 1);
-				DeleteList.push({ 'dragon_key_id': GrowList[i]['target_id'] });
-				break;
+				const SourceIndex = UserIndexRecord['dragon_list'].findIndex(z => z.dragon_key_id == GrowList[x]['target_id']);
+				UserIndexRecord['dragon_list'].splice(SourceIndex, 1);
+				DeleteList.push({'dragon_key_id': GrowList[x]['target_id']});
+			break;
 			case 2:
-				// const ItemIndex = UserIndexRecord['material_list'].findIndex(x => x.material_id === GrowList[i]['target_id']);
-				// UserIndexRecord['material_list'][ItemIndex]['quantity'] -= 1;
-				// MaterialList.push({ 'material_id': GrowList[i]['target_id'], 'quantity': UserIndexRecord['material_list'][ItemIndex]['quantity'] });
-				break;
-			case 3:
-				// uses essense... Is that a material?
-				break;
-			case 4:
-				// uses essense... Is that a material? specifically for 5th unbind
-				break;
+				const MatIndex = UserIndexRecord['material_list'].findIndex(z => z.material_id == GrowList[x]['target_id']);
+				UserIndexRecord['material_list'][MatIndex]['quantity'] -= 1;
+				const UpdateMaterialIndex = UpdateList['material_list'].findIndex(z => z.material_id == GrowList[x]['target_id']);
+				if (UpdateMaterialIndex == -1) {
+					UpdateList['material_list'].push({'material_id': GrowList[x]['target_id'], 'quantity': UserIndexRecord['material_list'][MatIndex]['quantity']});
+				}
+				else {
+					UpdateList['material_list'][UpdateMaterialIndex]['quantity'] -= 1;
+				}
+			break;
 		}
-		DragonTemplate['limit_break_count'] = GrowList[i]['limit_break_count'];
-		DragonTemplate['ability_1_level'] = GrowList[i]['limit_break_count'] + 1;
-		DragonTemplate['ability_2_level'] = GrowList[i]['limit_break_count'] + 1;
-		if (DragonTemplate['limit_break_count'] >= 4) { DragonTemplate['skill_1_level'] = 2; }
+		if (GrowList[x]['limit_break_count'] > HostDragon['limit_break_count']) {
+			HostDragon['limit_break_count'] = GrowList[x]['limit_break_count'];
+			HostDragon['ability_1_level'] = GrowList[x]['limit_break_count'] + 1;
+			HostDragon['ability_2_level'] = GrowList[x]['limit_break_count'] + 1;
+		}
+		if (HostDragon['limit_break_count'] >= 2) {
+			HostDragon['skill_1_level'] = 2;
+		}
 	}
-	var AlbumTemplate = {
-		"dragon_id": PreviousData['dragon_id'],
-        "max_level": DragonTemplate['level'],
-		"max_limit_break_count": DragonTemplate['limit_break_count']
-	}
+	
+	const HostDragonIndex = UserIndexRecord['dragon_list'].findIndex(x => x.dragon_key_id == HostKeyID);
+	UserIndexRecord['dragon_list'][HostDragonIndex] = HostDragon;
+	UpdateList['dragon_list'] = [ UserIndexRecord['dragon_list'][HostDragonIndex] ];
+	
+	const Element = GetDragonInfo(HostDragon['dragon_id'], "element");
 	const AlbumBonusIndex = AlbumBonus.findIndex(x => x.elemental_type == Element);
-	const AlbumIndex = UserIndexRecord['album_dragon_list'].findIndex(x => x.dragon_id == PreviousData['dragon_id']);
+	const AlbumIndex = UserIndexRecord['album_dragon_list'].findIndex(x => x.dragon_id == HostDragon['dragon_id']);
 	if (AlbumIndex == -1) {
-		AlbumList.push(AlbumTemplate);
+		const AlbumTemplate = {
+			"dragon_id": HostDragon['dragon_id'],
+			"max_level": UserIndexRecord['dragon_list'][HostDragonIndex]['level'],
+			"max_limit_break_count": UserIndexRecord['dragon_list'][HostDragonIndex]['limit_break_count']
+		}
+		UpdateList['album_dragon_list'].push(AlbumTemplate);
 		UserIndexRecord['album_dragon_list'].push(AlbumTemplate);
-		if (DragonTemplate['limit_break_count'] >= 4) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
-		if (DragonTemplate['limit_break_count'] == 5) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
+		if (UserIndexRecord['dragon_list'][HostDragonIndex]['level'] >= 100) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
+		if (UserIndexRecord['dragon_list'][HostDragonIndex]['level'] == 120) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
 	}
 	else {
-		if (UserIndexRecord['album_dragon_list'][AlbumIndex]['max_level'] < DragonTemplate['level']) {
-			UserIndexRecord['album_dragon_list'][AlbumIndex]['max_level'] = DragonTemplate['level'] }
-		if (UserIndexRecord['album_dragon_list'][AlbumIndex]['max_limit_break_count'] < DragonTemplate['limit_break_count']) {
-			if (DragonTemplate['limit_break_count'] >= 4) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
-			if (DragonTemplate['limit_break_count'] == 5) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
-			UserIndexRecord['album_dragon_list'][AlbumIndex]['max_limit_break_count'] = DragonTemplate['limit_break_count'] }
+		if (UserIndexRecord['album_dragon_list'][AlbumIndex]['max_level'] < UserIndexRecord['dragon_list'][HostDragonIndex]['level']) {
+			if (UserIndexRecord['dragon_list'][HostDragonIndex]['level'] >= 100) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
+			if (UserIndexRecord['dragon_list'][HostDragonIndex]['level'] == 120) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
+			UserIndexRecord['album_dragon_list'][AlbumIndex]['max_level'] = UserIndexRecord['dragon_list'][HostDragonIndex]['level']
+		}
 	}
-	return [DragonTemplate, DeleteList, MaterialList, UserIndexRecord, AlbumList, AlbumBonus];
+
+	return [UserIndexRecord, UpdateList, DeleteList, AlbumBonus];
 }
 
-function BuildDragon(KeyID, Buildup, PreviousData, UserIndexRecord, AlbumBonus) {
-	const Rarity = GetDragonInfo(PreviousData['dragon_id'], "rarity");
-	let MaterialList = [];
+function BuildDragon(UserIndexRecord, HostKeyID, GrowList, AlbumBonus) {
+	let HostDragon = UserIndexRecord['dragon_list'].find(x => x.dragon_key_id == HostKeyID);
+	let UpdateList = {
+		'dragon_list': [],
+		'material_list': [],
+		'album_dragon_list': []
+	};
 	let DeleteList = [];
-	let AlbumList = [];
-	var DragonTemplate = {
-		"dragon_key_id": KeyID,
-        "dragon_id": PreviousData['dragon_id'],
-        "level": PreviousData['level'],
-        "hp_plus_count": PreviousData['hp_plus_count'],
-        "attack_plus_count": PreviousData['attack_plus_count'],
-        "exp": PreviousData['exp'],
-        "is_lock": PreviousData['is_lock'],
-        "is_new": 0,
-        "get_time": PreviousData['get_time'],
-        "skill_1_level": PreviousData['skill_1_level'],
-        "ability_1_level": PreviousData['ability_1_level'],
-        "ability_2_level": PreviousData['ability_2_level'],
-        "limit_break_count": PreviousData['limit_break_count']
-	}
-	for (let i in Buildup) {
-		let NewData = [];
-		let MaterialIndex = 0;
-		switch(Buildup[i]['id']) {
-			case 102001001: //150
-				NewData = LevelMap.Dragon(Rarity, DragonTemplate['limit_break_count'], DragonTemplate['exp'] + Buildup[i]['quantity'] * 150);
-				DragonTemplate['level'] = NewData[0], DragonTemplate['exp'] = NewData[1];
-				MaterialIndex = UserIndexRecord['material_list'].findIndex(x => x.material_id == Buildup[i]['id']);
-				if (MaterialIndex != -1) {
-					UserIndexRecord['material_list'][MaterialIndex]['quantity'] -= Buildup[i]['quantity'];
-					MaterialList.push(UserIndexRecord['material_list'][MaterialIndex]);
+	
+	let TotalEXP = 0;
+	for (const x in GrowList) {
+		switch(GrowList[x]['type']) {
+			case 8:
+				const MatIndex = UserIndexRecord['material_list'].findIndex(z => z.material_id == GrowList[x]['id']);
+				UserIndexRecord['material_list'][MatIndex]['quantity'] -= GrowList[x]['quantity'];
+				UpdateList['material_list'].push(UserIndexRecord['material_list'][MatIndex]);
+				switch(GrowList[x]['id']) {
+					case 102001001: TotalEXP += (500 * GrowList[x]['quantity']); break;
+					case 102001002: TotalEXP += (1000 * GrowList[x]['quantity']); break;
+					case 102001003: TotalEXP += (3500 * GrowList[x]['quantity']); break;
+					
+					case 118001001: HostDragon['hp_plus_count'] += GrowList[x]['quantity']; break;
+					case 119001001: HostDragon['attack_plus_count'] += GrowList[x]['quantity']; break;
 				}
-				break;
-			case 102001002: //1000
-				NewData = LevelMap.Dragon(Rarity, DragonTemplate['limit_break_count'], DragonTemplate['exp'] + Buildup[i]['quantity'] * 1000);
-				DragonTemplate['level'] = NewData[0], DragonTemplate['exp'] = NewData[1];
-				MaterialIndex = UserIndexRecord['material_list'].findIndex(x => x.material_id == Buildup[i]['id']);
-				if (MaterialIndex != -1) {
-					UserIndexRecord['material_list'][MaterialIndex]['quantity'] -= Buildup[i]['quantity'];
-					MaterialList.push(UserIndexRecord['material_list'][MaterialIndex]);
-				}
-				break;
-			case 102001003: //3500
-				NewData = LevelMap.Dragon(Rarity, DragonTemplate['limit_break_count'], DragonTemplate['exp'] + Buildup[i]['quantity'] * 3500);
-				DragonTemplate['level'] = NewData[0], DragonTemplate['exp'] = NewData[1];
-				MaterialIndex = UserIndexRecord['material_list'].findIndex(x => x.material_id == Buildup[i]['id']);
-				if (MaterialIndex != -1) {
-					UserIndexRecord['material_list'][MaterialIndex]['quantity'] -= Buildup[i]['quantity'];
-					MaterialList.push(UserIndexRecord['material_list'][MaterialIndex]);
-				}
-				break;
-			case 118001001: //hp
-				DragonTemplate['hp_plus_count'] += Buildup[i]['quantity'];
-				MaterialIndex = UserIndexRecord['material_list'].findIndex(x => x.material_id == Buildup[i]['id']);
-				if (MaterialIndex != -1) {
-					UserIndexRecord['material_list'][MaterialIndex]['quantity'] -= Buildup[i]['quantity'];
-					MaterialList.push(UserIndexRecord['material_list'][MaterialIndex]);
-				}
-				break;
-			case 119001001: //atk
-				DragonTemplate['attack_plus_count'] += Buildup[i]['quantity'];
-				MaterialIndex = UserIndexRecord['material_list'].findIndex(x => x.material_id == Buildup[i]['id']);
-				if (MaterialIndex != -1) {
-					UserIndexRecord['material_list'][MaterialIndex]['quantity'] -= Buildup[i]['quantity'];
-					MaterialList.push(UserIndexRecord['material_list'][MaterialIndex]);
-				}
-				break;
-			default:
-				const DragonIndex = UserIndexRecord['dragon_list'].findIndex(x => x.dragon_key_id === Buildup[i]['id']);
-				const FuseRarity = GetDragonInfo(UserIndexRecord['dragon_list'][DragonIndex]['dragon_id'], 'rarity');
-				switch(FuseRarity) {
+			break;
+			case 3:
+				const SourceIndex = UserIndexRecord['dragon_list'].findIndex(z => z.dragon_key_id == GrowList[x]['id']);
+				const SourceRarity = DragonInfoMap[String(UserIndexRecord['dragon_list'][SourceIndex]['dragon_id'])]['rarity'];
+				const SourceLevel = LevelMap.Dragon(SourceRarity, UserIndexRecord['dragon_list'][SourceIndex]['limit_break_count'], UserIndexRecord['dragon_list'][SourceIndex]['exp'])[0];
+				switch(SourceRarity) {
 					case 3:
-						NewData = LevelMap.Dragon(Rarity, DragonTemplate['limit_break_count'], DragonTemplate['exp'] + Buildup[i]['quantity'] * 500);
-						DragonTemplate['level'] = NewData[0], DragonTemplate['exp'] = NewData[1];
-						break;
+						TotalEXP += 500 + (SourceLevel['level'] * 10);
+					break;
 					case 4:
-						NewData = LevelMap.Dragon(Rarity, DragonTemplate['limit_break_count'], DragonTemplate['exp'] + Buildup[i]['quantity'] * 1000);
-						DragonTemplate['level'] = NewData[0], DragonTemplate['exp'] = NewData[1];
-						break;
+						TotalEXP += 1000 + (SourceLevel['level'] * 20);
+					break;
 					case 5:
-						NewData = LevelMap.Dragon(Rarity, DragonTemplate['limit_break_count'], DragonTemplate['exp'] + Buildup[i]['quantity'] * 1500);
-						DragonTemplate['level'] = NewData[0], DragonTemplate['exp'] = NewData[1];
-						break;
+						TotalEXP += 1500 + (SourceLevel['level'] * 30);
+					break;
+					
 				}
-				UserIndexRecord['dragon_list'].splice(DragonIndex, 1);
-				DeleteList.push({ 'dragon_key_id': Buildup[i]['id'] });
-				break;
+				UserIndexRecord['dragon_list'].splice(SourceIndex, 1);
+				DeleteList.push({'dragon_key_id': GrowList[x]['id']});
+			break;
 		}
 	}
-	var AlbumTemplate = {
-		"dragon_id": PreviousData['dragon_id'],
-        "max_level": DragonTemplate['level'],
-		"max_limit_break_count": DragonTemplate['limit_break_count']
+	
+	const HostDragonIndex = UserIndexRecord['dragon_list'].findIndex(x => x.dragon_key_id == HostKeyID);
+	UserIndexRecord['dragon_list'][HostDragonIndex] = HostDragon;
+	if (TotalEXP != 0) {
+		let FinalEXP = HostDragon['exp'] + TotalEXP;
+		const FinalLevel = LevelMap.Dragon(DragonInfoMap[String(HostDragon['dragon_id'])]['rarity'], HostDragon['limit_break_count'], FinalEXP);
+		UserIndexRecord['dragon_list'][HostDragonIndex]['exp'] = FinalLevel[1];
+		UserIndexRecord['dragon_list'][HostDragonIndex]['level'] = FinalLevel[0];
 	}
-	const Element = GetDragonInfo(PreviousData['dragon_id'], "element");
+	UpdateList['dragon_list'] = [ UserIndexRecord['dragon_list'][HostDragonIndex] ];
+	
+	const Element = GetDragonInfo(HostDragon['dragon_id'], "element");
 	const AlbumBonusIndex = AlbumBonus.findIndex(x => x.elemental_type == Element);
-	const AlbumIndex = UserIndexRecord['album_dragon_list'].findIndex(x => x.dragon_id == PreviousData['dragon_id']);
+	const AlbumIndex = UserIndexRecord['album_dragon_list'].findIndex(x => x.dragon_id == HostDragon['dragon_id']);
 	if (AlbumIndex == -1) {
-		AlbumList.push(AlbumTemplate);
+		const AlbumTemplate = {
+			"dragon_id": HostDragon['dragon_id'],
+			"max_level": UserIndexRecord['dragon_list'][HostDragonIndex]['level'],
+			"max_limit_break_count": UserIndexRecord['dragon_list'][HostDragonIndex]['limit_break_count']
+		}
+		UpdateList['album_dragon_list'].push(AlbumTemplate);
 		UserIndexRecord['album_dragon_list'].push(AlbumTemplate);
-		if (DragonTemplate['level'] >= 100) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
-		if (DragonTemplate['level'] == 120) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
+		if (UserIndexRecord['dragon_list'][HostDragonIndex]['level'] >= 100) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
+		if (UserIndexRecord['dragon_list'][HostDragonIndex]['level'] == 120) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
 	}
 	else {
-		if (UserIndexRecord['album_dragon_list'][AlbumIndex]['max_level'] < DragonTemplate['level']) {
-			if (DragonTemplate['level'] >= 100) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
-			if (DragonTemplate['level'] == 120) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
-			UserIndexRecord['album_dragon_list'][AlbumIndex]['max_level'] = DragonTemplate['level']
+		if (UserIndexRecord['album_dragon_list'][AlbumIndex]['max_level'] < UserIndexRecord['dragon_list'][HostDragonIndex]['level']) {
+			if (UserIndexRecord['dragon_list'][HostDragonIndex]['level'] >= 100) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
+			if (UserIndexRecord['dragon_list'][HostDragonIndex]['level'] == 120) { AlbumBonus[AlbumBonusIndex]['hp'] += 0.1; AlbumBonus[AlbumBonusIndex]['attack'] += 0.1; }
+			UserIndexRecord['album_dragon_list'][AlbumIndex]['max_level'] = UserIndexRecord['dragon_list'][HostDragonIndex]['level']
 		}
 	}
-	const NewIndex = UserIndexRecord['dragon_list'].findIndex(x => x.dragon_key_id == KeyID);
-	UserIndexRecord['dragon_list'][NewIndex] = DragonTemplate;
-	return [DragonTemplate, DeleteList, UserIndexRecord, MaterialList, AlbumList, AlbumBonus];
+	return [UserIndexRecord, UpdateList, DeleteList, AlbumBonus];
 }
 
 function DragonRewards(DragonElement, DragonRarity, EssenceID) {
@@ -5575,22 +5539,6 @@ function DrawDragon() {
 	return DragonData;
 }
 function DrawDragonCorrect(SummonID, BoostRateList, IsTenfold, IsPlatinum) {
-	const Blacklist = [ 20040101, 20050102, 20040301, 20050302, 20040201, 20050202,
-					    20040401, 20050402, 20040501, 20050502, 20050511, 20040504,
-					    20040505, 20050103, 20050105, 20050111, 20050115, 20050206,
-						20050215, 20050303, 20050307, 20050310, 20050417, 20050504,
-						20050505, 20050507, 20050512, 20050515, 20050517, 
-					    29900001, 29900002, 29900003, 29900004, 29900005, 29900006,
-					    29900007, 29900008, 29900009, 29900010, 29900011, 29900012,
-					    29900013, 29900014, 29900015, 29900016, 29900017, 29900018,
-					    29900019, 29900020, 29900021, 29900022, 29900023, 29900024,
-					    29900025, 29900026, 29900027,								
-						29800001, 29800002, 29800003,
-						21000001, 21000002, 21000003, 21000004, 21000005, 21000006,
-						29950116, 29950121, 29950317, 29950320, 29950405, 29950415,
-						29950416, 29950518, 29950522, 29950523, 29950524, 29950525,
-						20050513,
-						29990001, 29990002 ]
 	let RandomNumber = 0;
 	let AssignedDragonID = 0;
 	let RerollCount = 5;

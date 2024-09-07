@@ -71,6 +71,82 @@
 			"start": 1702528605,
 			"end": 1702879199,
 			"limit_shop_goods_type": 1
+		},
+		
+		
+		
+		{
+			"detail_id": 217080529,
+			"group_id": 217080101,
+			"drop_multiplier": 0,
+			"interval": 1,
+			"start": 1725602400,
+			"end": 1726293599,
+			"limit_shop_goods_type": 1
+		},
+		{
+			"detail_id": 217080530,
+			"group_id": 217080102,
+			"drop_multiplier": 0,
+			"interval": 1,
+			"start": 1725602400,
+			"end": 1726293599,
+			"limit_shop_goods_type": 1
+		},
+		{
+			"detail_id": 217080531,
+			"group_id": 217080103,
+			"drop_multiplier": 0,
+			"interval": 1,
+			"start": 1725602400,
+			"end": 1726293599,
+			"limit_shop_goods_type": 1
+		},
+		{
+			"detail_id": 217080532,
+			"group_id": 217080104,
+			"drop_multiplier": 0,
+			"interval": 1,
+			"start": 1725602400,
+			"end": 1726293599,
+			"limit_shop_goods_type": 1
+		},
+		
+		{
+			"detail_id": 217061125,
+			"group_id": 217060101,
+			"drop_multiplier": 0,
+			"interval": 1,
+			"start": 1726552800,
+			"end": 1726898399,
+			"limit_shop_goods_type": 1
+		},
+		{
+			"detail_id": 217061126,
+			"group_id": 217060102,
+			"drop_multiplier": 0,
+			"interval": 1,
+			"start": 1726552800,
+			"end": 1726898399,
+			"limit_shop_goods_type": 1
+		},
+		{
+			"detail_id": 217061127,
+			"group_id": 217060103,
+			"drop_multiplier": 0,
+			"interval": 1,
+			"start": 1726552800,
+			"end": 1726898399,
+			"limit_shop_goods_type": 1
+		},
+		{
+			"detail_id": 217061128,
+			"group_id": 217060104,
+			"drop_multiplier": 0,
+			"interval": 1,
+			"start": 1726552800,
+			"end": 1726898399,
+			"limit_shop_goods_type": 1
 		}
 	],
 	"collect": [],

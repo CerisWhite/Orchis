@@ -4,10 +4,10 @@ var fs = require('fs');
 var LevelMap = require('./LevelMap.js');
 var EventMap = require('./EventMap.js');
 
-const MC = JSON.parse(fs.readFileSync('Library/IDMaps/ManaCircle/MC.json'));
-const MPE = JSON.parse(fs.readFileSync('Library/IDMaps/ManaCircle/ManaPieceElement.json'));
-const MPM = JSON.parse(fs.readFileSync('Library/IDMaps/ManaCircle/ManaPieceMaterial.json'));
-const MM = JSON.parse(fs.readFileSync('Library/IDMaps/ManaCircle/ManaMaterial.json'));
+const MC = JSON.parse(fs.readFileSync('Library/IDMaps/Master/MC.json'));
+const MPE = JSON.parse(fs.readFileSync('Library/IDMaps/Master/ManaPieceElement.json'));
+const MPM = JSON.parse(fs.readFileSync('Library/IDMaps/Master/ManaPieceMaterial.json'));
+const MM = JSON.parse(fs.readFileSync('Library/IDMaps/Master/ManaMaterial.json'));
 const DefaultMPE = {
 	"_Id":0,
 	"_ElementId":0,
@@ -16681,119 +16681,41 @@ function GetCharacterInfo(CharacterID, Attribute) {
 	return CharacterInfoMap[String(CharacterID)][Attribute];
 }
 
-function GenerateCharacterSaveTemplate() {
-	let FullCharacterTemplate = []
-	let i = 0; 
-	while (i < Object.keys(CharacterInfoMap).length) {
-		const CharacterID = Object.keys(CharacterInfoMap)[i];
-		var CharacterTemplate = {
-				"chara_id": CharacterInfoMap[CharacterID]['chara_id'],
-				"rarity": CharacterInfoMap[CharacterID]['rarity'],
-				"exp": 0,
-				"level": 1,
-				"additional_max_level": 0,
-				"hp_plus_count": 0,
-				"attack_plus_count": 0,
-				"limit_break_count": 0,
-				"is_new": 1,
-				"gettime": Math.floor(Date.now() / 1000),
-				"skill_1_level": 1,
-				"skill_2_level": 0,
-				"ability_1_level": 0,
-				"ability_2_level": 0,
-				"ability_3_level": 0,
-				"burst_attack_level": 0,
-				"combo_buildup_count": 0,
-				"hp": CharacterInfoMap[CharacterID]['base_health'],
-				"attack": CharacterInfoMap[CharacterID]['base_attack'],
-				"ex_ability_level": 1,
-				"ex_ability_2_level": 1,
-				"is_temporary": 0,
-				"is_unlock_edit_skill": 0,
-				"mana_circle_piece_id_list": [
-				],
-				"list_view_flag": 1
-		}
-		FullCharacterTemplate[i] = CharacterTemplate;
-		i++;
-	}
-	return FullCharacterTemplate;
-}
-function GenerateCharacterSaveTemplateCorrect() {
-	let FullCharacterTemplate = []
-	let i = 0; 
-	while (i < Object.keys(CharacterInfoMap).length) {
-		const CharacterID = Object.keys(CharacterInfoMap)[i];
-		if (parseInt(CharacterID) <= 19900000) {
-			var CharacterTemplate = {
-					"chara_id": CharacterInfoMap[CharacterID]['chara_id'],
-					"rarity": CharacterInfoMap[CharacterID]['rarity'],
-					"exp": 0,
-					"level": 1,
-					"additional_max_level": 0,
-					"hp_plus_count": 0,
-					"attack_plus_count": 0,
-					"limit_break_count": 0,
-					"is_new": 1,
-					"gettime": Math.floor(Date.now() / 1000),
-					"skill_1_level": 1,
-					"skill_2_level": 0,
-					"ability_1_level": 1,
-					"ability_2_level": 0,
-					"ability_3_level": 0,
-					"burst_attack_level": 0,
-					"combo_buildup_count": 0,
-					"hp": CharacterInfoMap[CharacterID]['base_health'],
-					"attack": CharacterInfoMap[CharacterID]['base_attack'],
-					"ex_ability_level": 1,
-					"ex_ability_2_level": 1,
-					"is_temporary": 0,
-					"is_unlock_edit_skill": 0,
-					"mana_circle_piece_id_list": [
-					],
-					"list_view_flag": 1
-			}
-			FullCharacterTemplate.push(CharacterTemplate);
-		}
-		i++;
-	}
-	return FullCharacterTemplate;
-}
 function GenerateCharacterMaxSaveTemplate() {
 	let FullCharacterTemplate = []
-	let i = 0; 
-	while (i < Object.keys(CharacterInfoMap).length) {
-		const CharacterID = Object.keys(CharacterInfoMap)[i];
-		var CharacterTemplate = {
-				"chara_id": CharacterInfoMap[CharacterID]['chara_id'],
-				"rarity": 5,
-				"exp": 1191950,
-				"level": 80,
-				"additional_max_level": 0,
-				"hp_plus_count": 100,
-				"attack_plus_count": 100,
-				"limit_break_count": 4,
-				"is_new": 1,
-				"gettime": Math.floor(Date.now() / 1000),
-				"skill_1_level": 3,
-				"skill_2_level": 2,
-				"ability_1_level": 2,
-				"ability_2_level": 2,
-				"ability_3_level": 2,
-				"burst_attack_level": 2,
-				"combo_buildup_count": 0,
-				"hp": CharacterInfoMap[CharacterID]['max_health'] + 280,
-				"attack": CharacterInfoMap[CharacterID]['max_attack'] + 260,
-				"ex_ability_level": 5,
-				"ex_ability_2_level": 5,
-				"is_temporary": 0,
-				"is_unlock_edit_skill": 1,
-				"mana_circle_piece_id_list": [ 1,  2,  3,  4,  5,  6,  7,  8,  9,  10, 
-											   11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-											   21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-					  						   31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-					  						   41, 42, 43, 44, 45, 46, 47, 48, 49, 50 ],
-				"list_view_flag": 1
+	const CharacterList = Object.keys(CharacterInfoMap);
+	for (const i in CharacterList) {
+		const CharacterID = CharacterList[i];
+		let CharacterTemplate = {
+			"chara_id": CharacterInfoMap[CharacterID]['chara_id'],
+			"rarity": 5,
+			"exp": 1191950,
+			"level": 80,
+			"additional_max_level": 0,
+			"hp_plus_count": 100,
+			"attack_plus_count": 100,
+			"limit_break_count": 4,
+			"is_new": 1,
+			"gettime": Math.floor(Date.now() / 1000),
+			"skill_1_level": 3,
+			"skill_2_level": 2,
+			"ability_1_level": 2,
+			"ability_2_level": 2,
+			"ability_3_level": 2,
+			"burst_attack_level": 2,
+			"combo_buildup_count": 0,
+			"hp": CharacterInfoMap[CharacterID]['max_health'] + 280,
+			"attack": CharacterInfoMap[CharacterID]['max_attack'] + 260,
+			"ex_ability_level": 5,
+			"ex_ability_2_level": 5,
+			"is_temporary": 0,
+			"is_unlock_edit_skill": 1,
+			"mana_circle_piece_id_list": [ 1,  2,  3,  4,  5,  6,  7,  8,  9,  10, 
+										   11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+										   21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+				  						   31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
+				  						   41, 42, 43, 44, 45, 46, 47, 48, 49, 50 ],
+			"list_view_flag": 1
 		}
 		if (CharacterInfoMap[CharacterID]['has_spiral'] == true) {
 			CharacterTemplate['exp'] = 8866950;
@@ -16826,88 +16748,18 @@ function GenerateCharacterMaxSaveTemplate() {
 			CharacterTemplate['skill_1_level'] = 1;
 			CharacterTemplate['skill_2_level'] = 1; }
 		FullCharacterTemplate.push(CharacterTemplate);
-		i++;
-	}
-	return FullCharacterTemplate;
-}
-function GenerateCharacterHackedSaveTemplate() {
-	let FullCharacterTemplate = []
-	let i = 0; 
-	while (i < Object.keys(CharacterInfoMap).length) {
-		const CharacterID = Object.keys(CharacterInfoMap)[i];
-		var CharacterTemplate = {
-				"chara_id": CharacterInfoMap[CharacterID]['chara_id'],
-				"rarity": 5,
-				"exp": 1191950,
-				"level": 80,
-				"additional_max_level": 0,
-				"hp_plus_count": 900,
-				"attack_plus_count": 900,
-				"limit_break_count": 4,
-				"is_new": 1,
-				"gettime": Math.floor(Date.now() / 1000),
-				"skill_1_level": 3,
-				"skill_2_level": 2,
-				"ability_1_level": 2,
-				"ability_2_level": 2,
-				"ability_3_level": 2,
-				"burst_attack_level": 2,
-				"combo_buildup_count": 0,
-				"hp": 9999,
-				"attack": 9999,
-				"ex_ability_level": 5,
-				"ex_ability_2_level": 5,
-				"is_temporary": 0,
-				"is_unlock_edit_skill": 1,
-				"mana_circle_piece_id_list": [ 1,  2,  3,  4,  5,  6,  7,  8,  9,  10, 
-											   11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-											   21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-					  						   31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-					  						   41, 42, 43, 44, 45, 46, 47, 48, 49, 50 ],
-				"list_view_flag": 1
-		}
-		if (CharacterInfoMap[CharacterID]['has_spiral'] == true) {
-			CharacterTemplate['exp'] = 8866950;
-			CharacterTemplate['level'] = 100;
-			CharacterTemplate['additional_max_level'] = 20;
-			CharacterTemplate['limit_break_count'] = 5;
-			CharacterTemplate['skill_1_level'] = 4;
-			CharacterTemplate['skill_2_level'] = 3;
-			CharacterTemplate['ability_1_level'] = 3;
-			CharacterTemplate['ability_2_level'] = 3;
-			CharacterTemplate['ability_3_level'] = 3;
-			CharacterTemplate['combo_buildup_count'] = 1;
-			CharacterTemplate['mana_circle_piece_id_list'] = [ 1,  2,  3,  4,  5,  6,  7,  8,  9,  10, 
-												   			   11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-												   			   21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-						  						   			   31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-					  							   			   41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
-															   51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
-															   61, 62, 63, 64, 65, 66, 67, 68, 69, 70 ]
-			if (CharacterInfoMap[CharacterID]['rarity'] == 4 && CharacterID != "10140101" ) { CharacterTemplate['ability_3_level'] = 2; }
-			if (CharacterInfoMap[CharacterID]['rarity'] == 3) { CharacterTemplate['ability_3_level'] = 2; }
-		}
-		else {
-			if (CharacterInfoMap[CharacterID]['rarity'] == 4 && CharacterID != "10140101" ) { CharacterTemplate['ability_3_level'] = 1; }
-			if (CharacterInfoMap[CharacterID]['rarity'] == 3) { CharacterTemplate['ability_3_level'] = 1; }
-		}
-		if (CharacterID == "10750102" || CharacterID == "19900001" || CharacterID == "19900002" || CharacterID == "19900005") {
-			CharacterTemplate['skill_1_level'] = 1;
-			CharacterTemplate['skill_2_level'] = 1; }
-		FullCharacterTemplate.push(CharacterTemplate);
-		i++;
 	}
 	return FullCharacterTemplate;
 }
 function GenerateCharacterStoryTemplate() {
 	let FullCharacterTemplate = []
-	let i = 0; 
-	while (i < Object.keys(CharacterInfoMap).length) {
-		const CharacterID = Object.keys(CharacterInfoMap)[i];
+	const CharacterList = Object.keys(CharacterInfoMap);
+	for (const i in CharacterList) {
+		const CharacterID = CharacterList[i];
 		if (CharacterInfoMap[CharacterID]['story_id'] != "N/A") {
 			let y = 0; while (y < 5) {
 				const CharacterStoryID = CharacterInfoMap[CharacterID]['story_id'] + y;
-				var CharacterTemplate = {
+				const CharacterTemplate = {
 					'unit_story_id': CharacterStoryID,
 					'is_read': 1
 				}
@@ -16915,23 +16767,21 @@ function GenerateCharacterStoryTemplate() {
 				y++;
 			}
 		}
-		i++;
 	}
 	return FullCharacterTemplate;
 }
 function GenerateEntitySaveTemplateCorrect(NewEntityList) {
 	let FullCharacterTemplate = []
-	let i = 0;
-	while (i < Object.keys(CharacterInfoMap).length) {
-		const CharacterID = Object.keys(CharacterInfoMap)[i];
+	const CharacterList = Object.keys(CharacterInfoMap);
+	for (const i in CharacterList) {
+		const CharacterID = CharacterList[i];
 		if (parseInt(CharacterID) >= 19900000) {
-			var Template = {
+			const Template = {
 				'entity_type': 1,
 				'entity_id': parseInt(CharacterID)
 			}
 			NewEntityList.push(Template);
 		}
-		i++;
 	}
 	return FullCharacterTemplate;
 }
@@ -17003,7 +16853,7 @@ const HPATKBoost = [51, 53, 54, 57, 58,
 					61, 62, 64, 66, 68, 69 ];
 
 function LevelUp(CharacterID, MaterialList, PreviousData, UnitStoryList) {
-	var CharacterTemplate = {
+	let CharacterTemplate = {
 		"chara_id": CharacterID,
 		"rarity": PreviousData['rarity'],
 		"exp": PreviousData['exp'],
@@ -17062,7 +16912,7 @@ function LevelUp(CharacterID, MaterialList, PreviousData, UnitStoryList) {
 	return [CharacterTemplate, AlbumBonus];
 }
 function RaiseManaCircle(CharacterID, MCList, LimitBreakCount, PreviousData, UnitStoryList, IsConviction) {
-	var CharacterTemplate = {
+	let CharacterTemplate = {
 		"chara_id": CharacterID,
 		"rarity": PreviousData['rarity'],
 		"exp": PreviousData['exp'],
@@ -17262,7 +17112,7 @@ function RaiseLimit(CharacterID, LimitBreakStep) {
 	return CostTable;
 }
 function RaiseOmnicite(CharacterID, PreviousData) {
-	var CharacterTemplate = {
+	let CharacterTemplate = {
 		"chara_id": CharacterInfoMap[String(CharacterID)]['chara_id'],
 		"rarity": 5,
 		"exp": 1191950,
@@ -17326,36 +17176,6 @@ function RaiseOmnicite(CharacterID, PreviousData) {
 	if (CharacterID == "10750102" || CharacterID == "19900001" || CharacterID == "19900002" || CharacterID == "19900005") {
 			CharacterTemplate['skill_1_level'] = 1;
 			CharacterTemplate['skill_2_level'] = 1; }
-	return CharacterTemplate;
-}
-function UnlockSharedSkill(CharacterID, PreviousData) {
-	var CharacterTemplate = {
-		"chara_id": CharacterID,
-		"rarity": PreviousData['rarity'],
-		"exp": PreviousData['exp'],
-		"level": PreviousData['level'],
-		"additional_max_level": PreviousData['additional_max_level'],
-		"hp_plus_count": PreviousData['hp_plus_count'],
-		"attack_plus_count": PreviousData['attack_plus_count'],
-		"limit_break_count": PreviousData['limit_break_count'],
-		"is_new": 0,
-		"gettime": PreviousData['gettime'],
-		"skill_1_level": PreviousData['skill_1_level'],
-		"skill_2_level": PreviousData['skill_2_level'],
-		"ability_1_level": PreviousData['ability_1_level'],
-		"ability_2_level": PreviousData['ability_2_level'],
-		"ability_3_level": PreviousData['ability_3_level'],
-		"burst_attack_level": PreviousData['burst_attack_level'],
-		"combo_buildup_count": PreviousData['combo_buildup_count'],
-		"hp": PreviousData['hp'],
-		"attack": PreviousData['attack'],
-		"ex_ability_level": PreviousData['ex_ability_level'],
-		"ex_ability_2_level": PreviousData['ex_ability_2_level'],
-		"is_temporary": 0,
-		"is_unlock_edit_skill": 1,
-		"mana_circle_piece_id_list": PreviousData['mana_circle_piece_id_list'],
-		"list_view_flag": 1
-	}
 	return CharacterTemplate;
 }
 
