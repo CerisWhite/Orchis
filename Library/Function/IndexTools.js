@@ -883,6 +883,208 @@ function GenerateDefaultSaveData(UserName, ViewerID) {
 	return DefaultSaveData;
 }
 
+function CleanIndex(UserIndexRecord) {
+	UserIndexRecord['special_shop_purchase'] = [];
+	UserIndexRecord['user_treasure_trade_list'] = [];
+	UserIndexRecord['treasure_trade_all_list'] = [];
+	if (UserIndexRecord['user_data']['name'].length > 12) { UserIndexRecord['user_data']['name'].substring(0, 12); }
+	if (UserIndexRecord['user_data']['crystal'] > 3000000000) {
+		UserIndexRecord['user_data']['crystal'] = 3000000000;
+	}
+	if (UserIndexRecord['user_data']['coin'] > 3000000000) {
+		UserIndexRecord['user_data']['coin'] = 3000000000;
+	}
+	if (UserIndexRecord['user_data']['mana_point'] > 3000000000) {
+		UserIndexRecord['user_data']['mana_point'] = 3000000000;
+	}
+	if (UserIndexRecord['user_data']['dew_point'] > 3000000000) {
+		UserIndexRecord['user_data']['dew_point'] = 3000000000;
+	}
+	UserIndexRecord['user_data']['max_dragon_quantity'] = 1000;
+	UserIndexRecord['present_notice'] = {};
+	UserIndexRecord['present_notice']['present_count'] = 0;
+	UserIndexRecord['present_notice']['present_limit_count'] = 0;
+	if (UserIndexRecord['material_list'] != undefined) { 
+		const OmniIndex = UserIndexRecord['material_list'].findIndex(x => x.material_id === 125001001); 
+		if (OmniIndex == -1) { UserIndexRecord['material_list'].push({'material_id': 125001001, 'quantity': 1}); }
+		else if (UserIndexRecord['material_list'][OmniIndex]['quantity'] == 0) { UserIndexRecord['material_list'][OmniIndex]['quantity'] = 1; }
+	}
+	for (let i in UserIndexRecord['chara_list']) {
+		UserIndexRecord['chara_list'][i]['is_temporary'] = 0;
+		UserIndexRecord['chara_list'][i]['list_view_flag'] = 0;
+	}
+	if (UserIndexRecord['build_list'].length < 2) {
+		UserIndexRecord['build_list'] = [
+			{
+				"build_id": 1,
+				"fort_plant_detail_id": 10010111,
+				"position_x": 16,
+				"position_z": 17,
+				"build_status": 0,
+				"build_start_date": 0,
+				"build_end_date": 0,
+				"level": 11,
+				"plant_id": 100101,
+				"is_new": 0,
+				"remain_time": 0,
+				"last_income_date": 1642893300,
+				"last_income_time": 19314814
+			},
+			{
+				"build_id": 2,
+				"fort_plant_detail_id": 10140109,
+				"position_x": 21,
+				"position_z": 3,
+				"build_status": 0,
+				"build_start_date": 0,
+				"build_end_date": 0,
+				"level": 9,
+				"plant_id": 101401,
+				"is_new": 0,
+				"remain_time": 0,
+				"last_income_date": -1
+			}
+		]
+	}
+	UserIndexRecord['quest_entry_condition_list'] = [
+		{ "quest_entry_condition_id": 1 },
+		{ "quest_entry_condition_id": 2 },
+		{ "quest_entry_condition_id": 3 },
+		{ "quest_entry_condition_id": 8 },
+		{ "quest_entry_condition_id": 9 },
+		{ "quest_entry_condition_id": 10 },
+		{ "quest_entry_condition_id": 11 }
+	]
+	UserIndexRecord['mission_notice'] = {};
+	let NextBuildID = 599998;
+	for (let build in UserIndexRecord['build_list']) {
+		NextBuildID += 1;
+		UserIndexRecord['build_list'][build]['build_id'] = NextBuildID;
+		if (String(UserIndexRecord['build_list'][build]['plant_id']).slice(0, 5) == "10070" || String(UserIndexRecord['build_list'][build]['plant_id']).slice(0, 5) == "10090") {
+			UserIndexRecord['build_list'][build]['build_status'] = 0;
+			UserIndexRecord['build_list'][build]['build_start_date'] = 0;
+			UserIndexRecord['build_list'][build]['build_end_date'] = 0;
+		}
+	}
+	
+	const IgnoreIDs = [ 20427, 20428, 20443, 20444, 20462,
+						20816, 20817, 20818, 20820, 20822,
+						20826, 20829, 20931, 20839, 20841,
+						20842, 20843, 20844, 20845, 20846,
+						21404, 21405, 22219, 22220, 22223,
+						22224, 22226, 22227 ]
+	let u = UserIndexRecord['quest_list'].length - 1;
+	while (u > 0) {
+		const QuestID = String(UserIndexRecord['quest_list'][u]['quest_id']);
+		const BaseID = parseInt(QuestID.slice(0, 3));
+		const EvID = parseInt(QuestID.slice(0, 5));
+		if (!IgnoreIDs.includes(EvID)) {
+			if (BaseID == 204 || BaseID == 208 || BaseID == 213 || BaseID == 214 || BaseID == 218 ||
+				BaseID == 220 || BaseID == 222 || BaseID == 229 || BaseID == 310) {
+				
+				UserIndexRecord['quest_list'].splice(u, 1);
+			}
+		}
+		u--;
+	}
+	let y = UserIndexRecord['quest_story_list'].length - 1;
+	while (y > 1) {
+		const StoryID = String(UserIndexRecord['quest_story_list'][y]['quest_story_id']);
+		const BaseID = parseInt(StoryID.slice(0, 3));
+		const EvID = parseInt(StoryID.slice(0, 5));
+		if (!IgnoreIDs.includes(EvID)) {
+			if (BaseID == 204 || BaseID == 208 || BaseID == 213 || BaseID == 214 || BaseID == 218 ||
+				BaseID == 220 || BaseID == 222 || BaseID == 229 || BaseID == 310) {
+				UserIndexRecord['quest_story_list'].splice(y, 1);
+			}
+		}
+		y--;
+	}
+	UserIndexRecord['quest_event_list'] = [];
+	if (UserIndexRecord['gather_item_list'] == undefined) { UserIndexRecord['gather_item_list'] = []; }
+	if (UserIndexRecord['astral_item_list'] == undefined) { UserIndexRecord['astral_item_list'] = []; }
+	if (UserIndexRecord['quest_wall_list'] == undefined || UserIndexRecord['quest_wall_list'][0] == undefined) {
+		UserIndexRecord['quest_wall_list'] = [
+			{ "quest_group_id": 21601, "wall_id": 216010001, "wall_level": 0, "is_start_next_level": 1 },
+			{ "quest_group_id": 21601, "wall_id": 216010002, "wall_level": 0, "is_start_next_level": 1 },
+			{ "quest_group_id": 21601, "wall_id": 216010003, "wall_level": 0, "is_start_next_level": 1 },
+			{ "quest_group_id": 21601, "wall_id": 216010004, "wall_level": 0, "is_start_next_level": 1 },
+			{ "quest_group_id": 21601, "wall_id": 216010005, "wall_level": 0, "is_start_next_level": 1 }
+		];
+	}
+	if (UserIndexRecord['material_list'] == undefined) { UserIndexRecord['material_list'] = []; }
+	for (const d in UserIndexRecord['dragon_list']) {
+		const BondIndex = UserIndexRecord['dragon_reliability_list'].findIndex(v => v.dragon_id == UserIndexRecord['dragon_list'][d]['dragon_id']);
+		if (BondIndex == -1) {
+			UserIndexRecord['dragon_reliability_list'].push({
+				"dragon_id": UserIndexRecord['dragon_list'][d]['dragon_id'],
+				"get_time": UserIndexRecord['dragon_list'][d]['get_time'],
+				"reliability_level": 1,
+				"reliability_total_exp": 0,
+				"last_contact_time": 0
+			});
+		}
+	}
+	UserIndexRecord['multi_server'] = { 'host': "", 'app_id': "" }
+	return UserIndexRecord;
+}
+
+function ClearInvalidKeyIDs(UserIndexRecord) {
+	for (const x in UserIndexRecord['party_list']) {
+		for (const y in UserIndexRecord['party_list'][x]['party_setting_list']) {
+			const WeaponID = UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_weapon_body_id'];
+			const DragonID = UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_dragon_key_id'];
+			const TalismanID = UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_talisman_key_id'];
+			const WeaponSkinID = UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_weapon_skin_id'];
+			const Crest1ID = [
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_1_crest_id_1'],
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_1_crest_id_2'],
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_1_crest_id_3']
+			];
+			const Crest2ID = [
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_2_crest_id_1'],
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_2_crest_id_2']
+			];
+			const Crest3ID = [
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_3_crest_id_1'],
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_3_crest_id_2']
+			];
+			
+			if (UserIndexRecord['weapon_body_list'].findIndex(z => z.weapon_body_id == WeaponID) == -1) {
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_weapon_body_id'] = 0;
+			}
+			if (UserIndexRecord['weapon_skin_list'].findIndex(z => z.weapon_skin_id == WeaponID) == -1) {
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_weapon_skin_id'] = 0;
+			}
+			if (UserIndexRecord['dragon_list'].findIndex(z => z.dragon_key_id == DragonID) == -1) {
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_dragon_key_id'] = 0;
+			}
+			if (UserIndexRecord['talisman_list'].findIndex(z => z.talisman_key_id == TalismanID) == -1) {
+				UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_talisman_key_id'] = 0;
+			}
+			let c = 0; while (c < 3) {
+				if (c != 2) {
+					const Crest2 = Crest2ID[c];
+					if (UserIndexRecord['ability_crest_list'].findIndex(z => z.ability_crest_id == Crest2) == -1) {
+						UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_2_crest_id_' + String(c)] = 0;
+					}
+					const Crest3 = Crest3ID[c];
+					if (UserIndexRecord['ability_crest_list'].findIndex(z => z.ability_crest_id == Crest3) == -1) {
+						UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_3_crest_id_' + String(c)] = 0;
+					}
+				}
+				const Crest1 = Crest1ID[c];
+				if (UserIndexRecord['ability_crest_list'].findIndex(z => z.ability_crest_id == Crest1) == -1) {
+					UserIndexRecord['party_list'][x]['party_setting_list'][y]['equip_crest_slot_type_1_crest_id_' + String(c)] = 0;
+				}
+				c++;
+			}
+		}
+	}
+	
+	return UserIndexRecord;
+}
+
 const NewMaterialList = [
             {
                 "material_id": 101001001,
@@ -5087,4 +5289,4 @@ const RedoableSummonData = {
     }
 }
 
-module.exports = { GenerateResetSaveData, GenerateDefaultSaveData, NewMaterialList, TutorialFlagsList, CampaignQuestList, CampaignStoryList, VoidPassives, DefaultWyrmprints, RedoableSummonData }
+module.exports = { GenerateResetSaveData, GenerateDefaultSaveData, CleanIndex, ClearInvalidKeyIDs, NewMaterialList, TutorialFlagsList, CampaignQuestList, CampaignStoryList, VoidPassives, DefaultWyrmprints, RedoableSummonData }

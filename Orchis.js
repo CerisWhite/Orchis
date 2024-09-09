@@ -350,6 +350,37 @@ async function Overcharge(Data) {
 	});
 	return Overcharged;
 }
+async function RequestBaaSIndex(Token) {
+	const IndexData = await new Promise((resolve, reject) => {
+		const OutRequest = https.request({
+			host: global.ServerConfig['BaaS'],
+			port: 443,
+			method: 'POST',
+			path: "/gameplay/v1/savefile",
+			headers: {
+				'Content-Type': "application/json"
+			}
+		}, (res) => {
+			let ResponseData = "";
+			res.on('data', function (chunk) {
+				ResponseData += chunk;
+			});
+			res.on('end', function () {
+				try {
+					const Decoded = JSON.parse(ResponseData);
+					resolve(Decoded);
+				} catch (e) {
+					return {};
+				}
+			});
+			res.on('error', function () { return {}; });
+		});
+		OutRequest.write(JSON.stringify({'idToken': Token}));
+		OutRequest.end();
+	});
+	return IndexData['data'];
+}
+ 
 async function ReadSessionRecord(SessionID) {
 	const SessionData = await Fluoresce.Read("MasterSessionRecord", SessionID);
 	return SessionData;
@@ -407,7 +438,7 @@ async function RecordManager (req, res, next) {
 		return;
 	}
 	else if (IsMaintenance == 1 && !req.url.endsWith("/dungeon_record/record")) { res.end(msgpack.pack(MaintenanceJSON)); return; }
-	
+
 	if (req.get('sid') != undefined) {
 		res.locals.UserSessionRecord = await ReadSessionRecord(req.get('sid'));
 		if (req.get('res-ver') != undefined && !URLContains(req.url, IgnoredEndpoints) && res.locals.UserSessionRecord['VanillaAssets'] != true) {
@@ -1028,7 +1059,7 @@ Orchis.post([iOS_Version + "/maintenance/get_text", Android_Version + "/maintena
 	res.locals.ResponseBody['data'] = { 'maintenance_text': String(MaintXML) }
 	next();
 });
-Orchis.post([iOS_Version + "/transition/transition_by_n_account", Android_Version + "/transition/transition_by_n_account"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/transition/transition_by_n_account", Android_Version + "/transition/transition_by_n_account"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const IDToken = MsgPackData['id_token']; let TokenData = jwt_decode(IDToken);
 	let UserIDRecord = {};
@@ -1048,7 +1079,7 @@ Orchis.post([iOS_Version + "/transition/transition_by_n_account", Android_Versio
 	res.locals.ResponseBody['data'] = { 'transition_result_data': { 'abolished_viewer_id': 0, 'linked_viewer_id': UserIDRecord['ViewerID'] } }
 	next();					
 }));
-Orchis.post([iOS_Version + "/tool/signup", Android_Version + "/tool/signup"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/tool/signup", Android_Version + "/tool/signup"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const IDToken = MsgPackData['id_token']; let TokenData = jwt_decode(IDToken);
 	const NewAccountData = await CreateAccountShell(TokenData);
@@ -1061,7 +1092,7 @@ Orchis.post([iOS_Version + "/tool/signup", Android_Version + "/tool/signup"], er
 	res.locals.ResponseBody['data'] = { 'viewer_id': UserIDRecord['ViewerID'] }
 	next();
 }));
-Orchis.post([iOS_Version + "/tool/auth", Android_Version + "/tool/auth"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/tool/auth", Android_Version + "/tool/auth"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const IDToken = MsgPackData['id_token']; let TokenData = jwt_decode(IDToken);
 	let UserIDRecord = {};
@@ -1097,11 +1128,9 @@ Orchis.post([iOS_Version + "/tool/auth", Android_Version + "/tool/auth"], errorh
 	}
 	if (TokenData['sav:a'] == true && TokenData['sav:ts'] > UserSessionRecord['SaveUpdatedAt']) {
 		try {
-			const UserIndex = await DataManager.GetUserSave(IDToken, global.ServerConfig['BaaS']);
-			let UserIndexRecord = {}
-			UserIndexRecord = UserIndex['data'];
-			UserIndexRecord = DataManager.CleanIndex(UserIndexRecord);
-			UserIndexRecord = DataManager.ClearInvalidKeyIDs(UserIndexRecord);
+			let UserIndexRecord = await RequestBaaSIndex(IDToken);
+			UserIndexRecord = IndexTools.CleanIndex(UserIndexRecord);
+			UserIndexRecord = IndexTools.ClearInvalidKeyIDs(UserIndexRecord);
 			UserIndexRecord['user_data']['viewer_id'] = UserIDRecord['ViewerID'];
 			UserIndexRecord['user_data']['last_login_time'] = UserSessionRecord['LastLogin'];
 			UserIndexRecord['user_data']['create_time'] = UserSessionRecord['CreatedAt'];
@@ -1164,7 +1193,7 @@ Orchis.post([iOS_Version + "/deploy/get_deploy_version", Android_Version + "/dep
 	res.locals.ResponseBody['data'] = { 'deploy_hash': GlobalDeployHashContext }
 	next();
 });
-Orchis.post([iOS_Version + "/version/get_resource_version", Android_Version + "/version/get_resource_version"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/version/get_resource_version", Android_Version + "/version/get_resource_version"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const OSType = MsgPackData['platform'];
 	// Analytics
 		const AnalyticsTemplate = {
@@ -1215,12 +1244,12 @@ Orchis.post([iOS_Version + "/login/verify_jws", Android_Version + "/login/verify
 	res.locals.ResponseBody['data'] = { 'result_code': 1 }
 	next();
 });
-Orchis.post([iOS_Version + "/load/index", Android_Version + "/load/index"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/load/index", Android_Version + "/load/index"], global.errorhandler(async (req, res, next) => {
 	if (JSON.stringify(res.locals.UserIndexRecord) == "{}") {
 		res.locals.UserIndexRecord = IndexTools.GenerateDefaultSaveData("Euden", res.locals.UserSessionRecord['ViewerID']);
 		res.locals.UserIndexRecord['party_list'] = ErasePartyList();
 		res.locals.UserIndexRecord['fort_bonus_list'] = FortMap.GenerateBonuses(res.locals.UserIndexRecord);
-		res.locals.UpdatedIndexRecord = true;
+		await WriteIndexRecord(res.locals.UserSessionRecord['ViewerID'], res.locals.UserIndexRecord);
 	}
 	
 	if (res.locals.UserSessionRecord == undefined || res.locals.UserIndexRecord == undefined || res.locals.UserIndexRecord['user_data'] == undefined) {
@@ -1300,22 +1329,18 @@ Orchis.post([iOS_Version + "/load/index", Android_Version + "/load/index"], erro
 					}
 				]
 			}
-			res.locals.UpdatedIndexRecord = true;
+			await WriteIndexRecord(res.locals.UserSessionRecord['ViewerID'], res.locals.UserIndexRecord);
 		}
 		res.locals.ResponseBody['data'] = res.locals.UserIndexRecord;
 		//res.locals.ResponseBody['data']['treasure_trade_all_list'] = ShopMap.TreasureTrade;
 		res.locals.ResponseBody['data']['mission_notice'] = DataManager.GetMissionNotice(res.locals.UserSessionRecord);
 		res.locals.ResponseBody['data']['server_time'] = Math.floor(Date.now() / 1000);
 		res.locals.ResponseBody['data']['multi_server'] = { 'host': global.ServerConfig['PhotonURL'], 'app_id': "" };
-		
-		if (res.locals.UserSessionRecord['CustomPhotonURL'] != undefined && res.locals.UserSessionRecord['CustomPhotonURL'] != false) {
-			res.locals.ResponseBody['data']['multi_server'] = { 'host': res.locals.UserSessionRecord['CustomPhotonURL'], 'app_id': "" };
-		}
 	}
 	
 	next();
 }));
-Orchis.post([iOS_Version + "/login/index", Android_Version + "/login/index"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/login/index", Android_Version + "/login/index"], global.errorhandler(async (req, res, next) => {
 	const LoginData = DataManager.LoginBonusData(res.locals.UserIndexRecord, res.locals.UserSessionRecord, ActiveBonusList, DailyDragonItem, GatherMedalReset, LastServerReset, DayEnd, DayNumber);
 	res.locals.ResponseBody['data'] = LoginData[0];
 	res.locals.UserIndexRecord = LoginData[1];
@@ -1352,7 +1377,7 @@ Orchis.get("/information/top", async (req, res, next) => {
 	res.end(Serialized);
 });
 
-Orchis.post([iOS_Version + "/tutorial/update_step", Android_Version + "/tutorial/update_step"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/tutorial/update_step", Android_Version + "/tutorial/update_step"], global.errorhandler(async (req, res, next) => {
 	const StepID = msgpack.unpack(req.body)['step'];
 	res.locals.UserIndexRecord['user_data']['tutorial_status'] = StepID;
 	if (StepID == 401) {
@@ -1370,7 +1395,7 @@ Orchis.post([iOS_Version + "/tutorial/update_step", Android_Version + "/tutorial
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/tutorial/update_flags", Android_Version + "/tutorial/update_flags"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/tutorial/update_flags", Android_Version + "/tutorial/update_flags"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	res.locals.UserIndexRecord['user_data']['tutorial_flag_list'].push(MsgPackData['flag_id']);
 	res.locals.ResponseBody['data'] = {
@@ -1384,7 +1409,7 @@ Orchis.post([iOS_Version + "/redoable_summon/get_data", Android_Version + "/redo
 	res.set(ResHeaders(Serialized.length));
 	res.end(Serialized);
 });
-Orchis.post([iOS_Version + "/redoable_summon/pre_exec", Android_Version + "/redoable_summon/pre_exec"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/redoable_summon/pre_exec", Android_Version + "/redoable_summon/pre_exec"], global.errorhandler(async (req, res, next) => {
 	let SummonData = [];
 	let DrawData = null;
 	let i = 0; while (i < 50) {
@@ -1419,7 +1444,7 @@ Orchis.post([iOS_Version + "/redoable_summon/pre_exec", Android_Version + "/redo
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/redoable_summon/fix_exec", Android_Version + "/redoable_summon/fix_exec"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/redoable_summon/fix_exec", Android_Version + "/redoable_summon/fix_exec"], global.errorhandler(async (req, res, next) => {
 	let UpdateData = {};
 	UpdateData['chara_list'] = [];
 	UpdateData['dragon_list'] = [];
@@ -1498,11 +1523,11 @@ Orchis.post([iOS_Version + "/summon/get_odds_data", Android_Version + "/summon/g
 	}
 	next();
 });
-Orchis.post([iOS_Version + "/summon/get_summon_history", Android_Version + "/summon/get_summon_history"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/summon/get_summon_history", Android_Version + "/summon/get_summon_history"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = { 'summon_history_list': res.locals.UserSessionRecord['SummonRecord']['SummonHistory'] }
 	next();
 }));
-Orchis.post([iOS_Version + "/summon/get_summon_list", Android_Version + "/summon/get_summon_list"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/summon/get_summon_list", Android_Version + "/summon/get_summon_list"], global.errorhandler(async (req, res, next) => {
 	SummonList = [];
 	SummonPointList = [];
 	const RightNow = Math.floor(Date.now() / 1000);
@@ -1568,7 +1593,7 @@ Orchis.post([iOS_Version + "/summon/get_summon_list", Android_Version + "/summon
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/summon/get_summon_point_trade", Android_Version + "/summon/get_summon_point_trade"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/summon/get_summon_point_trade", Android_Version + "/summon/get_summon_point_trade"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const SummonID = MsgPackData['summon_id'];
 	let SummonPointTradeList = [];
 	let SummonPointList = [];
@@ -1580,7 +1605,7 @@ Orchis.post([iOS_Version + "/summon/get_summon_point_trade", Android_Version + "
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/summon/summon_point_trade", Android_Version + "/summon/summon_point_trade"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/summon/summon_point_trade", Android_Version + "/summon/summon_point_trade"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const SummonID = MsgPackData['summon_id']; const TradeID = MsgPackData['trade_id'];
 	const SummonIndex = BannerList.findIndex(x => x.summon_id == SummonID);
 	const TradeData = BannerList[SummonIndex]['sigil'].find(x => x.trade_id == TradeID);
@@ -1629,7 +1654,7 @@ Orchis.post([iOS_Version + "/summon/summon_point_trade", Android_Version + "/sum
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/summon/request", Android_Version + "/summon/request"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/summon/request", Android_Version + "/summon/request"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const SummonID = MsgPackData['summon_id'];
 	let BannerData = BannerList.find(x => x.summon_id == SummonID);
@@ -1811,11 +1836,11 @@ Orchis.post([iOS_Version + "/summon/request", Android_Version + "/summon/request
 	next();
 }));
 
-Orchis.post([iOS_Version + "/ability_crest/get_ability_crest_set_list", Android_Version + "/ability_crest/get_ability_crest_set_list"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/ability_crest/get_ability_crest_set_list", Android_Version + "/ability_crest/get_ability_crest_set_list"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = { "ability_crest_set_list": res.locals.UserSessionRecord['WyrmprintSets'] }
 	next();
 }));
-Orchis.post([iOS_Version + "/ability_crest/set_ability_crest_set", Android_Version + "/ability_crest/set_ability_crest_set"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/ability_crest/set_ability_crest_set", Android_Version + "/ability_crest/set_ability_crest_set"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const SetNumber = MsgPackData['ability_crest_set_no'];
 	let RequestedName = MsgPackData['ability_crest_set_name'];
@@ -1840,7 +1865,7 @@ Orchis.post([iOS_Version + "/ability_crest/set_ability_crest_set", Android_Versi
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/ability_crest/update_ability_crest_set_name", Android_Version + "/ability_crest/update_ability_crest_set_name"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/ability_crest/update_ability_crest_set_name", Android_Version + "/ability_crest/update_ability_crest_set_name"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const SetNumber = MsgPackData['ability_crest_set_no'];
 	let RequestedName = MsgPackData['ability_crest_set_name'];
@@ -1852,7 +1877,7 @@ Orchis.post([iOS_Version + "/ability_crest/update_ability_crest_set_name", Andro
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/ability_crest/buildup_piece", Android_Version + "/ability_crest/buildup_piece"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/ability_crest/buildup_piece", Android_Version + "/ability_crest/buildup_piece"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const PrintID = MsgPackData['ability_crest_id'];
 	const PrintBuildup = MsgPackData['buildup_ability_crest_piece_list']; const Augments = MsgPackData['plus_count_parameters'];
 	const NewData = WyrmprintMap.WyrmprintBuild(PrintID, PrintBuildup, Augments, res.locals.UserIndexRecord);
@@ -1865,7 +1890,7 @@ Orchis.post([iOS_Version + "/ability_crest/buildup_piece", Android_Version + "/a
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/ability_crest/buildup_plus_count", Android_Version + "/ability_crest/buildup_plus_count"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/ability_crest/buildup_plus_count", Android_Version + "/ability_crest/buildup_plus_count"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const PrintID = MsgPackData['ability_crest_id'];
 	const Augments = MsgPackData['plus_count_params_list']; const PrintIndex = res.locals.UserIndexRecord['ability_crest_list'].findIndex(x => x.ability_crest_id === PrintID);
 	const PrintData = res.locals.UserIndexRecord['ability_crest_list'][PrintIndex]; 
@@ -1879,7 +1904,7 @@ Orchis.post([iOS_Version + "/ability_crest/buildup_plus_count", Android_Version 
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/ability_crest/reset_plus_count", Android_Version + "/ability_crest/reset_plus_count"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/ability_crest/reset_plus_count", Android_Version + "/ability_crest/reset_plus_count"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const PrintID = MsgPackData['ability_crest_id']; let Type = MsgPackData['plus_count_type_list'][0];
 	const PrintIndex = res.locals.UserIndexRecord['ability_crest_list'].findIndex(x => x.ability_crest_id == PrintID);
 	let MatIndex = -1;
@@ -1900,7 +1925,7 @@ Orchis.post([iOS_Version + "/ability_crest/reset_plus_count", Android_Version + 
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/ability_crest/set_favorite", Android_Version + "/ability_crest/set_favorite"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/ability_crest/set_favorite", Android_Version + "/ability_crest/set_favorite"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const PrintID = MsgPackData['ability_crest_id']; const Favorite = MsgPackData['is_favorite'];
 	const PrintIndex = res.locals.UserIndexRecord['ability_crest_list'].findIndex(x => x.ability_crest_id == PrintID);
 	res.locals.UserIndexRecord['ability_crest_list'][PrintIndex]['is_favorite'] = Favorite;
@@ -1913,7 +1938,7 @@ Orchis.post([iOS_Version + "/ability_crest/set_favorite", Android_Version + "/ab
 	next();
 }));
 
-Orchis.post([iOS_Version + "/chara/get_chara_unit_set", Android_Version + "/chara/get_chara_unit_set"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/chara/get_chara_unit_set", Android_Version + "/chara/get_chara_unit_set"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	res.locals.ResponseBody['data'] = {
 		'chara_unit_set_list': [],
@@ -1929,7 +1954,7 @@ Orchis.post([iOS_Version + "/chara/get_chara_unit_set", Android_Version + "/char
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/chara/set_chara_unit_set", Android_Version + "/chara/set_chara_unit_set"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/chara/set_chara_unit_set", Android_Version + "/chara/set_chara_unit_set"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const SetNo = MsgPackData['unit_set_no']; const SetName = MsgPackData['unit_set_name'];
 	const CharaID = MsgPackData['chara_id']; const RequestData = MsgPackData['request_chara_unit_set_data'];
@@ -1962,7 +1987,7 @@ Orchis.post([iOS_Version + "/chara/set_chara_unit_set", Android_Version + "/char
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/chara/awake", Android_Version + "/chara/awake"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/chara/awake", Android_Version + "/chara/awake"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const CharacterID = MsgPackData['chara_id']; const Rarity = MsgPackData['next_rarity'];
 	const CharacterIndex = res.locals.UserIndexRecord['chara_list'].findIndex(x => x.chara_id === CharacterID);
 	if (MsgPackData['next_rarity'] == 4) { res.locals.UserIndexRecord['user_data']['dew_point'] -= 2500; }
@@ -1975,7 +2000,7 @@ Orchis.post([iOS_Version + "/chara/awake", Android_Version + "/chara/awake"], er
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/chara/buildup", Android_Version + "/chara/buildup"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/chara/buildup", Android_Version + "/chara/buildup"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const CharacterID = MsgPackData['chara_id']; const GrowList = MsgPackData['material_list'];
 	const CharacterIndex = res.locals.UserIndexRecord['chara_list'].findIndex(x => x.chara_id === CharacterID);
 	const NewData = CharacterMap.LevelUp(CharacterID, GrowList, res.locals.UserIndexRecord['chara_list'][CharacterIndex]);
@@ -2001,7 +2026,7 @@ Orchis.post([iOS_Version + "/chara/buildup", Android_Version + "/chara/buildup"]
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/chara/buildup_mana", Android_Version + "/chara/buildup_mana"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/chara/buildup_mana", Android_Version + "/chara/buildup_mana"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const CharacterID = MsgPackData['chara_id']; const MCList = MsgPackData['mana_circle_piece_id_list']; const IsConviction = MsgPackData['is_use_grow_material'];
 	const CharacterIndex = res.locals.UserIndexRecord['chara_list'].findIndex(x => x.chara_id === CharacterID); const CharacterData = res.locals.UserIndexRecord['chara_list'][CharacterIndex];
 	const NewData = CharacterMap.RaiseManaCircle(CharacterID, MCList, 0, CharacterData, res.locals.UserIndexRecord['unit_story_list'], IsConviction);
@@ -2046,7 +2071,7 @@ Orchis.post([iOS_Version + "/chara/buildup_mana", Android_Version + "/chara/buil
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/chara/limit_break", Android_Version + "/chara/limit_break"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/chara/limit_break", Android_Version + "/chara/limit_break"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const CharacterID = MsgPackData['chara_id'];
 	const LimitBreakCount = MsgPackData['next_limit_break_count'];
 	const CharacterIndex = res.locals.UserIndexRecord['chara_list'].findIndex(x => x.chara_id === CharacterID);
@@ -2078,7 +2103,7 @@ Orchis.post([iOS_Version + "/chara/limit_break", Android_Version + "/chara/limit
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/chara/limit_break_and_buildup_mana", Android_Version + "/chara/limit_break_and_buildup_mana"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/chara/limit_break_and_buildup_mana", Android_Version + "/chara/limit_break_and_buildup_mana"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const CharacterID = MsgPackData['chara_id']; const MCList = MsgPackData['mana_circle_piece_id_list']; const IsConviction = MsgPackData['is_use_grow_material'];
 	const CharacterIndex = res.locals.UserIndexRecord['chara_list'].findIndex(x => x.chara_id === CharacterID); const CharacterData = res.locals.UserIndexRecord['chara_list'][CharacterIndex];
 	const LimitBreakCount = MsgPackData['next_limit_break_count']; const NewData = CharacterMap.RaiseManaCircle(CharacterID, MCList, LimitBreakCount, CharacterData, res.locals.UserIndexRecord['unit_story_list'], IsConviction);
@@ -2124,7 +2149,7 @@ Orchis.post([iOS_Version + "/chara/limit_break_and_buildup_mana", Android_Versio
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/chara/unlock_edit_skill", Android_Version + "/chara/unlock_edit_skill"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/chara/unlock_edit_skill", Android_Version + "/chara/unlock_edit_skill"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const CharacterID = MsgPackData['chara_id']; 
 	const CharacterIndex = res.locals.UserIndexRecord['chara_list'].findIndex(x => x.chara_id == CharacterID);
 	res.locals.UserIndexRecord['chara_list'][CharacterIndex]['is_unlock_edit_skill'] = 1;
@@ -2135,7 +2160,7 @@ Orchis.post([iOS_Version + "/chara/unlock_edit_skill", Android_Version + "/chara
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/chara/buildup_platinum", Android_Version + "/chara/buildup_platinum"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/chara/buildup_platinum", Android_Version + "/chara/buildup_platinum"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const CharacterID = MsgPackData['chara_id']; 
 	const CharacterIndex = res.locals.UserIndexRecord['chara_list'].findIndex(x => x.chara_id === CharacterID); const CharacterData = res.locals.UserIndexRecord['chara_list'][CharacterIndex];
 	const NewData = CharacterMap.RaiseOmnicite(CharacterID, CharacterData);
@@ -2154,7 +2179,7 @@ Orchis.post([iOS_Version + "/chara/buildup_platinum", Android_Version + "/chara/
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/chara/reset_plus_count", Android_Version + "/chara/reset_plus_count"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/chara/reset_plus_count", Android_Version + "/chara/reset_plus_count"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const CharacterID = MsgPackData['chara_id']; let Type = MsgPackData['plus_count_type'];
 	const CharacterIndex = res.locals.UserIndexRecord['chara_list'].findIndex(x => x.chara_id === CharacterID);
 	if (Type == 1) { Type = "hp_plus_count"; } else if (Type == 2) { Type = "attack_plus_count"; }
@@ -2166,7 +2191,7 @@ Orchis.post([iOS_Version + "/chara/reset_plus_count", Android_Version + "/chara/
 	next();
 }));
 
-Orchis.post([iOS_Version + "/dragon/sell", Android_Version + "/dragon/sell"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dragon/sell", Android_Version + "/dragon/sell"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const DragonList = MsgPackData['dragon_key_id_list']; let i = 0;
 	let DeletedDragonList = []; while (i < DragonList.length) { 
 		const DragonIndex = res.locals.UserIndexRecord['dragon_list'].findIndex(x => x.dragon_key_id === DragonList[i]);
@@ -2187,7 +2212,7 @@ Orchis.post([iOS_Version + "/dragon/sell", Android_Version + "/dragon/sell"], er
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dragon/set_lock", Android_Version + "/dragon/set_lock"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dragon/set_lock", Android_Version + "/dragon/set_lock"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const KeyID = MsgPackData['dragon_key_id']; const IsLock = MsgPackData['is_lock'];
 	const DragonIndex = res.locals.UserIndexRecord['dragon_list'].findIndex(x => x.dragon_key_id === KeyID);
 	res.locals.UserIndexRecord['dragon_list'][DragonIndex]['is_lock'] = IsLock;
@@ -2197,7 +2222,7 @@ Orchis.post([iOS_Version + "/dragon/set_lock", Android_Version + "/dragon/set_lo
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dragon/limit_break", Android_Version + "/dragon/limit_break"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dragon/limit_break", Android_Version + "/dragon/limit_break"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const KeyID = MsgPackData['base_dragon_key_id']; const GrowList = MsgPackData['limit_break_grow_list']; 
 	const UpdateData = DragonMap.LimitBreakDragon(res.locals.UserIndexRecord, KeyID, GrowList, res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album']);
 	res.locals.UserIndexRecord = UpdateData[0];
@@ -2211,7 +2236,7 @@ Orchis.post([iOS_Version + "/dragon/limit_break", Android_Version + "/dragon/lim
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dragon/buildup", Android_Version + "/dragon/buildup"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dragon/buildup", Android_Version + "/dragon/buildup"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const KeyID = MsgPackData['base_dragon_key_id']; const GrowList = MsgPackData['grow_material_list']; 
 	const UpdateData = DragonMap.BuildDragon(res.locals.UserIndexRecord, KeyID, GrowList, res.locals.UserIndexRecord['fort_bonus_list']['dragon_bonus_by_album']);
 	res.locals.UserIndexRecord = UpdateData[0];
@@ -2229,7 +2254,7 @@ Orchis.post([iOS_Version + "/dragon/get_contact_data", Android_Version + "/drago
 	res.locals.ResponseBody['data'] = { "shop_gift_list": res.locals.UserSessionRecord['FortData']['DragonGiftList'] }
 	next();
 });
-Orchis.post([iOS_Version + "/dragon/reset_plus_count", Android_Version + "/dragon/reset_plus_count"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dragon/reset_plus_count", Android_Version + "/dragon/reset_plus_count"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const KeyID = MsgPackData['dragon_key_id']; let Type = MsgPackData['plus_count_type'];
 	const DragonIndex = res.locals.UserIndexRecord['dragon_list'].findIndex(x => x.dragon_key_id === KeyID);
 	if (Type == 1) { Type = "hp_plus_count"; } else if (Type == 2) { Type = "attack_plus_count"; }
@@ -2238,7 +2263,7 @@ Orchis.post([iOS_Version + "/dragon/reset_plus_count", Android_Version + "/drago
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dragon/buy_gift_to_send", Android_Version + "/dragon/buy_gift_to_send"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dragon/buy_gift_to_send", Android_Version + "/dragon/buy_gift_to_send"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const DragonID = MsgPackData['dragon_id'];
 	const DragonIndex = res.locals.UserIndexRecord['dragon_reliability_list'].findIndex(x => x.dragon_id == DragonID);
@@ -2274,7 +2299,7 @@ Orchis.post([iOS_Version + "/dragon/buy_gift_to_send", Android_Version + "/drago
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dragon/buy_gift_to_send_multiple", Android_Version + "/dragon/buy_gift_to_send_multiple"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dragon/buy_gift_to_send_multiple", Android_Version + "/dragon/buy_gift_to_send_multiple"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const DragonID = MsgPackData['dragon_id']; const GiftList = MsgPackData['dragon_gift_id_list'];
 	const DragonIndex = res.locals.UserIndexRecord['dragon_reliability_list'].findIndex(x => x.dragon_id == DragonID);
@@ -2335,7 +2360,7 @@ Orchis.post([iOS_Version + "/dragon/buy_gift_to_send_multiple", Android_Version 
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dragon/send_gift", Android_Version + "/dragon/send_gift"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dragon/send_gift", Android_Version + "/dragon/send_gift"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const DragonID = MsgPackData['dragon_id'];
 	const DragonIndex = res.locals.UserIndexRecord['dragon_reliability_list'].findIndex(x => x.dragon_id == DragonID);
@@ -2372,7 +2397,7 @@ Orchis.post([iOS_Version + "/dragon/send_gift", Android_Version + "/dragon/send_
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dragon/send_gift_multiple", Android_Version + "/dragon/send_gift_multiple"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dragon/send_gift_multiple", Android_Version + "/dragon/send_gift_multiple"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const Count = MsgPackData['quantity'];
 	const DragonID = MsgPackData['dragon_id'];
@@ -2428,7 +2453,7 @@ Orchis.post([iOS_Version + "/dragon/send_gift_multiple", Android_Version + "/dra
 	next();
 }));
 
-Orchis.post([iOS_Version + "/update/namechange", Android_Version + "/update/namechange"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/update/namechange", Android_Version + "/update/namechange"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	let RequestedName = MsgPackData['name'];
 	if (RequestedName.length > 12) { RequestedName = RequestedName.substring(0, 12); }
@@ -2439,11 +2464,11 @@ Orchis.post([iOS_Version + "/update/namechange", Android_Version + "/update/name
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/emblem/get_list", Android_Version + "/emblem/get_list"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/emblem/get_list", Android_Version + "/emblem/get_list"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = { 'emblem_list': res.locals.UserSessionRecord['Epithet'] }
 	next();
 }));
-Orchis.post([iOS_Version + "/emblem/set", Android_Version + "/emblem/set"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/emblem/set", Android_Version + "/emblem/set"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const RequestedEpithet = MsgPackData['emblem_id'];
 	if (typeof RequestedEpithet != "number") { const Serialized = msgpack.pack({'data_headers':{'result_code':114},'data':{'result':114}}); res.set(ResHeaders(Serialized.length)); res.end(Serialized); }
 	else {
@@ -2456,11 +2481,11 @@ Orchis.post([iOS_Version + "/emblem/set", Android_Version + "/emblem/set"], erro
 	}
 	res.locals.UpdatedIndexRecord = true;
 }));
-Orchis.post([iOS_Version + "/option/get_option", Android_Version + "/option/get_option"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/option/get_option", Android_Version + "/option/get_option"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = { 'option_data': res.locals.UserSessionRecord['SetOptions'] }
 	next();
 }));
-Orchis.post([iOS_Version + "/option/set_option", Android_Version + "/option/set_option"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/option/set_option", Android_Version + "/option/set_option"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const UserOptions = MsgPackData['option_setting'];
 	res.locals.ResponseBody['data'] = {
@@ -2470,7 +2495,7 @@ Orchis.post([iOS_Version + "/option/set_option", Android_Version + "/option/set_
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/push_notification/update_setting", Android_Version + "/push_notification/update_setting"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/push_notification/update_setting", Android_Version + "/push_notification/update_setting"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = { 'result': 1 }
 	next();
 }));
@@ -2479,7 +2504,7 @@ Orchis.post([iOS_Version + "/party/index", Android_Version + "/party/index"], as
 	res.locals.ResponseBody['data'] = {}
 	next();
 });
-Orchis.post([iOS_Version + "/party/set_main_party_no", Android_Version + "/party/set_main_party_no"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/party/set_main_party_no", Android_Version + "/party/set_main_party_no"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const RequestedPartyNumber = MsgPackData['main_party_no'];
 	res.locals.ResponseBody['data'] = { 'main_party_no': RequestedPartyNumber }
@@ -2487,7 +2512,7 @@ Orchis.post([iOS_Version + "/party/set_main_party_no", Android_Version + "/party
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/party/set_party_setting", Android_Version + "/party/set_party_setting"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/party/set_party_setting", Android_Version + "/party/set_party_setting"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const PartyNumber = MsgPackData['party_no'];
 	if (PartyNumber <= 0 || PartyNumber >= 55 || typeof PartyNumber === "string") { res.end(msgpack.pack({'data_headers':{'result_code':117},'data':{'result_code':117}})); return; }
@@ -2526,7 +2551,7 @@ Orchis.post([iOS_Version + "/party/set_party_setting", Android_Version + "/party
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/party/update_party_name", Android_Version + "/party/update_party_name"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/party/update_party_name", Android_Version + "/party/update_party_name"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const PartyNumber = MsgPackData['party_no'];
 	const PartyName = MsgPackData['party_name'];
@@ -2554,7 +2579,7 @@ Orchis.post([iOS_Version + "/friend/get_support_chara", Android_Version + "/frie
 	}
 	next();
 });
-Orchis.post([iOS_Version + "/friend/get_support_chara_detail", Android_Version + "/friend/get_support_chara_detail"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/friend/get_support_chara_detail", Android_Version + "/friend/get_support_chara_detail"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const SupportViewerID = MsgPackData['support_viewer_id'];
 	const SupportAccountRecord = await Fluoresce.Read("MasterAccountRecord", SupportViewerID);
 	const SupportSessionRecord = await ReadSessionRecord(SupportAccountRecord['SessionID']);
@@ -2633,7 +2658,7 @@ Orchis.post([iOS_Version + "/friend/get_support_chara_detail", Android_Version +
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/friend/set_support_chara", Android_Version + "/friend/set_support_chara"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/friend/set_support_chara", Android_Version + "/friend/set_support_chara"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	res.locals.UserSessionRecord['SupportCharacter'] = {
 		'last_active_time': Math.floor(Date.now() / 1000),
@@ -2658,7 +2683,7 @@ Orchis.post([iOS_Version + "/friend/set_support_chara", Android_Version + "/frie
 	next();
 }));
 
-Orchis.post([iOS_Version + "/quest/read_story", Android_Version + "/quest/read_story"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/quest/read_story", Android_Version + "/quest/read_story"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const ReadStory = MsgPackData['quest_story_id'];
 	res.locals.ResponseBody['data'] = {
@@ -2805,7 +2830,7 @@ Orchis.post([iOS_Version + "/quest/read_story", Android_Version + "/quest/read_s
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/story/read", Android_Version + "/story/read"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/story/read", Android_Version + "/story/read"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const ReadStory = MsgPackData['unit_story_id'];
 	const StoryIndex = res.locals.UserIndexRecord['unit_story_list'].findIndex(x => x.unit_story_id == ReadStory);
@@ -2828,7 +2853,7 @@ Orchis.post([iOS_Version + "/story/read", Android_Version + "/story/read"], erro
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/castle_story/read", Android_Version + "/castle_story/read"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/castle_story/read", Android_Version + "/castle_story/read"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const ReadStory = MsgPackData['castle_story_id'];
 	let RewardList = [];
@@ -2856,7 +2881,7 @@ Orchis.post([iOS_Version + "/castle_story/read", Android_Version + "/castle_stor
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/quest/open_treasure", Android_Version + "/quest/open_treasure"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/quest/open_treasure", Android_Version + "/quest/open_treasure"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const TreasureID = MsgPackData['quest_treasure_id'];
 	const Reward = QuestMap.RewardChest(TreasureID);
 	const Parsed = DataManager.ItemParser(Reward, res.locals.UserSessionRecord, res.locals.UserIndexRecord, "entity");
@@ -2874,7 +2899,7 @@ Orchis.post([iOS_Version + "/quest/open_treasure", Android_Version + "/quest/ope
 	next();
 }));
 
-Orchis.post([iOS_Version + "/fort/get_data", Android_Version + "/fort/get_data"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/fort/get_data", Android_Version + "/fort/get_data"], global.errorhandler(async (req, res, next) => {
 	if (res.locals.UserIndexRecord['build_list'] == undefined) { res.locals.UserIndexRecord['build_list'] = IndexTools.MinimalFortData; }
 	for (let x in res.locals.UserIndexRecord['build_list']) {
 		const StartTime = res.locals.UserIndexRecord['build_list'][x]['build_start_date'];
@@ -2899,7 +2924,7 @@ Orchis.post([iOS_Version + "/fort/get_data", Android_Version + "/fort/get_data"]
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/fort/get_multi_income", Android_Version + "/fort/get_multi_income"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/fort/get_multi_income", Android_Version + "/fort/get_multi_income"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); BuildIDList = MsgPackData['build_id_list'];
 	res.locals.ResponseBody['data'] = {
 		'result': 1,
@@ -2984,7 +3009,7 @@ Orchis.post([iOS_Version + "/fort/get_multi_income", Android_Version + "/fort/ge
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/fort/move", Android_Version + "/fort/move"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/fort/move", Android_Version + "/fort/move"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); BuildID = MsgPackData['build_id'];
 	NewX = MsgPackData['after_position_x']; NewZ = MsgPackData['after_position_z'];
 	BuildIndex = res.locals.UserIndexRecord['build_list'].findIndex(x => x.build_id == BuildID);
@@ -2996,7 +3021,7 @@ Orchis.post([iOS_Version + "/fort/move", Android_Version + "/fort/move"], errorh
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/fort/build_start", Android_Version + "/fort/build_start"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/fort/build_start", Android_Version + "/fort/build_start"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const FacilityID = MsgPackData['fort_plant_id'];
 	let DetailID = parseInt(String(FacilityID) + "01");
 	let BuildStatus = 1;
@@ -3052,7 +3077,7 @@ Orchis.post([iOS_Version + "/fort/build_start", Android_Version + "/fort/build_s
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/fort/build_end", Android_Version + "/fort/build_end"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/fort/build_end", Android_Version + "/fort/build_end"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const BuildID = MsgPackData['build_id'];
 	const BuildIndex = res.locals.UserIndexRecord['build_list'].findIndex(x => x.build_id == BuildID);
 	const FacilityID = res.locals.UserIndexRecord['build_list'][BuildIndex]['plant_id'];
@@ -3084,7 +3109,7 @@ Orchis.post([iOS_Version + "/fort/build_end", Android_Version + "/fort/build_end
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/fort/build_at_once", Android_Version + "/fort/build_at_once"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/fort/build_at_once", Android_Version + "/fort/build_at_once"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const BuildID = MsgPackData['build_id'];
 	const PaymentType = MsgPackData['payment_type'];
 	const BuildIndex = res.locals.UserIndexRecord['build_list'].findIndex(x => x.build_id == BuildID);
@@ -3112,7 +3137,7 @@ Orchis.post([iOS_Version + "/fort/build_at_once", Android_Version + "/fort/build
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/fort/build_cancel", Android_Version + "/fort/build_cancel"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/fort/build_cancel", Android_Version + "/fort/build_cancel"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const BuildID = MsgPackData['build_id'];
 	const BuildIndex = res.locals.UserIndexRecord['build_list'].findIndex(x => x.build_id == BuildID);
 	const FacilityID = res.locals.UserIndexRecord['build_list'][BuildIndex]['fort_plant_detail_id'];
@@ -3139,7 +3164,7 @@ Orchis.post([iOS_Version + "/fort/build_cancel", Android_Version + "/fort/build_
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/fort/levelup_start", Android_Version + "/fort/levelup_start"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/fort/levelup_start", Android_Version + "/fort/levelup_start"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const BuildID = MsgPackData['build_id'];
 	const BuildIndex = res.locals.UserIndexRecord['build_list'].findIndex(x => x.build_id == BuildID);
 	const FacilityID = res.locals.UserIndexRecord['build_list'][BuildIndex]['fort_plant_detail_id'];
@@ -3177,7 +3202,7 @@ Orchis.post([iOS_Version + "/fort/levelup_start", Android_Version + "/fort/level
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/fort/levelup_end", Android_Version + "/fort/levelup_end"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/fort/levelup_end", Android_Version + "/fort/levelup_end"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const BuildID = MsgPackData['build_id'];
 	const BuildIndex = res.locals.UserIndexRecord['build_list'].findIndex(x => x.build_id == BuildID);
 	const FacilityID = res.locals.UserIndexRecord['build_list'][BuildIndex]['fort_plant_detail_id'];
@@ -3208,7 +3233,7 @@ Orchis.post([iOS_Version + "/fort/levelup_end", Android_Version + "/fort/levelup
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/fort/levelup_at_once", Android_Version + "/fort/levelup_at_once"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/fort/levelup_at_once", Android_Version + "/fort/levelup_at_once"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const BuildID = MsgPackData['build_id'];
 	const PaymentType = MsgPackData['payment_type'];
 	const BuildIndex = res.locals.UserIndexRecord['build_list'].findIndex(x => x.build_id == BuildID);
@@ -3240,7 +3265,7 @@ Orchis.post([iOS_Version + "/fort/levelup_at_once", Android_Version + "/fort/lev
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/fort/levelup_cancel", Android_Version + "/fort/levelup_cancel"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/fort/levelup_cancel", Android_Version + "/fort/levelup_cancel"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const BuildID = MsgPackData['build_id'];
 	const BuildIndex = res.locals.UserIndexRecord['build_list'].findIndex(x => x.build_id == BuildID);
 	const FacilityID = res.locals.UserIndexRecord['build_list'][BuildIndex]['fort_plant_detail_id'];
@@ -3271,7 +3296,7 @@ Orchis.post([iOS_Version + "/fort/levelup_cancel", Android_Version + "/fort/leve
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/fort/add_carpenter", Android_Version + "/fort/add_carpenter"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/fort/add_carpenter", Android_Version + "/fort/add_carpenter"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	res.locals.UserSessionRecord['FortData']['Smiths']['carpenter_num'] += 1;
 	res.locals.ResponseBody['data'] = {
@@ -3286,7 +3311,7 @@ Orchis.post([iOS_Version + "/fort/add_carpenter", Android_Version + "/fort/add_c
 	next();
 }));
 
-Orchis.post([iOS_Version + "/present/get_present_list", Android_Version + "/present/get_present_list"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/present/get_present_list", Android_Version + "/present/get_present_list"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = req.body; const IsLimit = MsgPackData['is_limit'];
 	res.locals.ResponseBody['data'] = { 
 		'update_data_list': {
@@ -3300,7 +3325,7 @@ Orchis.post([iOS_Version + "/present/get_present_list", Android_Version + "/pres
 	else { res.locals.ResponseBody['data']['present_list'] = res.locals.UserSessionRecord['GiftRecord']['GiftNormalList']; }
 	next();
 }));
-Orchis.post([iOS_Version + "/present/receive", Android_Version + "/present/receive"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/present/receive", Android_Version + "/present/receive"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const IDList = MsgPackData['present_id_list']; const IsLimit = MsgPackData['is_limit'];
 	let ItemTable = [];
 	let GiftRecord = res.locals.UserSessionRecord['GiftRecord'];
@@ -3372,14 +3397,14 @@ Orchis.post([iOS_Version + "/present/receive", Android_Version + "/present/recei
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/present/get_history_list", Android_Version + "/present/get_history_list"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/present/get_history_list", Android_Version + "/present/get_history_list"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = {
 		'present_history_list': res.locals.UserSessionRecord['GiftRecord']['GiftHistory']
 	}
 	next();
 }));
 
-Orchis.post([iOS_Version + "/friend/friend_index", Android_Version + "/friend/friend_index"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/friend/friend_index", Android_Version + "/friend/friend_index"], global.errorhandler(async (req, res, next) => {
 	if (res.locals.UserSessionRecord['Friends'] == undefined) { res.locals.UserSessionRecord['Friends'] = []; res.locals.UpdatedSessionRecord = true; }
 	
 	res.locals.ResponseBody['data'] = {
@@ -3387,7 +3412,7 @@ Orchis.post([iOS_Version + "/friend/friend_index", Android_Version + "/friend/fr
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/friend/friend_list", Android_Version + "/friend/friend_list"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/friend/friend_list", Android_Version + "/friend/friend_list"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = {
 		'result': 1,
 		'friend_list': SupportData['data']['support_user_list'],
@@ -3396,7 +3421,7 @@ Orchis.post([iOS_Version + "/friend/friend_list", Android_Version + "/friend/fri
 	next();
 }));
 
-Orchis.post([iOS_Version + "/weapon_body/craft", Android_Version + "/weapon_body/craft"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/weapon_body/craft", Android_Version + "/weapon_body/craft"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const WeaponID = MsgPackData['weapon_body_id'];
 	const CraftCost = WeaponMap.GetWeaponInfo(WeaponID, "craft_cost");
 	let UpdateMaterialList = [];
@@ -3425,7 +3450,7 @@ Orchis.post([iOS_Version + "/weapon_body/craft", Android_Version + "/weapon_body
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/weapon_body/buildup_piece", Android_Version + "/weapon_body/buildup_piece"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/weapon_body/buildup_piece", Android_Version + "/weapon_body/buildup_piece"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const WeaponID = MsgPackData['weapon_body_id']; const WeaponBuildup = MsgPackData['buildup_weapon_body_piece_list'];
 	const WeaponIndex = res.locals.UserIndexRecord['weapon_body_list'].findIndex(x => x.weapon_body_id === WeaponID);
 	const WeaponData = res.locals.UserIndexRecord['weapon_body_list'][WeaponIndex];
@@ -3462,7 +3487,7 @@ Orchis.post([iOS_Version + "/weapon_body/buildup_piece", Android_Version + "/wea
 	next();
 }));
 
-Orchis.post([iOS_Version + "/memory_event/activate", Android_Version + "/memory_event/activate"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/memory_event/activate", Android_Version + "/memory_event/activate"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	let RequestedEvent = MsgPackData['event_id'];
 	res.locals.UserIndexRecord['user_data']['active_memory_event_id'] = RequestedEvent;
@@ -3470,7 +3495,7 @@ Orchis.post([iOS_Version + "/memory_event/activate", Android_Version + "/memory_
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/event_trade/get_list", Android_Version + "/event_trade/get_list"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/event_trade/get_list", Android_Version + "/event_trade/get_list"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const EventTradeList = EventMap.EventTradeTemplate(MsgPackData['trade_group_id']);
 	const EventInfo = EventMap.GetEventByTradeID(MsgPackData['trade_group_id']);
@@ -3485,7 +3510,7 @@ Orchis.post([iOS_Version + "/event_trade/get_list", Android_Version + "/event_tr
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/event_trade/trade", Android_Version + "/event_trade/trade"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/event_trade/trade", Android_Version + "/event_trade/trade"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const TradeID = MsgPackData['trade_id'];
 	const EventID = String(TradeID).slice(0, String(TradeID).length - 2);
 	const PerformTrade = EventMap.EventTrade(res.locals.UserSessionRecord, res.locals.UserIndexRecord, EventID, MsgPackData);
@@ -3500,7 +3525,7 @@ Orchis.post([iOS_Version + "/event_trade/trade", Android_Version + "/event_trade
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/event_summon/get_data", Android_Version + "/event_summon/get_data"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/event_summon/get_data", Android_Version + "/event_summon/get_data"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const EventID = MsgPackData['event_id']; const BoxCount = res.locals.UserSessionRecord['Event']['Raid'][String(EventID)]['Summon']['Count'];
 	res.locals.ResponseBody['data'] = {
@@ -3509,7 +3534,7 @@ Orchis.post([iOS_Version + "/event_summon/get_data", Android_Version + "/event_s
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/event_summon/exec", Android_Version + "/event_summon/exec"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/event_summon/exec", Android_Version + "/event_summon/exec"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const SummonCount = MsgPackData['count'];
 	const EventID = MsgPackData['event_id']; const BoxCount = res.locals.UserSessionRecord['Event']['Raid'][String(EventID)]['Summon']['Count'];
 	const SummonData = EventMap.BlazonSummon(SummonCount, BoxCount, EventID, res.locals.UserSessionRecord);
@@ -3525,7 +3550,7 @@ Orchis.post([iOS_Version + "/event_summon/exec", Android_Version + "/event_summo
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/event_summon/reset", Android_Version + "/event_summon/reset"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/event_summon/reset", Android_Version + "/event_summon/reset"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const EventID = MsgPackData['event_id'];
 	res.locals.UserSessionRecord['Event']['Raid'][String(EventID)]['Summon']['Count'] += 1;
 	res.locals.UserSessionRecord['Event']['Raid'][String(EventID)]['Summon']['BoxData'] = EventMap.BlazonAddData(EventID, res.locals.UserSessionRecord['Event']['Raid'][String(EventID)]['Summon']['Count']);
@@ -3535,7 +3560,7 @@ Orchis.post([iOS_Version + "/event_summon/reset", Android_Version + "/event_summ
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/raid_event/entry", Android_Version + "/raid_event/entry"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/raid_event/entry", Android_Version + "/raid_event/entry"], global.errorhandler(async (req, res, next) => {
 	let UpdateData = {}; let EntityList = [];
 	const MsgPackData = msgpack.unpack(req.body); const EventID = String(MsgPackData['raid_event_id']);
 	res.locals.UserSessionRecord['Event']['Raid'][EventID] = {};
@@ -3572,7 +3597,7 @@ Orchis.post([iOS_Version + "/raid_event/entry", Android_Version + "/raid_event/e
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/raid_event/get_event_data", Android_Version + "/raid_event/get_event_data"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/raid_event/get_event_data", Android_Version + "/raid_event/get_event_data"], global.errorhandler(async (req, res, next) => {
 	let UpdateData = {}; let EntityList = [];
 	const MsgPackData = msgpack.unpack(req.body); const EventID = String(MsgPackData['raid_event_id']);
 	if (res.locals.UserSessionRecord['Event']['Raid'][EventID] == undefined) {
@@ -3601,7 +3626,7 @@ Orchis.post([iOS_Version + "/raid_event/get_event_data", Android_Version + "/rai
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/raid_event/receive_raid_point_reward", Android_Version + "/raid_event/receive_raid_point_reward"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/raid_event/receive_raid_point_reward", Android_Version + "/raid_event/receive_raid_point_reward"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const EventID = String(MsgPackData['raid_event_id']);
 	const RewardList = MsgPackData['raid_event_reward_id_list'];
 	const RewardData = EventMap.RaidEmblemReward(EventID, RewardList, res.locals.UserSessionRecord['Event']['Raid'][EventID]['TradeList']);
@@ -3618,7 +3643,7 @@ Orchis.post([iOS_Version + "/raid_event/receive_raid_point_reward", Android_Vers
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/build_event/entry", Android_Version + "/build_event/entry"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/build_event/entry", Android_Version + "/build_event/entry"], global.errorhandler(async (req, res, next) => {
 	let UpdateData = {};
 	const MsgPackData = msgpack.unpack(req.body); const EventID = String(MsgPackData['event_id']);
 	res.locals.UserSessionRecord['Event']['Build'][EventID] = {};
@@ -3673,7 +3698,7 @@ Orchis.post([iOS_Version + "/build_event/entry", Android_Version + "/build_event
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/build_event/get_event_data", Android_Version + "/build_event/get_event_data"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/build_event/get_event_data", Android_Version + "/build_event/get_event_data"], global.errorhandler(async (req, res, next) => {
 	let UpdateData = {};
 	const MsgPackData = msgpack.unpack(req.body); const EventID = String(MsgPackData['event_id']);
 	if (res.locals.UserSessionRecord['Event']['Build'][EventID] == undefined) {
@@ -3716,7 +3741,7 @@ Orchis.post([iOS_Version + "/build_event/get_event_data", Android_Version + "/bu
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/build_event/receive_build_point_reward", Android_Version + "/build_event/receive_build_point_reward"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/build_event/receive_build_point_reward", Android_Version + "/build_event/receive_build_point_reward"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const EventID = String(MsgPackData['event_id']);
 	const RewardData = EventMap.GetBuildReward(EventID, 'Build', res.locals.UserSessionRecord, res.locals.UserIndexRecord);
 	let RewardList = EventMap.BuildRewardList(EventID, res.locals.UserSessionRecord['Event']['Build'][EventID]['UserData']['user_build_event_item_list'][0]['event_item_value']);
@@ -3733,7 +3758,7 @@ Orchis.post([iOS_Version + "/build_event/receive_build_point_reward", Android_Ve
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/combat_event/entry", Android_Version + "/combat_event/entry"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/combat_event/entry", Android_Version + "/combat_event/entry"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const EventID = String(MsgPackData['event_id']);
 	res.locals.UserSessionRecord['Event']['Combat'][EventID] = {};
 	res.locals.UserSessionRecord['Event']['Combat'][EventID]['UserData'] = {
@@ -3753,7 +3778,7 @@ Orchis.post([iOS_Version + "/combat_event/entry", Android_Version + "/combat_eve
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/combat_event/get_event_data", Android_Version + "/combat_event/get_event_data"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/combat_event/get_event_data", Android_Version + "/combat_event/get_event_data"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const EventID = String(MsgPackData['event_id']);
 	if (res.locals.UserSessionRecord['Event']['Combat'][EventID] == undefined) {
 		res.locals.ResponseBody['data'] = {
@@ -3768,7 +3793,7 @@ Orchis.post([iOS_Version + "/combat_event/get_event_data", Android_Version + "/c
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/combat_event/receive_event_point_reward", Android_Version + "/combat_event/receive_event_point_reward"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/combat_event/receive_event_point_reward", Android_Version + "/combat_event/receive_event_point_reward"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const EventID = String(MsgPackData['event_id']);
 	const RewardData = EventMap.GetBuildReward(EventID, 'Combat', res.locals.UserSessionRecord, res.locals.UserIndexRecord);
 	const RewardList = EventMap.BuildRewardList(EventID, res.locals.UserSessionRecord['Event']['Combat'][EventID]['UserData']['event_point']);
@@ -3785,7 +3810,7 @@ Orchis.post([iOS_Version + "/combat_event/receive_event_point_reward", Android_V
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/combat_event/receive_event_location_reward", Android_Version + "/combat_event/receive_event_location_reward"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/combat_event/receive_event_location_reward", Android_Version + "/combat_event/receive_event_location_reward"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const EventID = MsgPackData['event_id']; const LocationID = MsgPackData['event_location_reward_id'];
 	const RewardData = EventMap.GetCombatReward(EventID, parseInt(String(MsgPackData['event_location_reward_id']).slice(-2)));
 	res.locals.UserSessionRecord['Event']['Combat'][EventID]['LocationReward'].push({
@@ -3804,7 +3829,7 @@ Orchis.post([iOS_Version + "/combat_event/receive_event_location_reward", Androi
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/clb01_event/entry", Android_Version + "/clb01_event/entry"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/clb01_event/entry", Android_Version + "/clb01_event/entry"], global.errorhandler(async (req, res, next) => {
 	let UpdateData = {};
 	const MsgPackData = msgpack.unpack(req.body); const EventID = String(MsgPackData['event_id']);
 	res.locals.UserSessionRecord['Event']['CLB01'][EventID] = {};
@@ -3841,7 +3866,7 @@ Orchis.post([iOS_Version + "/clb01_event/entry", Android_Version + "/clb01_event
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/clb01_event/get_event_data", Android_Version + "/clb01_event/get_event_data"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/clb01_event/get_event_data", Android_Version + "/clb01_event/get_event_data"], global.errorhandler(async (req, res, next) => {
 	let UpdateData = {}; let EntityList = [];
 	const MsgPackData = msgpack.unpack(req.body); const EventID = String(MsgPackData['event_id']);
 	if (res.locals.UserSessionRecord['Event']['CLB01'][EventID] == undefined) {
@@ -3860,7 +3885,7 @@ Orchis.post([iOS_Version + "/clb01_event/get_event_data", Android_Version + "/cl
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/clb01_event/receive_clb01_point_reward", Android_Version + "/clb01_event/receive_clb01_point_reward"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/clb01_event/receive_clb01_point_reward", Android_Version + "/clb01_event/receive_clb01_point_reward"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const EventID = String(MsgPackData['event_id']);
 	const RewardData = EventMap.GetBuildReward(EventID, 'CLB01', res.locals.UserSessionRecord, res.locals.UserIndexRecord);
 	const RewardList = EventMap.BuildRewardList(EventID, res.locals.UserSessionRecord['Event']['CLB01'][EventID]['UserData']['user_clb_01_event_item_list'][2]['event_item_value']);
@@ -3877,7 +3902,7 @@ Orchis.post([iOS_Version + "/clb01_event/receive_clb01_point_reward", Android_Ve
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/earn_event/entry", Android_Version + "/earn_event/entry"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/earn_event/entry", Android_Version + "/earn_event/entry"], global.errorhandler(async (req, res, next) => {
 	let UpdateData = {};
 	const MsgPackData = msgpack.unpack(req.body); const EventID = String(MsgPackData['event_id']);
 	res.locals.UserSessionRecord['Event']['Earn'][EventID] = {};
@@ -3897,7 +3922,7 @@ Orchis.post([iOS_Version + "/earn_event/entry", Android_Version + "/earn_event/e
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/earn_event/get_event_data", Android_Version + "/earn_event/get_event_data"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/earn_event/get_event_data", Android_Version + "/earn_event/get_event_data"], global.errorhandler(async (req, res, next) => {
 	let UpdateData = {};
 	const MsgPackData = msgpack.unpack(req.body); const EventID = String(MsgPackData['event_id']);
 	if (res.locals.UserSessionRecord['Event']['Earn'][EventID] == undefined) {
@@ -3915,7 +3940,7 @@ Orchis.post([iOS_Version + "/earn_event/get_event_data", Android_Version + "/ear
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/earn_event/receive_event_point_reward", Android_Version + "/earn_event/receive_event_point_reward"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/earn_event/receive_event_point_reward", Android_Version + "/earn_event/receive_event_point_reward"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const EventID = String(MsgPackData['event_id']);
 	const RewardData = EventMap.GetBuildReward(EventID, 'Earn', res.locals.UserSessionRecord, res.locals.UserIndexRecord);
 	const RewardList = EventMap.BuildRewardList(EventID, res.locals.UserSessionRecord['Event']['Earn'][EventID]['UserData']['event_point']);
@@ -3932,12 +3957,12 @@ Orchis.post([iOS_Version + "/earn_event/receive_event_point_reward", Android_Ver
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/battle_royal_event/get_event_data", Android_Version + "/battle_royal_event/get_event_data"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/battle_royal_event/get_event_data", Android_Version + "/battle_royal_event/get_event_data"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody = { 'data_headers': { 'result_code': 151 }, 'data': { 'result_code': 151 } }
 	next();
 }));
 
-Orchis.post([iOS_Version + "/story_skip/skip", Android_Version + "/story_skip/skip"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/story_skip/skip", Android_Version + "/story_skip/skip"], global.errorhandler(async (req, res, next) => {
 	const QuestList = IndexTools.CampaignQuestList;
 	const StoryList = IndexTools.CampaignStoryList;
 	const TimeNow = Math.floor(Date.now() / 1000);
@@ -4140,7 +4165,7 @@ Orchis.post([iOS_Version + "/story_skip/skip", Android_Version + "/story_skip/sk
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/mission/unlock_main_story_group", Android_Version + "/mission/unlock_main_story_group"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/mission/unlock_main_story_group", Android_Version + "/mission/unlock_main_story_group"], global.errorhandler(async (req, res, next) => {
 	res.locals.UserIndexRecord['user_data']['tutorial_status'] = 60999;
 	res.locals.UserIndexRecord['user_data']['tutorial_flag_list'] = IndexTools.TutorialFlagsList;
 	res.locals.UserIndexRecord['current_main_story_mission']['main_story_mission_group_id'] = 11
@@ -4232,7 +4257,7 @@ Orchis.post([iOS_Version + "/mission/unlock_main_story_group", Android_Version +
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/mission/get_mission_list", Android_Version + "/mission/get_mission_list"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/mission/get_mission_list", Android_Version + "/mission/get_mission_list"], global.errorhandler(async (req, res, next) => {
 	const Cleared = DataManager.CheckDailyCompleted(res.locals.UserSessionRecord);
 	if (Cleared != 0) {
 		const AllIndex = res.locals.UserSessionRecord['Endeavour']['Active']['daily_mission_list'].findIndex(x => x.daily_mission_id == 15070601);
@@ -4247,7 +4272,7 @@ Orchis.post([iOS_Version + "/mission/get_mission_list", Android_Version + "/miss
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/mission/get_drill_mission_list", Android_Version + "/mission/get_drill_mission_list"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/mission/get_drill_mission_list", Android_Version + "/mission/get_drill_mission_list"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = {
 		'drill_mission_list': [],
 		'current_main_story_mission': [],
@@ -4256,13 +4281,13 @@ Orchis.post([iOS_Version + "/mission/get_drill_mission_list", Android_Version + 
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/mission/unlock_drill_mission_group", Android_Version + "/mission/unlock_drill_mission_group"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/mission/unlock_drill_mission_group", Android_Version + "/mission/unlock_drill_mission_group"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = {
 		'drill_mission_list': []
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/mission/receive_daily_reward", Android_Version + "/mission/receive_daily_reward"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/mission/receive_daily_reward", Android_Version + "/mission/receive_daily_reward"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const MissionList = MsgPackData['mission_params_list'];
 	let Table = [];
 	for (let x in MissionList) {
@@ -4306,14 +4331,14 @@ Orchis.post([iOS_Version + "/mission/receive_daily_reward", Android_Version + "/
 	next();
 }));
 
-Orchis.post([iOS_Version + "/item/get_list", Android_Version + "/item/get_list"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/item/get_list", Android_Version + "/item/get_list"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = { 'item_list': res.locals.UserIndexRecord['material_list'] }
 	for (const i in res.locals.UserSessionRecord['EnergyItems']) {
 		res.locals.ResponseBody['data']['item_list'].push(res.locals.UserSessionRecord['EnergyItems'][i]);
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/item/use_recovery_stamina", Android_Version + "/item/use_recovery_stamina"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/item/use_recovery_stamina", Android_Version + "/item/use_recovery_stamina"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const UseList = MsgPackData['use_item_list'];
 	let RecoverType = 0; let RecoverAmount = 0; RecoverIndex = 0; let UpdateItemList = [];
 	for (const i in UseList) {
@@ -4371,7 +4396,7 @@ Orchis.post([iOS_Version + "/item/use_recovery_stamina", Android_Version + "/ite
 	next();
 }));
 
-Orchis.post([iOS_Version + "/album/index", Android_Version + "/album/index"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/album/index", Android_Version + "/album/index"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = {
 		'album_dragon_list': res.locals.UserIndexRecord['album_dragon_list'],
 		'album_quest_play_record_list': [],
@@ -4380,7 +4405,7 @@ Orchis.post([iOS_Version + "/album/index", Android_Version + "/album/index"], er
 	next();
 }));
 
-Orchis.post([iOS_Version + "/shop/get_list", Android_Version + "/shop/get_list"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/shop/get_list", Android_Version + "/shop/get_list"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = {
 		'is_quest_bonus': 0, 'is_stone_bonus': 0, 'is_stamina_bonus': 0, 'stone_bonus': [], 'stamina_bonus': [], 'quest_bonus': [],
 		'material_shop_purchase': [], 'normal_shop_purchase': [], 'special_shop_purchase': [], 'product_lock_list': [],
@@ -4389,7 +4414,7 @@ Orchis.post([iOS_Version + "/shop/get_list", Android_Version + "/shop/get_list"]
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/shop/item_summon_odd", Android_Version + "/shop/item_summon_odd"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/shop/item_summon_odd", Android_Version + "/shop/item_summon_odd"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = {
 		'item_summon_rate_list': [
 			{ 'entity_type': 23, 'entity_id': 0, 'entity_quantity': 10000, 'entity_rate': "0.001%" },
@@ -4407,7 +4432,7 @@ Orchis.post([iOS_Version + "/shop/item_summon_odd", Android_Version + "/shop/ite
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/shop/item_summon_exec", Android_Version + "/shop/item_summon_exec"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/shop/item_summon_exec", Android_Version + "/shop/item_summon_exec"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	if (res.locals.UserSessionRecord['SummonRecord']['ItemCount'] == undefined) {res.locals.UserSessionRecord['SummonRecord']['ItemCount'] = 0;}
 	let SummonList = [];
@@ -4434,7 +4459,7 @@ Orchis.post([iOS_Version + "/shop/item_summon_exec", Android_Version + "/shop/it
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/shop/material_shop_purchase", Android_Version + "/shop/material_shop_purchase"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/shop/material_shop_purchase", Android_Version + "/shop/material_shop_purchase"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const ShopID = MsgPackData['goods_id']; const PurchaseCount = MsgPackData['quantity'];
 	const ShopData = ShopMap.GetMaterialShopData(ShopID, PurchaseCount);
 	switch(ShopData['Cost']['type']) {
@@ -4478,7 +4503,7 @@ Orchis.post([iOS_Version + "/ability_crest_trade/get_list", Android_Version + "/
 	}
 	next();
 });
-Orchis.post([iOS_Version + "/ability_crest_trade/trade", Android_Version + "/ability_crest_trade/trade"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/ability_crest_trade/trade", Android_Version + "/ability_crest_trade/trade"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const TradeID = MsgPackData['ability_crest_trade_id'];
 	const NewPrintData = WyrmprintMap.CreateWyrmprintFromGift(ShopMap.GetTradePrintID(TradeID));
 	res.locals.UserIndexRecord['user_data']['dew_point'] -= ShopMap.GetPrintTradeCost(TradeID);
@@ -4504,7 +4529,7 @@ Orchis.post([iOS_Version + "/treasure_trade/get_list_all", Android_Version + "/t
 	}
 	next();
 });
-Orchis.post([iOS_Version + "/treasure_trade/trade", Android_Version + "/treasure_trade/trade"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/treasure_trade/trade", Android_Version + "/treasure_trade/trade"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const TradeID = MsgPackData['treasure_trade_id']; const TradeCount = MsgPackData['trade_count'];
 	const FinalizedTrade = ShopMap.TradeTreasure(TradeID, TradeCount, res.locals.UserIndexRecord, res.locals.UserSessionRecord);
 	res.locals.ResponseBody['data'] = FinalizedTrade[0];
@@ -4515,8 +4540,8 @@ Orchis.post([iOS_Version + "/treasure_trade/trade", Android_Version + "/treasure
 	next();
 }));
 
-//Orchis.post([iOS_Version + "/guild/establish", Android_Version + "/guild/establish"], errorhandler(async (req, res, next) => {}));
-Orchis.post([iOS_Version + "/guild/update_user_setting", Android_Version + "/guild/update_user_setting"], errorhandler(async (req, res, next) => {
+//Orchis.post([iOS_Version + "/guild/establish", Android_Version + "/guild/establish"], global.errorhandler(async (req, res, next) => {}));
+Orchis.post([iOS_Version + "/guild/update_user_setting", Android_Version + "/guild/update_user_setting"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	if (MasterGuildDatabase[String(res.locals.UserIndexRecord['user_guild_data']['guild_id'])] == undefined) {
 		res.locals.ResponseBody['data'] = {
@@ -4577,7 +4602,7 @@ Orchis.post([iOS_Version + "/guild/update_user_setting", Android_Version + "/gui
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/guild/index", Android_Version + "/guild/index"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/guild/index", Android_Version + "/guild/index"], global.errorhandler(async (req, res, next) => {
 	if (res.locals.UserIndexRecord['user_guild_data'] == undefined) {
 		res.locals.UserIndexRecord = AssignGuildData(10001, res.locals.UserIndexRecord);
 	}
@@ -4652,7 +4677,7 @@ Orchis.post([iOS_Version + "/guild/index", Android_Version + "/guild/index"], er
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/guild_chat/get_new_message_list", Android_Version + "/guild_chat/get_new_message_list"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/guild_chat/get_new_message_list", Android_Version + "/guild_chat/get_new_message_list"], global.errorhandler(async (req, res, next) => {
 	const GuildID = res.locals.UserIndexRecord['user_guild_data']['guild_id'];
 	if (MasterGuildDatabase[String(GuildID)] == undefined) {
 		const Response = msgpack.pack({'data_headers': { 'result_code': 1 }, 'data': {
@@ -4676,7 +4701,7 @@ Orchis.post([iOS_Version + "/guild_chat/get_new_message_list", Android_Version +
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/guild_chat/get_old_message_list", Android_Version + "/guild_chat/get_old_message_list"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/guild_chat/get_old_message_list", Android_Version + "/guild_chat/get_old_message_list"], global.errorhandler(async (req, res, next) => {
 	const GuildID = res.locals.UserIndexRecord['user_guild_data']['guild_id'];
 	const MsgPackData = msgpack.unpack(req.body);
 	if (MasterGuildDatabase[String(GuildID)] == undefined) {
@@ -4701,7 +4726,7 @@ Orchis.post([iOS_Version + "/guild_chat/get_old_message_list", Android_Version +
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/guild_chat/post_message_text", Android_Version + "/guild_chat/post_message_text"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/guild_chat/post_message_text", Android_Version + "/guild_chat/post_message_text"], global.errorhandler(async (req, res, next) => {
 	const GuildID = res.locals.UserIndexRecord['user_guild_data']['guild_id'];
 	const MsgPackData = msgpack.unpack(req.body);
 	if (MasterGuildDatabase[String(GuildID)] == undefined) {
@@ -4768,7 +4793,7 @@ Orchis.post([iOS_Version + "/guild_chat/post_message_text", Android_Version + "/
 		}
 	}));
 }));
-Orchis.post([iOS_Version + "/guild_chat/post_message_stamp", Android_Version + "/guild_chat/post_message_stamp"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/guild_chat/post_message_stamp", Android_Version + "/guild_chat/post_message_stamp"], global.errorhandler(async (req, res, next) => {
 	const GuildID = res.locals.UserIndexRecord['user_guild_data']['guild_id'];
 	const MsgPackData = msgpack.unpack(req.body);
 	if (MasterGuildDatabase[String(GuildID)] == undefined) {
@@ -4830,7 +4855,7 @@ Orchis.post([iOS_Version + "/guild_chat/post_message_stamp", Android_Version + "
 		}
 	}));
 }));
-Orchis.post([iOS_Version + "/guild/get_guild_member_data", Android_Version + "/guild/get_guild_member_data"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/guild/get_guild_member_data", Android_Version + "/guild/get_guild_member_data"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const GuildID = MsgPackData['guild_id'];
 	let MemberList = [];
 	if (MasterGuildDatabase[String(GuildID)] != undefined) {
@@ -4865,7 +4890,7 @@ iOS_Version + "/quest/get_quest_clear_party_multi", Android_Version + "/quest/ge
 	next();
 });
 Orchis.post([iOS_Version + "/quest/set_quest_clear_party", Android_Version + "/quest/set_quest_clear_party",
-iOS_Version + "/quest/set_quest_clear_party_multi", Android_Version + "/quest/set_quest_clear_party_multi"], errorhandler(async (req, res, next) => {
+iOS_Version + "/quest/set_quest_clear_party_multi", Android_Version + "/quest/set_quest_clear_party_multi"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const QuestID = String(MsgPackData['quest_id']);
 	if (ExceptionList.includes(QuestID) || !NoTrackList.includes(QuestID.slice(0, 3))) {
 		let UserTeamRecord = await Fluoresce.Read("MasterTeamRecord", res.locals.UserSessionRecord['ViewerID']);
@@ -4889,7 +4914,7 @@ Orchis.post([iOS_Version + "/quest/drop_list", Android_Version + "/quest/drop_li
 	next();
 });
 
-Orchis.post([iOS_Version + "/dungeon_start/start", Android_Version + "/dungeon_start/start"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dungeon_start/start", Android_Version + "/dungeon_start/start"], global.errorhandler(async (req, res, next) => {
 	const ViewerID = res.locals.UserSessionRecord['ViewerID'];
 	const DungeonKey = crypto.randomBytes(16).toString("hex");
 	const MsgPackData = msgpack.unpack(req.body); const QuestID = MsgPackData['quest_id']; if (typeof QuestID === 'string') { res.end(); return; }
@@ -4982,7 +5007,7 @@ Orchis.post([iOS_Version + "/dungeon_start/start", Android_Version + "/dungeon_s
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/dungeon_start/start_assign_unit", Android_Version + "/dungeon_start/start_assign_unit"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dungeon_start/start_assign_unit", Android_Version + "/dungeon_start/start_assign_unit"], global.errorhandler(async (req, res, next) => {
 	const ViewerID = res.locals.UserSessionRecord['ViewerID'];
 	const DungeonKey = crypto.randomBytes(16).toString("hex");
 	const MsgPackData = msgpack.unpack(req.body); const QuestID = MsgPackData['quest_id']; if (typeof QuestID === 'string') { res.end(); }
@@ -5070,7 +5095,7 @@ Orchis.post([iOS_Version + "/dungeon_start/start_assign_unit", Android_Version +
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dungeon_start/start_multi", Android_Version + "/dungeon_start/start_multi"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dungeon_start/start_multi", Android_Version + "/dungeon_start/start_multi"], global.errorhandler(async (req, res, next) => {
 	const ViewerID = res.locals.UserSessionRecord['ViewerID'];
 	const DungeonKey = crypto.randomBytes(16).toString("hex");
 	const MsgPackData = msgpack.unpack(req.body); const QuestID = MsgPackData['quest_id']; if (typeof QuestID === 'string') { res.end(); return; }
@@ -5143,7 +5168,7 @@ Orchis.post([iOS_Version + "/dungeon_start/start_multi", Android_Version + "/dun
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dungeon_record/record", Android_Version + "/dungeon_record/record"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dungeon_record/record", Android_Version + "/dungeon_record/record"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const PlayData = MsgPackData['play_record'];
 	const DungeonKey = MsgPackData['dungeon_key'];
@@ -5160,7 +5185,7 @@ Orchis.post([iOS_Version + "/dungeon_record/record", Android_Version + "/dungeon
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/dungeon_record/record_multi", Android_Version + "/dungeon_record/record_multi"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dungeon_record/record_multi", Android_Version + "/dungeon_record/record_multi"], global.errorhandler(async (req, res, next) => {
 	let UserSessionRecord = "";
 	let UserIndexRecord = "";
 	if (req.get('Authorization') != global.ServerConfig['PhotonToken']) {
@@ -5196,7 +5221,7 @@ Orchis.post([iOS_Version + "/dungeon_record/record_multi", Android_Version + "/d
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/dungeon/get_area_odds", Android_Version + "/dungeon/get_area_odds"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dungeon/get_area_odds", Android_Version + "/dungeon/get_area_odds"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const DungeonKey = MsgPackData['dungeon_key'];
 	let QuestID = res.locals.UserSessionRecord['DungeonRecord']['LastQuestID'];
@@ -5207,7 +5232,7 @@ Orchis.post([iOS_Version + "/dungeon/get_area_odds", Android_Version + "/dungeon
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dungeon/fail", Android_Version + "/dungeon/fail"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dungeon/fail", Android_Version + "/dungeon/fail"], global.errorhandler(async (req, res, next) => {
 	// res.locals.UserSessionRecord['DungeonRecord']['LastDungeonKey'] = 0;
 	// request sends dungeon_key
 	res.locals.ResponseBody['data'] = {
@@ -5225,7 +5250,7 @@ Orchis.post([iOS_Version + "/dungeon/retry", Android_Version + "/dungeon/retry"]
 	res.locals.ResponseBody['data'] = { 'continue_count': 1 }
 	next();
 });
-Orchis.post([iOS_Version + "/dungeon_skip/start", Android_Version + "/dungeon_skip/start"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dungeon_skip/start", Android_Version + "/dungeon_skip/start"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const ViewerID = res.locals.UserSessionRecord['ViewerID'];
 	const QuestID = MsgPackData['quest_id']; const PartyNo = [MsgPackData['party_no']];
 	const PlayCount = MsgPackData['play_count']; const DungeonKey = crypto.randomBytes(16).toString("hex");
@@ -5249,7 +5274,7 @@ Orchis.post([iOS_Version + "/dungeon_skip/start", Android_Version + "/dungeon_sk
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dungeon_skip/start_assign_unit", Android_Version + "/dungeon_skip/start_assign_unit"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dungeon_skip/start_assign_unit", Android_Version + "/dungeon_skip/start_assign_unit"], global.errorhandler(async (req, res, next) => {
 	const ViewerID = res.locals.UserSessionRecord['ViewerID'];
 	const DungeonKey = crypto.randomBytes(16).toString("hex");
 	const MsgPackData = msgpack.unpack(req.body); const QuestID = MsgPackData['quest_id']; if (typeof QuestID === 'string') { res.end(); }
@@ -5276,7 +5301,7 @@ Orchis.post([iOS_Version + "/dungeon_skip/start_assign_unit", Android_Version + 
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dungeon_skip/start_multiple_quest", Android_Version + "/dungeon_skip/start_multiple_quest"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dungeon_skip/start_multiple_quest", Android_Version + "/dungeon_skip/start_multiple_quest"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const QuestList = MsgPackData['request_quest_multiple_list'];
 	let QuestIDList = [];
 	for (let x in QuestList) {
@@ -5297,7 +5322,7 @@ Orchis.post([iOS_Version + "/dungeon_skip/start_multiple_quest", Android_Version
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/repeat/end", Android_Version + "/repeat/end"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/repeat/end", Android_Version + "/repeat/end"], global.errorhandler(async (req, res, next) => {
 	const DungeonKey = res.locals.UserSessionRecord['DungeonRecord']['LastDungeonKey'];
 	res.locals.UserSessionRecord['DungeonRecord']['Repeat']['track'] = res.locals.UserSessionRecord['DungeonRecord']['Repeat']['count'];
 	PlayData = {
@@ -5313,7 +5338,7 @@ Orchis.post([iOS_Version + "/repeat/end", Android_Version + "/repeat/end"], erro
 	next();
 }));
 
-Orchis.post([iOS_Version + "/heroparam/batch"], errorhandler(async (req, res) => {
+Orchis.post([iOS_Version + "/heroparam/batch"], global.errorhandler(async (req, res) => {
 	const RecievedData = req.body;
 	const ResponseTable = [];
 	for (let x in RecievedData) {
@@ -5330,11 +5355,11 @@ Orchis.post([iOS_Version + "/heroparam/batch"], errorhandler(async (req, res) =>
 	}
 	const Serialized = JSON.stringify(ResponseTable); res.set(ResHeaders(Serialized.length)); res.end(Serialized); return;
 }));
-Orchis.post([iOS_Version + "/matching/check_penalty_user", Android_Version + "/matching/check_penalty_user"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/matching/check_penalty_user", Android_Version + "/matching/check_penalty_user"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = { 'result': 1 }
 	next();
 }));
-Orchis.post([iOS_Version + "/matching/get_room_list", Android_Version + "/matching/get_room_list"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/matching/get_room_list", Android_Version + "/matching/get_room_list"], global.errorhandler(async (req, res, next) => {
 	if (res.locals.UserSessionRecord['VanillaAssets'] == true) { res.end(EmptyRooms); return; }
 	const MsgPackData = msgpack.unpack(req.body);
 	const FromStateManager = await fetch( global.ServerConfig['StateURL'] + "get/gamelist", { method: "GET" });
@@ -5405,11 +5430,11 @@ Orchis.post([iOS_Version + "/matching/get_room_list", Android_Version + "/matchi
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/matching/get_room_list_by_location", Android_Version + "/matching/get_room_list_by_location"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/matching/get_room_list_by_location", Android_Version + "/matching/get_room_list_by_location"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = { 'room_list': [] }
 	next();
 }));
-Orchis.post([iOS_Version + "/matching/get_room_list_by_quest_id", Android_Version + "/matching/get_room_list_by_quest_id"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/matching/get_room_list_by_quest_id", Android_Version + "/matching/get_room_list_by_quest_id"], global.errorhandler(async (req, res, next) => {
 	if (res.locals.UserSessionRecord['VanillaAssets'] == true) { res.end(EmptyRooms); return; }
 	const MsgPackData = msgpack.unpack(req.body); const QuestID = parseInt(MsgPackData['quest_id']);
 	if (isNaN(QuestID) || QuestID==undefined || QuestID==0){res.end(msgpack.pack({'data_headers':{'result_code':121},'data':{'result':121}}));return;}
@@ -5475,7 +5500,7 @@ Orchis.post([iOS_Version + "/matching/get_room_list_by_quest_id", Android_Versio
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/matching/get_room_name", Android_Version + "/matching/get_room_name"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/matching/get_room_name", Android_Version + "/matching/get_room_name"], global.errorhandler(async (req, res, next) => {
 	if (res.locals.UserSessionRecord['VanillaAssets'] == true) { res.end(EmptyRooms); return; }
 	const MsgPackData = msgpack.unpack(req.body); const RoomID = MsgPackData['room_id'];
 	const FromStateManager = await fetch( global.ServerConfig['StateURL'] + "get/byid/" + RoomID, { method: "GET" });
@@ -5533,7 +5558,7 @@ Orchis.post([iOS_Version + "/matching/get_room_name", Android_Version + "/matchi
 	next();
 }));
 
-Orchis.post([iOS_Version + "/wall/get_wall_clear_party", Android_Version + "/wall/get_wall_clear_party"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/wall/get_wall_clear_party", Android_Version + "/wall/get_wall_clear_party"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const QuestID = MsgPackData['wall_id'];
 	res.locals.ResponseBody['data'] = {
 		'wall_clear_party_setting_list': [],
@@ -5541,12 +5566,12 @@ Orchis.post([iOS_Version + "/wall/get_wall_clear_party", Android_Version + "/wal
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/wall/set_wall_clear_party", Android_Version + "/wall/set_wall_clear_party"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/wall/set_wall_clear_party", Android_Version + "/wall/set_wall_clear_party"], global.errorhandler(async (req, res, next) => {
 	// const MsgPackData = msgpack.unpack(req.body); # This is the wall id and party data to be set
 	res.locals.ResponseBody['data'] = { 'result': 1 }
 	next();
 }));
-Orchis.post([iOS_Version + "/wall_start/start", Android_Version + "/wall_start/start"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/wall_start/start", Android_Version + "/wall_start/start"], global.errorhandler(async (req, res, next) => {
 	const ViewerID = res.locals.UserSessionRecord['ViewerID'];
 	const DungeonKey = crypto.randomBytes(16).toString("hex");
 	const MsgPackData = msgpack.unpack(req.body); const WallID = MsgPackData['wall_id']; if (typeof WallID === 'string') { res.end(); return; }
@@ -5610,7 +5635,7 @@ Orchis.post([iOS_Version + "/wall_start/start", Android_Version + "/wall_start/s
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/wall_start/start_assign_unit", Android_Version + "/wall_start/start_assign_unit"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/wall_start/start_assign_unit", Android_Version + "/wall_start/start_assign_unit"], global.errorhandler(async (req, res, next) => {
 	const ViewerID = res.locals.UserSessionRecord['ViewerID'];
 	const DungeonKey = crypto.randomBytes(16).toString("hex");
 	const MsgPackData = msgpack.unpack(req.body); const WallID = MsgPackData['wall_id']; if (typeof WallID === 'string') { res.end(); return; }
@@ -5673,7 +5698,7 @@ Orchis.post([iOS_Version + "/wall_start/start_assign_unit", Android_Version + "/
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/wall_record/record", Android_Version + "/wall_record/record"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/wall_record/record", Android_Version + "/wall_record/record"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const WallID = MsgPackData['wall_id']
 	const ResultData = DataManager.WallRecord(res.locals.UserSessionRecord, res.locals.UserIndexRecord, WallID);
@@ -5683,7 +5708,7 @@ Orchis.post([iOS_Version + "/wall_record/record", Android_Version + "/wall_recor
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/wall/fail", Android_Version + "/wall/fail"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/wall/fail", Android_Version + "/wall/fail"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = {
 		'result': 1,
 		'fail_helper_list': res.locals.UserSessionRecord['Wall']['LastSupportCharacter'][1],
@@ -5698,7 +5723,7 @@ Orchis.post([iOS_Version + "/wall/fail", Android_Version + "/wall/fail"], errorh
 	next();
 }));
 
-Orchis.post([iOS_Version + "/dmode/entry", Android_Version + "/dmode/entry"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dmode/entry", Android_Version + "/dmode/entry"], global.errorhandler(async (req, res, next) => {
 	res.locals.UserSessionRecord['Kaleidoscape']['DmodeInfo'] = {
 		"total_max_floor_num": 0,
 		"recovery_count": 0,
@@ -5747,7 +5772,7 @@ Orchis.post([iOS_Version + "/dmode/entry", Android_Version + "/dmode/entry"], er
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dmode/get_data", Android_Version + "/dmode/get_data"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dmode/get_data", Android_Version + "/dmode/get_data"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = {
 		'dmode_info': res.locals.UserSessionRecord['Kaleidoscape']['DmodeInfo'],
 		'dmode_chara_list': res.locals.UserSessionRecord['Kaleidoscape']['CharacterList'],
@@ -5760,7 +5785,7 @@ Orchis.post([iOS_Version + "/dmode/get_data", Android_Version + "/dmode/get_data
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/dmode/read_story", Android_Version + "/dmode/read_story"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dmode/read_story", Android_Version + "/dmode/read_story"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); StoryID = MsgPackData['dmode_story_id'];
 	const UpdateData = { 'dmode_story_id': StoryID, 'is_read': 1 };
 	const StoryIndex = res.locals.UserSessionRecord['Kaleidoscape']['StoryList'].findIndex(x => x.dmode_story_id == StoryID);
@@ -5777,7 +5802,7 @@ Orchis.post([iOS_Version + "/dmode/read_story", Android_Version + "/dmode/read_s
 	else { res.locals.ResponseBody['data'] = { 'update_data_list': { 'functional_maintenance_list': [] } } };
 	next();
 }));
-Orchis.post([iOS_Version + "/dmode/expedition_start", Android_Version + "/dmode/expedition_start"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dmode/expedition_start", Android_Version + "/dmode/expedition_start"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	res.locals.UserSessionRecord['Kaleidoscape']['Expedition'] = {
 		'chara_id_1': MsgPackData['chara_id_list'][0],
@@ -5794,7 +5819,7 @@ Orchis.post([iOS_Version + "/dmode/expedition_start", Android_Version + "/dmode/
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dmode/expedition_finish", Android_Version + "/dmode/expedition_finish"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dmode/expedition_finish", Android_Version + "/dmode/expedition_finish"], global.errorhandler(async (req, res, next) => {
 	const DuskAmber = DModeMap.ExpeditionDuskAmber(res.locals.UserSessionRecord['Kaleidoscape']['Expedition']['target_floor_num']);
 	const DawnAmber = DModeMap.ExpeditionDawnAmber(res.locals.UserSessionRecord['Kaleidoscape']['Expedition']['target_floor_num']);
 	const Talismans = DModeMap.CreateExpeditionTalismans(res.locals.UserSessionRecord, res.locals.UserIndexRecord);
@@ -5829,7 +5854,7 @@ Orchis.post([iOS_Version + "/dmode/expedition_finish", Android_Version + "/dmode
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dmode/expedition_force_finish", Android_Version + "/dmode/expedition_force_finish"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dmode/expedition_force_finish", Android_Version + "/dmode/expedition_force_finish"], global.errorhandler(async (req, res, next) => {
 	const DuskAmber = 0;
 	const DawnAmber = 0;
 	const Talismans = [];
@@ -5861,7 +5886,7 @@ Orchis.post([iOS_Version + "/dmode/expedition_force_finish", Android_Version + "
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dmode_dungeon/start", Android_Version + "/dmode_dungeon/start"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dmode_dungeon/start", Android_Version + "/dmode_dungeon/start"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const CharacterID = MsgPackData['chara_id'];
 	const StartFloor = MsgPackData['start_floor_num']; const ServitorID = MsgPackData['servitor_id'];
 	const SkillList = MsgPackData['bring_edit_skill_chara_id_list'];
@@ -5941,7 +5966,7 @@ Orchis.post([iOS_Version + "/dmode_dungeon/start", Android_Version + "/dmode_dun
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dmode_dungeon/floor", Android_Version + "/dmode_dungeon/floor"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dmode_dungeon/floor", Android_Version + "/dmode_dungeon/floor"], global.errorhandler(async (req, res, next) => {
 	res.locals.UserSessionRecord['Kaleidoscape']['FloorKey'] = crypto.randomBytes(20).toString("hex");
 	res.locals.UserSessionRecord['Kaleidoscape']['DungeonInfo']['state'] = 5;
 	const AreaInfo = DModeMap.GenerateKaleidoData(res.locals.UserSessionRecord, msgpack.unpack(req.body)['dmode_play_record']);
@@ -5953,7 +5978,7 @@ Orchis.post([iOS_Version + "/dmode_dungeon/floor", Android_Version + "/dmode_dun
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dmode_dungeon/floor_skip", Android_Version + "/dmode_dungeon/floor_skip"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dmode_dungeon/floor_skip", Android_Version + "/dmode_dungeon/floor_skip"], global.errorhandler(async (req, res, next) => {
 	res.locals.UserSessionRecord['Kaleidoscape']['DungeonInfo']['state'] = 4;
 	res.locals.ResponseBody['data'] = {
 		'dmode_dungeon_state': 4,
@@ -5963,7 +5988,7 @@ Orchis.post([iOS_Version + "/dmode_dungeon/floor_skip", Android_Version + "/dmod
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/dmode_dungeon/restart", Android_Version + "/dmode_dungeon/restart"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dmode_dungeon/restart", Android_Version + "/dmode_dungeon/restart"], global.errorhandler(async (req, res, next) => {
 	res.locals.UserSessionRecord['Kaleidoscape']['DungeonInfo']['state'] = 7;
 	const CharacterListIndex = res.locals.UserSessionRecord['Kaleidoscape']['CharacterList'].findIndex(x => x.chara_id == res.locals.UserSessionRecord['Kaleidoscape']['DungeonInfo']['chara_id']);
 	const Servitor = res.locals.UserSessionRecord['Kaleidoscape']['CharacterList'][CharacterListIndex]['select_servitor_id'];
@@ -5990,7 +6015,7 @@ Orchis.post([iOS_Version + "/dmode_dungeon/restart", Android_Version + "/dmode_d
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dmode_dungeon/finish", Android_Version + "/dmode_dungeon/finish"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dmode_dungeon/finish", Android_Version + "/dmode_dungeon/finish"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	let Floor = res.locals.UserSessionRecord['Kaleidoscape']['FloorNumber'];
 	if (res.locals.UserSessionRecord['Kaleidoscape']['DungeonInfo']['state'] == 6) { Floor -= 1;}
@@ -6080,7 +6105,7 @@ Orchis.post([iOS_Version + "/dmode_dungeon/finish", Android_Version + "/dmode_du
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dmode_dungeon/user_halt", Android_Version + "/dmode_dungeon/user_halt"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dmode_dungeon/user_halt", Android_Version + "/dmode_dungeon/user_halt"], global.errorhandler(async (req, res, next) => {
 	res.locals.UserSessionRecord['Kaleidoscape']['DungeonInfo']['state'] = 6;
 	res.locals.UserSessionRecord['Kaleidoscape']['DungeonInfo']['floor_num'] = res.locals.UserSessionRecord['Kaleidoscape']['FloorNumber'];
 	res.locals.ResponseBody['data'] = {
@@ -6090,7 +6115,7 @@ Orchis.post([iOS_Version + "/dmode_dungeon/user_halt", Android_Version + "/dmode
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dmode_dungeon/system_halt", Android_Version + "/dmode_dungeon/system_halt"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dmode_dungeon/system_halt", Android_Version + "/dmode_dungeon/system_halt"], global.errorhandler(async (req, res, next) => {
 	res.locals.UserSessionRecord['Kaleidoscape']['DungeonInfo']['state'] = 6;
 	res.locals.UserSessionRecord['Kaleidoscape']['DungeonInfo']['floor_num'] = res.locals.UserSessionRecord['Kaleidoscape']['FloorNumber'];
 	res.locals.ResponseBody['data'] = {
@@ -6100,7 +6125,7 @@ Orchis.post([iOS_Version + "/dmode_dungeon/system_halt", Android_Version + "/dmo
 	res.locals.UpdatedSessionRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/dmode/buildup_servitor_passive", Android_Version + "/dmode/buildup_servitor_passive"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/dmode/buildup_servitor_passive", Android_Version + "/dmode/buildup_servitor_passive"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const RequestBuild = MsgPackData['request_buildup_passive_list'];
 	res.locals.UserSessionRecord = DModeMap.BuildPassive(RequestBuild, res.locals.UserSessionRecord);
@@ -6114,7 +6139,7 @@ Orchis.post([iOS_Version + "/dmode/buildup_servitor_passive", Android_Version + 
 	next();
 }));
 
-Orchis.post([iOS_Version + "/talisman/sell", Android_Version + "/talisman/sell"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/talisman/sell", Android_Version + "/talisman/sell"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body);
 	const SellList = MsgPackData['talisman_key_id_list'];
 	let DeleteList = [];
@@ -6133,7 +6158,7 @@ Orchis.post([iOS_Version + "/talisman/sell", Android_Version + "/talisman/sell"]
 	res.locals.UpdatedIndexRecord = true;
 	next();
 }));
-Orchis.post([iOS_Version + "/talisman/set_lock", Android_Version + "/talisman/set_lock"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/talisman/set_lock", Android_Version + "/talisman/set_lock"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const PrintID = MsgPackData['talisman_key_id']; const Lock = MsgPackData['is_lock'];
 	const PrintIndex = res.locals.UserIndexRecord['talisman_list'].findIndex(x => x.talisman_key_id == PrintID);
 	res.locals.UserIndexRecord['talisman_list'][PrintIndex]['is_lock'] = Lock;
@@ -6146,13 +6171,13 @@ Orchis.post([iOS_Version + "/talisman/set_lock", Android_Version + "/talisman/se
 	next();
 }));
 
-Orchis.post([iOS_Version + "/stamp/get_stamp", Android_Version + "/stamp/get_stamp"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/stamp/get_stamp", Android_Version + "/stamp/get_stamp"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = {
 		'stamp_list': res.locals.UserSessionRecord['Stickers']
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/stamp/set_equip_stamp", Android_Version + "/stamp/set_equip_stamp"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/stamp/set_equip_stamp", Android_Version + "/stamp/set_equip_stamp"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const StampList = MsgPackData['stamp_list']
 	res.locals.UserIndexRecord['equip_stamp_list'] = StampList;
 	res.locals.ResponseBody['data'] = {
@@ -6162,7 +6187,7 @@ Orchis.post([iOS_Version + "/stamp/set_equip_stamp", Android_Version + "/stamp/s
 	next();
 }));
 
-Orchis.post([iOS_Version + "/suggestion/get_category_list", Android_Version + "/suggestion/get_category_list"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/suggestion/get_category_list", Android_Version + "/suggestion/get_category_list"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = {
 		'category_list': [
 			{
@@ -6185,7 +6210,7 @@ Orchis.post([iOS_Version + "/suggestion/get_category_list", Android_Version + "/
 	}
 	next();
 }));
-Orchis.post([iOS_Version + "/suggestion/set", Android_Version + "/suggestion/set"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/suggestion/set", Android_Version + "/suggestion/set"], global.errorhandler(async (req, res, next) => {
 	const MsgPackData = msgpack.unpack(req.body); const Category = MsgPackData['category_id'];
 	const Message = MsgPackData['message']; let SuggestType = ""; res.locals.ResponseBody['data'] = { 'result_code': 1 }
 	if (Category == 1) { SuggestType = "Request"; } else if (Category == 2) { SuggestType = "Suggestion"; }
@@ -6322,11 +6347,11 @@ Orchis.post([iOS_Version + "/suggestion/set", Android_Version + "/suggestion/set
 	await fs.writeFile(__dirname + '/Library/Function/Feedback/' + FileName, String(Message) + "\n");
 	next();
 }));
-Orchis.post([iOS_Version + "/user/get_n_account_info", Android_Version + "/user/get_n_account_info"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/user/get_n_account_info", Android_Version + "/user/get_n_account_info"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = { 'n_account_info': { 'email': "ceryphim@orchis.cherrymint.live", 'nickname': res.locals.UserIndexRecord['user_data']['name'] } }
 	next();
 }));
-Orchis.post([iOS_Version + "/user/linked_n_account", Android_Version + "/user/linked_n_account"], errorhandler(async (req, res, next) => {
+Orchis.post([iOS_Version + "/user/linked_n_account", Android_Version + "/user/linked_n_account"], global.errorhandler(async (req, res, next) => {
 	res.locals.ResponseBody['data'] = { 'result_code': 1 }
 	next();
 }));
@@ -6415,7 +6440,7 @@ Orchis.get("/dragalipatch/config", async (req,res) => {
 Orchis.get("/assetver", async (req,res) => {
 	res.end(JSON.stringify(AssetList));
 });
-Orchis.get("/savedata.json", errorhandler(async (req,res) => {
+Orchis.get("/savedata.json", global.errorhandler(async (req,res) => {
 	let ViewerID = parseInt(req.query.id);
 	const IsExists = await Fluoresce.Exists("MasterIndexRecord", ViewerID);
 	if (!IsExists) {
@@ -6430,7 +6455,7 @@ Orchis.get("/savedata.json", errorhandler(async (req,res) => {
 	res.set('content-type', 'application/msgpack');
 	res.end(JSON.stringify(WrappedData, null, 2));
 }));
-Orchis.get("/damagestats", errorhandler(async (req,res) => {
+Orchis.get("/damagestats", global.errorhandler(async (req,res) => {
 	const ViewerID = req.query.id;
 	const IsExists = await Fluoresce.Exists("MasterDPSRecord", ViewerID);
 	if (!IsExists) { res.status(404); res.end("No data"); return; }
@@ -6477,7 +6502,7 @@ Orchis.get("/damagestats", errorhandler(async (req,res) => {
 	res.end(HTMLOpen + HTMLBody + HTMLClose);
 	
 }));
-Orchis.get("/zena/get_team_data", errorhandler(async (req,res) => {
+Orchis.get("/zena/get_team_data", global.errorhandler(async (req,res) => {
 	if (req.get('Authorization') != global.ServerConfig['ZenaToken']) { res.end("Authentication Failed.\n"); return; }
 	const ViewerID = req.query.id;
 	const TeamID = parseInt(req.query.teamnum);
@@ -6501,7 +6526,7 @@ Orchis.get("/zena/get_team_data", errorhandler(async (req,res) => {
 	res.type('application/json');
 	res.end(JSON.stringify(Response));
 }));
-Orchis.post("/zena/send_guild_message", errorhandler(async (req,res) => {
+Orchis.post("/zena/send_guild_message", global.errorhandler(async (req,res) => {
 	if (req.get('Authorization') != global.ServerConfig['ZenaToken']) { res.end("Authentication Failed.\n"); return; }
 	const JSONData = req.body;
 	const NextMessageID = MasterGuildDatabase["10001"]['Chat'][0]['chat_message_id'] + 1;
@@ -6588,7 +6613,7 @@ Orchis.post("/zena/send_guild_message", errorhandler(async (req,res) => {
 	MasterGuildDatabase["10001"]['Chat'].unshift(ChatMessageTemplate);
 	res.end();
 }));
-Orchis.post("/zena/requestindex", errorhandler(async (req,res) => {
+Orchis.post("/zena/requestindex", global.errorhandler(async (req,res) => {
 	const ViewerID = req.query.id;
 	const IsExists = await Fluoresce.Exists("MasterIndexRecord", String(ViewerID));
 	if (IsExists == false) {
@@ -6628,14 +6653,14 @@ Orchis.post("/utility/force_save_database", async (req,res) => {
 	SaveDatabases();
 	res.end('Databases saved.\n');
 });
-Orchis.post("/utility/inject_session_data", errorhandler(async (req,res) => {
+Orchis.post("/utility/inject_session_data", global.errorhandler(async (req,res) => {
 	if (req.get('viewerid') == undefined) { res.end('No Viewer ID presented.\n'); return; }
 	if (req.get('content-type') != 'application/json') { res.end("Define content-type.\n"); }
 	const UserAccountRecord = await Fluoresce.Read("MasterAccountRecord", req.get('viewerid'));
 	const RecievedData = req.body; const UserSessionRecord = RecievedData; await WriteSessionRecord(UserAccountRecord['SessionID'], UserSessionRecord);
 	res.end('Injected session for ViewerID ' + String(req.get('viewerid')) + '\n');
 }));
-Orchis.post("/utility/inject_index_data", errorhandler(async (req,res) => {
+Orchis.post("/utility/inject_index_data", global.errorhandler(async (req,res) => {
 	if (req.get('viewerid') == undefined) { res.end('No Viewer ID presented.\n'); return; }
 	if (req.get('content-type') != 'application/json') { res.end("Define content-type.\n"); }
 	const RecievedData = req.body; let UserIndexRecord = RecievedData['data'];
@@ -6643,7 +6668,7 @@ Orchis.post("/utility/inject_index_data", errorhandler(async (req,res) => {
 	await WriteIndexRecord(req.get('viewerid'), UserIndexRecord);
 	res.end('Injected index for ViewerID ' + req.get('viewerid') + '\n');
 }));
-Orchis.post("/utility/inject_kscape_data", errorhandler(async (req,res) => {
+Orchis.post("/utility/inject_kscape_data", global.errorhandler(async (req,res) => {
 	if (req.get('viewerid') == undefined) { res.end('No Viewer ID presented.\n'); return; }
 	if (req.get('content-type') != 'application/json') { res.end("Define content-type.\n"); }
 	const UserAccountRecord = await Fluoresce.Read("MasterAccountRecord", req.get('viewerid'));
@@ -6664,14 +6689,14 @@ Orchis.post("/utility/migrate_index_data", async (req,res) => {
 	await WriteIndexRecord(String(req.get('newviewerid')), Old_UserIndex);
 	res.end('Migrated index data from ViewerID ' + String(req.get('oldviewerid')) + ' to ViewerID ' + String(req.get('newviewerid')) + '\n');
 });
-Orchis.post("/utility/get_index_data", errorhandler(async (req,res) => {
+Orchis.post("/utility/get_index_data", global.errorhandler(async (req,res) => {
 	if (req.get('viewerid') == undefined) { res.end('No Viewer ID presented.\n'); return; }
 	const UserIndexRecord = await ReadIndexRecord(parseInt(req.get('viewerid')));
 	const WrappedData = { 'data_headers': { 'result_code': 1 }, 'data': UserIndexRecord }
 	res.set('content-type', 'application/msgpack');
 	res.end(JSON.stringify(WrappedData, null, 2));
 }));
-Orchis.post("/utility/get_session_data", errorhandler(async (req,res) => {
+Orchis.post("/utility/get_session_data", global.errorhandler(async (req,res) => {
 	if (req.get('viewerid') == undefined) { res.end('No Viewer ID presented.\n'); return; }
 	const UserAccountRecord = await Fluoresce.Read("MasterAccountRecord", req.get('viewerid'));
 	const UserSessionRecord = await ReadSessionRecord(UserAccountRecord['SessionID']);
@@ -6934,7 +6959,7 @@ Orchis.post("/utility/create_guild", async (req,res) => {
 	
 	res.end("Created Guild with ID " + NewGuildID + "\n");
 });
-Orchis.post("/asset/upload_new_hash", errorhandler(async (req,res) => {
+Orchis.post("/asset/upload_new_hash", global.errorhandler(async (req,res) => {
 	if (req.get('passphrase') != global.ServerConfig['AssetPass']) { res.end('Authentication failed.\n'); return; }
 	if (req.get('content-type') != 'application/json') { res.end("Define content-type.\n"); }
 	fs.writeFileSync("./Library/Event/AssetList.json", JSON.stringify(req.body, null, 2));
