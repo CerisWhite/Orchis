@@ -1,0 +1,58 @@
+{
+  "10": {
+    "_Id": 10,
+    "_FloorNum": 10,
+    "_ReleaseStartDate": "2021/12/27 06:00:00",
+    "_NeedTime": 5400,
+    "_RewardDmodePoint1": 950,
+    "_RewardDmodePoint2": 0
+  },
+  "15": {
+    "_Id": 15,
+    "_FloorNum": 15,
+    "_ReleaseStartDate": "2021/12/27 06:00:00",
+    "_NeedTime": 5400,
+    "_RewardDmodePoint1": 1900,
+    "_RewardDmodePoint2": 0
+  },
+  "20": {
+    "_Id": 20,
+    "_FloorNum": 20,
+    "_ReleaseStartDate": "2021/12/27 06:00:00",
+    "_NeedTime": 6000,
+    "_RewardDmodePoint1": 3000,
+    "_RewardDmodePoint2": 0
+  },
+  "25": {
+    "_Id": 25,
+    "_FloorNum": 25,
+    "_ReleaseStartDate": "2021/12/27 06:00:00",
+    "_NeedTime": 6000,
+    "_RewardDmodePoint1": 4250,
+    "_RewardDmodePoint2": 0
+  },
+  "30": {
+    "_Id": 30,
+    "_FloorNum": 30,
+    "_ReleaseStartDate": "2021/12/27 06:00:00",
+    "_NeedTime": 6000,
+    "_RewardDmodePoint1": 5500,
+    "_RewardDmodePoint2": 0
+  },
+  "35": {
+    "_Id": 35,
+    "_FloorNum": 35,
+    "_ReleaseStartDate": "2024/12/01 06:00:00",
+    "_NeedTime": 6500,
+    "_RewardDmodePoint1": 5500,
+    "_RewardDmodePoint2": 100
+  },
+  "40": {
+    "_Id": 40,
+    "_FloorNum": 40,
+    "_ReleaseStartDate": "2024/12/01 06:00:00",
+    "_NeedTime": 7000,
+    "_RewardDmodePoint1": 6000,
+    "_RewardDmodePoint2": 200
+  }
+}

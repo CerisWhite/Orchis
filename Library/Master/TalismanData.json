@@ -1,0 +1,2386 @@
+{
+  "50130102": {
+    "_Id": 50130102,
+    "_Name": "TALISMAN_NAME_50130102",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10130102,
+    "_SellCoin": 10000
+  },
+  "50130103": {
+    "_Id": 50130103,
+    "_Name": "TALISMAN_NAME_50130103",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10130103,
+    "_SellCoin": 10000
+  },
+  "50130201": {
+    "_Id": 50130201,
+    "_Name": "TALISMAN_NAME_50130201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10130201,
+    "_SellCoin": 10000
+  },
+  "50130401": {
+    "_Id": 50130401,
+    "_Name": "TALISMAN_NAME_50130401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10130401,
+    "_SellCoin": 10000
+  },
+  "50130501": {
+    "_Id": 50130501,
+    "_Name": "TALISMAN_NAME_50130501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10130501,
+    "_SellCoin": 10000
+  },
+  "50140101": {
+    "_Id": 50140101,
+    "_Name": "TALISMAN_NAME_50140101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10140101,
+    "_SellCoin": 10000
+  },
+  "50140102": {
+    "_Id": 50140102,
+    "_Name": "TALISMAN_NAME_50140102",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10140102,
+    "_SellCoin": 10000
+  },
+  "50140103": {
+    "_Id": 50140103,
+    "_Name": "TALISMAN_NAME_50140103",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10140103,
+    "_SellCoin": 10000
+  },
+  "50140201": {
+    "_Id": 50140201,
+    "_Name": "TALISMAN_NAME_50140201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10140201,
+    "_SellCoin": 10000
+  },
+  "50140301": {
+    "_Id": 50140301,
+    "_Name": "TALISMAN_NAME_50140301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10140301,
+    "_SellCoin": 10000
+  },
+  "50140302": {
+    "_Id": 50140302,
+    "_Name": "TALISMAN_NAME_50140302",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10140302,
+    "_SellCoin": 10000
+  },
+  "50140401": {
+    "_Id": 50140401,
+    "_Name": "TALISMAN_NAME_50140401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10140401,
+    "_SellCoin": 10000
+  },
+  "50140501": {
+    "_Id": 50140501,
+    "_Name": "TALISMAN_NAME_50140501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10140501,
+    "_SellCoin": 10000
+  },
+  "50140503": {
+    "_Id": 50140503,
+    "_Name": "TALISMAN_NAME_50140503",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10140503,
+    "_SellCoin": 10000
+  },
+  "50150101": {
+    "_Id": 50150101,
+    "_Name": "TALISMAN_NAME_50150101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150101,
+    "_SellCoin": 10000
+  },
+  "50150102": {
+    "_Id": 50150102,
+    "_Name": "TALISMAN_NAME_50150102",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150102,
+    "_SellCoin": 10000
+  },
+  "50150103": {
+    "_Id": 50150103,
+    "_Name": "TALISMAN_NAME_50150103",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150103,
+    "_SellCoin": 10000
+  },
+  "50150104": {
+    "_Id": 50150104,
+    "_Name": "TALISMAN_NAME_50150104",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150104,
+    "_SellCoin": 10000
+  },
+  "50150105": {
+    "_Id": 50150105,
+    "_Name": "TALISMAN_NAME_50150105",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150105,
+    "_SellCoin": 10000
+  },
+  "50150106": {
+    "_Id": 50150106,
+    "_Name": "TALISMAN_NAME_50150106",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150106,
+    "_SellCoin": 10000
+  },
+  "50150201": {
+    "_Id": 50150201,
+    "_Name": "TALISMAN_NAME_50150201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150201,
+    "_SellCoin": 10000
+  },
+  "50150202": {
+    "_Id": 50150202,
+    "_Name": "TALISMAN_NAME_50150202",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150202,
+    "_SellCoin": 10000
+  },
+  "50150203": {
+    "_Id": 50150203,
+    "_Name": "TALISMAN_NAME_50150203",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150203,
+    "_SellCoin": 10000
+  },
+  "50150204": {
+    "_Id": 50150204,
+    "_Name": "TALISMAN_NAME_50150204",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150204,
+    "_SellCoin": 10000
+  },
+  "50150301": {
+    "_Id": 50150301,
+    "_Name": "TALISMAN_NAME_50150301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150301,
+    "_SellCoin": 10000
+  },
+  "50150302": {
+    "_Id": 50150302,
+    "_Name": "TALISMAN_NAME_50150302",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150302,
+    "_SellCoin": 10000
+  },
+  "50150303": {
+    "_Id": 50150303,
+    "_Name": "TALISMAN_NAME_50150303",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150303,
+    "_SellCoin": 10000
+  },
+  "50150304": {
+    "_Id": 50150304,
+    "_Name": "TALISMAN_NAME_50150304",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150304,
+    "_SellCoin": 10000
+  },
+  "50150305": {
+    "_Id": 50150305,
+    "_Name": "TALISMAN_NAME_50150305",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150305,
+    "_SellCoin": 10000
+  },
+  "50150306": {
+    "_Id": 50150306,
+    "_Name": "TALISMAN_NAME_50150306",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150306,
+    "_SellCoin": 10000
+  },
+  "50150401": {
+    "_Id": 50150401,
+    "_Name": "TALISMAN_NAME_50150401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150401,
+    "_SellCoin": 10000
+  },
+  "50150402": {
+    "_Id": 50150402,
+    "_Name": "TALISMAN_NAME_50150402",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150402,
+    "_SellCoin": 10000
+  },
+  "50150403": {
+    "_Id": 50150403,
+    "_Name": "TALISMAN_NAME_50150403",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150403,
+    "_SellCoin": 10000
+  },
+  "50150404": {
+    "_Id": 50150404,
+    "_Name": "TALISMAN_NAME_50150404",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150404,
+    "_SellCoin": 10000
+  },
+  "50150405": {
+    "_Id": 50150405,
+    "_Name": "TALISMAN_NAME_50150405",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150405,
+    "_SellCoin": 10000
+  },
+  "50150501": {
+    "_Id": 50150501,
+    "_Name": "TALISMAN_NAME_50150501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150501,
+    "_SellCoin": 10000
+  },
+  "50150502": {
+    "_Id": 50150502,
+    "_Name": "TALISMAN_NAME_50150502",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150502,
+    "_SellCoin": 10000
+  },
+  "50150503": {
+    "_Id": 50150503,
+    "_Name": "TALISMAN_NAME_50150503",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150503,
+    "_SellCoin": 10000
+  },
+  "50150504": {
+    "_Id": 50150504,
+    "_Name": "TALISMAN_NAME_50150504",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10150504,
+    "_SellCoin": 10000
+  },
+  "50230101": {
+    "_Id": 50230101,
+    "_Name": "TALISMAN_NAME_50230101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10230101,
+    "_SellCoin": 10000
+  },
+  "50230201": {
+    "_Id": 50230201,
+    "_Name": "TALISMAN_NAME_50230201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10230201,
+    "_SellCoin": 10000
+  },
+  "50230301": {
+    "_Id": 50230301,
+    "_Name": "TALISMAN_NAME_50230301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10230301,
+    "_SellCoin": 10000
+  },
+  "50230401": {
+    "_Id": 50230401,
+    "_Name": "TALISMAN_NAME_50230401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10230401,
+    "_SellCoin": 10000
+  },
+  "50230501": {
+    "_Id": 50230501,
+    "_Name": "TALISMAN_NAME_50230501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10230501,
+    "_SellCoin": 10000
+  },
+  "50240101": {
+    "_Id": 50240101,
+    "_Name": "TALISMAN_NAME_50240101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10240101,
+    "_SellCoin": 10000
+  },
+  "50240201": {
+    "_Id": 50240201,
+    "_Name": "TALISMAN_NAME_50240201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10240201,
+    "_SellCoin": 10000
+  },
+  "50240202": {
+    "_Id": 50240202,
+    "_Name": "TALISMAN_NAME_50240202",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10240202,
+    "_SellCoin": 10000
+  },
+  "50240301": {
+    "_Id": 50240301,
+    "_Name": "TALISMAN_NAME_50240301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10240301,
+    "_SellCoin": 10000
+  },
+  "50240302": {
+    "_Id": 50240302,
+    "_Name": "TALISMAN_NAME_50240302",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10240302,
+    "_SellCoin": 10000
+  },
+  "50240401": {
+    "_Id": 50240401,
+    "_Name": "TALISMAN_NAME_50240401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10240401,
+    "_SellCoin": 10000
+  },
+  "50240402": {
+    "_Id": 50240402,
+    "_Name": "TALISMAN_NAME_50240402",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10240402,
+    "_SellCoin": 10000
+  },
+  "50240502": {
+    "_Id": 50240502,
+    "_Name": "TALISMAN_NAME_50240502",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10240502,
+    "_SellCoin": 10000
+  },
+  "50240503": {
+    "_Id": 50240503,
+    "_Name": "TALISMAN_NAME_50240503",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10240503,
+    "_SellCoin": 10000
+  },
+  "50250101": {
+    "_Id": 50250101,
+    "_Name": "TALISMAN_NAME_50250101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250101,
+    "_SellCoin": 10000
+  },
+  "50250102": {
+    "_Id": 50250102,
+    "_Name": "TALISMAN_NAME_50250102",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250102,
+    "_SellCoin": 10000
+  },
+  "50250103": {
+    "_Id": 50250103,
+    "_Name": "TALISMAN_NAME_50250103",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250103,
+    "_SellCoin": 10000
+  },
+  "50250104": {
+    "_Id": 50250104,
+    "_Name": "TALISMAN_NAME_50250104",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250104,
+    "_SellCoin": 10000
+  },
+  "50250201": {
+    "_Id": 50250201,
+    "_Name": "TALISMAN_NAME_50250201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250201,
+    "_SellCoin": 10000
+  },
+  "50250202": {
+    "_Id": 50250202,
+    "_Name": "TALISMAN_NAME_50250202",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250202,
+    "_SellCoin": 10000
+  },
+  "50250203": {
+    "_Id": 50250203,
+    "_Name": "TALISMAN_NAME_50250203",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250203,
+    "_SellCoin": 10000
+  },
+  "50250204": {
+    "_Id": 50250204,
+    "_Name": "TALISMAN_NAME_50250204",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250204,
+    "_SellCoin": 10000
+  },
+  "50250301": {
+    "_Id": 50250301,
+    "_Name": "TALISMAN_NAME_50250301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250301,
+    "_SellCoin": 10000
+  },
+  "50250302": {
+    "_Id": 50250302,
+    "_Name": "TALISMAN_NAME_50250302",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250302,
+    "_SellCoin": 10000
+  },
+  "50250303": {
+    "_Id": 50250303,
+    "_Name": "TALISMAN_NAME_50250303",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250303,
+    "_SellCoin": 10000
+  },
+  "50250304": {
+    "_Id": 50250304,
+    "_Name": "TALISMAN_NAME_50250304",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250304,
+    "_SellCoin": 10000
+  },
+  "50250305": {
+    "_Id": 50250305,
+    "_Name": "TALISMAN_NAME_50250305",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250305,
+    "_SellCoin": 10000
+  },
+  "50250401": {
+    "_Id": 50250401,
+    "_Name": "TALISMAN_NAME_50250401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250401,
+    "_SellCoin": 10000
+  },
+  "50250402": {
+    "_Id": 50250402,
+    "_Name": "TALISMAN_NAME_50250402",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250402,
+    "_SellCoin": 10000
+  },
+  "50250403": {
+    "_Id": 50250403,
+    "_Name": "TALISMAN_NAME_50250403",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250403,
+    "_SellCoin": 10000
+  },
+  "50250404": {
+    "_Id": 50250404,
+    "_Name": "TALISMAN_NAME_50250404",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250404,
+    "_SellCoin": 10000
+  },
+  "50250501": {
+    "_Id": 50250501,
+    "_Name": "TALISMAN_NAME_50250501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250501,
+    "_SellCoin": 10000
+  },
+  "50250502": {
+    "_Id": 50250502,
+    "_Name": "TALISMAN_NAME_50250502",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250502,
+    "_SellCoin": 10000
+  },
+  "50250503": {
+    "_Id": 50250503,
+    "_Name": "TALISMAN_NAME_50250503",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250503,
+    "_SellCoin": 10000
+  },
+  "50250504": {
+    "_Id": 50250504,
+    "_Name": "TALISMAN_NAME_50250504",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10250504,
+    "_SellCoin": 10000
+  },
+  "50330101": {
+    "_Id": 50330101,
+    "_Name": "TALISMAN_NAME_50330101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10330101,
+    "_SellCoin": 10000
+  },
+  "50330301": {
+    "_Id": 50330301,
+    "_Name": "TALISMAN_NAME_50330301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10330301,
+    "_SellCoin": 10000
+  },
+  "50330401": {
+    "_Id": 50330401,
+    "_Name": "TALISMAN_NAME_50330401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10330401,
+    "_SellCoin": 10000
+  },
+  "50330501": {
+    "_Id": 50330501,
+    "_Name": "TALISMAN_NAME_50330501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10330501,
+    "_SellCoin": 10000
+  },
+  "50330502": {
+    "_Id": 50330502,
+    "_Name": "TALISMAN_NAME_50330502",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10330502,
+    "_SellCoin": 10000
+  },
+  "50340101": {
+    "_Id": 50340101,
+    "_Name": "TALISMAN_NAME_50340101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10340101,
+    "_SellCoin": 10000
+  },
+  "50340102": {
+    "_Id": 50340102,
+    "_Name": "TALISMAN_NAME_50340102",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10340102,
+    "_SellCoin": 10000
+  },
+  "50340201": {
+    "_Id": 50340201,
+    "_Name": "TALISMAN_NAME_50340201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10340201,
+    "_SellCoin": 10000
+  },
+  "50340202": {
+    "_Id": 50340202,
+    "_Name": "TALISMAN_NAME_50340202",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10340202,
+    "_SellCoin": 10000
+  },
+  "50340203": {
+    "_Id": 50340203,
+    "_Name": "TALISMAN_NAME_50340203",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10340203,
+    "_SellCoin": 10000
+  },
+  "50340301": {
+    "_Id": 50340301,
+    "_Name": "TALISMAN_NAME_50340301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10340301,
+    "_SellCoin": 10000
+  },
+  "50340401": {
+    "_Id": 50340401,
+    "_Name": "TALISMAN_NAME_50340401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10340401,
+    "_SellCoin": 10000
+  },
+  "50340402": {
+    "_Id": 50340402,
+    "_Name": "TALISMAN_NAME_50340402",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10340402,
+    "_SellCoin": 10000
+  },
+  "50340501": {
+    "_Id": 50340501,
+    "_Name": "TALISMAN_NAME_50340501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10340501,
+    "_SellCoin": 10000
+  },
+  "50340502": {
+    "_Id": 50340502,
+    "_Name": "TALISMAN_NAME_50340502",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10340502,
+    "_SellCoin": 10000
+  },
+  "50350101": {
+    "_Id": 50350101,
+    "_Name": "TALISMAN_NAME_50350101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350101,
+    "_SellCoin": 10000
+  },
+  "50350102": {
+    "_Id": 50350102,
+    "_Name": "TALISMAN_NAME_50350102",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350102,
+    "_SellCoin": 10000
+  },
+  "50350103": {
+    "_Id": 50350103,
+    "_Name": "TALISMAN_NAME_50350103",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350103,
+    "_SellCoin": 10000
+  },
+  "50350104": {
+    "_Id": 50350104,
+    "_Name": "TALISMAN_NAME_50350104",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350104,
+    "_SellCoin": 10000
+  },
+  "50350201": {
+    "_Id": 50350201,
+    "_Name": "TALISMAN_NAME_50350201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350201,
+    "_SellCoin": 10000
+  },
+  "50350202": {
+    "_Id": 50350202,
+    "_Name": "TALISMAN_NAME_50350202",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350202,
+    "_SellCoin": 10000
+  },
+  "50350203": {
+    "_Id": 50350203,
+    "_Name": "TALISMAN_NAME_50350203",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350203,
+    "_SellCoin": 10000
+  },
+  "50350204": {
+    "_Id": 50350204,
+    "_Name": "TALISMAN_NAME_50350204",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350204,
+    "_SellCoin": 10000
+  },
+  "50350301": {
+    "_Id": 50350301,
+    "_Name": "TALISMAN_NAME_50350301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350301,
+    "_SellCoin": 10000
+  },
+  "50350302": {
+    "_Id": 50350302,
+    "_Name": "TALISMAN_NAME_50350302",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350302,
+    "_SellCoin": 10000
+  },
+  "50350303": {
+    "_Id": 50350303,
+    "_Name": "TALISMAN_NAME_50350303",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350303,
+    "_SellCoin": 10000
+  },
+  "50350304": {
+    "_Id": 50350304,
+    "_Name": "TALISMAN_NAME_50350304",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350304,
+    "_SellCoin": 10000
+  },
+  "50350402": {
+    "_Id": 50350402,
+    "_Name": "TALISMAN_NAME_50350402",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350402,
+    "_SellCoin": 10000
+  },
+  "50350403": {
+    "_Id": 50350403,
+    "_Name": "TALISMAN_NAME_50350403",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350403,
+    "_SellCoin": 10000
+  },
+  "50350404": {
+    "_Id": 50350404,
+    "_Name": "TALISMAN_NAME_50350404",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350404,
+    "_SellCoin": 10000
+  },
+  "50350405": {
+    "_Id": 50350405,
+    "_Name": "TALISMAN_NAME_50350405",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350405,
+    "_SellCoin": 10000
+  },
+  "50350502": {
+    "_Id": 50350502,
+    "_Name": "TALISMAN_NAME_50350502",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350502,
+    "_SellCoin": 10000
+  },
+  "50350503": {
+    "_Id": 50350503,
+    "_Name": "TALISMAN_NAME_50350503",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350503,
+    "_SellCoin": 10000
+  },
+  "50350504": {
+    "_Id": 50350504,
+    "_Name": "TALISMAN_NAME_50350504",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350504,
+    "_SellCoin": 10000
+  },
+  "50350505": {
+    "_Id": 50350505,
+    "_Name": "TALISMAN_NAME_50350505",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350505,
+    "_SellCoin": 10000
+  },
+  "50350506": {
+    "_Id": 50350506,
+    "_Name": "TALISMAN_NAME_50350506",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10350506,
+    "_SellCoin": 10000
+  },
+  "50430201": {
+    "_Id": 50430201,
+    "_Name": "TALISMAN_NAME_50430201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10430201,
+    "_SellCoin": 10000
+  },
+  "50430202": {
+    "_Id": 50430202,
+    "_Name": "TALISMAN_NAME_50430202",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10430202,
+    "_SellCoin": 10000
+  },
+  "50430301": {
+    "_Id": 50430301,
+    "_Name": "TALISMAN_NAME_50430301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10430301,
+    "_SellCoin": 10000
+  },
+  "50430401": {
+    "_Id": 50430401,
+    "_Name": "TALISMAN_NAME_50430401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10430401,
+    "_SellCoin": 10000
+  },
+  "50430501": {
+    "_Id": 50430501,
+    "_Name": "TALISMAN_NAME_50430501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10430501,
+    "_SellCoin": 10000
+  },
+  "50440101": {
+    "_Id": 50440101,
+    "_Name": "TALISMAN_NAME_50440101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10440101,
+    "_SellCoin": 10000
+  },
+  "50440102": {
+    "_Id": 50440102,
+    "_Name": "TALISMAN_NAME_50440102",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10440102,
+    "_SellCoin": 10000
+  },
+  "50440201": {
+    "_Id": 50440201,
+    "_Name": "TALISMAN_NAME_50440201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10440201,
+    "_SellCoin": 10000
+  },
+  "50440301": {
+    "_Id": 50440301,
+    "_Name": "TALISMAN_NAME_50440301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10440301,
+    "_SellCoin": 10000
+  },
+  "50440401": {
+    "_Id": 50440401,
+    "_Name": "TALISMAN_NAME_50440401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10440401,
+    "_SellCoin": 10000
+  },
+  "50440501": {
+    "_Id": 50440501,
+    "_Name": "TALISMAN_NAME_50440501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10440501,
+    "_SellCoin": 10000
+  },
+  "50450101": {
+    "_Id": 50450101,
+    "_Name": "TALISMAN_NAME_50450101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450101,
+    "_SellCoin": 10000
+  },
+  "50450102": {
+    "_Id": 50450102,
+    "_Name": "TALISMAN_NAME_50450102",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450102,
+    "_SellCoin": 10000
+  },
+  "50450103": {
+    "_Id": 50450103,
+    "_Name": "TALISMAN_NAME_50450103",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450103,
+    "_SellCoin": 10000
+  },
+  "50450104": {
+    "_Id": 50450104,
+    "_Name": "TALISMAN_NAME_50450104",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450104,
+    "_SellCoin": 10000
+  },
+  "50450201": {
+    "_Id": 50450201,
+    "_Name": "TALISMAN_NAME_50450201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450201,
+    "_SellCoin": 10000
+  },
+  "50450202": {
+    "_Id": 50450202,
+    "_Name": "TALISMAN_NAME_50450202",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450202,
+    "_SellCoin": 10000
+  },
+  "50450203": {
+    "_Id": 50450203,
+    "_Name": "TALISMAN_NAME_50450203",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450203,
+    "_SellCoin": 10000
+  },
+  "50450204": {
+    "_Id": 50450204,
+    "_Name": "TALISMAN_NAME_50450204",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450204,
+    "_SellCoin": 10000
+  },
+  "50450301": {
+    "_Id": 50450301,
+    "_Name": "TALISMAN_NAME_50450301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450301,
+    "_SellCoin": 10000
+  },
+  "50450302": {
+    "_Id": 50450302,
+    "_Name": "TALISMAN_NAME_50450302",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450302,
+    "_SellCoin": 10000
+  },
+  "50450303": {
+    "_Id": 50450303,
+    "_Name": "TALISMAN_NAME_50450303",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450303,
+    "_SellCoin": 10000
+  },
+  "50450304": {
+    "_Id": 50450304,
+    "_Name": "TALISMAN_NAME_50450304",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450304,
+    "_SellCoin": 10000
+  },
+  "50450305": {
+    "_Id": 50450305,
+    "_Name": "TALISMAN_NAME_50450305",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450305,
+    "_SellCoin": 10000
+  },
+  "50450401": {
+    "_Id": 50450401,
+    "_Name": "TALISMAN_NAME_50450401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450401,
+    "_SellCoin": 10000
+  },
+  "50450402": {
+    "_Id": 50450402,
+    "_Name": "TALISMAN_NAME_50450402",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450402,
+    "_SellCoin": 10000
+  },
+  "50450403": {
+    "_Id": 50450403,
+    "_Name": "TALISMAN_NAME_50450403",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450403,
+    "_SellCoin": 10000
+  },
+  "50450404": {
+    "_Id": 50450404,
+    "_Name": "TALISMAN_NAME_50450404",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450404,
+    "_SellCoin": 10000
+  },
+  "50450405": {
+    "_Id": 50450405,
+    "_Name": "TALISMAN_NAME_50450405",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450405,
+    "_SellCoin": 10000
+  },
+  "50450406": {
+    "_Id": 50450406,
+    "_Name": "TALISMAN_NAME_50450406",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450406,
+    "_SellCoin": 10000
+  },
+  "50450501": {
+    "_Id": 50450501,
+    "_Name": "TALISMAN_NAME_50450501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450501,
+    "_SellCoin": 10000
+  },
+  "50450502": {
+    "_Id": 50450502,
+    "_Name": "TALISMAN_NAME_50450502",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450502,
+    "_SellCoin": 10000
+  },
+  "50450503": {
+    "_Id": 50450503,
+    "_Name": "TALISMAN_NAME_50450503",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10450503,
+    "_SellCoin": 10000
+  },
+  "50530101": {
+    "_Id": 50530101,
+    "_Name": "TALISMAN_NAME_50530101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10530101,
+    "_SellCoin": 10000
+  },
+  "50530201": {
+    "_Id": 50530201,
+    "_Name": "TALISMAN_NAME_50530201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10530201,
+    "_SellCoin": 10000
+  },
+  "50530202": {
+    "_Id": 50530202,
+    "_Name": "TALISMAN_NAME_50530202",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10530202,
+    "_SellCoin": 10000
+  },
+  "50530401": {
+    "_Id": 50530401,
+    "_Name": "TALISMAN_NAME_50530401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10530401,
+    "_SellCoin": 10000
+  },
+  "50530501": {
+    "_Id": 50530501,
+    "_Name": "TALISMAN_NAME_50530501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10530501,
+    "_SellCoin": 10000
+  },
+  "50540102": {
+    "_Id": 50540102,
+    "_Name": "TALISMAN_NAME_50540102",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10540102,
+    "_SellCoin": 10000
+  },
+  "50540103": {
+    "_Id": 50540103,
+    "_Name": "TALISMAN_NAME_50540103",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10540103,
+    "_SellCoin": 10000
+  },
+  "50540201": {
+    "_Id": 50540201,
+    "_Name": "TALISMAN_NAME_50540201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10540201,
+    "_SellCoin": 10000
+  },
+  "50540202": {
+    "_Id": 50540202,
+    "_Name": "TALISMAN_NAME_50540202",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10540202,
+    "_SellCoin": 10000
+  },
+  "50540301": {
+    "_Id": 50540301,
+    "_Name": "TALISMAN_NAME_50540301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10540301,
+    "_SellCoin": 10000
+  },
+  "50540302": {
+    "_Id": 50540302,
+    "_Name": "TALISMAN_NAME_50540302",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10540302,
+    "_SellCoin": 10000
+  },
+  "50540401": {
+    "_Id": 50540401,
+    "_Name": "TALISMAN_NAME_50540401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10540401,
+    "_SellCoin": 10000
+  },
+  "50540402": {
+    "_Id": 50540402,
+    "_Name": "TALISMAN_NAME_50540402",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10540402,
+    "_SellCoin": 10000
+  },
+  "50540501": {
+    "_Id": 50540501,
+    "_Name": "TALISMAN_NAME_50540501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10540501,
+    "_SellCoin": 10000
+  },
+  "50540502": {
+    "_Id": 50540502,
+    "_Name": "TALISMAN_NAME_50540502",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10540502,
+    "_SellCoin": 10000
+  },
+  "50550101": {
+    "_Id": 50550101,
+    "_Name": "TALISMAN_NAME_50550101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550101,
+    "_SellCoin": 10000
+  },
+  "50550102": {
+    "_Id": 50550102,
+    "_Name": "TALISMAN_NAME_50550102",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550102,
+    "_SellCoin": 10000
+  },
+  "50550103": {
+    "_Id": 50550103,
+    "_Name": "TALISMAN_NAME_50550103",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550103,
+    "_SellCoin": 10000
+  },
+  "50550104": {
+    "_Id": 50550104,
+    "_Name": "TALISMAN_NAME_50550104",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550104,
+    "_SellCoin": 10000
+  },
+  "50550201": {
+    "_Id": 50550201,
+    "_Name": "TALISMAN_NAME_50550201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550201,
+    "_SellCoin": 10000
+  },
+  "50550203": {
+    "_Id": 50550203,
+    "_Name": "TALISMAN_NAME_50550203",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550203,
+    "_SellCoin": 10000
+  },
+  "50550204": {
+    "_Id": 50550204,
+    "_Name": "TALISMAN_NAME_50550204",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550204,
+    "_SellCoin": 10000
+  },
+  "50550205": {
+    "_Id": 50550205,
+    "_Name": "TALISMAN_NAME_50550205",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550205,
+    "_SellCoin": 10000
+  },
+  "50550301": {
+    "_Id": 50550301,
+    "_Name": "TALISMAN_NAME_50550301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550301,
+    "_SellCoin": 10000
+  },
+  "50550302": {
+    "_Id": 50550302,
+    "_Name": "TALISMAN_NAME_50550302",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550302,
+    "_SellCoin": 10000
+  },
+  "50550303": {
+    "_Id": 50550303,
+    "_Name": "TALISMAN_NAME_50550303",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550303,
+    "_SellCoin": 10000
+  },
+  "50550304": {
+    "_Id": 50550304,
+    "_Name": "TALISMAN_NAME_50550304",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550304,
+    "_SellCoin": 10000
+  },
+  "50550305": {
+    "_Id": 50550305,
+    "_Name": "TALISMAN_NAME_50550305",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550305,
+    "_SellCoin": 10000
+  },
+  "50550306": {
+    "_Id": 50550306,
+    "_Name": "TALISMAN_NAME_50550306",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550306,
+    "_SellCoin": 10000
+  },
+  "50550401": {
+    "_Id": 50550401,
+    "_Name": "TALISMAN_NAME_50550401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550401,
+    "_SellCoin": 10000
+  },
+  "50550402": {
+    "_Id": 50550402,
+    "_Name": "TALISMAN_NAME_50550402",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550402,
+    "_SellCoin": 10000
+  },
+  "50550403": {
+    "_Id": 50550403,
+    "_Name": "TALISMAN_NAME_50550403",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550403,
+    "_SellCoin": 10000
+  },
+  "50550404": {
+    "_Id": 50550404,
+    "_Name": "TALISMAN_NAME_50550404",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550404,
+    "_SellCoin": 10000
+  },
+  "50550405": {
+    "_Id": 50550405,
+    "_Name": "TALISMAN_NAME_50550405",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550405,
+    "_SellCoin": 10000
+  },
+  "50550501": {
+    "_Id": 50550501,
+    "_Name": "TALISMAN_NAME_50550501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550501,
+    "_SellCoin": 10000
+  },
+  "50550502": {
+    "_Id": 50550502,
+    "_Name": "TALISMAN_NAME_50550502",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550502,
+    "_SellCoin": 10000
+  },
+  "50550503": {
+    "_Id": 50550503,
+    "_Name": "TALISMAN_NAME_50550503",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550503,
+    "_SellCoin": 10000
+  },
+  "50550504": {
+    "_Id": 50550504,
+    "_Name": "TALISMAN_NAME_50550504",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10550504,
+    "_SellCoin": 10000
+  },
+  "50630101": {
+    "_Id": 50630101,
+    "_Name": "TALISMAN_NAME_50630101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10630101,
+    "_SellCoin": 10000
+  },
+  "50630201": {
+    "_Id": 50630201,
+    "_Name": "TALISMAN_NAME_50630201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10630201,
+    "_SellCoin": 10000
+  },
+  "50630301": {
+    "_Id": 50630301,
+    "_Name": "TALISMAN_NAME_50630301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10630301,
+    "_SellCoin": 10000
+  },
+  "50630401": {
+    "_Id": 50630401,
+    "_Name": "TALISMAN_NAME_50630401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10630401,
+    "_SellCoin": 10000
+  },
+  "50640101": {
+    "_Id": 50640101,
+    "_Name": "TALISMAN_NAME_50640101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10640101,
+    "_SellCoin": 10000
+  },
+  "50640202": {
+    "_Id": 50640202,
+    "_Name": "TALISMAN_NAME_50640202",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10640202,
+    "_SellCoin": 10000
+  },
+  "50640301": {
+    "_Id": 50640301,
+    "_Name": "TALISMAN_NAME_50640301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10640301,
+    "_SellCoin": 10000
+  },
+  "50640302": {
+    "_Id": 50640302,
+    "_Name": "TALISMAN_NAME_50640302",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10640302,
+    "_SellCoin": 10000
+  },
+  "50640401": {
+    "_Id": 50640401,
+    "_Name": "TALISMAN_NAME_50640401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10640401,
+    "_SellCoin": 10000
+  },
+  "50640402": {
+    "_Id": 50640402,
+    "_Name": "TALISMAN_NAME_50640402",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10640402,
+    "_SellCoin": 10000
+  },
+  "50640403": {
+    "_Id": 50640403,
+    "_Name": "TALISMAN_NAME_50640403",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10640403,
+    "_SellCoin": 10000
+  },
+  "50640501": {
+    "_Id": 50640501,
+    "_Name": "TALISMAN_NAME_50640501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10640501,
+    "_SellCoin": 10000
+  },
+  "50650101": {
+    "_Id": 50650101,
+    "_Name": "TALISMAN_NAME_50650101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650101,
+    "_SellCoin": 10000
+  },
+  "50650102": {
+    "_Id": 50650102,
+    "_Name": "TALISMAN_NAME_50650102",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650102,
+    "_SellCoin": 10000
+  },
+  "50650103": {
+    "_Id": 50650103,
+    "_Name": "TALISMAN_NAME_50650103",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650103,
+    "_SellCoin": 10000
+  },
+  "50650201": {
+    "_Id": 50650201,
+    "_Name": "TALISMAN_NAME_50650201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650201,
+    "_SellCoin": 10000
+  },
+  "50650202": {
+    "_Id": 50650202,
+    "_Name": "TALISMAN_NAME_50650202",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650202,
+    "_SellCoin": 10000
+  },
+  "50650203": {
+    "_Id": 50650203,
+    "_Name": "TALISMAN_NAME_50650203",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650203,
+    "_SellCoin": 10000
+  },
+  "50650204": {
+    "_Id": 50650204,
+    "_Name": "TALISMAN_NAME_50650204",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650204,
+    "_SellCoin": 10000
+  },
+  "50650301": {
+    "_Id": 50650301,
+    "_Name": "TALISMAN_NAME_50650301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650301,
+    "_SellCoin": 10000
+  },
+  "50650302": {
+    "_Id": 50650302,
+    "_Name": "TALISMAN_NAME_50650302",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650302,
+    "_SellCoin": 10000
+  },
+  "50650303": {
+    "_Id": 50650303,
+    "_Name": "TALISMAN_NAME_50650303",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650303,
+    "_SellCoin": 10000
+  },
+  "50650304": {
+    "_Id": 50650304,
+    "_Name": "TALISMAN_NAME_50650304",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650304,
+    "_SellCoin": 10000
+  },
+  "50650305": {
+    "_Id": 50650305,
+    "_Name": "TALISMAN_NAME_50650305",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650305,
+    "_SellCoin": 10000
+  },
+  "50650401": {
+    "_Id": 50650401,
+    "_Name": "TALISMAN_NAME_50650401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650401,
+    "_SellCoin": 10000
+  },
+  "50650402": {
+    "_Id": 50650402,
+    "_Name": "TALISMAN_NAME_50650402",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650402,
+    "_SellCoin": 10000
+  },
+  "50650403": {
+    "_Id": 50650403,
+    "_Name": "TALISMAN_NAME_50650403",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650403,
+    "_SellCoin": 10000
+  },
+  "50650501": {
+    "_Id": 50650501,
+    "_Name": "TALISMAN_NAME_50650501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650501,
+    "_SellCoin": 10000
+  },
+  "50650502": {
+    "_Id": 50650502,
+    "_Name": "TALISMAN_NAME_50650502",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650502,
+    "_SellCoin": 10000
+  },
+  "50650503": {
+    "_Id": 50650503,
+    "_Name": "TALISMAN_NAME_50650503",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650503,
+    "_SellCoin": 10000
+  },
+  "50650504": {
+    "_Id": 50650504,
+    "_Name": "TALISMAN_NAME_50650504",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650504,
+    "_SellCoin": 10000
+  },
+  "50650505": {
+    "_Id": 50650505,
+    "_Name": "TALISMAN_NAME_50650505",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10650505,
+    "_SellCoin": 10000
+  },
+  "50730101": {
+    "_Id": 50730101,
+    "_Name": "TALISMAN_NAME_50730101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10730101,
+    "_SellCoin": 10000
+  },
+  "50730301": {
+    "_Id": 50730301,
+    "_Name": "TALISMAN_NAME_50730301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10730301,
+    "_SellCoin": 10000
+  },
+  "50730401": {
+    "_Id": 50730401,
+    "_Name": "TALISMAN_NAME_50730401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10730401,
+    "_SellCoin": 10000
+  },
+  "50730501": {
+    "_Id": 50730501,
+    "_Name": "TALISMAN_NAME_50730501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10730501,
+    "_SellCoin": 10000
+  },
+  "50740101": {
+    "_Id": 50740101,
+    "_Name": "TALISMAN_NAME_50740101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10740101,
+    "_SellCoin": 10000
+  },
+  "50740201": {
+    "_Id": 50740201,
+    "_Name": "TALISMAN_NAME_50740201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10740201,
+    "_SellCoin": 10000
+  },
+  "50740202": {
+    "_Id": 50740202,
+    "_Name": "TALISMAN_NAME_50740202",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10740202,
+    "_SellCoin": 10000
+  },
+  "50740203": {
+    "_Id": 50740203,
+    "_Name": "TALISMAN_NAME_50740203",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10740203,
+    "_SellCoin": 10000
+  },
+  "50740301": {
+    "_Id": 50740301,
+    "_Name": "TALISMAN_NAME_50740301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10740301,
+    "_SellCoin": 10000
+  },
+  "50740302": {
+    "_Id": 50740302,
+    "_Name": "TALISMAN_NAME_50740302",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10740302,
+    "_SellCoin": 10000
+  },
+  "50740401": {
+    "_Id": 50740401,
+    "_Name": "TALISMAN_NAME_50740401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10740401,
+    "_SellCoin": 10000
+  },
+  "50740402": {
+    "_Id": 50740402,
+    "_Name": "TALISMAN_NAME_50740402",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10740402,
+    "_SellCoin": 10000
+  },
+  "50740501": {
+    "_Id": 50740501,
+    "_Name": "TALISMAN_NAME_50740501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10740501,
+    "_SellCoin": 10000
+  },
+  "50750101": {
+    "_Id": 50750101,
+    "_Name": "TALISMAN_NAME_50750101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750101,
+    "_SellCoin": 10000
+  },
+  "50750102": {
+    "_Id": 50750102,
+    "_Name": "TALISMAN_NAME_50750102",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750102,
+    "_SellCoin": 10000
+  },
+  "50750103": {
+    "_Id": 50750103,
+    "_Name": "TALISMAN_NAME_50750103",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750103,
+    "_SellCoin": 10000
+  },
+  "50750104": {
+    "_Id": 50750104,
+    "_Name": "TALISMAN_NAME_50750104",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750104,
+    "_SellCoin": 10000
+  },
+  "50750105": {
+    "_Id": 50750105,
+    "_Name": "TALISMAN_NAME_50750105",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750105,
+    "_SellCoin": 10000
+  },
+  "50750201": {
+    "_Id": 50750201,
+    "_Name": "TALISMAN_NAME_50750201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750201,
+    "_SellCoin": 10000
+  },
+  "50750202": {
+    "_Id": 50750202,
+    "_Name": "TALISMAN_NAME_50750202",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750202,
+    "_SellCoin": 10000
+  },
+  "50750203": {
+    "_Id": 50750203,
+    "_Name": "TALISMAN_NAME_50750203",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750203,
+    "_SellCoin": 10000
+  },
+  "50750204": {
+    "_Id": 50750204,
+    "_Name": "TALISMAN_NAME_50750204",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750204,
+    "_SellCoin": 10000
+  },
+  "50750205": {
+    "_Id": 50750205,
+    "_Name": "TALISMAN_NAME_50750205",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750205,
+    "_SellCoin": 10000
+  },
+  "50750301": {
+    "_Id": 50750301,
+    "_Name": "TALISMAN_NAME_50750301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750301,
+    "_SellCoin": 10000
+  },
+  "50750302": {
+    "_Id": 50750302,
+    "_Name": "TALISMAN_NAME_50750302",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750302,
+    "_SellCoin": 10000
+  },
+  "50750303": {
+    "_Id": 50750303,
+    "_Name": "TALISMAN_NAME_50750303",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750303,
+    "_SellCoin": 10000
+  },
+  "50750304": {
+    "_Id": 50750304,
+    "_Name": "TALISMAN_NAME_50750304",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750304,
+    "_SellCoin": 10000
+  },
+  "50750401": {
+    "_Id": 50750401,
+    "_Name": "TALISMAN_NAME_50750401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750401,
+    "_SellCoin": 10000
+  },
+  "50750402": {
+    "_Id": 50750402,
+    "_Name": "TALISMAN_NAME_50750402",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750402,
+    "_SellCoin": 10000
+  },
+  "50750403": {
+    "_Id": 50750403,
+    "_Name": "TALISMAN_NAME_50750403",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750403,
+    "_SellCoin": 10000
+  },
+  "50750404": {
+    "_Id": 50750404,
+    "_Name": "TALISMAN_NAME_50750404",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750404,
+    "_SellCoin": 10000
+  },
+  "50750405": {
+    "_Id": 50750405,
+    "_Name": "TALISMAN_NAME_50750405",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750405,
+    "_SellCoin": 10000
+  },
+  "50750501": {
+    "_Id": 50750501,
+    "_Name": "TALISMAN_NAME_50750501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750501,
+    "_SellCoin": 10000
+  },
+  "50750502": {
+    "_Id": 50750502,
+    "_Name": "TALISMAN_NAME_50750502",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750502,
+    "_SellCoin": 10000
+  },
+  "50750503": {
+    "_Id": 50750503,
+    "_Name": "TALISMAN_NAME_50750503",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750503,
+    "_SellCoin": 10000
+  },
+  "50750504": {
+    "_Id": 50750504,
+    "_Name": "TALISMAN_NAME_50750504",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750504,
+    "_SellCoin": 10000
+  },
+  "50750505": {
+    "_Id": 50750505,
+    "_Name": "TALISMAN_NAME_50750505",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10750505,
+    "_SellCoin": 10000
+  },
+  "50830101": {
+    "_Id": 50830101,
+    "_Name": "TALISMAN_NAME_50830101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10830101,
+    "_SellCoin": 10000
+  },
+  "50830201": {
+    "_Id": 50830201,
+    "_Name": "TALISMAN_NAME_50830201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10830201,
+    "_SellCoin": 10000
+  },
+  "50830301": {
+    "_Id": 50830301,
+    "_Name": "TALISMAN_NAME_50830301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10830301,
+    "_SellCoin": 10000
+  },
+  "50830401": {
+    "_Id": 50830401,
+    "_Name": "TALISMAN_NAME_50830401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10830401,
+    "_SellCoin": 10000
+  },
+  "50830402": {
+    "_Id": 50830402,
+    "_Name": "TALISMAN_NAME_50830402",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10830402,
+    "_SellCoin": 10000
+  },
+  "50830501": {
+    "_Id": 50830501,
+    "_Name": "TALISMAN_NAME_50830501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10830501,
+    "_SellCoin": 10000
+  },
+  "50840101": {
+    "_Id": 50840101,
+    "_Name": "TALISMAN_NAME_50840101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10840101,
+    "_SellCoin": 10000
+  },
+  "50840102": {
+    "_Id": 50840102,
+    "_Name": "TALISMAN_NAME_50840102",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10840102,
+    "_SellCoin": 10000
+  },
+  "50840201": {
+    "_Id": 50840201,
+    "_Name": "TALISMAN_NAME_50840201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10840201,
+    "_SellCoin": 10000
+  },
+  "50840202": {
+    "_Id": 50840202,
+    "_Name": "TALISMAN_NAME_50840202",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10840202,
+    "_SellCoin": 10000
+  },
+  "50840301": {
+    "_Id": 50840301,
+    "_Name": "TALISMAN_NAME_50840301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10840301,
+    "_SellCoin": 10000
+  },
+  "50840302": {
+    "_Id": 50840302,
+    "_Name": "TALISMAN_NAME_50840302",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10840302,
+    "_SellCoin": 10000
+  },
+  "50840401": {
+    "_Id": 50840401,
+    "_Name": "TALISMAN_NAME_50840401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10840401,
+    "_SellCoin": 10000
+  },
+  "50840402": {
+    "_Id": 50840402,
+    "_Name": "TALISMAN_NAME_50840402",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10840402,
+    "_SellCoin": 10000
+  },
+  "50840403": {
+    "_Id": 50840403,
+    "_Name": "TALISMAN_NAME_50840403",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10840403,
+    "_SellCoin": 10000
+  },
+  "50840501": {
+    "_Id": 50840501,
+    "_Name": "TALISMAN_NAME_50840501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10840501,
+    "_SellCoin": 10000
+  },
+  "50850101": {
+    "_Id": 50850101,
+    "_Name": "TALISMAN_NAME_50850101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10850101,
+    "_SellCoin": 10000
+  },
+  "50850102": {
+    "_Id": 50850102,
+    "_Name": "TALISMAN_NAME_50850102",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10850102,
+    "_SellCoin": 10000
+  },
+  "50850103": {
+    "_Id": 50850103,
+    "_Name": "TALISMAN_NAME_50850103",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10850103,
+    "_SellCoin": 10000
+  },
+  "50850104": {
+    "_Id": 50850104,
+    "_Name": "TALISMAN_NAME_50850104",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10850104,
+    "_SellCoin": 10000
+  },
+  "50850201": {
+    "_Id": 50850201,
+    "_Name": "TALISMAN_NAME_50850201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10850201,
+    "_SellCoin": 10000
+  },
+  "50850202": {
+    "_Id": 50850202,
+    "_Name": "TALISMAN_NAME_50850202",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10850202,
+    "_SellCoin": 10000
+  },
+  "50850203": {
+    "_Id": 50850203,
+    "_Name": "TALISMAN_NAME_50850203",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10850203,
+    "_SellCoin": 10000
+  },
+  "50850301": {
+    "_Id": 50850301,
+    "_Name": "TALISMAN_NAME_50850301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10850301,
+    "_SellCoin": 10000
+  },
+  "50850302": {
+    "_Id": 50850302,
+    "_Name": "TALISMAN_NAME_50850302",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10850302,
+    "_SellCoin": 10000
+  },
+  "50850303": {
+    "_Id": 50850303,
+    "_Name": "TALISMAN_NAME_50850303",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10850303,
+    "_SellCoin": 10000
+  },
+  "50850401": {
+    "_Id": 50850401,
+    "_Name": "TALISMAN_NAME_50850401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10850401,
+    "_SellCoin": 10000
+  },
+  "50850402": {
+    "_Id": 50850402,
+    "_Name": "TALISMAN_NAME_50850402",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10850402,
+    "_SellCoin": 10000
+  },
+  "50850403": {
+    "_Id": 50850403,
+    "_Name": "TALISMAN_NAME_50850403",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10850403,
+    "_SellCoin": 10000
+  },
+  "50850501": {
+    "_Id": 50850501,
+    "_Name": "TALISMAN_NAME_50850501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10850501,
+    "_SellCoin": 10000
+  },
+  "50850502": {
+    "_Id": 50850502,
+    "_Name": "TALISMAN_NAME_50850502",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10850502,
+    "_SellCoin": 10000
+  },
+  "50850503": {
+    "_Id": 50850503,
+    "_Name": "TALISMAN_NAME_50850503",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10850503,
+    "_SellCoin": 10000
+  },
+  "50930401": {
+    "_Id": 50930401,
+    "_Name": "TALISMAN_NAME_50930401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10930401,
+    "_SellCoin": 10000
+  },
+  "50950101": {
+    "_Id": 50950101,
+    "_Name": "TALISMAN_NAME_50950101",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10950101,
+    "_SellCoin": 10000
+  },
+  "50950102": {
+    "_Id": 50950102,
+    "_Name": "TALISMAN_NAME_50950102",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10950102,
+    "_SellCoin": 10000
+  },
+  "50950103": {
+    "_Id": 50950103,
+    "_Name": "TALISMAN_NAME_50950103",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10950103,
+    "_SellCoin": 10000
+  },
+  "50950201": {
+    "_Id": 50950201,
+    "_Name": "TALISMAN_NAME_50950201",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10950201,
+    "_SellCoin": 10000
+  },
+  "50950202": {
+    "_Id": 50950202,
+    "_Name": "TALISMAN_NAME_50950202",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10950202,
+    "_SellCoin": 10000
+  },
+  "50950203": {
+    "_Id": 50950203,
+    "_Name": "TALISMAN_NAME_50950203",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10950203,
+    "_SellCoin": 10000
+  },
+  "50950301": {
+    "_Id": 50950301,
+    "_Name": "TALISMAN_NAME_50950301",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10950301,
+    "_SellCoin": 10000
+  },
+  "50950302": {
+    "_Id": 50950302,
+    "_Name": "TALISMAN_NAME_50950302",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10950302,
+    "_SellCoin": 10000
+  },
+  "50950303": {
+    "_Id": 50950303,
+    "_Name": "TALISMAN_NAME_50950303",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10950303,
+    "_SellCoin": 10000
+  },
+  "50950401": {
+    "_Id": 50950401,
+    "_Name": "TALISMAN_NAME_50950401",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10950401,
+    "_SellCoin": 10000
+  },
+  "50950402": {
+    "_Id": 50950402,
+    "_Name": "TALISMAN_NAME_50950402",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10950402,
+    "_SellCoin": 10000
+  },
+  "50950403": {
+    "_Id": 50950403,
+    "_Name": "TALISMAN_NAME_50950403",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10950403,
+    "_SellCoin": 10000
+  },
+  "50950501": {
+    "_Id": 50950501,
+    "_Name": "TALISMAN_NAME_50950501",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10950501,
+    "_SellCoin": 10000
+  },
+  "50950502": {
+    "_Id": 50950502,
+    "_Name": "TALISMAN_NAME_50950502",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10950502,
+    "_SellCoin": 10000
+  },
+  "50950503": {
+    "_Id": 50950503,
+    "_Name": "TALISMAN_NAME_50950503",
+    "_BaseHp": 20,
+    "_BaseAtk": 10,
+    "_TalismanCharaId": 10950503,
+    "_SellCoin": 10000
+  }
+}

@@ -1,0 +1,1652 @@
+{
+  "1": {
+    "_Id": 1,
+    "_IconName": "Icon_Buff_1020001",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "2": {
+    "_Id": 2,
+    "_IconName": "Icon_Buff_1020002",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "3": {
+    "_Id": 3,
+    "_IconName": "Icon_Buff_1020003",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "4": {
+    "_Id": 4,
+    "_IconName": "Icon_Buff_1020004",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "5": {
+    "_Id": 5,
+    "_IconName": "Icon_Buff_1020005",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "6": {
+    "_Id": 6,
+    "_IconName": "Icon_Buff_1020006",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "7": {
+    "_Id": 7,
+    "_IconName": "Icon_Buff_1020007",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "8": {
+    "_Id": 8,
+    "_IconName": "Icon_Buff_1020008",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "9": {
+    "_Id": 9,
+    "_IconName": "Icon_Buff_2020001",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 2
+  },
+  "10": {
+    "_Id": 10,
+    "_IconName": "Icon_Buff_2020002",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 2
+  },
+  "11": {
+    "_Id": 11,
+    "_IconName": "Icon_Buff_2020003",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 2
+  },
+  "12": {
+    "_Id": 12,
+    "_IconName": "Icon_Buff_2020004",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 2
+  },
+  "13": {
+    "_Id": 13,
+    "_IconName": "Icon_Buff_2020005",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 2
+  },
+  "14": {
+    "_Id": 14,
+    "_IconName": "Icon_Buff_2020006",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 2
+  },
+  "15": {
+    "_Id": 15,
+    "_IconName": "Icon_Buff_2020007",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 2
+  },
+  "16": {
+    "_Id": 16,
+    "_IconName": "Icon_Buff_1120001",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "19": {
+    "_Id": 19,
+    "_IconName": "Icon_Buff_1120004",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "23": {
+    "_Id": 23,
+    "_IconName": "Icon_Buff_1120009",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "24": {
+    "_Id": 24,
+    "_IconName": "Icon_Buff_2030001",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 2
+  },
+  "25": {
+    "_Id": 25,
+    "_IconName": "Icon_Buff_2030002",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 2
+  },
+  "27": {
+    "_Id": 27,
+    "_IconName": "Icon_Buff_2030004",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 2
+  },
+  "32": {
+    "_Id": 32,
+    "_IconName": "Icon_Buff_1020020",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "33": {
+    "_Id": 33,
+    "_IconName": "Icon_Buff_1020011",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "34": {
+    "_Id": 34,
+    "_IconName": "Icon_Buff_1020012",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "35": {
+    "_Id": 35,
+    "_IconName": "Icon_Buff_1020013",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "36": {
+    "_Id": 36,
+    "_IconName": "Icon_Buff_1020014",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "37": {
+    "_Id": 37,
+    "_IconName": "Icon_Buff_1020015",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "40": {
+    "_Id": 40,
+    "_IconName": "Icon_Buff_2010003",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "41": {
+    "_Id": 41,
+    "_IconName": "Icon_Buff_2060001",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "42": {
+    "_Id": 42,
+    "_IconName": "Icon_Buff_1020026",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "43": {
+    "_Id": 43,
+    "_IconName": "Icon_Buff_2050001",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "44": {
+    "_Id": 44,
+    "_IconName": "Icon_Buff_1020009",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "45": {
+    "_Id": 45,
+    "_IconName": "Icon_Buff_2050002",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "46": {
+    "_Id": 46,
+    "_IconName": "Icon_Buff_1020006",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "47": {
+    "_Id": 47,
+    "_IconName": "Icon_Buff_2040001",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "48": {
+    "_Id": 48,
+    "_IconName": "Icon_Buff_2040002",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "49": {
+    "_Id": 49,
+    "_IconName": "Icon_Buff_2040003",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "50": {
+    "_Id": 50,
+    "_IconName": "Icon_Buff_2040004",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "51": {
+    "_Id": 51,
+    "_IconName": "Icon_Buff_2040005",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "52": {
+    "_Id": 52,
+    "_IconName": "Icon_Buff_2040006",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "53": {
+    "_Id": 53,
+    "_IconName": "Icon_Buff_2040007",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "55": {
+    "_Id": 55,
+    "_IconName": "Icon_Buff_2040009",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "57": {
+    "_Id": 57,
+    "_IconName": "Icon_Buff_2050003",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "58": {
+    "_Id": 58,
+    "_IconName": "Icon_Buff_2050004",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "59": {
+    "_Id": 59,
+    "_IconName": "Icon_Buff_2020008",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 2
+  },
+  "60": {
+    "_Id": 60,
+    "_IconName": "Icon_Buff_2050006",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "61": {
+    "_Id": 61,
+    "_IconName": "Icon_Buff_2050007",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "62": {
+    "_Id": 62,
+    "_IconName": "Icon_EnemyBuff_0001",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 2
+  },
+  "63": {
+    "_Id": 63,
+    "_IconName": "Icon_Buff_2050008",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "64": {
+    "_Id": 64,
+    "_IconName": "Icon_Buff_2010001",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "65": {
+    "_Id": 65,
+    "_IconName": "Icon_Buff_2070001",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "66": {
+    "_Id": 66,
+    "_IconName": "Icon_Buff_2010002",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "67": {
+    "_Id": 67,
+    "_IconName": "Icon_EnemyBuff_0002",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 2
+  },
+  "68": {
+    "_Id": 68,
+    "_IconName": "Icon_Buff_1080001",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "69": {
+    "_Id": 69,
+    "_IconName": "Icon_Buff_1080002",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "71": {
+    "_Id": 71,
+    "_IconName": "Icon_Buff_1080004",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "72": {
+    "_Id": 72,
+    "_IconName": "Icon_Buff_1080005",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "73": {
+    "_Id": 73,
+    "_IconName": "Icon_Buff_1080006",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "76": {
+    "_Id": 76,
+    "_IconName": "Icon_Buff_1080009",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "78": {
+    "_Id": 78,
+    "_IconName": "Icon_Buff_1090001",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "80": {
+    "_Id": 80,
+    "_IconName": "Icon_EnemyBuff_0003",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 2
+  },
+  "81": {
+    "_Id": 81,
+    "_IconName": "Icon_Buff_2010004",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "82": {
+    "_Id": 82,
+    "_IconName": "Icon_Buff_2090201",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "83": {
+    "_Id": 83,
+    "_IconName": "Icon_Buff_1090101",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "84": {
+    "_Id": 84,
+    "_IconName": "Icon_Buff_2050009",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "87": {
+    "_Id": 87,
+    "_IconName": "Icon_Buff_1040003",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "90": {
+    "_Id": 90,
+    "_IconName": "Icon_Buff_1040006",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "95": {
+    "_Id": 95,
+    "_IconName": "Icon_Buff_2060002",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "96": {
+    "_Id": 96,
+    "_IconName": "Icon_Buff_2010005",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 2
+  },
+  "97": {
+    "_Id": 97,
+    "_IconName": "Icon_Buff_1020020",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "98": {
+    "_Id": 98,
+    "_IconName": "Icon_Buff_2010006",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "99": {
+    "_Id": 99,
+    "_IconName": "Icon_Buff_2070001",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "100": {
+    "_Id": 100,
+    "_IconName": "Icon_Buff_2050010",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "101": {
+    "_Id": 101,
+    "_IconName": "Icon_Buff_1020030",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "102": {
+    "_Id": 102,
+    "_IconName": "Icon_Buff_2050011",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "103": {
+    "_Id": 103,
+    "_IconName": "Icon_Buff_2050012",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "104": {
+    "_Id": 104,
+    "_IconName": "Icon_Buff_2010008",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 2
+  },
+  "105": {
+    "_Id": 105,
+    "_IconName": "Icon_Buff_1025001",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "106": {
+    "_Id": 106,
+    "_IconName": "Icon_Buff_1025002",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "107": {
+    "_Id": 107,
+    "_IconName": "Icon_Buff_1025003",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "108": {
+    "_Id": 108,
+    "_IconName": "Icon_Buff_2050013",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "109": {
+    "_Id": 109,
+    "_IconName": "Icon_Buff_2010007",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "110": {
+    "_Id": 110,
+    "_IconName": "Icon_Buff_2100201",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "111": {
+    "_Id": 111,
+    "_IconName": "Icon_Buff_1020010",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "112": {
+    "_Id": 112,
+    "_IconName": "Icon_Buff_1020027",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "113": {
+    "_Id": 113,
+    "_IconName": "Icon_Buff_2050019",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "114": {
+    "_Id": 114,
+    "_IconName": "Icon_Buff_2050014",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "115": {
+    "_Id": 115,
+    "_IconName": "Icon_Buff_2050015",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "116": {
+    "_Id": 116,
+    "_IconName": "Icon_Buff_2050016",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "117": {
+    "_Id": 117,
+    "_IconName": "Icon_Buff_2050017",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "118": {
+    "_Id": 118,
+    "_IconName": "Icon_Buff_2050018",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "119": {
+    "_Id": 119,
+    "_IconName": "Icon_Buff_2010009",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "120": {
+    "_Id": 120,
+    "_IconName": "Icon_Buff_1020031",
+    "_ValueDisplayType": 3,
+    "_GaugeDisplayType": 0
+  },
+  "121": {
+    "_Id": 121,
+    "_IconName": "Icon_Buff_1110001",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "122": {
+    "_Id": 122,
+    "_IconName": "Icon_Buff_1110002",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "124": {
+    "_Id": 124,
+    "_IconName": "Icon_Buff_1110004",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "131": {
+    "_Id": 131,
+    "_IconName": "Icon_Buff_1110011",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "132": {
+    "_Id": 132,
+    "_IconName": "Icon_Buff_2050020",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "133": {
+    "_Id": 133,
+    "_IconName": "Icon_Buff_2050021",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "134": {
+    "_Id": 134,
+    "_IconName": "Icon_EnemyBuff_0004",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 2
+  },
+  "135": {
+    "_Id": 135,
+    "_IconName": "Icon_Buff_2050022",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "136": {
+    "_Id": 136,
+    "_IconName": "Icon_Buff_1020028",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "137": {
+    "_Id": 137,
+    "_IconName": "Icon_Buff_2050023",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "138": {
+    "_Id": 138,
+    "_IconName": "Icon_Buff_2050024",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "139": {
+    "_Id": 139,
+    "_IconName": "Icon_Buff_2050025",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "140": {
+    "_Id": 140,
+    "_IconName": "Icon_Buff_2010010",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "141": {
+    "_Id": 141,
+    "_IconName": "Icon_Buff_2040011",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "142": {
+    "_Id": 142,
+    "_IconName": "Icon_Buff_1020006",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "143": {
+    "_Id": 143,
+    "_IconName": "Icon_Buff_1020032",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "144": {
+    "_Id": 144,
+    "_IconName": "Icon_Buff_2050033",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "145": {
+    "_Id": 145,
+    "_IconName": "Icon_Buff_2050034",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "146": {
+    "_Id": 146,
+    "_IconName": "Icon_Buff_3100301",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "147": {
+    "_Id": 147,
+    "_IconName": "Icon_Buff_2050031",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "148": {
+    "_Id": 148,
+    "_IconName": "Icon_Buff_2050032",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "149": {
+    "_Id": 149,
+    "_IconName": "Icon_Buff_2050026",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "150": {
+    "_Id": 150,
+    "_IconName": "Icon_Buff_2050027",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "151": {
+    "_Id": 151,
+    "_IconName": "Icon_Buff_2050028",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "152": {
+    "_Id": 152,
+    "_IconName": "Icon_Buff_2050029",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "153": {
+    "_Id": 153,
+    "_IconName": "Icon_Buff_2050030",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "154": {
+    "_Id": 154,
+    "_IconName": "Icon_Buff_1020033",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "155": {
+    "_Id": 155,
+    "_IconName": "Icon_Buff_2050035",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "156": {
+    "_Id": 156,
+    "_IconName": "Icon_Buff_2050036",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "157": {
+    "_Id": 157,
+    "_IconName": "Icon_Buff_2050037",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "158": {
+    "_Id": 158,
+    "_IconName": "Icon_Buff_2050038",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 2
+  },
+  "159": {
+    "_Id": 159,
+    "_IconName": "Icon_Buff_2050039",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 2
+  },
+  "160": {
+    "_Id": 160,
+    "_IconName": "Icon_Buff_2050040",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "161": {
+    "_Id": 161,
+    "_IconName": "Icon_Buff_2050041",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "162": {
+    "_Id": 162,
+    "_IconName": "Icon_Buff_2050042",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "163": {
+    "_Id": 163,
+    "_IconName": "Icon_Buff_2050046",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "165": {
+    "_Id": 165,
+    "_IconName": "Icon_Buff_2050048",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "166": {
+    "_Id": 166,
+    "_IconName": "Icon_Buff_2050047",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 2
+  },
+  "167": {
+    "_Id": 167,
+    "_IconName": "Icon_Buff_2050049",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "168": {
+    "_Id": 168,
+    "_IconName": "Icon_Buff_2050043",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 2
+  },
+  "169": {
+    "_Id": 169,
+    "_IconName": "Icon_Buff_2050044",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "170": {
+    "_Id": 170,
+    "_IconName": "Icon_Buff_2020011",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 2
+  },
+  "171": {
+    "_Id": 171,
+    "_IconName": "Icon_Buff_2020012",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 2
+  },
+  "172": {
+    "_Id": 172,
+    "_IconName": "Icon_Buff_2020013",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 2
+  },
+  "173": {
+    "_Id": 173,
+    "_IconName": "Icon_Buff_2020014",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 2
+  },
+  "175": {
+    "_Id": 175,
+    "_IconName": "Icon_Buff_1020034",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "176": {
+    "_Id": 176,
+    "_IconName": "Icon_Buff_2050044",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "177": {
+    "_Id": 177,
+    "_IconName": "Icon_Buff_2050050",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "178": {
+    "_Id": 178,
+    "_IconName": "Icon_Buff_1021001",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "179": {
+    "_Id": 179,
+    "_IconName": "Icon_Buff_1021002",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "180": {
+    "_Id": 180,
+    "_IconName": "Icon_Buff_1021003",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "181": {
+    "_Id": 181,
+    "_IconName": "Icon_Buff_1021004",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "182": {
+    "_Id": 182,
+    "_IconName": "Icon_Buff_1021005",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "183": {
+    "_Id": 183,
+    "_IconName": "Icon_Buff_2050052",
+    "_ValueDisplayType": 4,
+    "_GaugeDisplayType": 0
+  },
+  "184": {
+    "_Id": 184,
+    "_IconName": "Icon_Buff_2050051",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "185": {
+    "_Id": 185,
+    "_IconName": "Icon_Buff_1020007",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "186": {
+    "_Id": 186,
+    "_IconName": "Icon_Buff_2050053",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "187": {
+    "_Id": 187,
+    "_IconName": "Icon_Buff_2050054",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "188": {
+    "_Id": 188,
+    "_IconName": "Icon_Buff_2050055",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "189": {
+    "_Id": 189,
+    "_IconName": "Icon_Buff_2050056",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "190": {
+    "_Id": 190,
+    "_IconName": "Icon_Buff_2050057",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "191": {
+    "_Id": 191,
+    "_IconName": "Icon_Buff_2050058",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "192": {
+    "_Id": 192,
+    "_IconName": "Icon_Buff_2050059",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "193": {
+    "_Id": 193,
+    "_IconName": "Icon_Buff_2050060",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "194": {
+    "_Id": 194,
+    "_IconName": "Icon_Buff_2050061",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "195": {
+    "_Id": 195,
+    "_IconName": "Icon_Buff_2050062",
+    "_ValueDisplayType": 4,
+    "_GaugeDisplayType": 0
+  },
+  "196": {
+    "_Id": 196,
+    "_IconName": "Icon_Buff_2050063",
+    "_ValueDisplayType": 4,
+    "_GaugeDisplayType": 0
+  },
+  "197": {
+    "_Id": 197,
+    "_IconName": "Icon_Buff_2050064",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "206": {
+    "_Id": 206,
+    "_IconName": "Icon_Buff_2030012",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 2
+  },
+  "208": {
+    "_Id": 208,
+    "_IconName": "Icon_Buff_2030014",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 2
+  },
+  "209": {
+    "_Id": 209,
+    "_IconName": "Icon_Buff_2030015",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 2
+  },
+  "210": {
+    "_Id": 210,
+    "_IconName": "Icon_Buff_2050065",
+    "_ValueDisplayType": 4,
+    "_GaugeDisplayType": 0
+  },
+  "211": {
+    "_Id": 211,
+    "_IconName": "Icon_Buff_2050066",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "212": {
+    "_Id": 212,
+    "_IconName": "Icon_Buff_2050067",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "213": {
+    "_Id": 213,
+    "_IconName": "Icon_Buff_1130001",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "221": {
+    "_Id": 221,
+    "_IconName": "Icon_Buff_1020035",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "222": {
+    "_Id": 222,
+    "_IconName": "Icon_Buff_1110012",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "224": {
+    "_Id": 224,
+    "_IconName": "Icon_Buff_1110014",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "226": {
+    "_Id": 226,
+    "_IconName": "Icon_Buff_1020036",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "228": {
+    "_Id": 228,
+    "_IconName": "Icon_Buff_1020037",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "230": {
+    "_Id": 230,
+    "_IconName": "Icon_Buff_2010011",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 2
+  },
+  "231": {
+    "_Id": 231,
+    "_IconName": "Icon_Buff_2020027",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 2
+  },
+  "232": {
+    "_Id": 232,
+    "_IconName": "Icon_Buff_2050072",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "233": {
+    "_Id": 233,
+    "_IconName": "Icon_Buff_2050068",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "234": {
+    "_Id": 234,
+    "_IconName": "Icon_Buff_2050069",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "235": {
+    "_Id": 235,
+    "_IconName": "Icon_Buff_2050070",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "236": {
+    "_Id": 236,
+    "_IconName": "Icon_Buff_2050071",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "237": {
+    "_Id": 237,
+    "_IconName": "Icon_Buff_2050073",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "238": {
+    "_Id": 238,
+    "_IconName": "Icon_Buff_2050074",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "239": {
+    "_Id": 239,
+    "_IconName": "Icon_Buff_2050075",
+    "_ValueDisplayType": 4,
+    "_GaugeDisplayType": 2
+  },
+  "240": {
+    "_Id": 240,
+    "_IconName": "Icon_Buff_2050078",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "241": {
+    "_Id": 241,
+    "_IconName": "Icon_Buff_1020038",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "242": {
+    "_Id": 242,
+    "_IconName": "Icon_Buff_2050076",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 2
+  },
+  "243": {
+    "_Id": 243,
+    "_IconName": "Icon_Buff_2050077",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "244": {
+    "_Id": 244,
+    "_IconName": "Icon_Buff_2050048",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "245": {
+    "_Id": 245,
+    "_IconName": "Icon_Buff_2050079",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "246": {
+    "_Id": 246,
+    "_IconName": "Icon_Buff_2050080",
+    "_ValueDisplayType": 4,
+    "_GaugeDisplayType": 0
+  },
+  "247": {
+    "_Id": 247,
+    "_IconName": "Icon_Buff_2050081",
+    "_ValueDisplayType": 4,
+    "_GaugeDisplayType": 0
+  },
+  "248": {
+    "_Id": 248,
+    "_IconName": "Icon_Buff_2050082",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "249": {
+    "_Id": 249,
+    "_IconName": "Icon_Buff_2050088",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "250": {
+    "_Id": 250,
+    "_IconName": "Icon_Buff_2050089",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "251": {
+    "_Id": 251,
+    "_IconName": "Icon_Buff_2050090",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "252": {
+    "_Id": 252,
+    "_IconName": "Icon_Buff_2050091",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "253": {
+    "_Id": 253,
+    "_IconName": "Icon_Buff_2050092",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "254": {
+    "_Id": 254,
+    "_IconName": "Icon_Buff_2050083",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "255": {
+    "_Id": 255,
+    "_IconName": "Icon_Buff_2050084",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "256": {
+    "_Id": 256,
+    "_IconName": "Icon_Buff_2050085",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "257": {
+    "_Id": 257,
+    "_IconName": "Icon_Buff_2050086",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "258": {
+    "_Id": 258,
+    "_IconName": "Icon_Buff_2050087",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "259": {
+    "_Id": 259,
+    "_IconName": "Icon_Buff_2050005",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "260": {
+    "_Id": 260,
+    "_IconName": "Icon_Buff_2050093",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "261": {
+    "_Id": 261,
+    "_IconName": "Icon_Buff_2050094",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "262": {
+    "_Id": 262,
+    "_IconName": "Icon_Buff_1021001",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "263": {
+    "_Id": 263,
+    "_IconName": "Icon_Buff_1021002",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "264": {
+    "_Id": 264,
+    "_IconName": "Icon_Buff_1021003",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "265": {
+    "_Id": 265,
+    "_IconName": "Icon_Buff_1021004",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "266": {
+    "_Id": 266,
+    "_IconName": "Icon_Buff_1021005",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "267": {
+    "_Id": 267,
+    "_IconName": "Icon_Buff_2050099",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "268": {
+    "_Id": 268,
+    "_IconName": "Icon_Buff_2050098",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 1
+  },
+  "270": {
+    "_Id": 270,
+    "_IconName": "Icon_Buff_1080012",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "272": {
+    "_Id": 272,
+    "_IconName": "Icon_Buff_1080014",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 0
+  },
+  "274": {
+    "_Id": 274,
+    "_IconName": "Icon_Buff_2050100",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 1
+  },
+  "275": {
+    "_Id": 275,
+    "_IconName": "Icon_Buff_2050096",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 2
+  },
+  "276": {
+    "_Id": 276,
+    "_IconName": "Icon_Buff_2050097",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 2
+  },
+  "277": {
+    "_Id": 277,
+    "_IconName": "Icon_Buff_2050102",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "278": {
+    "_Id": 278,
+    "_IconName": "Icon_Buff_2050101",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "279": {
+    "_Id": 279,
+    "_IconName": "Icon_Buff_2050103",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 1
+  },
+  "280": {
+    "_Id": 280,
+    "_IconName": "Icon_Buff_2050104",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "281": {
+    "_Id": 281,
+    "_IconName": "Icon_Buff_2050105",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "282": {
+    "_Id": 282,
+    "_IconName": "Icon_Buff_2050106",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "283": {
+    "_Id": 283,
+    "_IconName": "Icon_Buff_2050107",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "284": {
+    "_Id": 284,
+    "_IconName": "Icon_Buff_2050108",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "285": {
+    "_Id": 285,
+    "_IconName": "Icon_Buff_2050109",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 2
+  },
+  "286": {
+    "_Id": 286,
+    "_IconName": "Icon_Buff_2050110",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "287": {
+    "_Id": 287,
+    "_IconName": "Icon_Buff_2050111",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "288": {
+    "_Id": 288,
+    "_IconName": "Icon_Buff_2050112",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "289": {
+    "_Id": 289,
+    "_IconName": "Icon_Buff_1020010",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 1
+  },
+  "290": {
+    "_Id": 290,
+    "_IconName": "Icon_Buff_2050113",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 1
+  },
+  "291": {
+    "_Id": 291,
+    "_IconName": "Icon_Buff_2050114",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 1
+  },
+  "292": {
+    "_Id": 292,
+    "_IconName": "Icon_Buff_2050115",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 1
+  },
+  "293": {
+    "_Id": 293,
+    "_IconName": "Icon_Buff_2050117",
+    "_ValueDisplayType": 4,
+    "_GaugeDisplayType": 2
+  },
+  "294": {
+    "_Id": 294,
+    "_IconName": "Icon_Buff_2050048",
+    "_ValueDisplayType": 4,
+    "_GaugeDisplayType": 1
+  },
+  "295": {
+    "_Id": 295,
+    "_IconName": "Icon_Buff_2050119",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 1
+  },
+  "296": {
+    "_Id": 296,
+    "_IconName": "Icon_Buff_2050118",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 2
+  },
+  "297": {
+    "_Id": 297,
+    "_IconName": "Icon_Buff_2050116",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 2
+  },
+  "298": {
+    "_Id": 298,
+    "_IconName": "Icon_Buff_2050125",
+    "_ValueDisplayType": 5,
+    "_GaugeDisplayType": 1
+  },
+  "299": {
+    "_Id": 299,
+    "_IconName": "Icon_Buff_2050122",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 2
+  },
+  "300": {
+    "_Id": 300,
+    "_IconName": "Icon_Buff_2050123",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 2
+  },
+  "301": {
+    "_Id": 301,
+    "_IconName": "Icon_Buff_2050124",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 2
+  },
+  "302": {
+    "_Id": 302,
+    "_IconName": "Icon_Buff_2050120",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 1
+  },
+  "303": {
+    "_Id": 303,
+    "_IconName": "Icon_Buff_2050121",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 1
+  },
+  "304": {
+    "_Id": 304,
+    "_IconName": "Icon_Buff_2050127",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 1
+  },
+  "305": {
+    "_Id": 305,
+    "_IconName": "Icon_Buff_2050129",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 1
+  },
+  "306": {
+    "_Id": 306,
+    "_IconName": "Icon_Buff_2050128",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 1
+  },
+  "307": {
+    "_Id": 307,
+    "_IconName": "Icon_Buff_2050131",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 2
+  },
+  "308": {
+    "_Id": 308,
+    "_IconName": "Icon_Buff_2050126",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 1
+  },
+  "309": {
+    "_Id": 309,
+    "_IconName": "Icon_Buff_2050012",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 1
+  },
+  "310": {
+    "_Id": 310,
+    "_IconName": "Icon_Buff_2050133",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 1
+  },
+  "311": {
+    "_Id": 311,
+    "_IconName": "Icon_Buff_2050137",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 2
+  },
+  "312": {
+    "_Id": 312,
+    "_IconName": "Icon_Buff_2050132",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 2
+  },
+  "313": {
+    "_Id": 313,
+    "_IconName": "Icon_Buff_2050134",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 1
+  },
+  "314": {
+    "_Id": 314,
+    "_IconName": "Icon_Buff_2050139",
+    "_ValueDisplayType": 4,
+    "_GaugeDisplayType": 2
+  },
+  "315": {
+    "_Id": 315,
+    "_IconName": "Icon_Buff_2050140",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 1
+  },
+  "316": {
+    "_Id": 316,
+    "_IconName": "Icon_Buff_2050100",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 2
+  },
+  "317": {
+    "_Id": 317,
+    "_IconName": "Icon_Buff_2050135",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 1
+  },
+  "318": {
+    "_Id": 318,
+    "_IconName": "Icon_Buff_2050148",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 1
+  },
+  "319": {
+    "_Id": 319,
+    "_IconName": "Icon_Buff_2050144",
+    "_ValueDisplayType": 4,
+    "_GaugeDisplayType": 1
+  },
+  "320": {
+    "_Id": 320,
+    "_IconName": "Icon_Buff_2050143",
+    "_ValueDisplayType": 4,
+    "_GaugeDisplayType": 1
+  },
+  "321": {
+    "_Id": 321,
+    "_IconName": "Icon_Buff_2050138",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 1
+  },
+  "322": {
+    "_Id": 322,
+    "_IconName": "Icon_Buff_2050130",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 2
+  },
+  "323": {
+    "_Id": 323,
+    "_IconName": "Icon_Buff_2050141",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 2
+  },
+  "324": {
+    "_Id": 324,
+    "_IconName": "Icon_Buff_2050142",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 1
+  },
+  "325": {
+    "_Id": 325,
+    "_IconName": "Icon_Buff_2030011",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 2
+  },
+  "326": {
+    "_Id": 326,
+    "_IconName": "Icon_Buff_2050145",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 2
+  },
+  "327": {
+    "_Id": 327,
+    "_IconName": "Icon_Buff_2050146",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 1
+  },
+  "328": {
+    "_Id": 328,
+    "_IconName": "Icon_Buff_2050147",
+    "_ValueDisplayType": 4,
+    "_GaugeDisplayType": 1
+  },
+  "1003": {
+    "_Id": 1003,
+    "_IconName": "Icon_Buff_2050095",
+    "_ValueDisplayType": 2,
+    "_GaugeDisplayType": 0
+  },
+  "5001": {
+    "_Id": 5001,
+    "_IconName": "Icon_Buff_2010011",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 2
+  },
+  "5002": {
+    "_Id": 5002,
+    "_IconName": "Icon_Buff_2090201",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "5003": {
+    "_Id": 5003,
+    "_IconName": "Icon_Buff_2040001",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 0
+  },
+  "5004": {
+    "_Id": 5004,
+    "_IconName": "Icon_Buff_2050096",
+    "_ValueDisplayType": 1,
+    "_GaugeDisplayType": 1
+  },
+  "5005": {
+    "_Id": 5005,
+    "_IconName": "Icon_Buff_1020035",
+    "_ValueDisplayType": 0,
+    "_GaugeDisplayType": 1
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "10001": {
+    "_Id": 10001,
+    "_Name": "DRAGON_GIFT_NAME_10001",
+    "_Descripsion": "DRAGON_GIFT_DETAIL_10001",
+    "_DragonGiftType": 1,
+    "_SortId": 10001,
+    "_Reliability": 100,
+    "_FavoriteReliability": 100,
+    "_FavoriteType": 0
+  },
+  "10002": {
+    "_Id": 10002,
+    "_Name": "DRAGON_GIFT_NAME_10002",
+    "_Descripsion": "DRAGON_GIFT_DETAIL_10002",
+    "_DragonGiftType": 1,
+    "_SortId": 10002,
+    "_Reliability": 300,
+    "_FavoriteReliability": 300,
+    "_FavoriteType": 0
+  },
+  "10003": {
+    "_Id": 10003,
+    "_Name": "DRAGON_GIFT_NAME_10003",
+    "_Descripsion": "DRAGON_GIFT_DETAIL_10003",
+    "_DragonGiftType": 1,
+    "_SortId": 10003,
+    "_Reliability": 600,
+    "_FavoriteReliability": 600,
+    "_FavoriteType": 0
+  },
+  "10004": {
+    "_Id": 10004,
+    "_Name": "DRAGON_GIFT_NAME_10004",
+    "_Descripsion": "DRAGON_GIFT_DETAIL_10004",
+    "_DragonGiftType": 1,
+    "_SortId": 10004,
+    "_Reliability": 1000,
+    "_FavoriteReliability": 1000,
+    "_FavoriteType": 0
+  },
+  "20001": {
+    "_Id": 20001,
+    "_Name": "DRAGON_GIFT_NAME_20001",
+    "_Descripsion": "DRAGON_GIFT_DETAIL_20001",
+    "_DragonGiftType": 1,
+    "_SortId": 20001,
+    "_Reliability": 1200,
+    "_FavoriteReliability": 1800,
+    "_FavoriteType": 1
+  },
+  "20002": {
+    "_Id": 20002,
+    "_Name": "DRAGON_GIFT_NAME_20002",
+    "_Descripsion": "DRAGON_GIFT_DETAIL_20002",
+    "_DragonGiftType": 1,
+    "_SortId": 20002,
+    "_Reliability": 1200,
+    "_FavoriteReliability": 1800,
+    "_FavoriteType": 2
+  },
+  "20003": {
+    "_Id": 20003,
+    "_Name": "DRAGON_GIFT_NAME_20003",
+    "_Descripsion": "DRAGON_GIFT_DETAIL_20003",
+    "_DragonGiftType": 1,
+    "_SortId": 20003,
+    "_Reliability": 1200,
+    "_FavoriteReliability": 1800,
+    "_FavoriteType": 3
+  },
+  "20004": {
+    "_Id": 20004,
+    "_Name": "DRAGON_GIFT_NAME_20004",
+    "_Descripsion": "DRAGON_GIFT_DETAIL_20004",
+    "_DragonGiftType": 1,
+    "_SortId": 20004,
+    "_Reliability": 1200,
+    "_FavoriteReliability": 1800,
+    "_FavoriteType": 4
+  },
+  "20005": {
+    "_Id": 20005,
+    "_Name": "DRAGON_GIFT_NAME_20005",
+    "_Descripsion": "DRAGON_GIFT_DETAIL_20005",
+    "_DragonGiftType": 1,
+    "_SortId": 20005,
+    "_Reliability": 1200,
+    "_FavoriteReliability": 1800,
+    "_FavoriteType": 5
+  },
+  "20006": {
+    "_Id": 20006,
+    "_Name": "DRAGON_GIFT_NAME_20006",
+    "_Descripsion": "DRAGON_GIFT_DETAIL_20006",
+    "_DragonGiftType": 1,
+    "_SortId": 20006,
+    "_Reliability": 2000,
+    "_FavoriteReliability": 2000,
+    "_FavoriteType": 99
+  },
+  "30001": {
+    "_Id": 30001,
+    "_Name": "DRAGON_GIFT_NAME_30001",
+    "_Descripsion": "DRAGON_GIFT_DETAIL_30001",
+    "_DragonGiftType": 1,
+    "_SortId": 30001,
+    "_Reliability": 1000,
+    "_FavoriteReliability": 1000,
+    "_FavoriteType": 0
+  },
+  "30002": {
+    "_Id": 30002,
+    "_Name": "DRAGON_GIFT_NAME_30002",
+    "_Descripsion": "DRAGON_GIFT_DETAIL_30002",
+    "_DragonGiftType": 1,
+    "_SortId": 30002,
+    "_Reliability": 1000,
+    "_FavoriteReliability": 1000,
+    "_FavoriteType": 0
+  },
+  "30003": {
+    "_Id": 30003,
+    "_Name": "DRAGON_GIFT_NAME_30003",
+    "_Descripsion": "DRAGON_GIFT_DETAIL_30003",
+    "_DragonGiftType": 1,
+    "_SortId": 30003,
+    "_Reliability": 1000,
+    "_FavoriteReliability": 1000,
+    "_FavoriteType": 0
+  },
+  "40001": {
+    "_Id": 40001,
+    "_Name": "DRAGON_GIFT_NAME_40001",
+    "_Descripsion": "DRAGON_GIFT_DETAIL_40001",
+    "_DragonGiftType": 2,
+    "_SortId": 40001,
+    "_Reliability": 200,
+    "_FavoriteReliability": 200,
+    "_FavoriteType": 0
+  }
+}

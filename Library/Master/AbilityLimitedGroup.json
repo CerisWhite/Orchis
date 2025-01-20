@@ -1,0 +1,1166 @@
+{
+  "1": {
+    "_Id": 1,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 30,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "2": {
+    "_Id": 2,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 30,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "3": {
+    "_Id": 3,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "4": {
+    "_Id": 4,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "5": {
+    "_Id": 5,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "6": {
+    "_Id": 6,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "7": {
+    "_Id": 7,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "8": {
+    "_Id": 8,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "9": {
+    "_Id": 9,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "10": {
+    "_Id": 10,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 20,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "11": {
+    "_Id": 11,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 20,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "12": {
+    "_Id": 12,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 20,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "13": {
+    "_Id": 13,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 20,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "14": {
+    "_Id": 14,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 20,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "15": {
+    "_Id": 15,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 20,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "16": {
+    "_Id": 16,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 20,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "17": {
+    "_Id": 17,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 20,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "18": {
+    "_Id": 18,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "19": {
+    "_Id": 19,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 35,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "20": {
+    "_Id": 20,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "21": {
+    "_Id": 21,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "22": {
+    "_Id": 22,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "23": {
+    "_Id": 23,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "24": {
+    "_Id": 24,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "25": {
+    "_Id": 25,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "26": {
+    "_Id": 26,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "27": {
+    "_Id": 27,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "28": {
+    "_Id": 28,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "29": {
+    "_Id": 29,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 20,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "30": {
+    "_Id": 30,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 100,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "31": {
+    "_Id": 31,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "32": {
+    "_Id": 32,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 40,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "33": {
+    "_Id": 33,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 40,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "34": {
+    "_Id": 34,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 40,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "35": {
+    "_Id": 35,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 40,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "36": {
+    "_Id": 36,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 40,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "37": {
+    "_Id": 37,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 40,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "38": {
+    "_Id": 38,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 40,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "39": {
+    "_Id": 39,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 40,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "40": {
+    "_Id": 40,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "41": {
+    "_Id": 41,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 0,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "42": {
+    "_Id": 42,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 20,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "43": {
+    "_Id": 43,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 20,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "44": {
+    "_Id": 44,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "45": {
+    "_Id": 45,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 20,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "46": {
+    "_Id": 46,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 30,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "47": {
+    "_Id": 47,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 50,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "48": {
+    "_Id": 48,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "49": {
+    "_Id": 49,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "50": {
+    "_Id": 50,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 30,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "51": {
+    "_Id": 51,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 35,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "52": {
+    "_Id": 52,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 10,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "53": {
+    "_Id": 53,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 3,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_4"
+  },
+  "54": {
+    "_Id": 54,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 6,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "55": {
+    "_Id": 55,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 6,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "56": {
+    "_Id": 56,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "57": {
+    "_Id": 57,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 60,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "58": {
+    "_Id": 58,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 20,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "59": {
+    "_Id": 59,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "60": {
+    "_Id": 60,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 3,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_4"
+  },
+  "61": {
+    "_Id": 61,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 20,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "62": {
+    "_Id": 62,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 100,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "63": {
+    "_Id": 63,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "64": {
+    "_Id": 64,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 20,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "65": {
+    "_Id": 65,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "66": {
+    "_Id": 66,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 3,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_4"
+  },
+  "67": {
+    "_Id": 67,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 4,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_5"
+  },
+  "68": {
+    "_Id": 68,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 20,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "69": {
+    "_Id": 69,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "70": {
+    "_Id": 70,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 1,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_2"
+  },
+  "71": {
+    "_Id": 71,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 2,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_3"
+  },
+  "73": {
+    "_Id": 73,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 1,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_6"
+  },
+  "74": {
+    "_Id": 74,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 3,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_4"
+  },
+  "75": {
+    "_Id": 75,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 2,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_3"
+  },
+  "76": {
+    "_Id": 76,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "77": {
+    "_Id": 77,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "78": {
+    "_Id": 78,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "79": {
+    "_Id": 79,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "80": {
+    "_Id": 80,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "81": {
+    "_Id": 81,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "82": {
+    "_Id": 82,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "83": {
+    "_Id": 83,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "84": {
+    "_Id": 84,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "85": {
+    "_Id": 85,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "86": {
+    "_Id": 86,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "87": {
+    "_Id": 87,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "88": {
+    "_Id": 88,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "89": {
+    "_Id": 89,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "90": {
+    "_Id": 90,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "91": {
+    "_Id": 91,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 0,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_"
+  },
+  "92": {
+    "_Id": 92,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 0,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_"
+  },
+  "93": {
+    "_Id": 93,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 0,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_"
+  },
+  "94": {
+    "_Id": 94,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "95": {
+    "_Id": 95,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 0,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_"
+  },
+  "96": {
+    "_Id": 96,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 0,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_"
+  },
+  "97": {
+    "_Id": 97,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 0,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "98": {
+    "_Id": 98,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 0,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "99": {
+    "_Id": 99,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 150,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "100": {
+    "_Id": 100,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 100,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "101": {
+    "_Id": 101,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 150,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "102": {
+    "_Id": 102,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 150,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "103": {
+    "_Id": 103,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 150,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "104": {
+    "_Id": 104,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 75,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "105": {
+    "_Id": 105,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 50,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "106": {
+    "_Id": 106,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 75,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "107": {
+    "_Id": 107,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 75,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "108": {
+    "_Id": 108,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 75,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "109": {
+    "_Id": 109,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 50,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "110": {
+    "_Id": 110,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 50,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "111": {
+    "_Id": 111,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 10,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "112": {
+    "_Id": 112,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 50,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "113": {
+    "_Id": 113,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 18,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "114": {
+    "_Id": 114,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 0,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "115": {
+    "_Id": 115,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 0,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "116": {
+    "_Id": 116,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 0,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "117": {
+    "_Id": 117,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "118": {
+    "_Id": 118,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 100,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "119": {
+    "_Id": 119,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 100,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "120": {
+    "_Id": 120,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 100,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "121": {
+    "_Id": 121,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 100,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "122": {
+    "_Id": 122,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 100,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "123": {
+    "_Id": 123,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 100,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "124": {
+    "_Id": 124,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 100,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "125": {
+    "_Id": 125,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 100,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "126": {
+    "_Id": 126,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 100,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "127": {
+    "_Id": 127,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 250,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "128": {
+    "_Id": 128,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 125,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "129": {
+    "_Id": 129,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 3,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_13"
+  },
+  "130": {
+    "_Id": 130,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 100,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "131": {
+    "_Id": 131,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "132": {
+    "_Id": 132,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 3,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_4"
+  },
+  "133": {
+    "_Id": 133,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 150,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "134": {
+    "_Id": 134,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 75,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "135": {
+    "_Id": 135,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 150,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "136": {
+    "_Id": 136,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 75,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "137": {
+    "_Id": 137,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 8,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_2"
+  },
+  "138": {
+    "_Id": 138,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 10,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "139": {
+    "_Id": 139,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 60,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "140": {
+    "_Id": 140,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "141": {
+    "_Id": 141,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 40,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "142": {
+    "_Id": 142,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 0,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_"
+  },
+  "143": {
+    "_Id": 143,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "144": {
+    "_Id": 144,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "145": {
+    "_Id": 145,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 3,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_4"
+  },
+  "146": {
+    "_Id": 146,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 120,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "147": {
+    "_Id": 147,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 5,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "148": {
+    "_Id": 148,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 0,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "149": {
+    "_Id": 149,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 3,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_4"
+  },
+  "150": {
+    "_Id": 150,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 150,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "151": {
+    "_Id": 151,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 50,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "152": {
+    "_Id": 152,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 150,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "153": {
+    "_Id": 153,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 50,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "154": {
+    "_Id": 154,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 0,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "155": {
+    "_Id": 155,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 20,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "156": {
+    "_Id": 156,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 40,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "157": {
+    "_Id": 157,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 30,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "158": {
+    "_Id": 158,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 30,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "159": {
+    "_Id": 159,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 50,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "160": {
+    "_Id": 160,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 100,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "161": {
+    "_Id": 161,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 100,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "162": {
+    "_Id": 162,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 100,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "163": {
+    "_Id": 163,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 100,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "164": {
+    "_Id": 164,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 30,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "165": {
+    "_Id": 165,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "166": {
+    "_Id": 166,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 8,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_2"
+  },
+  "167": {
+    "_Id": 167,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 30,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "168": {
+    "_Id": 168,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 3,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_4"
+  },
+  "169": {
+    "_Id": 169,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "170": {
+    "_Id": 170,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 150,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "171": {
+    "_Id": 171,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 50,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "172": {
+    "_Id": 172,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 3,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_4"
+  },
+  "173": {
+    "_Id": 173,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 3,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_4"
+  },
+  "174": {
+    "_Id": 174,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 12,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "175": {
+    "_Id": 175,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "176": {
+    "_Id": 176,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "177": {
+    "_Id": 177,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 25,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "178": {
+    "_Id": 178,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 150,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "179": {
+    "_Id": 179,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 50,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "180": {
+    "_Id": 180,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 3,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_4"
+  },
+  "181": {
+    "_Id": 181,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_4"
+  },
+  "182": {
+    "_Id": 182,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 3,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_4"
+  },
+  "183": {
+    "_Id": 183,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 3,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_4"
+  },
+  "184": {
+    "_Id": 184,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 150,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "185": {
+    "_Id": 185,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 50,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "186": {
+    "_Id": 186,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 160,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_4"
+  },
+  "187": {
+    "_Id": 187,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 10,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_2"
+  },
+  "188": {
+    "_Id": 188,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 21,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_2"
+  },
+  "189": {
+    "_Id": 189,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 50,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "190": {
+    "_Id": 190,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 150,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_1"
+  },
+  "191": {
+    "_Id": 191,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 40,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_2"
+  },
+  "192": {
+    "_Id": 192,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 20,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_2"
+  },
+  "193": {
+    "_Id": 193,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_2"
+  },
+  "194": {
+    "_Id": 194,
+    "_IsEffectMix": 1,
+    "_MaxLimitedValue": 15,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_2"
+  },
+  "195": {
+    "_Id": 195,
+    "_IsEffectMix": 0,
+    "_MaxLimitedValue": 0,
+    "_AbilityLimitedText": "ABILITY_LIMITED_TEXT_4"
+  }
+}

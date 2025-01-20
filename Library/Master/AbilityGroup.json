@@ -1,0 +1,186 @@
+{
+  "10101": {
+    "_Id": 10101,
+    "_AbilityGroupName": "ABILITY_GROUP_10101"
+  },
+  "10102": {
+    "_Id": 10102,
+    "_AbilityGroupName": "ABILITY_GROUP_10102"
+  },
+  "10103": {
+    "_Id": 10103,
+    "_AbilityGroupName": "ABILITY_GROUP_10103"
+  },
+  "10104": {
+    "_Id": 10104,
+    "_AbilityGroupName": "ABILITY_GROUP_10104"
+  },
+  "10201": {
+    "_Id": 10201,
+    "_AbilityGroupName": "ABILITY_GROUP_10201"
+  },
+  "10202": {
+    "_Id": 10202,
+    "_AbilityGroupName": "ABILITY_GROUP_10202"
+  },
+  "10203": {
+    "_Id": 10203,
+    "_AbilityGroupName": "ABILITY_GROUP_10203"
+  },
+  "10204": {
+    "_Id": 10204,
+    "_AbilityGroupName": "ABILITY_GROUP_10204"
+  },
+  "10205": {
+    "_Id": 10205,
+    "_AbilityGroupName": "ABILITY_GROUP_10205"
+  },
+  "10206": {
+    "_Id": 10206,
+    "_AbilityGroupName": "ABILITY_GROUP_10206"
+  },
+  "10207": {
+    "_Id": 10207,
+    "_AbilityGroupName": "ABILITY_GROUP_10207"
+  },
+  "10209": {
+    "_Id": 10209,
+    "_AbilityGroupName": "ABILITY_GROUP_10209"
+  },
+  "10210": {
+    "_Id": 10210,
+    "_AbilityGroupName": "ABILITY_GROUP_10210"
+  },
+  "10301": {
+    "_Id": 10301,
+    "_AbilityGroupName": "ABILITY_GROUP_10301"
+  },
+  "10302": {
+    "_Id": 10302,
+    "_AbilityGroupName": "ABILITY_GROUP_10302"
+  },
+  "10303": {
+    "_Id": 10303,
+    "_AbilityGroupName": "ABILITY_GROUP_10303"
+  },
+  "10304": {
+    "_Id": 10304,
+    "_AbilityGroupName": "ABILITY_GROUP_10304"
+  },
+  "10305": {
+    "_Id": 10305,
+    "_AbilityGroupName": "ABILITY_GROUP_10305"
+  },
+  "10401": {
+    "_Id": 10401,
+    "_AbilityGroupName": "ABILITY_GROUP_10401"
+  },
+  "10501": {
+    "_Id": 10501,
+    "_AbilityGroupName": "ABILITY_GROUP_10501"
+  },
+  "10699": {
+    "_Id": 10699,
+    "_AbilityGroupName": "ABILITY_GROUP_10699"
+  },
+  "19801": {
+    "_Id": 19801,
+    "_AbilityGroupName": "ABILITY_GROUP_19801"
+  },
+  "19901": {
+    "_Id": 19901,
+    "_AbilityGroupName": "ABILITY_GROUP_19901"
+  },
+  "20101": {
+    "_Id": 20101,
+    "_AbilityGroupName": "ABILITY_GROUP_20101"
+  },
+  "20102": {
+    "_Id": 20102,
+    "_AbilityGroupName": "ABILITY_GROUP_20102"
+  },
+  "20103": {
+    "_Id": 20103,
+    "_AbilityGroupName": "ABILITY_GROUP_20103"
+  },
+  "20104": {
+    "_Id": 20104,
+    "_AbilityGroupName": "ABILITY_GROUP_20104"
+  },
+  "20105": {
+    "_Id": 20105,
+    "_AbilityGroupName": "ABILITY_GROUP_20105"
+  },
+  "20201": {
+    "_Id": 20201,
+    "_AbilityGroupName": "ABILITY_GROUP_20201"
+  },
+  "20202": {
+    "_Id": 20202,
+    "_AbilityGroupName": "ABILITY_GROUP_20202"
+  },
+  "20203": {
+    "_Id": 20203,
+    "_AbilityGroupName": "ABILITY_GROUP_20203"
+  },
+  "20204": {
+    "_Id": 20204,
+    "_AbilityGroupName": "ABILITY_GROUP_20204"
+  },
+  "20301": {
+    "_Id": 20301,
+    "_AbilityGroupName": "ABILITY_GROUP_20301"
+  },
+  "20302": {
+    "_Id": 20302,
+    "_AbilityGroupName": "ABILITY_GROUP_20302"
+  },
+  "20303": {
+    "_Id": 20303,
+    "_AbilityGroupName": "ABILITY_GROUP_20303"
+  },
+  "20304": {
+    "_Id": 20304,
+    "_AbilityGroupName": "ABILITY_GROUP_20304"
+  },
+  "20305": {
+    "_Id": 20305,
+    "_AbilityGroupName": "ABILITY_GROUP_20305"
+  },
+  "20306": {
+    "_Id": 20306,
+    "_AbilityGroupName": "ABILITY_GROUP_20306"
+  },
+  "20401": {
+    "_Id": 20401,
+    "_AbilityGroupName": "ABILITY_GROUP_20401"
+  },
+  "20402": {
+    "_Id": 20402,
+    "_AbilityGroupName": "ABILITY_GROUP_20402"
+  },
+  "20403": {
+    "_Id": 20403,
+    "_AbilityGroupName": "ABILITY_GROUP_20403"
+  },
+  "20501": {
+    "_Id": 20501,
+    "_AbilityGroupName": "ABILITY_GROUP_20501"
+  },
+  "20601": {
+    "_Id": 20601,
+    "_AbilityGroupName": "ABILITY_GROUP_20601"
+  },
+  "20701": {
+    "_Id": 20701,
+    "_AbilityGroupName": "ABILITY_GROUP_20701"
+  },
+  "20702": {
+    "_Id": 20702,
+    "_AbilityGroupName": "ABILITY_GROUP_20702"
+  },
+  "20801": {
+    "_Id": 20801,
+    "_AbilityGroupName": "ABILITY_GROUP_20801"
+  }
+}

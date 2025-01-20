@@ -1,0 +1,502 @@
+{
+  "1": {
+    "_Id": 1,
+    "_NecessaryExp": 30,
+    "_TotalExp": 0
+  },
+  "2": {
+    "_Id": 2,
+    "_NecessaryExp": 50,
+    "_TotalExp": 30
+  },
+  "3": {
+    "_Id": 3,
+    "_NecessaryExp": 70,
+    "_TotalExp": 80
+  },
+  "4": {
+    "_Id": 4,
+    "_NecessaryExp": 90,
+    "_TotalExp": 150
+  },
+  "5": {
+    "_Id": 5,
+    "_NecessaryExp": 110,
+    "_TotalExp": 240
+  },
+  "6": {
+    "_Id": 6,
+    "_NecessaryExp": 150,
+    "_TotalExp": 350
+  },
+  "7": {
+    "_Id": 7,
+    "_NecessaryExp": 190,
+    "_TotalExp": 500
+  },
+  "8": {
+    "_Id": 8,
+    "_NecessaryExp": 230,
+    "_TotalExp": 690
+  },
+  "9": {
+    "_Id": 9,
+    "_NecessaryExp": 270,
+    "_TotalExp": 920
+  },
+  "10": {
+    "_Id": 10,
+    "_NecessaryExp": 310,
+    "_TotalExp": 1190
+  },
+  "11": {
+    "_Id": 11,
+    "_NecessaryExp": 380,
+    "_TotalExp": 1500
+  },
+  "12": {
+    "_Id": 12,
+    "_NecessaryExp": 450,
+    "_TotalExp": 1880
+  },
+  "13": {
+    "_Id": 13,
+    "_NecessaryExp": 520,
+    "_TotalExp": 2330
+  },
+  "14": {
+    "_Id": 14,
+    "_NecessaryExp": 590,
+    "_TotalExp": 2850
+  },
+  "15": {
+    "_Id": 15,
+    "_NecessaryExp": 660,
+    "_TotalExp": 3440
+  },
+  "16": {
+    "_Id": 16,
+    "_NecessaryExp": 780,
+    "_TotalExp": 4100
+  },
+  "17": {
+    "_Id": 17,
+    "_NecessaryExp": 900,
+    "_TotalExp": 4880
+  },
+  "18": {
+    "_Id": 18,
+    "_NecessaryExp": 1020,
+    "_TotalExp": 5780
+  },
+  "19": {
+    "_Id": 19,
+    "_NecessaryExp": 1140,
+    "_TotalExp": 6800
+  },
+  "20": {
+    "_Id": 20,
+    "_NecessaryExp": 1260,
+    "_TotalExp": 7940
+  },
+  "21": {
+    "_Id": 21,
+    "_NecessaryExp": 1510,
+    "_TotalExp": 9200
+  },
+  "22": {
+    "_Id": 22,
+    "_NecessaryExp": 1760,
+    "_TotalExp": 10710
+  },
+  "23": {
+    "_Id": 23,
+    "_NecessaryExp": 2010,
+    "_TotalExp": 12470
+  },
+  "24": {
+    "_Id": 24,
+    "_NecessaryExp": 2260,
+    "_TotalExp": 14480
+  },
+  "25": {
+    "_Id": 25,
+    "_NecessaryExp": 2510,
+    "_TotalExp": 16740
+  },
+  "26": {
+    "_Id": 26,
+    "_NecessaryExp": 3010,
+    "_TotalExp": 19250
+  },
+  "27": {
+    "_Id": 27,
+    "_NecessaryExp": 3510,
+    "_TotalExp": 22260
+  },
+  "28": {
+    "_Id": 28,
+    "_NecessaryExp": 4010,
+    "_TotalExp": 25770
+  },
+  "29": {
+    "_Id": 29,
+    "_NecessaryExp": 4510,
+    "_TotalExp": 29780
+  },
+  "30": {
+    "_Id": 30,
+    "_NecessaryExp": 5010,
+    "_TotalExp": 34290
+  },
+  "31": {
+    "_Id": 31,
+    "_NecessaryExp": 5760,
+    "_TotalExp": 39300
+  },
+  "32": {
+    "_Id": 32,
+    "_NecessaryExp": 6510,
+    "_TotalExp": 45060
+  },
+  "33": {
+    "_Id": 33,
+    "_NecessaryExp": 7260,
+    "_TotalExp": 51570
+  },
+  "34": {
+    "_Id": 34,
+    "_NecessaryExp": 8010,
+    "_TotalExp": 58830
+  },
+  "35": {
+    "_Id": 35,
+    "_NecessaryExp": 8760,
+    "_TotalExp": 66840
+  },
+  "36": {
+    "_Id": 36,
+    "_NecessaryExp": 9510,
+    "_TotalExp": 75600
+  },
+  "37": {
+    "_Id": 37,
+    "_NecessaryExp": 10260,
+    "_TotalExp": 85110
+  },
+  "38": {
+    "_Id": 38,
+    "_NecessaryExp": 11010,
+    "_TotalExp": 95370
+  },
+  "39": {
+    "_Id": 39,
+    "_NecessaryExp": 11760,
+    "_TotalExp": 106380
+  },
+  "40": {
+    "_Id": 40,
+    "_NecessaryExp": 12510,
+    "_TotalExp": 118140
+  },
+  "41": {
+    "_Id": 41,
+    "_NecessaryExp": 13260,
+    "_TotalExp": 130650
+  },
+  "42": {
+    "_Id": 42,
+    "_NecessaryExp": 14010,
+    "_TotalExp": 143910
+  },
+  "43": {
+    "_Id": 43,
+    "_NecessaryExp": 14760,
+    "_TotalExp": 157920
+  },
+  "44": {
+    "_Id": 44,
+    "_NecessaryExp": 15510,
+    "_TotalExp": 172680
+  },
+  "45": {
+    "_Id": 45,
+    "_NecessaryExp": 16260,
+    "_TotalExp": 188190
+  },
+  "46": {
+    "_Id": 46,
+    "_NecessaryExp": 17010,
+    "_TotalExp": 204450
+  },
+  "47": {
+    "_Id": 47,
+    "_NecessaryExp": 17760,
+    "_TotalExp": 221460
+  },
+  "48": {
+    "_Id": 48,
+    "_NecessaryExp": 18510,
+    "_TotalExp": 239220
+  },
+  "49": {
+    "_Id": 49,
+    "_NecessaryExp": 19260,
+    "_TotalExp": 257730
+  },
+  "50": {
+    "_Id": 50,
+    "_NecessaryExp": 20010,
+    "_TotalExp": 276990
+  },
+  "51": {
+    "_Id": 51,
+    "_NecessaryExp": 20760,
+    "_TotalExp": 297000
+  },
+  "52": {
+    "_Id": 52,
+    "_NecessaryExp": 21510,
+    "_TotalExp": 317760
+  },
+  "53": {
+    "_Id": 53,
+    "_NecessaryExp": 22260,
+    "_TotalExp": 339270
+  },
+  "54": {
+    "_Id": 54,
+    "_NecessaryExp": 23010,
+    "_TotalExp": 361530
+  },
+  "55": {
+    "_Id": 55,
+    "_NecessaryExp": 23760,
+    "_TotalExp": 384540
+  },
+  "56": {
+    "_Id": 56,
+    "_NecessaryExp": 24510,
+    "_TotalExp": 408300
+  },
+  "57": {
+    "_Id": 57,
+    "_NecessaryExp": 25260,
+    "_TotalExp": 432810
+  },
+  "58": {
+    "_Id": 58,
+    "_NecessaryExp": 26010,
+    "_TotalExp": 458070
+  },
+  "59": {
+    "_Id": 59,
+    "_NecessaryExp": 26760,
+    "_TotalExp": 484080
+  },
+  "60": {
+    "_Id": 60,
+    "_NecessaryExp": 27510,
+    "_TotalExp": 510840
+  },
+  "61": {
+    "_Id": 61,
+    "_NecessaryExp": 32600,
+    "_TotalExp": 538350
+  },
+  "62": {
+    "_Id": 62,
+    "_NecessaryExp": 32800,
+    "_TotalExp": 570950
+  },
+  "63": {
+    "_Id": 63,
+    "_NecessaryExp": 33000,
+    "_TotalExp": 603750
+  },
+  "64": {
+    "_Id": 64,
+    "_NecessaryExp": 33200,
+    "_TotalExp": 636750
+  },
+  "65": {
+    "_Id": 65,
+    "_NecessaryExp": 33400,
+    "_TotalExp": 669950
+  },
+  "66": {
+    "_Id": 66,
+    "_NecessaryExp": 33600,
+    "_TotalExp": 703350
+  },
+  "67": {
+    "_Id": 67,
+    "_NecessaryExp": 33800,
+    "_TotalExp": 736950
+  },
+  "68": {
+    "_Id": 68,
+    "_NecessaryExp": 34000,
+    "_TotalExp": 770750
+  },
+  "69": {
+    "_Id": 69,
+    "_NecessaryExp": 34200,
+    "_TotalExp": 804750
+  },
+  "70": {
+    "_Id": 70,
+    "_NecessaryExp": 34400,
+    "_TotalExp": 838950
+  },
+  "71": {
+    "_Id": 71,
+    "_NecessaryExp": 34600,
+    "_TotalExp": 873350
+  },
+  "72": {
+    "_Id": 72,
+    "_NecessaryExp": 34800,
+    "_TotalExp": 907950
+  },
+  "73": {
+    "_Id": 73,
+    "_NecessaryExp": 35000,
+    "_TotalExp": 942750
+  },
+  "74": {
+    "_Id": 74,
+    "_NecessaryExp": 35200,
+    "_TotalExp": 977750
+  },
+  "75": {
+    "_Id": 75,
+    "_NecessaryExp": 35400,
+    "_TotalExp": 1012950
+  },
+  "76": {
+    "_Id": 76,
+    "_NecessaryExp": 35600,
+    "_TotalExp": 1048350
+  },
+  "77": {
+    "_Id": 77,
+    "_NecessaryExp": 35800,
+    "_TotalExp": 1083950
+  },
+  "78": {
+    "_Id": 78,
+    "_NecessaryExp": 36000,
+    "_TotalExp": 1119750
+  },
+  "79": {
+    "_Id": 79,
+    "_NecessaryExp": 36200,
+    "_TotalExp": 1155750
+  },
+  "80": {
+    "_Id": 80,
+    "_NecessaryExp": 200000,
+    "_TotalExp": 1191950
+  },
+  "81": {
+    "_Id": 81,
+    "_NecessaryExp": 215000,
+    "_TotalExp": 1391950
+  },
+  "82": {
+    "_Id": 82,
+    "_NecessaryExp": 230000,
+    "_TotalExp": 1606950
+  },
+  "83": {
+    "_Id": 83,
+    "_NecessaryExp": 245000,
+    "_TotalExp": 1836950
+  },
+  "84": {
+    "_Id": 84,
+    "_NecessaryExp": 260000,
+    "_TotalExp": 2081950
+  },
+  "85": {
+    "_Id": 85,
+    "_NecessaryExp": 275000,
+    "_TotalExp": 2341950
+  },
+  "86": {
+    "_Id": 86,
+    "_NecessaryExp": 290000,
+    "_TotalExp": 2616950
+  },
+  "87": {
+    "_Id": 87,
+    "_NecessaryExp": 305000,
+    "_TotalExp": 2906950
+  },
+  "88": {
+    "_Id": 88,
+    "_NecessaryExp": 320000,
+    "_TotalExp": 3211950
+  },
+  "89": {
+    "_Id": 89,
+    "_NecessaryExp": 335000,
+    "_TotalExp": 3531950
+  },
+  "90": {
+    "_Id": 90,
+    "_NecessaryExp": 350000,
+    "_TotalExp": 3866950
+  },
+  "91": {
+    "_Id": 91,
+    "_NecessaryExp": 380000,
+    "_TotalExp": 4216950
+  },
+  "92": {
+    "_Id": 92,
+    "_NecessaryExp": 410000,
+    "_TotalExp": 4596950
+  },
+  "93": {
+    "_Id": 93,
+    "_NecessaryExp": 440000,
+    "_TotalExp": 5006950
+  },
+  "94": {
+    "_Id": 94,
+    "_NecessaryExp": 470000,
+    "_TotalExp": 5446950
+  },
+  "95": {
+    "_Id": 95,
+    "_NecessaryExp": 500000,
+    "_TotalExp": 5916950
+  },
+  "96": {
+    "_Id": 96,
+    "_NecessaryExp": 545000,
+    "_TotalExp": 6416950
+  },
+  "97": {
+    "_Id": 97,
+    "_NecessaryExp": 590000,
+    "_TotalExp": 6961950
+  },
+  "98": {
+    "_Id": 98,
+    "_NecessaryExp": 635000,
+    "_TotalExp": 7551950
+  },
+  "99": {
+    "_Id": 99,
+    "_NecessaryExp": 680000,
+    "_TotalExp": 8186950
+  },
+  "100": {
+    "_Id": 100,
+    "_NecessaryExp": 0,
+    "_TotalExp": 8866950
+  }
+}

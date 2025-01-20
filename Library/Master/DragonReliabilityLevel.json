@@ -1,0 +1,422 @@
+{
+  "1": {
+    "_Id": 1,
+    "_DragonUnitType": 1,
+    "_Level": 1,
+    "_NecessaryReliability": 80,
+    "_TotalReliability": 0
+  },
+  "2": {
+    "_Id": 2,
+    "_DragonUnitType": 1,
+    "_Level": 2,
+    "_NecessaryReliability": 160,
+    "_TotalReliability": 80
+  },
+  "3": {
+    "_Id": 3,
+    "_DragonUnitType": 1,
+    "_Level": 3,
+    "_NecessaryReliability": 180,
+    "_TotalReliability": 240
+  },
+  "4": {
+    "_Id": 4,
+    "_DragonUnitType": 1,
+    "_Level": 4,
+    "_NecessaryReliability": 200,
+    "_TotalReliability": 420
+  },
+  "5": {
+    "_Id": 5,
+    "_DragonUnitType": 1,
+    "_Level": 5,
+    "_NecessaryReliability": 220,
+    "_TotalReliability": 620
+  },
+  "6": {
+    "_Id": 6,
+    "_DragonUnitType": 1,
+    "_Level": 6,
+    "_NecessaryReliability": 260,
+    "_TotalReliability": 840
+  },
+  "7": {
+    "_Id": 7,
+    "_DragonUnitType": 1,
+    "_Level": 7,
+    "_NecessaryReliability": 300,
+    "_TotalReliability": 1100
+  },
+  "8": {
+    "_Id": 8,
+    "_DragonUnitType": 1,
+    "_Level": 8,
+    "_NecessaryReliability": 400,
+    "_TotalReliability": 1400
+  },
+  "9": {
+    "_Id": 9,
+    "_DragonUnitType": 1,
+    "_Level": 9,
+    "_NecessaryReliability": 500,
+    "_TotalReliability": 1800
+  },
+  "10": {
+    "_Id": 10,
+    "_DragonUnitType": 1,
+    "_Level": 10,
+    "_NecessaryReliability": 600,
+    "_TotalReliability": 2300
+  },
+  "11": {
+    "_Id": 11,
+    "_DragonUnitType": 1,
+    "_Level": 11,
+    "_NecessaryReliability": 700,
+    "_TotalReliability": 2900
+  },
+  "12": {
+    "_Id": 12,
+    "_DragonUnitType": 1,
+    "_Level": 12,
+    "_NecessaryReliability": 800,
+    "_TotalReliability": 3600
+  },
+  "13": {
+    "_Id": 13,
+    "_DragonUnitType": 1,
+    "_Level": 13,
+    "_NecessaryReliability": 900,
+    "_TotalReliability": 4400
+  },
+  "14": {
+    "_Id": 14,
+    "_DragonUnitType": 1,
+    "_Level": 14,
+    "_NecessaryReliability": 1000,
+    "_TotalReliability": 5300
+  },
+  "15": {
+    "_Id": 15,
+    "_DragonUnitType": 1,
+    "_Level": 15,
+    "_NecessaryReliability": 1100,
+    "_TotalReliability": 6300
+  },
+  "16": {
+    "_Id": 16,
+    "_DragonUnitType": 1,
+    "_Level": 16,
+    "_NecessaryReliability": 1200,
+    "_TotalReliability": 7400
+  },
+  "17": {
+    "_Id": 17,
+    "_DragonUnitType": 1,
+    "_Level": 17,
+    "_NecessaryReliability": 1300,
+    "_TotalReliability": 8600
+  },
+  "18": {
+    "_Id": 18,
+    "_DragonUnitType": 1,
+    "_Level": 18,
+    "_NecessaryReliability": 1400,
+    "_TotalReliability": 9900
+  },
+  "19": {
+    "_Id": 19,
+    "_DragonUnitType": 1,
+    "_Level": 19,
+    "_NecessaryReliability": 1500,
+    "_TotalReliability": 11300
+  },
+  "20": {
+    "_Id": 20,
+    "_DragonUnitType": 1,
+    "_Level": 20,
+    "_NecessaryReliability": 1600,
+    "_TotalReliability": 12800
+  },
+  "21": {
+    "_Id": 21,
+    "_DragonUnitType": 1,
+    "_Level": 21,
+    "_NecessaryReliability": 1750,
+    "_TotalReliability": 14400
+  },
+  "22": {
+    "_Id": 22,
+    "_DragonUnitType": 1,
+    "_Level": 22,
+    "_NecessaryReliability": 1900,
+    "_TotalReliability": 16150
+  },
+  "23": {
+    "_Id": 23,
+    "_DragonUnitType": 1,
+    "_Level": 23,
+    "_NecessaryReliability": 2050,
+    "_TotalReliability": 18050
+  },
+  "24": {
+    "_Id": 24,
+    "_DragonUnitType": 1,
+    "_Level": 24,
+    "_NecessaryReliability": 2200,
+    "_TotalReliability": 20100
+  },
+  "25": {
+    "_Id": 25,
+    "_DragonUnitType": 1,
+    "_Level": 25,
+    "_NecessaryReliability": 2400,
+    "_TotalReliability": 22300
+  },
+  "26": {
+    "_Id": 26,
+    "_DragonUnitType": 1,
+    "_Level": 26,
+    "_NecessaryReliability": 2600,
+    "_TotalReliability": 24700
+  },
+  "27": {
+    "_Id": 27,
+    "_DragonUnitType": 1,
+    "_Level": 27,
+    "_NecessaryReliability": 2800,
+    "_TotalReliability": 27300
+  },
+  "28": {
+    "_Id": 28,
+    "_DragonUnitType": 1,
+    "_Level": 28,
+    "_NecessaryReliability": 3000,
+    "_TotalReliability": 30100
+  },
+  "29": {
+    "_Id": 29,
+    "_DragonUnitType": 1,
+    "_Level": 29,
+    "_NecessaryReliability": 3200,
+    "_TotalReliability": 33100
+  },
+  "30": {
+    "_Id": 30,
+    "_DragonUnitType": 1,
+    "_Level": 30,
+    "_NecessaryReliability": 0,
+    "_TotalReliability": 36300
+  },
+  "2001": {
+    "_Id": 2001,
+    "_DragonUnitType": 2,
+    "_Level": 1,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 0
+  },
+  "2002": {
+    "_Id": 2002,
+    "_DragonUnitType": 2,
+    "_Level": 2,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 100
+  },
+  "2003": {
+    "_Id": 2003,
+    "_DragonUnitType": 2,
+    "_Level": 3,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 200
+  },
+  "2004": {
+    "_Id": 2004,
+    "_DragonUnitType": 2,
+    "_Level": 4,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 300
+  },
+  "2005": {
+    "_Id": 2005,
+    "_DragonUnitType": 2,
+    "_Level": 5,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 400
+  },
+  "2006": {
+    "_Id": 2006,
+    "_DragonUnitType": 2,
+    "_Level": 6,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 500
+  },
+  "2007": {
+    "_Id": 2007,
+    "_DragonUnitType": 2,
+    "_Level": 7,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 600
+  },
+  "2008": {
+    "_Id": 2008,
+    "_DragonUnitType": 2,
+    "_Level": 8,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 700
+  },
+  "2009": {
+    "_Id": 2009,
+    "_DragonUnitType": 2,
+    "_Level": 9,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 800
+  },
+  "2010": {
+    "_Id": 2010,
+    "_DragonUnitType": 2,
+    "_Level": 10,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 900
+  },
+  "2011": {
+    "_Id": 2011,
+    "_DragonUnitType": 2,
+    "_Level": 11,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 1000
+  },
+  "2012": {
+    "_Id": 2012,
+    "_DragonUnitType": 2,
+    "_Level": 12,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 1100
+  },
+  "2013": {
+    "_Id": 2013,
+    "_DragonUnitType": 2,
+    "_Level": 13,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 1200
+  },
+  "2014": {
+    "_Id": 2014,
+    "_DragonUnitType": 2,
+    "_Level": 14,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 1300
+  },
+  "2015": {
+    "_Id": 2015,
+    "_DragonUnitType": 2,
+    "_Level": 15,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 1400
+  },
+  "2016": {
+    "_Id": 2016,
+    "_DragonUnitType": 2,
+    "_Level": 16,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 1500
+  },
+  "2017": {
+    "_Id": 2017,
+    "_DragonUnitType": 2,
+    "_Level": 17,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 1600
+  },
+  "2018": {
+    "_Id": 2018,
+    "_DragonUnitType": 2,
+    "_Level": 18,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 1700
+  },
+  "2019": {
+    "_Id": 2019,
+    "_DragonUnitType": 2,
+    "_Level": 19,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 1800
+  },
+  "2020": {
+    "_Id": 2020,
+    "_DragonUnitType": 2,
+    "_Level": 20,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 1900
+  },
+  "2021": {
+    "_Id": 2021,
+    "_DragonUnitType": 2,
+    "_Level": 21,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 2000
+  },
+  "2022": {
+    "_Id": 2022,
+    "_DragonUnitType": 2,
+    "_Level": 22,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 2100
+  },
+  "2023": {
+    "_Id": 2023,
+    "_DragonUnitType": 2,
+    "_Level": 23,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 2200
+  },
+  "2024": {
+    "_Id": 2024,
+    "_DragonUnitType": 2,
+    "_Level": 24,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 2300
+  },
+  "2025": {
+    "_Id": 2025,
+    "_DragonUnitType": 2,
+    "_Level": 25,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 2400
+  },
+  "2026": {
+    "_Id": 2026,
+    "_DragonUnitType": 2,
+    "_Level": 26,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 2500
+  },
+  "2027": {
+    "_Id": 2027,
+    "_DragonUnitType": 2,
+    "_Level": 27,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 2600
+  },
+  "2028": {
+    "_Id": 2028,
+    "_DragonUnitType": 2,
+    "_Level": 28,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 2700
+  },
+  "2029": {
+    "_Id": 2029,
+    "_DragonUnitType": 2,
+    "_Level": 29,
+    "_NecessaryReliability": 100,
+    "_TotalReliability": 2800
+  },
+  "2030": {
+    "_Id": 2030,
+    "_DragonUnitType": 2,
+    "_Level": 30,
+    "_NecessaryReliability": 0,
+    "_TotalReliability": 2900
+  }
+}

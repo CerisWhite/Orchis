@@ -1,0 +1,102 @@
+{
+  "1001": {
+    "_Id": 1001,
+    "_BgmId": 1001,
+    "_BgmName": "MYPAGE_BGM_NAME_1001",
+    "_SortId": 0,
+    "_ViewStartDate": "",
+    "_ViewEndDate": "",
+    "_ReleaseQuestStoryId": 0,
+    "_IsForceSetting": 0
+  },
+  "1002": {
+    "_Id": 1002,
+    "_BgmId": 1002,
+    "_BgmName": "MYPAGE_BGM_NAME_1002",
+    "_SortId": 0,
+    "_ViewStartDate": "",
+    "_ViewEndDate": "",
+    "_ReleaseQuestStoryId": 0,
+    "_IsForceSetting": 0
+  },
+  "1003": {
+    "_Id": 1003,
+    "_BgmId": 1003,
+    "_BgmName": "MYPAGE_BGM_NAME_1003",
+    "_SortId": 0,
+    "_ViewStartDate": "",
+    "_ViewEndDate": "",
+    "_ReleaseQuestStoryId": 0,
+    "_IsForceSetting": 0
+  },
+  "2001": {
+    "_Id": 2001,
+    "_BgmId": 2001,
+    "_BgmName": "MYPAGE_BGM_NAME_2001",
+    "_SortId": 0,
+    "_ViewStartDate": "2021/09/27 06:00:00",
+    "_ViewEndDate": "2021/10/26 05:59:59",
+    "_ReleaseQuestStoryId": 0,
+    "_IsForceSetting": 1
+  },
+  "2002": {
+    "_Id": 2002,
+    "_BgmId": 2002,
+    "_BgmName": "MYPAGE_BGM_NAME_2002",
+    "_SortId": 0,
+    "_ViewStartDate": "2020/01/29 06:00:00",
+    "_ViewEndDate": "2020/02/17 05:59:59",
+    "_ReleaseQuestStoryId": 1000202,
+    "_IsForceSetting": 1
+  },
+  "2003": {
+    "_Id": 2003,
+    "_BgmId": 2003,
+    "_BgmName": "MYPAGE_BGM_NAME_2003",
+    "_SortId": 0,
+    "_ViewStartDate": "2020/04/20 06:00:00",
+    "_ViewEndDate": "2020/05/12 05:59:59",
+    "_ReleaseQuestStoryId": 1000202,
+    "_IsForceSetting": 1
+  },
+  "2005": {
+    "_Id": 2005,
+    "_BgmId": 2005,
+    "_BgmName": "MYPAGE_BGM_NAME_2005",
+    "_SortId": 0,
+    "_ViewStartDate": "2020/11/30 06:00:00",
+    "_ViewEndDate": "2020/12/14 05:59:59",
+    "_ReleaseQuestStoryId": 1000202,
+    "_IsForceSetting": 1
+  },
+  "2008": {
+    "_Id": 2008,
+    "_BgmId": 2005,
+    "_BgmName": "MYPAGE_BGM_NAME_2005",
+    "_SortId": 0,
+    "_ViewStartDate": "2024/10/10 06:00:00",
+    "_ViewEndDate": "2024/10/20 05:59:59",
+    "_ReleaseQuestStoryId": 1000202,
+    "_IsForceSetting": 1
+  },
+  "2009": {
+    "_Id": 2009,
+    "_BgmId": 2001,
+    "_BgmName": "MYPAGE_BGM_NAME_2001",
+    "_SortId": 0,
+    "_ViewStartDate": "2022/03/27 06:00:00",
+    "_ViewEndDate": "2022/03/31 05:59:59",
+    "_ReleaseQuestStoryId": 0,
+    "_IsForceSetting": 1
+  },
+  "2010": {
+    "_Id": 2010,
+    "_BgmId": 2001,
+    "_BgmName": "MYPAGE_BGM_NAME_2001",
+    "_SortId": 0,
+    "_ViewStartDate": "2024/09/27 06:00:00",
+    "_ViewEndDate": "2024/10/20 05:59:59",
+    "_ReleaseQuestStoryId": 0,
+    "_IsForceSetting": 1
+  }
+}
