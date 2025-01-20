@@ -13,20 +13,19 @@ This server lacks certain login code, and relies on the client to be configured 
 1. Clone this repository
 2. Install the dependencies through NPM
 3. Copy the Fluoresce driver into the `node_modules` directory
-4. Unzip the Quest zip in `Library/IDMaps/` to a `Quest` directory
-5. Run Fluoresce + the Server
+4. Run Fluoresce + the Server
 
 The code provided below is a quick copy-paste reference of the steps above:
 ```
 git clone https://github.com/CerisWhite/Orchis --depth=1
-npm install
-mkdir node_modules/fluoresce && cp Library/Fluoresce/driver.js node_modules/fluoresce/index.js
-unzip Library/IDMaps/Quest.zip -d Library/IDMaps/Quest
-node Library/Fluoresce/fluoresce.js & node Orchis.js
+git clone https://github.com/CerisWhite/Fluoresce --depth=1
+cd Orchis && npm install
+cp ./Fluoresce/driver.js ./node_modules/fluoresce.js
+node ../Fluoresce/fluoresce.js & node Orchis.js
 ```
 It is recommended to run Fluoresce and Orchis inside of `screen` or another similar program.
 
-It is also recommended to run the `save_db.sh` script (with bash!!) inside a separate screen to keep backups of the data from Fluoresce in the event of an emergency.
+This database solution does not perform its own backups.
 
 ---
 
@@ -45,7 +44,7 @@ Those are for players to use to edit their save or account so we don't have to u
 This is an off-topic question. Next.
 - **What is Zena?**
 
-Zena is a Character in the game, and the inspiration of the Bot used in the DL Revived Discord Server for reporting different things from Orchis. Anything related to the bot functionality uses the name "Zena" in some way.
+Zena is a Character in the game, and the inspiration of the Bot used in the DL Revived Discord Server for reporting different things from both Orchis and Dawnshard. Anything related to the bot functionality uses the name "Zena" in some way.
 - **Why create Fluoresce instead of using an existing database program?**
 
 Because other database programs relied on external dependencies, and in order to run on a Chromebook with only the NodeJS runtime, a pure-JS solution was needed.
