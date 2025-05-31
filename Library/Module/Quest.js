@@ -567,6 +567,7 @@ function GetSubstage(QuestID) {
 	return 0;
 }
 
+const QuestScoreData = Object.values(global.Master.QuestScoringEnemy);
 function GetEarnPoint(QuestID, SmashList) {
 	const Variation = GetInfo(QuestID, "_VariationType");
 	const Scene = GetInfo(QuestID, "_Scene01");
@@ -577,7 +578,7 @@ function GetEarnPoint(QuestID, SmashList) {
 	for (const x in SmashList) {
 		const Param = global.Master.EnemyParam[QuestEnemyIDs[x]];
 		const Data = global.Master.EnemyData[Param['_DataId']];
-		const Book = global.Master.QuestScoringEnemy[Data['_BookId']];
+		const Book = QuestScoreData.find(z => z._EnemyListId == Data['_BookId']);
 		const SmashCount = SmashList[x]['count'];
 		if (SmashCount != 0) {
 			const Gained = Book['_Point'] * SmashCount;

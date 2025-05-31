@@ -706,7 +706,11 @@ async function OrchisImport(UserIndexRecord, ViewerID, PersistRecord) {
 					if (BondIndex == -1) {
 						let BondLevel = 1;
 						let BondXP = 0;
-						if (global.Master.DragonData[String(Source['dragon_list'][z]['dragon_id'])]['_DefaultReliabilityLevel'] != 0) {
+						
+						if (
+							global.Master.DragonData[String(Source['dragon_list'][z]['dragon_id'])] != undefined &&
+							global.Master.DragonData[String(Source['dragon_list'][z]['dragon_id'])]['_DefaultReliabilityLevel'] != 0
+						) {
 							BondLevel = global.Master.DragonData[String(Source['dragon_list'][z]['dragon_id'])]['_DefaultReliabilityLevel'];
 							const DragonRarity = global.Module.Dragon.GetInfo(Source['dragon_list'][z]['dragon_id'], "_Rarity");
 							BondXP = DragonRarity == 5 ? global.Master.DragonReliabilityLevel[String(BondLevel)]['_TotalReliability'] : global.Master.DragonReliabilityLevel[String(2000 + BondLevel)]['_TotalReliability'];
@@ -761,7 +765,17 @@ async function OrchisImport(UserIndexRecord, ViewerID, PersistRecord) {
 				await global.Module.Fluoresce.Write("OrchisIndex", ViewerID, Source['quest_wall_list'], "quest_wall_list");
 			break;
 			
+			case "weapon_skin_list":
+				await global.Module.Fluoresce.Write("OrchisIndex", ViewerID, Source['weapon_skin_list'], "weapon_skin_list");
+			break;
+			
 			case "user_data":
+				if (!global.Module.Filter.Validate(Source['user_data']['name'])) {
+					if (Source['user_data']['name'].length > 12) {
+						Source['user_data']['name'] = Source['user_data']['name'].slice(0, 12);
+					}
+					PersistRecord['User']['name'] = Source['user_data']['name'];
+				}
 				PersistRecord['User']['crystal'] = global.Module.Util.SaneValueDouble(Source['user_data']['crystal']);
 				PersistRecord['User']['coin'] = global.Module.Util.SaneValueDouble(Source['user_data']['coin']);
 				PersistRecord['User']['quest_skip_point'] = global.Module.Util.SaneValue(Source['user_data']['quest_skip_point']);

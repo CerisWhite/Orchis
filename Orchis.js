@@ -617,7 +617,7 @@ function DefaultPersistRecord(ViewerID, SubjectID, BaaSName) {
 		'PIN': DigitPIN(),
 		'CreatedAt': global.ServerTime,
 		'LastLogin': global.ServerTime,
-		'SaveUpdatedAt': global.ServerTime,
+		'SaveUpdatedAt': 0,
 		'User': {
 			'viewer_id': ViewerID,
 			'name': "Euden",
@@ -625,9 +625,9 @@ function DefaultPersistRecord(ViewerID, SubjectID, BaaSName) {
 			'exp': 0,
 			'crystal': 400,
 			'coin': 200000,
-			'max_dragon_quantity': 250,
-			'max_weapon_quantity': 250,
-			'max_amulet_quantity': 250,
+			'max_dragon_quantity': 750,
+			'max_weapon_quantity': 750,
+			'max_amulet_quantity': 750,
 			'quest_skip_point': 10,
 			'main_party_no': 1,
 			'emblem_id': 40000001,
@@ -1346,7 +1346,7 @@ Orchis.use(async function (req, res, next) { // Record Manager
 		if (req.get('passphrase') != Passphrase) { res.end("Denied.\n"); return; }
 		next(); return;
 	}
-	else if (IsMaintenance == 1 && !req.url.endsWith("/dungeon_record/record")) { res.end(msgpack.pack(Maintenance)); return; }
+	else if (IsMaintenance == 1 && !req.url.endsWith("/dungeon_record/record")) { res.end(Maintenance); return; }
 	if (req.url == "/api/v1/Session" || req.url == "/api/v1/MeasurementEvent") {
 		req.url = "/null";
 		next();
@@ -1424,12 +1424,12 @@ Orchis.post("/utility", async (req, res) => {
 		break;
 		
 		case "graceful_shutdown":
-			IsMaintenance = true;
+			IsMaintenance = 1;
 			await global.Module.Fluoresce.Save();
 			console.log("Awaiting shutdown.");
 		break;
 		case "unmaintenance":
-			IsMaintenance = false;
+			IsMaintenance = 0;
 		break;
 	}
 	
@@ -2136,7 +2136,7 @@ Orchis.post("/chara/buildup_platinum", global.Mesh(async (req, res, next) => {
 	next();
 }));
 Orchis.post("/chara/reset_plus_count", global.Mesh(async (req, res, next) => {
-	await global.module.Character.ResetAugments(res, res.mid.Request['chara_id']);
+	await global.Module.Character.ResetAugments(res, res.mid.Request['chara_id']);
 	next();
 }));
 
@@ -2170,7 +2170,7 @@ Orchis.post("/dragon/buildup", global.Mesh(async (req, res, next) => {
 	next();
 }));
 Orchis.post("/dragon/reset_plus_count", global.Mesh(async (req, res, next) => {
-	const DragonIndex = global.Module.Dragon.GetUnitInfo(res.mid.ViewerID, res.mid.Request['dragon_key_id']);
+	const DragonIndex = await global.Module.Dragon.GetUnitData(res.mid.ViewerID, res.mid.Request['dragon_key_id']);
 	if (res.mid.Request['plus_count_type'] == 1) {
 		res.mid.ItemList.push({ 'type': 8, 'id': 118001001, 'quantity': DragonIndex['hp_plus_count'] });
 		DragonIndex['hp_plus_count'] = 0;
@@ -3220,7 +3220,7 @@ Orchis.post("/fort/levelup_end", global.Mesh(async (req, res, next) => {
 		'result': 1,
 		'build_id': res.mid.Request['build_id'],
 		'fort_detail': res.mid.Persist['Fort']['Smiths'],
-		'fort_bonus_list': global.Module.Director.CalculateBonuses(res),
+		'fort_bonus_list': await global.Module.Director.CalculateBonuses(res),
 		'production_rp': res.mid.Persist['Fort']['Production']['RP'],
 		'production_df': res.mid.Persist['Fort']['Production']['DF'],
 		'production_st': res.mid.Persist['Fort']['Production']['ST'],
@@ -3266,7 +3266,7 @@ Orchis.post("/fort/levelup_at_once", global.Mesh(async (req, res, next) => {
 		'result': 1,
 		'build_id': res.mid.Request['build_id'],
 		'fort_detail': res.mid.Persist['Fort']['Smiths'],
-		'fort_bonus_list': global.Module.Director.CalculateBonuses(res),
+		'fort_bonus_list': await global.Module.Director.CalculateBonuses(res),
 		'production_rp': res.mid.Persist['Fort']['Production']['RP'],
 		'production_df': res.mid.Persist['Fort']['Production']['DF'],
 		'production_st': res.mid.Persist['Fort']['Production']['ST'],
@@ -3287,8 +3287,8 @@ Orchis.post("/event_trade/get_list", global.Mesh(async (req, res, next) => {
 	const TradeList = global.Module.Event.EventTradeData(EventID);
 	res.mid.Data = {
 		'user_event_item_data': [],
-		'user_event_trade_list': EventID == "22301" ? [] : res.mid.Persist['Event'][EventID]['Trade'],
-		'event_trade_list': EventID == "22301" ? [] : TradeList
+		'user_event_trade_list': res.mid.Persist['Event'][EventID] == undefined ? [] : res.mid.Persist['Event'][EventID]['Trade'],
+		'event_trade_list': res.mid.Persist['Event'][EventID] == undefined ? [] : TradeList
 	}
 	next();
 }));
@@ -3614,7 +3614,7 @@ Orchis.post("/earn_event/get_event_data", global.Mesh(async (req, res, next) => 
 	const EventID = String(res.mid.Request['event_id']);
 	if (res.mid.Persist['Event'][EventID] == undefined) {
 		res.mid.Data = {
-			'earn_event_user_data': []
+			'earn_event_user_data': {}
 		}
 		next(); return;
 	}
@@ -4237,6 +4237,21 @@ Orchis.post("/present/receive", global.Mesh(async (req, res, next) => {
 	if (res.mid.Request['is_limit'] == 1) { Target = "Limited"; ListTarget = "present_limit_list"; }
 	for (const x in res.mid.Request['present_id_list']) {
 		const Index = res.mid.Persist['Gift'][Target].findIndex(z => z.present_id == res.mid.Request['present_id_list'][x]);
+		if (Index == -1) {
+			res.mid.Error = 17002;
+			for (const z in res.mid.Persist['Gift']['Normal']) {
+				if (res.mid.Persist['Gift']['Normal'][z]['present_id'] == res.mid.Request['present_id_list'][x]) {
+					res.mid.Persist['Gift']['Normal'].splice(z, 1);
+				}
+			}
+			for (const z in res.mid.Persist['Gift']['Limited']) {
+				if (res.mid.Persist['Gift']['Limited'][z]['present_id'] == res.mid.Request['present_id_list'][x]) {
+					res.mid.Persist['Gift']['Limited'].splice(z, 1);
+				}
+			}
+			next();
+			return;
+		}
 		const MaxQuantity = await Overcheck(res.mid.Persist['Gift'][Target][Index]['entity_type']);
 		if (MaxQuantity == true) {
 			res.mid.Data['not_receive_present_id_list'].push(res.mid.Request['present_id_list'][x]);
@@ -4490,6 +4505,7 @@ Orchis.post("/suggestion/set", async (req, res, next) => {
 					const NewPersist = DefaultPersistRecord(res.mid.Persist['ViewerID'], res.mid.Persist['SubjectID']);
 					res.mid.Persist = NewPersist;
 				case "ResetAll":
+					res.mid.Persist['Event'] = {};
 					res.mid.Persist['User']['tutorial_status'] = 401;
 					res.mid.Persist['User']['tutorial_flag_list'] = [];
 					res.mid.Persist['User']['main_party_no'] = 1;

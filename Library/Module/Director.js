@@ -261,10 +261,19 @@ async function LoginBonus(res, BonusList, DragonItem, ResetTimes, DayStart, DayE
 		res.mid.Persist['LoginBonus']['Display'] = false;
 		
 		const GatherList = await global.Module.Fluoresce.Read("OrchisIndex", res.mid.ViewerID, "gather_item_list");
+		if (GatherList.length == 0) {
+			GatherList.push({
+				'gather_item_id': 10001,
+				'quantity': 0,
+				'quest_last_weekly_reset_time': 0,
+				'quest_take_weekly_quantity': 0
+			});
+		}
 		for (const x in GatherList) {
 			if (GatherList[x]['quest_last_weekly_reset_time'] < ResetTimes['Weekly']) {
 				GatherList[x]['quest_last_weekly_reset_time'] = ResetTimes['Weekly'];
-				GatherList[x]['quest_take_weekly_quantity'] = 0;
+				GatherList[x]['quantity'] += 10;
+				GatherList[x]['quest_take_weekly_quantity'] = 10;
 			}
 			res.mid.Data['update_data_list']['gather_item_list'].push(GatherList[x]);
 		}
@@ -1477,6 +1486,7 @@ async function DungeonRecord(res, PlayCount, IsMulti) {
 		EventType = global.Master.EventData[EventID]['_EventKindType'];
 	}
 	let Substages = [];
+	let ScoreData = { 'List': [], 'Point': 0, 'Mission': [] };
 	
 	if (res.mid.Persist['Stamina'] == true) {
 		res.mid.Persist['User']['stamina_single'] -= global.Module.Quest.GetInfo(QuestID, "_PayStaminaSingle");
@@ -1546,22 +1556,23 @@ async function DungeonRecord(res, PlayCount, IsMulti) {
 			});
 		break;
 		case 12:
-			res.mid.ItemList.push({
-				'type': 40,
-				'id': parseInt(EventID + "01"),
-				'quantity': res.mid.Persist['Dungeon']['Drop']['EventPoint'] + res.mid.Persist['Dungeon']['Drop']['EventPointBonus']
-			});
-			if (res.mid.Persist['Dungeon']['Drop']['EventPoint'] != 0) {
-				ScoreData = global.Module.Quest.GetEarnPoint(QuestID, res.mid.Request['play_record']['treasure_record'][0]['enemy_smash']);
-				res.mid.Persist['Event'][EventID]['User']['event_point'] += ScoreData['Point'];
-				res.mid.Persist['Dungeon']['Drop']['EventPoint'] = ScoreData['Point'];
-				res.mid.Persist['Dungeon']['Drop']['EventPointBonus'] = 0;
+			if (QuestInfo['_DungeonType'] == 17) {
+				if (res.mid.Request['play_record']['treasure_record'][0] != undefined) {
+					ScoreData = global.Module.Quest.GetEarnPoint(QuestID, res.mid.Request['play_record']['treasure_record'][0]['enemy_smash']);
+					res.mid.Persist['Event'][EventID]['User']['event_point'] += ScoreData['Point'];
+					res.mid.Persist['Dungeon']['Drop']['EventPoint'] = ScoreData['Point'];
+					res.mid.Persist['Dungeon']['Drop']['EventPointBonus'] = 0;
+					res.mid.ItemList.push({
+						'type': 40,
+						'id': parseInt(EventID + "01"),
+						'quantity': res.mid.Persist['Dungeon']['Drop']['EventPoint'] + res.mid.Persist['Dungeon']['Drop']['EventPointBonus']
+					});
+				}
 			}
 		break;
 	}
 	
 	let EventPassiveGrowList = [];
-	let ScoreData = { 'List': [], 'Point': 0, 'Mission': [] };
 	if (EventType == 1 && QuestInfo['_DungeonType'] == 2) {
 		const SpecialRoll = Math.floor(Math.random() * 150) + 1;
 		if (SpecialRoll >= 140) {
@@ -1736,15 +1747,15 @@ async function DungeonRecord(res, PlayCount, IsMulti) {
 					if (res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0] != undefined) {
 						let AddPoint = 0;
 						if (global.Module.Character.GetInfo(CharacterID, "_MaxFriendshipPoint") > res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0]['total_point']) {
-							if ((res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0]['total_point'] + 6) > global.Module.Character.GetInfo(CharacterID, "_MaxFriendshipPoint")) {
+							if ((res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0]['total_point'] + (6 * PlayCount)) > global.Module.Character.GetInfo(CharacterID, "_MaxFriendshipPoint")) {
 								const Remainder = global.Module.Character.GetInfo(CharacterID, "_MaxFriendshipPoint") - res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0]['total_point'];
 								res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0]['total_point'] = global.Module.Character.GetInfo(CharacterID, "_MaxFriendshipPoint");
 								res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0]['is_temporary'] = 0;
 								AddPoint = Remainder;
 							}
 							else {
-								res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0]['total_point'] += 6;
-								AddPoint = 6;
+								res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0]['total_point'] += 6 * PlayCount;
+								AddPoint = 6 * PlayCount;
 							}
 							FriendshipTable.push({
 								'chara_id': res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0]['chara_id'],
@@ -2396,23 +2407,29 @@ async function DungeonMultiClear(res, QuestList, PartyNo, EventList) {
 		if (global.Module.Character.GetInfo(CharacterID, "_MaxFriendshipPoint") != 0) {
 			const EventIDs = Object.keys(global.Master.EventData);
 			for (const x in EventIDs) {
-				if (global.Master.EventData[EventIDs[x]]['_EventCharaId'] == CharacterID &&
-				res.mid.Persist['Event'][EventIDs[x]] != undefined) {
-					let EventTarget = "Raid";
-					if (global.Master.EventData[EventIDs[x]]['EventKindType'] == 6) { EventTarget = "CLB01"; }
-					if (res.mid.Persist['Event'][EventTarget][EventIDs[x]]['Friendship'][0] != undefined) {
-						if (global.Module.Character.GetInfo(CharacterID, "_MaxFriendshipPoint") > res.mid.Persist['Event'][EventTarget][EventIDs[x]]['Friendship'][0]['total_point']) {
-							if ((res.mid.Persist['Event'][EventTarget][EventIDs[x]]['Friendship'][0]['total_point'] + 6) > global.Module.Character.GetInfo(CharacterID, "_MaxFriendshipPoint")) {
-								const Remainder = global.Module.Character.GetInfo(CharacterID, "_MaxFriendshipPoint") - res.mid.Persist['Event'][EventTarget][EventIDs[x]]['Friendship'][0]['total_point'];
-								res.mid.Persist['Event'][EventTarget][EventIDs[x]]['Friendship'][0]['total_point'] = global.Module.Character.GetInfo(CharacterID, "_MaxFriendshipPoint");
-								res.mid.Persist['Event'][EventTarget][EventIDs[x]]['Friendship'][0]['is_temporary'] = 0;
-								res.mid.Persist['Event'][EventTarget][EventIDs[x]]['Friendship'][0]['add_point'] = Remainder;
+				if (
+					global.Master.EventData[EventIDs[x]]['_EventCharaId'] == CharacterID &&
+					res.mid.Persist['Event'][EventIDs[x]] != undefined
+				) {
+					if (res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0] != undefined) {
+						let AddPoint = 0;
+						if (global.Module.Character.GetInfo(CharacterID, "_MaxFriendshipPoint") > res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0]['total_point']) {
+							if ((res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0]['total_point'] + (6)) > global.Module.Character.GetInfo(CharacterID, "_MaxFriendshipPoint")) {
+								const Remainder = global.Module.Character.GetInfo(CharacterID, "_MaxFriendshipPoint") - res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0]['total_point'];
+								res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0]['total_point'] = global.Module.Character.GetInfo(CharacterID, "_MaxFriendshipPoint");
+								res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0]['is_temporary'] = 0;
+								AddPoint = Remainder;
 							}
 							else {
-								res.mid.Persist['Event'][EventTarget][EventIDs[x]]['Friendship'][0]['total_point'] += 6;
-								res.mid.Persist['Event'][EventTarget][EventIDs[x]]['Friendship'][0]['add_point'] = 6;
+								res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0]['total_point'] += 6;
+								AddPoint = 6;
 							}
-							FriendshipTable.push(res.mid.Persist['Event'][EventTarget][EventIDs[x]]['Friendship'][0]);
+							FriendshipTable.push({
+								'chara_id': res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0]['chara_id'],
+								'total_point': res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0]['total_point'],
+								'is_temporary': res.mid.Persist['Event'][EventIDs[x]]['Friendship'][0]['is_temporary'],
+								'add_point': AddPoint
+							});
 						}
 					}
 				}

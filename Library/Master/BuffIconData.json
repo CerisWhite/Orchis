@@ -1640,7 +1640,7 @@
   "5004": {
     "_Id": 5004,
     "_IconName": "Icon_Buff_2050096",
-    "_ValueDisplayType": 1,
+    "_ValueDisplayType": 2,
     "_GaugeDisplayType": 1
   },
   "5005": {

@@ -265,6 +265,10 @@ async function RaiseManaCircle(res, ID, GrowList, IsConviction) {
 			break;
 			case 10701:
 				CharacterData['combo_buildup_count'] += 1;
+				// I'm not entirely sure why, but giving this to Pinon breaks her extended combo, so
+				if (ID == 10650203) {
+					CharacterData['combo_buildup_count'] = 0;
+				}
 			break;
 			case 10801:
 				CharacterData['additional_max_level'] += 5;
@@ -435,6 +439,9 @@ async function RaiseManaAndLimit(res, ID, GrowList, IsConviction, TargetLevel) {
 			break;
 			case 10701:
 				CharacterData['combo_buildup_count'] += 1;
+				if (ID == 10650203) {
+					CharacterData['combo_buildup_count'] = 0;
+				}
 			break;
 			case 10801:
 				CharacterData['additional_max_level'] += 5;
@@ -531,6 +538,9 @@ function RaisePlatinum(res, ID) {
 			break;
 			case 10701:
 				CharacterData['combo_buildup_count'] += 1;
+				if (ID == 10650203) {
+					CharacterData['combo_buildup_count'] = 0;
+				}
 			break;
 			case 10801:
 				CharacterData['additional_max_level'] += 5;
@@ -637,6 +647,9 @@ function DModeStats(ID) {
 			break;
 			case 10701:
 				CharacterData['combo_buildup_count'] += 1;
+				if (ID == 10650203) {
+					CharacterData['combo_buildup_count'] = 0;
+				}
 			break;
 			case 10801:
 				CharacterData['additional_max_level'] += 5;
