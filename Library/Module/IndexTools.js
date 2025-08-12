@@ -694,6 +694,7 @@ async function OrchisImport(UserIndexRecord, ViewerID, PersistRecord) {
 	await global.Module.Fluoresce.Write("OrchisIndex", ViewerID, PartyList, "party_list");
 	const ImportList = Object.keys(Source);
 	for (const x in ImportList) {
+		if (ImportList[x] == undefined) { continue; }
 		switch(ImportList[x]) {
 			case "chara_list":
 				await global.Module.Fluoresce.Write("OrchisIndex", ViewerID, Source['chara_list'], "chara_list");
