@@ -911,17 +911,10 @@ Orchis.get(["/", "/index", "/index.html"], async (req, res) => {
 	return;
 });
 Orchis.get("/request_index", async (req, res) => {
-	let ViewerID = req.query.id;
+	let ViewerID = req.query.id.replaceAll(" ", "");
 	const Key = req.query.key;
 	
-	if (ViewerID.includes(" ")) {
-		const Split = req.query.id.split(" ");
-		if (Split[0].slice(0, 1) == "0") { Split[0] = Split[0].slice(1, Split[0].length); }
-		ViewerID = "";
-		for (const x in Split) {
-			ViewerID += Split[x];
-		}
-	}
+	if (ViewerID.slice(0, 1) == "0") { ViewerID = ViewerID.slice(1, ViewerID.length); }
 	
 	const AccountExists = await global.Module.Fluoresce.Exists("OrchisAccount", ViewerID);
 	if (AccountExists == false) { res.end("Invalid ID."); return; }
@@ -1012,17 +1005,10 @@ Orchis.get("/request_index", async (req, res) => {
 	}));
 });
 Orchis.get("/damage_stat", async (req, res) => {
-	let ViewerID = req.query.id;
+	let ViewerID = req.query.id.replaceAll(" ", "");
 	const Key = req.query.key;
 	
-	if (ViewerID.includes(" ")) {
-		const Split = req.query.id.split(" ");
-		if (Split[0].slice(0, 1) == "0") { Split[0] = Split[0].slice(1, Split[0].length); }
-		ViewerID = "";
-		for (const x in Split) {
-			ViewerID += Split[x];
-		}
-	}
+	if (ViewerID.slice(0, 1) == "0") { ViewerID = ViewerID.slice(1, ViewerID.length); }
 	
 	const AccountExists = await global.Module.Fluoresce.Exists("OrchisAccount", ViewerID);
 	if (AccountExists == false) { res.end("Invalid ID."); return; }
@@ -1135,17 +1121,10 @@ Orchis.get("/halidom/icons", async (req, res) => {
 	res.end(JSON.stringify(HalidomDataList));
 });
 Orchis.get("/halidom/login", global.Mesh(async (req, res) => {
-	let ViewerID = req.query.id;
+	let ViewerID = req.query.id.replaceAll(" ", "");
 	const Key = req.query.key;
 	
-	if (ViewerID.includes(" ")) {
-		const Split = req.query.id.split(" ");
-		if (Split[0].slice(0, 1) == "0") { Split[0] = Split[0].slice(1, Split[0].length); }
-		ViewerID = "";
-		for (const x in Split) {
-			ViewerID += Split[x];
-		}
-	}
+	if (ViewerID.slice(0, 1) == "0") { ViewerID = ViewerID.slice(1, ViewerID.length); }
 	
 	const AccountExists = await global.Module.Fluoresce.Exists("OrchisAccount", ViewerID);
 	if (AccountExists == false) { res.end("Invalid ID."); return; }
