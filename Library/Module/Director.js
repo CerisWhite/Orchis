@@ -919,7 +919,7 @@ function PassiveData(PassiveList, CharacterID, QuestID, IsPhoton) {
 function WeaponBody2Weapon(WeaponBodyData) {
 	let AbilityLevel = 0;
 	if (WeaponBodyData['limit_break_count'] >= 4) { AbilityLevel = 2; }
-	else if (WeaponBodyData['limit_break_count'] >= 2) { AbilityLevel = 1; }
+	else { AbilityLevel = 1; }
 	WeaponBodyData['skill_no'] = 1;
 	WeaponBodyData['skill_level'] = AbilityLevel;
 	WeaponBodyData['ability_1_level'] = AbilityLevel;
@@ -1557,7 +1557,7 @@ async function DungeonRecord(res, PlayCount, IsMulti) {
 		break;
 		case 12:
 			if (QuestInfo['_DungeonType'] == 17) {
-				if (res.mid.Request['play_record']['treasure_record'][0] != undefined) {
+				if (res.mid.Request['play_record']['treasure_record'] != undefined && res.mid.Request['play_record']['treasure_record'][0] != undefined) {
 					ScoreData = global.Module.Quest.GetEarnPoint(QuestID, res.mid.Request['play_record']['treasure_record'][0]['enemy_smash']);
 					res.mid.Persist['Event'][EventID]['User']['event_point'] += ScoreData['Point'];
 					res.mid.Persist['Dungeon']['Drop']['EventPoint'] = ScoreData['Point'];

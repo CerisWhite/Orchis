@@ -34,7 +34,7 @@ function GetFirstClearSet(ID) {
 	ID = String(ID)
 	let RewardList = [];
 	let i = 0; while (i < 5) {
-		if (global.Master.QuestRewardData[ID]['_FirstClearSetEntityType' + String(i + 1)] == 0) { i++; continue; }
+		if (global.Master.QuestRewardData[ID] == undefined || global.Master.QuestRewardData[ID]['_FirstClearSetEntityType' + String(i + 1)] == 0) { i++; continue; }
 		RewardList.push({
 			'type': global.Master.QuestRewardData[ID]['_FirstClearSetEntityType' + String(i + 1)],
 			'id': global.Master.QuestRewardData[ID]['_FirstClearSetEntityId' + String(i + 1)],
@@ -48,7 +48,7 @@ function GetMissionClearSet(ID) {
 	ID = String(ID)
 	let RewardList = [];
 	let i = 0; while (i < 3) {
-		if (global.Master.QuestRewardData[ID]['_MissionsClearSetEntityType' + String(i + 1)] == 0) { i++; continue; }
+		if (global.Master.QuestRewardData[ID] == undefined || global.Master.QuestRewardData[ID]['_MissionsClearSetEntityType' + String(i + 1)] == 0) { i++; continue; }
 		RewardList.push({
 			'type': global.Master.QuestRewardData[ID]['_MissionsClearSetEntityType' + String(i + 1)],
 			'id': global.Master.QuestRewardData[ID]['_MissionsClearSetEntityId' + String(i + 1)],
@@ -57,9 +57,9 @@ function GetMissionClearSet(ID) {
 		i++;
 	}
 	Completion = {
-		'type': global.Master.QuestRewardData[ID]['_MissionCompleteEntityType'],
-		'id': global.Master.QuestRewardData[ID]['_MissionCompleteEntityId'],
-		'quantity': global.Master.QuestRewardData[ID]['_MissionCompleteEntityQuantity'],
+		'type': global.Master.QuestRewardData[ID] == undefined ? 0 : global.Master.QuestRewardData[ID]['_MissionCompleteEntityType'],
+		'id': global.Master.QuestRewardData[ID] == undefined ? 0 : global.Master.QuestRewardData[ID]['_MissionCompleteEntityId'],
+		'quantity': global.Master.QuestRewardData[ID] == undefined ? 0 : global.Master.QuestRewardData[ID]['_MissionCompleteEntityQuantity'],
 	}
 	return { 'Clear': RewardList, 'Complete': Completion };
 }
@@ -245,29 +245,33 @@ function GetDrops(ID, EventList, PartyData, PerformCount) {
 	for (const x in AbilityList) {
 		if (global.Master.AbilityData[String(AbilityList[x])] == undefined) { continue; }
 		const Ability = global.Master.AbilityData[String(AbilityList[x])];
-		if (Ability['_EventId'] == EventID) {
-			if (Ability['_AbilityType1'] == 33) {
-				EventPointFactor += (Ability['_AbilityType1UpValue'] * 0.01);
+		let Z = 0; while (Z < 3) {
+			Z++;
+			const TypeNo = '_AbilityType' + String(Z);
+			const TypeUp = TypeNo + 'UpValue';
+			if (Ability['_EventId'] == EventID) {
+				if (Ability[TypeNo] == 33) {
+					EventPointFactor += (Ability[TypeUp] * 0.01);
+				}
+				else if (Ability[TypeNo] == 34) {
+					EventMaterialFactor += (Ability[TypeUp] * 0.01);
+				}
+				else if (Ability[TypeNo] == 41) {
+					EventPointFactor += (Ability[TypeUp] * 0.01);
+				}
 			}
-			else if (Ability['_AbilityType1'] == 34) {
-				EventMaterialFactor += (Ability['_AbilityType1UpValue'] * 0.01);
+			
+			if (Ability[TypeNo] == 21) {
+				CharaXPFactor += (Ability[TypeUp] * 0.01);
 			}
-			else if (Ability['_AbilityType1'] == 41) {
-				EventPointFactor += (Ability['_AbilityType1UpValue'] * 0.01);
+			else if (Ability[TypeNo] == 22) {
+				UnitXPFactor += (Ability[TypeUp] * 0.01);
 			}
-		}
-		else {
-			if (Ability['_AbilityType1'] == 21) {
-				CharaXPFactor += (Ability['_AbilityType1UpValue'] * 0.01);
+			else if (Ability[TypeNo] == 23) {
+				CoinFactor += (Ability[TypeUp] * 0.01);
 			}
-			else if (Ability['_AbilityType1'] == 22) {
-				UnitXPFactor += (Ability['_AbilityType1UpValue'] * 0.01);
-			}
-			else if (Ability['_AbilityType1'] == 23) {
-				CoinFactor += (Ability['_AbilityType1UpValue'] * 0.01);
-			}
-			else if (Ability['_AbilityType1'] == 24) {
-				ManaFactor += (Ability['_AbilityType1UpValue'] * 0.01);
+			else if (Ability[TypeNo] == 24) {
+				ManaFactor += (Ability[TypeUp] * 0.01);
 			}
 		}
 	}

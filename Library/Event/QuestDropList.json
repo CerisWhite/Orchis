@@ -26981,17 +26981,1197 @@
       "special": false
     }
   ],
-  "204530101": [],
-  "204530102": [],
-  "204530201": [],
-  "204530202": [],
-  "204530301": [],
-  "204530302": [],
-  "204530401": [],
-  "204530501": [],
-  "204530601": [],
-  "204530602": [],
-  "204530603": [],
+  "204520101": [
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204520201": [
+    {
+      "type": 20,
+      "id": 2045202,
+      "min": 5,
+      "max": 10,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045205,
+      "min": 1,
+      "max": 5,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045201,
+      "min": 5,
+      "max": 10,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204520202": [
+    {
+      "type": 20,
+      "id": 2045202,
+      "min": 10,
+      "max": 20,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045203,
+      "min": 5,
+      "max": 15,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045205,
+      "min": 5,
+      "max": 10,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045201,
+      "min": 10,
+      "max": 20,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204520301": [
+    {
+      "type": 20,
+      "id": 2045202,
+      "min": 10,
+      "max": 20,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045203,
+      "min": 5,
+      "max": 15,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045201,
+      "min": 10,
+      "max": 20,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204520302": [
+    {
+      "type": 20,
+      "id": 2045203,
+      "min": 50,
+      "max": 70,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045204,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045201,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045206,
+      "min": 1,
+      "max": 1,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 17,
+      "id": 10101,
+      "min": 1,
+      "max": 1,
+      "promise": false,
+      "special": false,
+      "extra": true
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204520401": [
+    {
+      "type": 20,
+      "id": 2045203,
+      "min": 100,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045204,
+      "min": 70,
+      "max": 90,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045201,
+      "min": 70,
+      "max": 90,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 17,
+      "id": 10101,
+      "min": 1,
+      "max": 1,
+      "promise": false,
+      "special": false,
+      "extra": true
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 100,
+      "max": 1000,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 140,
+      "max": 1400,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204520501": [
+    {
+      "type": 20,
+      "id": 2045203,
+      "min": 100,
+      "max": 120,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045204,
+      "min": 150,
+      "max": 170,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045201,
+      "min": 100,
+      "max": 120,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045206,
+      "min": 1,
+      "max": 1,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 17,
+      "id": 10101,
+      "min": 1,
+      "max": 1,
+      "promise": false,
+      "special": false,
+      "extra": true
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204520601": [
+    {
+      "type": 20,
+      "id": 2045203,
+      "min": 50,
+      "max": 70,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045204,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045201,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045206,
+      "min": 1,
+      "max": 1,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 17,
+      "id": 10101,
+      "min": 1,
+      "max": 1,
+      "promise": false,
+      "special": false,
+      "extra": true
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204520602": [
+    {
+      "type": 20,
+      "id": 2045203,
+      "min": 50,
+      "max": 70,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045204,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045201,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045206,
+      "min": 1,
+      "max": 1,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 17,
+      "id": 10101,
+      "min": 1,
+      "max": 1,
+      "promise": false,
+      "special": false,
+      "extra": true
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204520603": [
+    {
+      "type": 20,
+      "id": 2045203,
+      "min": 50,
+      "max": 70,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045204,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045201,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045206,
+      "min": 1,
+      "max": 1,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 17,
+      "id": 10101,
+      "min": 1,
+      "max": 1,
+      "promise": false,
+      "special": false,
+      "extra": true
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204520604": [
+    {
+      "type": 20,
+      "id": 2045203,
+      "min": 50,
+      "max": 70,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045204,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045201,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045206,
+      "min": 1,
+      "max": 1,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 17,
+      "id": 10101,
+      "min": 1,
+      "max": 1,
+      "promise": false,
+      "special": false,
+      "extra": true
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204520605": [
+    {
+      "type": 20,
+      "id": 2045203,
+      "min": 50,
+      "max": 70,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045204,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045201,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045206,
+      "min": 1,
+      "max": 1,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 17,
+      "id": 10101,
+      "min": 1,
+      "max": 1,
+      "promise": false,
+      "special": false,
+      "extra": true
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204520606": [
+    {
+      "type": 20,
+      "id": 2045203,
+      "min": 50,
+      "max": 70,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045204,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045201,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045206,
+      "min": 1,
+      "max": 1,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 17,
+      "id": 10101,
+      "min": 1,
+      "max": 1,
+      "promise": false,
+      "special": false,
+      "extra": true
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204530101": [
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204530102": [
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204530201": [
+    {
+      "type": 20,
+      "id": 2045302,
+      "min": 5,
+      "max": 10,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045305,
+      "min": 1,
+      "max": 5,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045301,
+      "min": 5,
+      "max": 10,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204530202": [
+    {
+      "type": 20,
+      "id": 2045302,
+      "min": 10,
+      "max": 20,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045303,
+      "min": 5,
+      "max": 15,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045305,
+      "min": 5,
+      "max": 10,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045301,
+      "min": 10,
+      "max": 20,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204530301": [
+    {
+      "type": 20,
+      "id": 2045302,
+      "min": 10,
+      "max": 20,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045303,
+      "min": 5,
+      "max": 15,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045301,
+      "min": 10,
+      "max": 20,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204530302": [
+    {
+      "type": 20,
+      "id": 2045303,
+      "min": 50,
+      "max": 70,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045304,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045301,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045306,
+      "min": 1,
+      "max": 1,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 17,
+      "id": 10101,
+      "min": 1,
+      "max": 1,
+      "promise": false,
+      "special": false,
+      "extra": true
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204530401": [
+    {
+      "type": 20,
+      "id": 2045303,
+      "min": 100,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045304,
+      "min": 70,
+      "max": 90,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045301,
+      "min": 70,
+      "max": 90,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 17,
+      "id": 10101,
+      "min": 1,
+      "max": 1,
+      "promise": false,
+      "special": false,
+      "extra": true
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 100,
+      "max": 1000,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 140,
+      "max": 1400,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204530501": [
+    {
+      "type": 20,
+      "id": 2045303,
+      "min": 100,
+      "max": 120,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045304,
+      "min": 150,
+      "max": 170,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045301,
+      "min": 100,
+      "max": 120,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045306,
+      "min": 1,
+      "max": 1,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 17,
+      "id": 10101,
+      "min": 1,
+      "max": 1,
+      "promise": false,
+      "special": false,
+      "extra": true
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204530601": [
+    {
+      "type": 20,
+      "id": 2045303,
+      "min": 50,
+      "max": 70,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045304,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045301,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045306,
+      "min": 1,
+      "max": 1,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 17,
+      "id": 10101,
+      "min": 1,
+      "max": 1,
+      "promise": false,
+      "special": false,
+      "extra": true
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204530602": [
+    {
+      "type": 20,
+      "id": 2045303,
+      "min": 50,
+      "max": 70,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045304,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045301,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045306,
+      "min": 1,
+      "max": 1,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 17,
+      "id": 10101,
+      "min": 1,
+      "max": 1,
+      "promise": false,
+      "special": false,
+      "extra": true
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
+  "204530603": [
+    {
+      "type": 20,
+      "id": 2045303,
+      "min": 50,
+      "max": 70,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045304,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045301,
+      "min": 25,
+      "max": 50,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 20,
+      "id": 2045306,
+      "min": 1,
+      "max": 1,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 17,
+      "id": 10101,
+      "min": 1,
+      "max": 1,
+      "promise": false,
+      "special": false,
+      "extra": true
+    },
+    {
+      "type": 18,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    },
+    {
+      "type": 4,
+      "id": 0,
+      "min": 50,
+      "max": 150,
+      "promise": true,
+      "special": false
+    }
+  ],
   "204540201": [
     {
       "type": 20,

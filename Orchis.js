@@ -48,83 +48,83 @@ else {
 		'PageURLs': [
 			{
 				'function_name': "ability_crest_advice",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			},
 			{
 				'function_name': "battle_royal_how_to",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			},
 			{
 				'function_name': "comic",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			},
 			{
 				'function_name': "plotsynopsis",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			},
 			{
 				'function_name': "time_attack_ranking",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			},
 			{
 				'function_name': "time_attack_reward",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			},
 			{
 				'function_name': "faq",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			},
 			{
 				'function_name': "help_comic",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			},
 			{
 				'function_name': "help",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			},
 			{
 				'function_name': "information",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			},
 			{
 				'function_name': "inquiry_attention",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			},
 			{
 				'function_name': "dragon_battle_info",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			},
 			{
 				'function_name': "quest_info",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			},
 			{
 				'function_name': "copyright",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			},
 			{
 				'function_name': "health",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			},
 			{
 				'function_name': "payment_services_act",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			},
 			{
 				'function_name': "privacy_policy",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			},
 			{
 				'function_name': "specified_commercial_transactions_law",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			},
 			{
 				'function_name': "user_policy",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			},
 			{
 				'function_name': "summon_info",
-				'url': "127.0.0.1:9000/index.html"
+				'url': "http://127.0.0.1:9000/index.html"
 			}
 		],
 		'SSL': false,
@@ -392,6 +392,7 @@ Orchis.get("/zena/get_team_data", global.Mesh(async (req,res) => {
 	}
 	res.type('application/json');
 	res.end(JSON.stringify(Response));
+	return;
 }));
 Orchis.post("/zena/send_guild_message", global.Mesh(async (req,res) => {
 	if (req.get('Authorization') != global.Config['Zena']['Token']) { res.end("Authentication Failed.\n"); return; }
@@ -432,6 +433,7 @@ Orchis.post("/zena/send_guild_message", global.Mesh(async (req,res) => {
 	}
 	await global.Module.Fluoresce.Append("OrchisGuildChat", "10001", [ ChatMessage ]);
 	res.end();
+	return;
 }));
 Orchis.post("/zena/request_index", global.Mesh(async (req,res) => {
 	if (req.get('Authorization') != global.Config['Zena']['Token']) { res.end("Authentication Failed.\n"); return; }
@@ -1388,7 +1390,7 @@ Orchis.post("/asset", async (req, res) => {
 			res.end("Accepted.");
 		break;
 	}
-	
+	return;
 });
 Orchis.post("/utility", async (req, res) => {
 	//-H "passphrase: passphrase" '/utility?param=set_state&id=1000000000&state=0'
@@ -1437,6 +1439,7 @@ Orchis.post("/utility", async (req, res) => {
 		await global.Module.Fluoresce.Write("OrchisPersist", Temp['Account']['Persist'], Temp['Persist']);
 	}
 	res.end("Done.\n");
+	return;
 });
 
 Orchis.post("/null", function(req, res) { res.status(202); res.end(); return; });
@@ -2030,7 +2033,7 @@ Orchis.post("/talisman/sell", global.Mesh(async (req, res, next) => {
 Orchis.post("/talisman/set_lock", global.Mesh(async (req, res, next) => {
 	const TalismanIndex = await global.Module.Fluoresce.Read("OrchisIndex", res.mid.ViewerID, "talisman_list", { 'talisman_key_id': res.mid.Request['talisman_key_id'] });
 	
-	TalismanIndex['is_lock'] = 1;
+	TalismanIndex['is_lock'] = res.mid.Request['is_lock'];
 	res.mid.Data = {
 		'update_data_list': { 'talisman_list': [ TalismanIndex ] }
 	}
@@ -2968,6 +2971,7 @@ Orchis.post("/heroparam/batch", global.Mesh(async (req, res) => {
 		});
 	}
 	const Serialized = JSON.stringify(Reply); res.set(SetHeaders(Serialized.length, "JSON")); res.end(Serialized);
+	return;
 }));
 Orchis.post("/matching/get_room_list", async (req, res, next) => {
 	if (res.mid.Persist['Dawn'] == true) { res.end(EmptyRoom); return; }
@@ -3018,12 +3022,15 @@ Orchis.post("/fort/get_data", async (req, res, next) => {
 	for (const x in BuildList) {
 		if (BuildList[x]['build_status'] != 0) {
 			let Remain = BuildList[x]['build_end_date'] - BuildList[x]['build_start_date'];
-			if (Remain < 0) { RemainTime = 0; }
+			if (Remain < 0) { Remain = 0; }
 			BuildList[x]['remain_time'] = Remain;
 		}
 		
 		if (BuildList[x]['last_income_date'] != -1) {
-			BuildList[x]['last_income_time'] = global.ServerTime - BuildList[x]['last_income_date'];
+			let Remain = global.ServerTime - BuildList[x]['last_income_date'];
+			if (Remain < 0) { Remain = 0; }
+			BuildList[x]['last_income_time'] = Remain;
+			
 		}
 	}
 	res.mid.Data = {
@@ -4341,6 +4348,7 @@ Orchis.post("/suggestion/set", async (req, res, next) => {
 				case "Characters":
 					Temp = [];
 					UnitStoryList = await global.Module.Fluoresce.Read("OrchisIndex", res.mid.ViewerID, "unit_story_list");
+					if (UnitStoryList == undefined) { UnitStoryList = []; }
 					Object.values(global.Master.CharaData).forEach((Character) => {
 						if (Character['_IsPlayable'] == 1) {
 							Temp.push(global.Module.Character.Create(Character['_Id'], 1));
