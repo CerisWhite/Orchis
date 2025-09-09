@@ -140,13 +140,13 @@ function GetLevel(CharacterData) {
 	let LevelData = { 'Level': 0, 'EXP': 0 };
 	const MaxLevel = global.Master.CharaRarity[String(CharacterData['rarity'])]['_MaxLimitLevel'];
 	const MaxEXP = global.Master.CharaLevel[String(MaxLevel + CharacterData['additional_max_level'])]['_TotalExp'];
-	if (CharacterData['exp'] > MaxEXP) {
+	if (CharacterData['exp'] >= MaxEXP) {
 		LevelData['EXP'] = MaxEXP;
 		LevelData['Level'] = MaxLevel + CharacterData['additional_max_level'];
 	}
 	else {
 		for (const x in LevelIDs) {
-			if (global.Master.CharaLevel[LevelIDs[x]]['_TotalExp'] > CharacterData['exp']) {
+			if (global.Master.CharaLevel[LevelIDs[x]]['_TotalExp'] >= CharacterData['exp']) {
 				LevelData['Level'] = global.Master.CharaLevel[LevelIDs[x]]['_Id'] - 1;
 				LevelData['EXP'] = CharacterData['exp'];
 				break;
@@ -172,13 +172,13 @@ async function RaiseLevel(res, ID, GrowList) {
 	}
 	
 	const MaxEXP = global.Master.CharaLevel[String(80 + CharacterData['additional_max_level'])]['_TotalExp'];
-	if (CharacterData['exp'] > MaxEXP) {
+	if (CharacterData['exp'] >= MaxEXP) {
 		CharacterData['exp'] = MaxEXP;
 		CharacterData['level'] = 80 + CharacterData['additional_max_level'];
 	}
 	else {
 		for (const x in LevelIDs) {
-			if (global.Master.CharaLevel[LevelIDs[x]]['_TotalExp'] > CharacterData['exp']) {
+			if (global.Master.CharaLevel[LevelIDs[x]]['_TotalExp'] >= CharacterData['exp']) {
 				CharacterData['level'] = global.Master.CharaLevel[LevelIDs[x]]['_Id'] - 1;
 				break;
 			}

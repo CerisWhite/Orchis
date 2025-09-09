@@ -706,14 +706,16 @@ async function Floor(res) {
 		}
 		if (res.mid.Request['dmode_play_record']['select_dragon_no'] != 0) {
 			const DModeDragon = res.mid.Persist['DMode']['State']['DragonList'].find(z => z.select_dragon_no == res.mid.Request['dmode_play_record']['select_dragon_no']);
-			res.mid.Persist['DMode']['State']['Unit']['dmode_hold_dragon_list'].push({
-				'dragon_id': DModeDragon['dragon_id'],
-				'count': 0
-			});
-			res.mid.Persist['DMode']['State']['Unit']['take_dmode_point_1'] -= DModeDragon['pay_dmode_point_1'];
-			res.mid.Persist['DMode']['State']['Unit']['take_dmode_point_2'] -= DModeDragon['pay_dmode_point_2'];
-			if (res.mid.Persist['DMode']['State']['Unit']['take_dmode_point_1'] < 0) { res.mid.Persist['DMode']['State']['Unit']['take_dmode_point_1'] = 0; }
-			if (res.mid.Persist['DMode']['State']['Unit']['take_dmode_point_2'] < 0) { res.mid.Persist['DMode']['State']['Unit']['take_dmode_point_2'] = 0; }
+			if (DModeDragon != undefined) { 
+				res.mid.Persist['DMode']['State']['Unit']['dmode_hold_dragon_list'].push({
+					'dragon_id': DModeDragon['dragon_id'],
+					'count': 0
+				});
+				res.mid.Persist['DMode']['State']['Unit']['take_dmode_point_1'] -= DModeDragon['pay_dmode_point_1'];
+				res.mid.Persist['DMode']['State']['Unit']['take_dmode_point_2'] -= DModeDragon['pay_dmode_point_2'];
+				if (res.mid.Persist['DMode']['State']['Unit']['take_dmode_point_1'] < 0) { res.mid.Persist['DMode']['State']['Unit']['take_dmode_point_1'] = 0; }
+				if (res.mid.Persist['DMode']['State']['Unit']['take_dmode_point_2'] < 0) { res.mid.Persist['DMode']['State']['Unit']['take_dmode_point_2'] = 0; }
+			}
 			res.mid.Persist['DMode']['State']['DragonList'] = [];
 		}
 	}

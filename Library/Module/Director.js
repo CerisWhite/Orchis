@@ -2623,10 +2623,10 @@ async function ItemParser(ItemList, res, Prefix) {
 	
 	ItemList = global.Module.Util.CompactList(ItemList);
 	
-	for (const x in ItemList) {
-		if (!NoIDList.includes(ItemList[x][TypeName]) && ItemList[x][IDName] == 0) { continue; }
-		if (ItemList[x][IDName] == undefined || isNaN(ItemList[x][IDName])) { continue; }
-		else if (ItemList[x][AmountName] == 0 || ItemList[x][AmountName] == undefined || isNaN(ItemList[x][AmountName])) { continue; }
+	let x = 0; while (x < ItemList.length) {
+		if (!NoIDList.includes(ItemList[x][TypeName]) && ItemList[x][IDName] == 0) { x++; continue; }
+		if (ItemList[x][IDName] == undefined || isNaN(ItemList[x][IDName])) { x++; continue; }
+		else if (ItemList[x][AmountName] == 0 || ItemList[x][AmountName] == undefined || isNaN(ItemList[x][AmountName])) { x++; continue; }
 		let EventID = 0;
 		let Index = -1;
 		let ItemData = {};
@@ -3134,7 +3134,7 @@ async function ItemParser(ItemList, res, Prefix) {
 					Target = "user_data";
 					let Base = 0;
 					const Rarity = global.Module.Crest.GetInfo(ItemList[x][IDName], "_Rarity");
-					if (Rarity == 9) { continue; }
+					if (Rarity == 9) { x++; continue; }
 					if (Rarity <= 3) { Base = 300; }
 					else if (Rarity == 4) { Base = 1000; }
 					else if (Rarity == 5) { Base = 3000; }
@@ -3232,6 +3232,7 @@ async function ItemParser(ItemList, res, Prefix) {
 				break;
 			}
 		}
+		x++;
 	}
 	return;
 }

@@ -299,6 +299,9 @@ async function RaiseLimit(res, KeyID, GrowList) {
 			case 2:
 				res.mid.ItemList.push({ 'type': 8, 'id': GrowList[x]['target_id'], 'quantity': -1 });
 			break;
+			case 4:
+				res.mid.ItemList.push({ 'type': 8, 'id': GrowList[x]['target_id'], 'quantity': -50 });
+			break;
 		}
 		if (GrowList[x]['limit_break_count'] > DragonIndex['limit_break_count']) {
 			DragonIndex['limit_break_count'] = GrowList[x]['limit_break_count'];
@@ -352,7 +355,7 @@ async function RaiseLevel(res, KeyID, GrowList) {
 	const LimitBreak = DragonIndex['limit_break_count'];
 	const MaxLevel = global.Master.DragonRarity[String(Rarity)]['_LimitLevel0' + String(LimitBreak)];
 	const MaxEXP = global.Master.DragonLevel[String(MaxLevel)]['_TotalExp'];
-	if (DragonIndex['exp'] > MaxEXP) {
+	if (DragonIndex['exp'] >= MaxEXP) {
 		DragonIndex['exp'] = MaxEXP;
 		DragonIndex['level'] = MaxLevel;
 	}
@@ -400,7 +403,7 @@ function RaiseBond(BondIndex, ID, GiftID) {
 		else {
 			for (const x in BondLevelIDs) {
 				if (global.Master.DragonReliabilityLevel[BondLevelIDs[x]]['_DragonUnitType'] != 1) { continue; }
-				if (global.Master.DragonReliabilityLevel[BondLevelIDs[x]]['_TotalReliability'] > BondIndex['reliability_total_exp']) {
+				if (global.Master.DragonReliabilityLevel[BondLevelIDs[x]]['_TotalReliability'] >= BondIndex['reliability_total_exp']) {
 					BondIndex['reliability_level'] = global.Master.DragonReliabilityLevel[BondLevelIDs[x]]['_Level'] - 1;
 					break;
 				}
@@ -415,7 +418,7 @@ function RaiseBond(BondIndex, ID, GiftID) {
 		else {
 			for (const x in BondLevelIDs) {
 				if (global.Master.DragonReliabilityLevel[BondLevelIDs[x]]['_DragonUnitType'] != 2) { continue; }
-				if (global.Master.DragonReliabilityLevel[BondLevelIDs[x]]['_TotalReliability'] > BondIndex['reliability_total_exp']) {
+				if (global.Master.DragonReliabilityLevel[BondLevelIDs[x]]['_TotalReliability'] >= BondIndex['reliability_total_exp']) {
 					BondIndex['reliability_level'] = global.Master.DragonReliabilityLevel[BondLevelIDs[x]]['_Level'] - 1;
 					break;
 				}
