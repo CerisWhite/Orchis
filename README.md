@@ -1,7 +1,7 @@
 # Orchis
 Orchis is a QoL/Mod-focused server implementation/private server made with express for the game Dragalia Lost, which reached its End of Service on December 1st, 2022. It is designed to run in low-resource environments such as a Chromebook/ChromiumOS with less than 2GB of available RAM using nothing but the static 18.13 or higher NodeJS runtime.
 
-All of the Character/Dragon/Wyrmprint/etc. data used by the server is found in `Library/IDMaps/` with the English name associated for ease of reference.
+All of the Character/Dragon/Wyrmprint/etc. data used by the server is stored in the relevant file in `Library/Module/`.
 
 As stated, this server has some QoL changes (e.g. does not implement certain gacha mechanics like stamina). For a complete server project with all the moving parts, see this server's counterpart project [Dawnshard](https://github.com/SapiensAnatis/Dawnshard).
 
@@ -60,3 +60,4 @@ I like demonstrating how powerful "bad" hardware actually is in capable hands. I
 Feel free to open a bug report if you find a problem with the server. Feel free to open a pull request if you can fix said issue.
 
 Do note that I will either manually reformat the code in pull requests or ask you to edit it to match my personal style. I believe code should take as little space as possible without being totally unreadable (and this actually reduces CPU cycles, too).
+
