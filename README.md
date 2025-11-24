@@ -30,15 +30,15 @@ This database solution does not perform its own backups.
 ---
 
 # Questions
-- **Why are the Map files like that?**
+- **What is the utility endpoint?**
 
-Because it's faster than loading several JSON files from disk when they're going to stay in memory the entire time anyway.
-- **What are the utility endpoints?**
-
-Those are for a server hoster to use for various actions like editing "session" data or making changes to a savefile without the use of the BaaS.
+Those are for a server hoster to use for various actions like preparing for a restart.
 - **What's with the suggestion keywords?**
 
-Those are for players to use to edit their save or account so we don't have to use the utility endpoints constantly. The "Dawn" keyword (reference to the Dawnshard creature/item in the game, obviously) is for modders to set their account to the original EoS manifest so asset updates don't break things for them.
+Those are for players to use to edit their save or account so we don't have to use the BaaS constantly. The "Dawn" keyword (reference to the Dawnshard creature/item in the game, obviously) is for modders to set their account to the original EoS manifest so asset updates don't break things for them.
+- **Why is the save import process so specific?**
+
+Certain data is expected to be tracked by the server, and because I am too lazy to do actual checks to validate this data on save import, I decided I'd just freeze certain data in the server end and call it a day.
 - **Why is this made for Chromebooks?**
 
 This is an off-topic question. Next.
