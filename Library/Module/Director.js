@@ -3009,13 +3009,67 @@ async function ItemParser(ItemList, res, Prefix) {
 				Count = global.Module.Util.SaneValue(res.mid.Persist['User']['build_time_point'] + ItemList[x][AmountName]);
 				res.mid.Persist['User']['build_time_point'] = Count;
 			break;
-			case 29: // Mega Man event item
+			case 29:
+				Target = "ex_rush_event_user_data";
+				EventID = global.Master.ExRushEventItem[String(ItemList[x][IDName])]['_EventId'];
+				KeyID = global.Master.ExRushEventItem[String(ItemList[x][IDName])]['_EventItemType'];
+				switch(KeyID) {
+					case 10101:
+						Count = global.Module.Util.SaneValue(res.mid.Persist['Event'][EventID]['User']['ex_rush_item_1'] + ItemList[x][AmountName]);
+						res.mid.Persist['Event'][EventID]['User']['ex_rush_item_1'] = Count;
+					break;
+					case 10102:
+						Count = global.Module.Util.SaneValue(res.mid.Persist['Event'][EventID]['User']['ex_rush_item_2'] + ItemList[x][AmountName]);
+						res.mid.Persist['Event'][EventID]['User']['ex_rush_item_2'] = Count;
+					break;
+				}
 			break;
 			case 30: // Simple event item
 			break;
 			case 31: // Lottery ticket
 			break;
-			case 32: // Monster Hunter event item
+			case 32:
+				Target = "ex_hunter_event_user_data";
+				EventID = global.Master.ExHunterEventItem[String(ItemList[x][IDName])]['_EventId'];
+				KeyID = global.Master.ExHunterEventItem[String(ItemList[x][IDName])]['_EventItemType'];
+				switch(KeyID) {
+					case 10101:
+						Count = global.Module.Util.SaneValue(res.mid.Persist['Event'][EventID]['User']['box_summon_point'] + ItemList[x][AmountName]);
+						res.mid.Persist['Event'][EventID]['User']['box_summon_point'] = Count;
+					break;
+					case 10201:
+						Count = global.Module.Util.SaneValue(res.mid.Persist['Event'][EventID]['User']['ex_hunter_point_1'] + ItemList[x][AmountName]);
+						res.mid.Persist['Event'][EventID]['User']['ex_hunter_point_1'] = Count;
+					break;
+					case 10202:
+						Count = global.Module.Util.SaneValue(res.mid.Persist['Event'][EventID]['User']['ex_hunter_point_2'] + ItemList[x][AmountName]);
+						res.mid.Persist['Event'][EventID]['User']['ex_hunter_point_2'] = Count;
+					break;
+					case 10203:
+						Count = global.Module.Util.SaneValue(res.mid.Persist['Event'][EventID]['User']['ex_hunter_point_3'] + ItemList[x][AmountName]);
+						res.mid.Persist['Event'][EventID]['User']['ex_hunter_point_3'] = Count;
+					break;
+					case 10301:
+						Count = global.Module.Util.SaneValue(res.mid.Persist['Event'][EventID]['User']['advent_item_quantity_1'] + ItemList[x][AmountName]);
+						res.mid.Persist['Event'][EventID]['User']['advent_item_quantity_1'] = Count;
+					break;
+					case 10302:
+						Count = global.Module.Util.SaneValue(res.mid.Persist['Event'][EventID]['User']['advent_item_quantity_2'] + ItemList[x][AmountName]);
+						res.mid.Persist['Event'][EventID]['User']['advent_item_quantity_2'] = Count;
+					break;
+					case 10401:
+						Count = global.Module.Util.SaneValue(res.mid.Persist['Event'][EventID]['User']['ultimate_key_count'] + ItemList[x][AmountName]);
+						res.mid.Persist['Event'][EventID]['User']['ultimate_key_count'] = Count;
+					break;
+					case 10501:
+						Count = global.Module.Util.SaneValue(res.mid.Persist['Event'][EventID]['User']['exchange_item_1'] + ItemList[x][AmountName]);
+						res.mid.Persist['Event'][EventID]['User']['exchange_item_1'] = Count;
+					break;
+					case 10502:
+						Count = global.Module.Util.SaneValue(res.mid.Persist['Event'][EventID]['User']['exchange_item_2'] + ItemList[x][AmountName]);
+						res.mid.Persist['Event'][EventID]['User']['exchange_item_2'] = Count;
+					break;
+				}
 			break;
 			case 33:
 				Target = "gather_item_list";

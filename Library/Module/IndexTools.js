@@ -688,6 +688,7 @@ async function OrchisImport(UserIndexRecord, ViewerID, PersistRecord) {
 			PartyList[x]['party_setting_list'][z]['equip_amulet_key_id'] = 0;
 			PartyList[x]['party_setting_list'][z]['equip_amulet_2_key_id'] = 0;
 			PartyList[x]['party_setting_list'][z]['equip_weapon_key_id'] = 0;
+			PartyList[x]['party_setting_list'][z]['equip_weapon_body_id'] = 0;
 			PartyList[x]['party_setting_list'][z]['equip_talisman_key_id'] = 0;
 		}
 	}
@@ -698,6 +699,23 @@ async function OrchisImport(UserIndexRecord, ViewerID, PersistRecord) {
 		switch(ImportList[x]) {
 			case "chara_list":
 				await global.Module.Fluoresce.Write("OrchisIndex", ViewerID, Source['chara_list'], "chara_list");
+				let UnitStoryList = await global.Module.Fluoresce.Read("OrchisIndex", ViewerID, "unit_story_list");
+				for (const z in Source['chara_list']) {
+					if (global.Module.Character.GetInfo(Source['chara_list'][z]['chara_id'], "_IsPlayable") == 0) { continue; }
+					const MCName = global.Module.Character.GetInfo(Source['chara_list'][z]['chara_id'], "_ManaCircleName");
+					const StoryBase = global.Module.Character.GetInfo(Source['chara_list'][z]['chara_id'], "StoryID") - 1;
+					let NextStoryID = global.Module.Character.GetStoryID(Source['chara_list'][z]['chara_id'], MCName, Source['chara_list'][z]);
+					while (NextStoryID > StoryBase) {
+						if (UnitStoryList.findIndex(s => s.unit_story_id == NextStoryID) == -1) {
+							UnitStoryList.push({
+								'unit_story_id': NextStoryID,
+								'is_read': 0
+							});
+						}
+						NextStoryID--;
+					}
+				}
+				await global.Module.Fluoresce.Write("OrchisIndex", ViewerID, UnitStoryList, "unit_story_list");
 			break;
 			case "dragon_list":
 				PersistRecord['Key']['Dragon'] = 30000;

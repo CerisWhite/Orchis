@@ -607,6 +607,22 @@ async function GetRoomList() {
 	}
 	return OpenRooms;
 }
+function StoreLog(req, res) {
+	fs.writeFile(`./Library/Log/${res.mid.ViewerID}_${Date.now}`, JSON.stringify({
+		'URL': req.url,
+		'Request': res.mid.Request,
+		'Response': res.mid.Data
+	}), (err) => {});
+}
+setInterval(async () => {
+	const List = fs.readdirSync('./Library/Log/');
+	for (const x in List) {
+		const Created = List[x].split("_")[1];
+		if (Created < Date.now() - 604800000) {
+			fs.unlink(`./Library/Log/${List[x]}`, () => {});
+		}
+	}
+}, 10800000);
 
 function DigitPIN() {
 	return String(Math.floor((Math.random() * 999999) + 100000)).slice(0, 6);
@@ -1346,7 +1362,7 @@ Orchis.use(async function (req, res, next) { // Record Manager
 		const Resource = req.get("res-ver");
 		if (Resource != undefined && !IgnoreList.includes(req.url)) {
 			if (res.mid.IsArchaea == true) { next(); }
-			if (res.mid.Persist['VanillaAssets'] == true) { next(); }
+			if (res.mid.Persist['Dawn'] == true) { next(); }
 			if (req.get("platform") == 1 && Resource != AssetList['iOS_Manifest']) { res.end(AssetReply); return; }
 			else if (req.get("platform") == 2 && Resource != AssetList['Android_Manifest']) { res.end(AssetReply); return; }
 		}
@@ -3191,7 +3207,7 @@ Orchis.post("/fort/levelup_start", global.Mesh(async (req, res, next) => {
 	}
 	next();
 }));
-Orchis.post("/fort/levelup_end", global.Mesh(async (req, res, next) => {
+Orchis.post(["/fort/levelup_end", "/fort/levelup_at_once"], global.Mesh(async (req, res, next) => {
 	const BuildData = await global.Module.Fluoresce.Read("OrchisIndex", res.mid.ViewerID, "build_list", { 'build_id': res.mid.Request['build_id'] });
 	BuildData['level'] += 1;
 	const DetailID = BuildData['level'] < 10 ?
@@ -3213,6 +3229,12 @@ Orchis.post("/fort/levelup_end", global.Mesh(async (req, res, next) => {
 		'update_data_list': {
 			'build_list': [ BuildData ]
 		}
+	}
+	if (BuildData['plant_id'] == 100101) {
+		res.mid.Data['current_fort_level'] = BuildData['level'];
+	}
+	if (BuildData['plant_id'] == 101401) {
+		res.mid.Data['current_fort_craft_level'] = BuildData['level'];
 	}
 	next();
 }));
@@ -3226,33 +3248,6 @@ Orchis.post("/fort/levelup_cancel", global.Mesh(async (req, res, next) => {
 		'result': 1,
 		'build_id': res.mid.Request['build_id'],
 		'fort_detail': res.mid.Persist['Fort']['Smiths'],
-		'production_rp': res.mid.Persist['Fort']['Production']['RP'],
-		'production_df': res.mid.Persist['Fort']['Production']['DF'],
-		'production_st': res.mid.Persist['Fort']['Production']['ST'],
-		'update_data_list': {
-			'build_list': [ BuildData ]
-		}
-	}
-	next();
-}));
-Orchis.post("/fort/levelup_at_once", global.Mesh(async (req, res, next) => {
-	const BuildData = await global.Module.Fluoresce.Read("OrchisIndex", res.mid.ViewerID, "build_list", { 'build_id': res.mid.Request['build_id'] });
-	BuildData['level'] += 1;
-	const DetailID = BuildData['level'] < 10 ?
-		parseInt(String(BuildData['plant_id'] + "0" + String(BuildData['level']))) :
-		parseInt(String(BuildData['plant_id'] + String(BuildData['level'])));
-	BuildData['fort_plant_detail_id'] = DetailID;
-	BuildData['build_status'] = 0;
-	BuildData['build_start_date'] = 0;
-	BuildData['build_end_date'] = 0;
-	BuildData['remain_time'] = 0;
-	//switch(res.mid.Request['payment_type']) {}
-	
-	res.mid.Data = {
-		'result': 1,
-		'build_id': res.mid.Request['build_id'],
-		'fort_detail': res.mid.Persist['Fort']['Smiths'],
-		'fort_bonus_list': await global.Module.Director.CalculateBonuses(res),
 		'production_rp': res.mid.Persist['Fort']['Production']['RP'],
 		'production_df': res.mid.Persist['Fort']['Production']['DF'],
 		'production_st': res.mid.Persist['Fort']['Production']['ST'],
@@ -3614,6 +3609,91 @@ Orchis.post("/earn_event/get_event_data", global.Mesh(async (req, res, next) => 
 }));
 Orchis.post("/earn_event/receive_event_point_reward", global.Mesh(async (req, res, next) => {
 	await global.Module.Event.GetBuildReward(res, res.mid.Request['event_id'] );
+	next();
+}));
+Orchis.post("/ex_rush_event/entry", global.Mesh(async (req, res, next) => {
+	const EventID = String(res.mid.Request['event_id']);
+	res.mid.Persist['Event'][EventID] = {
+		'User': {
+			'event_id': parseInt(EventID),
+			'ex_rush_item_1': 0,
+			'ex_rush_item_2': 0,
+		}
+	}
+	res.mid.Data = {
+		'ex_rush_event_user_data': res.mid.Persist['Event'][EventID]['User']
+	}
+	next();
+}));
+Orchis.post("/ex_rush_event/get_event_data", global.Mesh(async (req, res, next) => {
+	const EventID = String(res.mid.Request['event_id']);
+	if (res.mid.Persist['Event'][EventID] == undefined) {
+		res.mid.Data = {
+			'ex_rush_event_user_data': []
+		}
+		next(); return;
+	}
+	res.mid.Data = {
+		'ex_rush_event_user_data': res.mid.Persist['Event'][EventID]['User']
+	}
+	next();
+}));
+Orchis.post("/ex_hunter_event/entry", global.Mesh(async (req, res, next) => {
+	const EventID = String(res.mid.Request['event_id']);
+	res.mid.Persist['Event'][EventID] = {
+		'User': {
+			'event_id': parseInt(EventID),
+			'box_summon_point': 0,
+			'ex_hunter_point_1': 0,
+			'ex_hunter_point_2': 0,
+			'ex_hunter_point_3': 0,
+			'advent_item_quantity_1': 0,
+			'advent_item_quantity_2': 0,
+			'ultimate_key_count': 0,
+			'exchange_item_1': 0,
+			'exchange_item_2': 0
+		},
+		'Summon': {
+			'Data': global.Module.Event.BlazonUserReset(EventID, 1),
+			'Count': 1,
+			'Target': 0
+		},
+		'Reward': [],
+		'Trade': [],
+		'Passive': global.Module.Event.GetPassiveList(EventID)
+	}
+	res.mid.Data = {
+		'ex_hunter_event_user_data': res.mid.Persist['Event'][EventID]['User']
+	}
+	next();
+}));
+Orchis.post("/ex_hunter_event/get_event_data", global.Mesh(async (req, res, next) => {
+	const EventID = String(res.mid.Request['event_id']);
+	if (res.mid.Persist['Event'][EventID] == undefined) {
+		res.mid.Data = {
+			'ex_hunter_event_user_data': []
+		}
+		next(); return;
+	}
+	res.mid.Data = {
+		'ex_hunter_event_user_data': res.mid.Persist['Event'][EventID]['User'],
+		'ex_hunter_event_reward_list': res.mid.Persist['Event'][EventID]['Reward'],
+		'event_trade_list': global.Module.Event.EventTradeData(EventID),
+		'event_passive_list': [
+			{
+				'event_id': res.mid.Request['raid_event_id'],
+				'event_passive_grow_list': res.mid.Persist['Event'][EventID]['Passive']
+			}
+		]
+	}
+	next();
+}));
+Orchis.post("/ex_hunter_event/receive_ex_hunter_point_reward", global.Mesh(async (req, res, next) => {
+	await global.Module.Event.EmblemRewardExHunter(
+		res,
+		res.mid.Request['event_id'],
+		res.mid.Request['ex_hunter_event_reward_id_list']
+	);
 	next();
 }));
 
@@ -4201,6 +4281,7 @@ Orchis.post("/present/receive", global.Mesh(async (req, res, next) => {
 	res.mid.Data = {
 		'receive_present_id_list': [],
 		'not_receive_present_id_list': [],
+		'limit_over_present_id_list': [],
 		'converted_entity_list': [],
 		'delete_present_id_list': []
 	}
@@ -4253,6 +4334,7 @@ Orchis.post("/present/receive", global.Mesh(async (req, res, next) => {
 			});
 			res.mid.Persist['Gift']['History'].unshift({
 				'id': res.mid.Persist['Gift'][Target][Index]['present_id'],
+				'viewer_id': res.mid.ViewerID,
 				'entity_type': res.mid.Persist['Gift'][Target][Index]['entity_type'],
 				'entity_id': res.mid.Persist['Gift'][Target][Index]['entity_id'],
 				'entity_quantity': res.mid.Persist['Gift'][Target][Index]['entity_quantity'],
@@ -4273,9 +4355,11 @@ Orchis.post("/present/receive", global.Mesh(async (req, res, next) => {
 		}
 	}
 	res.mid.Data[ListTarget] = res.mid.Persist['Gift'][Target];
-	res.mid.Data['present_notice'] = {
-		'present_count': res.mid.Persist['Gift']['Normal'].length,
-		'present_limit_count': res.mid.Persist['Gift']['Limited'].length
+	res.mid.Data['update_data_list'] = {
+		'present_notice': {
+			'present_count': res.mid.Persist['Gift']['Normal'].length,
+			'present_limit_count': res.mid.Persist['Gift']['Limited'].length
+		}
 	}
 	next();
 }));
@@ -4701,6 +4785,7 @@ Orchis.post("/user/get_n_account_info", async (req, res, next) => {
 Orchis.use(async function (req, res, next) { // Judgement
 	if (res.mid.Persist != undefined) {
 		await global.Module.Endeavour.Judge(res, req.url);
+		await global.Module.Endeavour.Tutorial(req, res);
 	}
 	next();
 });
@@ -4873,6 +4958,8 @@ Orchis.use(async function (req, res, next) { // Finalize
 				'present_limit_count': res.mid.Persist['Gift']['Limited'].length
 			}
 		}
+		
+		StoreLog(req, res);
 	}
 	
 	/*fs.writeFileSync('./Library/Log/' + res.mid.ViewerID + "_" + req.url.replaceAll("/", "_") + "_" + Date.now(), JSON.stringify({

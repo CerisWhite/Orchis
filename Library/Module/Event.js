@@ -181,6 +181,26 @@ async function EmblemReward(res, EventID, RewardList) {
 	}
 	return;
 }
+async function EmblemRewardExHunter(res, EventID, RewardList) {
+	const Target = String(EventID);
+	const RaidRewardList = global.Master.RaidEventReward[Target];
+	for (const x in RewardList) {
+		const RewardData = RaidRewardList.find(z => z._Id == RewardList[x]);
+		res.mid.ItemList.push({
+			'type': RewardData['_RewardEntityType'],
+			'id': RewardData['_RewardEntityId'],
+			'quantity': RewardData['_RewardEntityQuantity']
+		});
+		res.mid.Persist['Event'][Target]['Reward'].push({
+			'event_id': EventID,
+			'event_reward_id': RewardList[x]
+		});
+	}
+	res.mid.Data = {
+		'ex_hunter_event_reward_list': res.mid.Persist['Event'][Target]['Reward']
+	}
+	return;
+}
 
 async function GetBuildReward(res, EventID) {
 	Target = String(EventID);

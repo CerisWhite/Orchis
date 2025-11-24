@@ -183,7 +183,7 @@ function GetDrops(ID, EventList, PartyData, PerformCount) {
 		EventType = global.Master.EventData[String(EventID)]['_EventKindType'];
 	}
 	
-	let Astral = false;
+	let Astral = true;
 	//for (const x in EventList['astralraid']) {
 	//	if (
 	//	EventList['astralraid'][x]['start'] < global.ServerTime &&
@@ -350,7 +350,7 @@ function GetDrops(ID, EventList, PartyData, PerformCount) {
 		'Coin': Coin,
 		'CoinBonus': CoinBonus,
 		'Mana': Mana,
-		'Astral': Astral == false ? global.Master.QuestRewardData[String(ID)]['_DropAstralItemQuantity'] : 0,
+		'Astral': Astral == true ? Math.floor(Math.random() * 3) + 2 : 0,
 		'Wyrmite': Wyrmite,
 		'EventPoint': EventPoint,
 		'EventPointBonus': EventPointBonus,

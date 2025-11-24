@@ -172,6 +172,19 @@ async function Judge(res, URL) {
 	}
 	return;
 }
+async function Tutorial(req, res) {
+	/*
+	switch (req.url) {
+		case "/quest/read_story":
+			if (req.mid.Request['quest_story_id'] == 1000210) {
+				if (!res.mid.Persist['User']['tutorial_flag_list'].includes()) {
+					
+				}
+			}
+		
+	}
+	*/
+}
 
 function MedalCheck(QuestID) {
 	let MedalID = 0;
@@ -308,4 +321,4 @@ function MedalCheck(QuestID) {
 	return MedalID;
 }
 
-module.exports = { MissionNotice, MissionList, Judge, MedalCheck }
+module.exports = { MissionNotice, MissionList, Judge, Tutorial, MedalCheck }

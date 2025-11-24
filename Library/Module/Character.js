@@ -137,7 +137,7 @@ function Create(ID, Level) {
 
 const LevelIDs = Object.keys(global.Master.CharaLevel);
 function GetLevel(CharacterData) {
-	let LevelData = { 'Level': 0, 'EXP': 0 };
+	let LevelData = { 'Level': 1, 'EXP': 0 };
 	const MaxLevel = global.Master.CharaRarity[String(CharacterData['rarity'])]['_MaxLimitLevel'];
 	const MaxEXP = global.Master.CharaLevel[String(MaxLevel + CharacterData['additional_max_level'])]['_TotalExp'];
 	if (CharacterData['exp'] >= MaxEXP) {
@@ -185,6 +185,7 @@ async function RaiseLevel(res, ID, GrowList) {
 		}
 	}
 	
+	if (CharacterData['level'] < 1) { CharacterData['level'] = 1; }
 	const Stats = CalculateStats(ID, CharacterData);
 	CharacterData['hp'] = Stats['HP'];
 	CharacterData['attack'] = Stats['Attack'];
@@ -750,7 +751,7 @@ function Draw(SummonID, BannerData, IsTenfold, IsPlatinum) {
 	return { 'entity_type': 1, 'id': ID, 'rarity': GetInfo(ID, "_Rarity") }
 }
 module.exports = {
-	GetInfo, GetUnitData, HasStory, Create, GetLevel,
+	GetInfo, GetUnitData, HasStory, Create, GetLevel, GetStoryID,
 	CalculateStats, RaiseLevel, RaiseManaCircle, RaiseLimit,
 	RaiseManaAndLimit, Unlock, Awaken,
 	RaisePlatinum, ResetAugments,

@@ -368,6 +368,8 @@ async function RaiseLevel(res, KeyID, GrowList) {
 		}
 	}
 	
+	if (DragonIndex['level'] < 1) { DragonIndex['level'] = 1; }
+	
 	res.mid.Data = {
 		'update_data_list': {
 			'dragon_list': [ DragonIndex ],
