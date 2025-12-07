@@ -795,6 +795,7 @@ async function OrchisImport(UserIndexRecord, ViewerID, PersistRecord) {
 					}
 					PersistRecord['User']['name'] = Source['user_data']['name'];
 				}
+				PersistRecord['User']['exp'] = global.Module.Util.SaneValue(Source['user_data']['exp']);
 				PersistRecord['User']['crystal'] = global.Module.Util.SaneValueDouble(Source['user_data']['crystal']);
 				PersistRecord['User']['coin'] = global.Module.Util.SaneValueDouble(Source['user_data']['coin']);
 				PersistRecord['User']['quest_skip_point'] = global.Module.Util.SaneValue(Source['user_data']['quest_skip_point']);
@@ -4328,4 +4329,5 @@ module.exports = { ErasePartyList, DefaultSaveData, CleanIndex, OrchisImport,
 				   ClearInvalidKeyIDs, DefaultPrintSet,
 				   DefaultEquipment, Redoable, Flags,
 				   VoidPassives,
+
 				   MinimalFortData, StickerList }
