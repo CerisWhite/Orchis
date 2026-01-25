@@ -205,6 +205,7 @@ async function RaiseManaCircle(res, ID, GrowList, IsConviction) {
 	let StoryList = [];
 	
 	for (const x in GrowList) {
+		if (CharacterData['mana_circle_piece_id_list'].includes(GrowList[x])) { continue; }
 		const NodeData = global.Master.MC[CircleName].find(z => z._Id == GrowList[x]);
 		const NodeType = NodeData['_ManaPieceType'];
 		const Step = GetNodeStep(GrowList[x], CircleName, CharacterData['mana_circle_piece_id_list']);
@@ -377,6 +378,7 @@ async function RaiseManaAndLimit(res, ID, GrowList, IsConviction, TargetLevel) {
 	if (CharacterData['limit_break_count'] == 5) { CharacterData['additional_max_level'] = 5; }
 	
 	for (const x in GrowList) {
+		if (CharacterData['mana_circle_piece_id_list'].includes(GrowList[x])) { continue; }
 		const NodeData = global.Master.MC[CircleName].find(z => z._Id == GrowList[x]);
 		const NodeType = NodeData['_ManaPieceType'];
 		const Step = GetNodeStep(GrowList[x], CircleName, CharacterData['mana_circle_piece_id_list']);
@@ -577,6 +579,55 @@ function RaisePlatinum(res, ID) {
 	}
 	return;
 }
+function RebuildCharacter(ID, ManaNodes) {
+	const CircleName = GetInfo(ID, "_ManaCircleName");
+	let CharacterData = Create(ID, 1);
+	for (const z in ManaNodes) {
+		const NodeData = global.Master.MC[CircleName].find(x => x._Id == ManaNodes[z]);
+		const NodeType = NodeData['_ManaPieceType'];
+		const Step = GetNodeStep(ManaNodes[z], CircleName, ManaNodes);
+		switch(NodeType) {
+			case 10101: break;
+			case 10102: break;
+			case 10201:
+				CharacterData['burst_attack_level'] += 1;
+			break;
+			case 10301:
+				CharacterData['ability_1_level'] += 1;
+			break;
+			case 10302:
+				CharacterData['ability_2_level'] += 1;
+			break;
+			case 10303:
+				CharacterData['ability_3_level'] += 1;
+			break;
+			case 10401:
+				CharacterData['skill_1_level'] += 1;
+			break;
+			case 10402:
+				CharacterData['skill_2_level'] += 1;
+			break;
+			case 10501:
+				CharacterData['ex_ability_level'] += 1;
+				CharacterData['ex_ability_2_level'] += 1;
+			break;
+			case 10701:
+				CharacterData['combo_buildup_count'] += 1;
+				if (ID == 10650203) {
+					CharacterData['combo_buildup_count'] = 0;
+				}
+			break;
+			case 10801:
+				CharacterData['additional_max_level'] += 5;
+			break;
+		}
+	}
+	const Stats = CalculateStats(ID, CharacterData)
+	CharacterData['hp'] = Stats['HP'];
+	CharacterData['attack'] = Stats['Attack'];
+	
+	return CharacterData;
+}
 async function ResetAugments(res, ID, GrowList) {
 	let CharacterData = await GetUnitData(res.mid.ViewerID, ID);
 	for (const x in GrowList) {
@@ -754,7 +805,7 @@ module.exports = {
 	GetInfo, GetUnitData, HasStory, Create, GetLevel, GetStoryID,
 	CalculateStats, RaiseLevel, RaiseManaCircle, RaiseLimit,
 	RaiseManaAndLimit, Unlock, Awaken,
-	RaisePlatinum, ResetAugments,
+	RaisePlatinum, RebuildCharacter, ResetAugments,
 	GetIDByName, DModeStats,
 	Draw
 }

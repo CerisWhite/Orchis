@@ -284,6 +284,7 @@ async function InitFluoresce() {
 	const AnalyticsStatus = await global.Module.Fluoresce.Exists("OrchisAnalytics");
 	const DPSStatus = await global.Module.Fluoresce.Exists("OrchisDPS");
 	const TeamStatus = await global.Module.Fluoresce.Exists("OrchisTeam");
+	const ValidStatus = await global.Module.Fluoresce.Exists("OrchisReqCache");
 	
 	if (ViewerIDStatus == false) { await global.Module.Fluoresce.Create("OrchisKeyID", "incremental", 999999999, "ViewerID"); }
 	if (GuildIDStatus == false) { await global.Module.Fluoresce.Create("OrchisKeyID", "incremental", 10001, "GuildID"); }
@@ -294,6 +295,7 @@ async function InitFluoresce() {
 	if (AnalyticsStatus == false) { await global.Module.Fluoresce.Create("OrchisAnalytics"); }
 	if (DPSStatus == false) { await global.Module.Fluoresce.Create("OrchisDPS"); }
 	if (TeamStatus == false) { await global.Module.Fluoresce.Create("OrchisTeam"); }
+	if (ValidStatus == false) { await global.Module.Fluoresce.Create("OrchisReqCache"); }
 	
 	const GBoardStatus = await global.Module.Fluoresce.Exists("OrchisGuildBoard");
 	const GUserStatus = await global.Module.Fluoresce.Exists("OrchisGuildUser");
@@ -871,6 +873,7 @@ async function SaveDatabases() {
 	await global.Module.Fluoresce.Save("OrchisGuildBoard");
 	await global.Module.Fluoresce.Save("OrchisGuildUser");
 	await global.Module.Fluoresce.Save("OrchisGuildChat");
+	await global.Module.Fluoresce.Save("OrchisReqCache");
 }
 async function Refresh() {
 	while (true) {
@@ -1290,7 +1293,7 @@ Orchis.use(async function (req, res, next) { // Record Manager
 	LogFile.write(req.url + "\n");
 	res.mid = {
 		'Error': 0,
-		'ViewerID': 0,
+		'ViewerID': null,
 		'Data': {},
 		'ItemList': [],
 		'IsArchaea': false
@@ -1359,6 +1362,19 @@ Orchis.use(async function (req, res, next) { // Record Manager
 		}
 		res.mid.ViewerID = res.mid.Persist['ViewerID'];
 		res.mid.Prefunction = JSON.stringify(res.mid.Persist);
+		
+		const ReqCache = await global.Module.Fluoresce.Read("OrchisReqCache", res.mid.ViewerID);
+		if (req.url == ReqCache['url']) {
+			if (JSON.stringify(res.mid.Request) == JSON.stringify(ReqCache['request'])) {
+				const Serialized = msgpack.pack({
+					'data_headers': { 'result_code': 1 },
+					'data': ReqCache['response']
+				});
+				res.set(SetHeaders(Serialized.length));
+				res.end(Serialized); return;
+			}
+		}
+		
 		const Resource = req.get("res-ver");
 		if (Resource != undefined && !IgnoreList.includes(req.url)) {
 			if (res.mid.IsArchaea == true) { next(); }
@@ -1595,7 +1611,7 @@ Orchis.post("/version/get_resource_version", async (req, res, next) => {
 });
 
 Orchis.post("/load/index", global.Mesh(async (req, res, next) => {
-	res.mid.Data = await global.Module.Fluoresce.Read("OrchisIndex", res.mid.ViewerID);	
+	res.mid.Data = await global.Module.Fluoresce.Read("OrchisIndex", res.mid.ViewerID);
 	res.mid.Data['user_data'] = res.mid.Persist['User'];
 	res.mid.Data['user_treasure_trade_list'] = global.Module.Shop.SetLimitTrade(res.mid.Data['user_treasure_trade_list'], ResetTimes);
 	res.mid.Data['mission_notice'] = global.Module.Endeavour.MissionNotice(res.mid.Persist);
@@ -3213,6 +3229,13 @@ Orchis.post(["/fort/levelup_end", "/fort/levelup_at_once"], global.Mesh(async (r
 	const DetailID = BuildData['level'] < 10 ?
 		parseInt(String(BuildData['plant_id'] + "0" + String(BuildData['level']))) :
 		parseInt(String(BuildData['plant_id'] + String(BuildData['level'])));
+	
+	if (global.Master.FortPlantDetail[String(DetailID)] == undefined) {
+		res.mid.Error = 10003;
+		next();
+		return;
+	}
+	
 	BuildData['fort_plant_detail_id'] = DetailID;
 	BuildData['build_status'] = 0;
 	BuildData['build_start_date'] = 0;
@@ -4688,6 +4711,13 @@ Orchis.post("/suggestion/set", async (req, res, next) => {
 					await global.Module.Fluoresce.Write("OrchisIndex", res.mid.ViewerID, Temp, "quest_list");
 					await global.Module.Fluoresce.Write("OrchisIndex", res.mid.ViewerID, Temp2, "quest_story_list");
 					break;
+
+				case "IndexFix":
+					console.log("Index correction requested by " + res.mid.ViewerID + ", " + res.mid.Persist['User']['name']);
+					const UserIndexRecord = await global.Module.Fluoresce.Read("OrchisIndex", res.mid.ViewerID);
+					const AdjustedRecord = global.Module.IndexTools.ErrorCorrection(res, UserIndexRecord);
+					await global.Module.Fluoresce.Write("OrchisIndex", res.mid.ViewerID, AdjustedRecord);
+					break;
 			}
 		}
 		else {
@@ -4938,7 +4968,15 @@ Orchis.use(async function (req, res, next) { // Store
 	if (JSON.stringify(res.mid.Persist) != res.mid.Prefunction) {
 		await global.Module.Fluoresce.Write("OrchisPersist", req.get("sid"), res.mid.Persist);
 	}
-	
+
+	if (res.mid.ViewerID != null) {
+		await global.Module.Fluoresce.Write("OrchisReqCache", res.mid.ViewerID, {
+			'url': req.url,
+			'request': res.mid.Request,
+			'response': res.mid.Data
+		});
+	}
+
 	next();
 });
 

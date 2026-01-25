@@ -398,7 +398,7 @@ function RaiseBond(BondIndex, ID, GiftID) {
 
 	const Rarity = GetInfo(ID, "_Rarity");
 	if (Rarity >= 5) {
-		if (BondIndex['reliability_total_exp'] > 36300) {
+		if (BondIndex['reliability_total_exp'] >= 36300) {
 			BondIndex['reliability_total_exp'] = 36300;
 			BondIndex['reliability_level'] = 30;
 		}
@@ -413,7 +413,7 @@ function RaiseBond(BondIndex, ID, GiftID) {
 		}
 	}
 	else {
-		if (BondIndex['reliability_total_exp'] > 2900) {
+		if (BondIndex['reliability_total_exp'] >= 2900) {
 			BondIndex['reliability_total_exp'] = 2900;
 			BondIndex['reliability_level'] = 30;
 		}
@@ -456,6 +456,8 @@ function RaiseBond(BondIndex, ID, GiftID) {
 			'quantity': RewardList[z]['entity_quantity']
 		});
 	}
+	
+	BondIndex['last_contact_time'] = global.ServerTime;
 	
 	return {
 		'Index': BondIndex,

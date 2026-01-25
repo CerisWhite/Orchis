@@ -718,7 +718,7 @@ async function OrchisImport(UserIndexRecord, ViewerID, PersistRecord) {
 				await global.Module.Fluoresce.Write("OrchisIndex", ViewerID, UnitStoryList, "unit_story_list");
 			break;
 			case "dragon_list":
-				PersistRecord['Key']['Dragon'] = 30000;
+				PersistRecord['Key']['Dragon'] = 40000;
 				const Bond = await global.Module.Fluoresce.Read("OrchisIndex", ViewerID, "dragon_reliability_list");
 				for (const z in Source['dragon_list']) {
 					const BondIndex = Bond.findIndex(y => y.dragon_id == Source['dragon_list'][z]['dragon_id']);
@@ -747,6 +747,14 @@ async function OrchisImport(UserIndexRecord, ViewerID, PersistRecord) {
 				}
 				await global.Module.Fluoresce.Write("OrchisIndex", ViewerID, Source['dragon_list'], "dragon_list");
 				await global.Module.Fluoresce.Write("OrchisIndex", ViewerID, Bond, "dragon_reliability_list");
+			break;
+			case "build_list":
+				PersistRecord['Key']['Build'] = 30000;
+				for (const z in Source['build_list']) {
+					PersistRecord['Key']['Build'] += 1;
+					Source['build_list']['build_id'] = PersistRecord['Key']['Build'];
+				}
+				await global.Module.Fluoresce.Write("OrchisIndex", ViewerID, Source['build_list'], "build_list");
 			break;
 			case "material_list":
 				await global.Module.Fluoresce.Write("OrchisIndex", ViewerID, Source['material_list'], "material_list");
@@ -779,6 +787,9 @@ async function OrchisImport(UserIndexRecord, ViewerID, PersistRecord) {
 			
 			case "quest_list":
 				await global.Module.Fluoresce.Write("OrchisIndex", ViewerID, Source['quest_list'], "quest_list");
+			break;
+			case "quest_story_list":
+				await global.Module.Fluoresce.Write("OrchisIndex", ViewerID, Source['quest_story_list'], "quest_story_list");
 			break;
 			case "quest_wall_list":
 				await global.Module.Fluoresce.Write("OrchisIndex", ViewerID, Source['quest_wall_list'], "quest_wall_list");
@@ -833,6 +844,122 @@ async function OrchisImport(UserIndexRecord, ViewerID, PersistRecord) {
 	PersistRecord['User']['tutorial_flag_list'] = Flags;
 	PersistRecord['SaveUpdatedAt'] = Math.floor(Date.now() / 1000);
 	return;
+}
+
+function ErrorCorrection(res, UserIndexRecord) {
+	/*
+		This lists all facilities obtained from Treasure Trade, then
+		makes a simplified list. This could be a single loop but oh well.
+		That list is then used to check if the user has all relevant
+		facilities in their build_list. After that, all events are checked
+		to make sure the user has event facilities as expected.
+		Afterwards, they're all checked for issues and reassigned their IDs.
+		
+		This checks for duplicated unlocked mana nodes and rebuilds the
+		character with them removed.
+		
+		This checks for dragon bonds that aren't correct, setting
+		"last_contact_time" for the ones that have > 0 XP
+	*/
+	function AddFacility(plant_id) {
+		UserIndexRecord['build_list'].push({
+			'build_id': 0,
+			'fort_plant_detail_id': parseInt(String(plant_id) + "01"),
+			'position_x': -1,
+			'position_z': -1,
+			'build_status': 0,
+			'build_start_date': 0,
+			'build_end_date': 0,
+			'level': 1,
+			'plant_id': plant_id,
+			'is_new': 0,
+			'remain_time': 0,
+			'last_income_date': -1
+		});
+	}
+	let FacilityTradeList1 = [];
+	Object.values(global.Master.TreasureTrade).forEach((Trade) => {
+		if (Trade['_DestinationEntityType'] == 9) { FacilityTradeList1.push(Trade); }
+	});
+	let FacilityTradeList2 = [];
+	for (const z in FacilityTradeList1) {
+		let Index = 1;
+		for (const x in FacilityTradeList2) {
+			if (FacilityTradeList2[x]['plant_id'] == FacilityTradeList1[z]['_DestinationEntityId']) {
+				Index += 1;
+			}
+		}
+		FacilityTradeList2.push({
+			'plant_id': FacilityTradeList1[z]['_DestinationEntityId'],
+			'trade_id': FacilityTradeList1[z]['_Id'],
+			'index': Index
+		});
+	}
+	for (const z in FacilityTradeList2) {
+		if (UserIndexRecord['user_treasure_trade_list'].findIndex(x => x.treasure_trade_id == FacilityTradeList2['trade_id']) != -1) {
+			if (UserIndexRecord['build_list'].filter(x => x.plant_id == FacilityTradeList2['plant_id']).length < FacilityTradeList2['index']) {
+				AddFacility(FacilityTradeList2['plant_id']);
+			}
+		}
+	}
+	Object.values(global.Master.EventData).forEach((Event) => {
+		if (Event['_EventKindType'] == 4 && UserIndexRecord['quest_story_list'].findIndex(z => z.quest_story_id == Event['_PrologueId'] != -1)) {
+			if (UserIndexRecord['build_list'].findIndex(z => z.plant_id == Event['_EventFortId']) == -1) {
+				AddFacility(Event['_EventFortId']);
+			}
+		}
+	});
+	res.mid.Persist['Key']['Build'] = 30000;
+	for (const z in UserIndexRecord['build_list']) {
+		res.mid.Persist['Key']['Build'] += 1;
+		UserIndexRecord['build_list'][z]['build_id'] = res.mid.Persist['Key']['Build'];
+		if (UserIndexRecord['build_list'][z]['level'] == 0) { continue; }
+		const PlantData = Object.values(global.Master.FortPlantDetail).filter(x => x._AssetGroup == UserIndexRecord['build_list'][z]['plant_id']);
+		let MaxLevel = 0;
+		for (const x in PlantData) {
+			if (PlantData[x]['_Level'] > MaxLevel) { MaxLevel = PlantData[x]['_Level']; }
+		}
+		if (UserIndexRecord['build_list'][z]['level'] > MaxLevel) {
+			UserIndexRecord['build_list'][z]['fort_plant_detail_id'] = parseInt(String(UserIndexRecord['build_list'][z]['plant_id']) + String(MaxLevel));
+			UserIndexRecord['build_list'][z]['level'] = MaxLevel;
+		}
+	}
+
+	for (const z in UserIndexRecord['chara_list']) {
+		let CheckedMCList = [];
+		for (const x in UserIndexRecord['chara_list'][z]['mana_circle_piece_id_list']) {
+			if (!CheckedMCList.includes(UserIndexRecord['chara_list'][z]['mana_circle_piece_id_list'][x])) {
+				CheckedMCList.push(UserIndexRecord['chara_list'][z]['mana_circle_piece_id_list'][x]);
+			}
+		}
+		
+		const Fresh = global.Module.Character.RebuildCharacter(UserIndexRecord['chara_list'][z]['chara_id'], CheckedMCList);
+		Fresh['rarity'] = UserIndexRecord['chara_list'][z]['rarity'];
+		Fresh['exp'] = UserIndexRecord['chara_list'][z]['exp'];
+		Fresh['level'] = UserIndexRecord['chara_list'][z]['level'];
+		Fresh['gettime'] = UserIndexRecord['chara_list'][z]['gettime'];
+		Fresh['hp_plus_count'] = UserIndexRecord['chara_list'][z]['hp_plus_count'];
+		Fresh['attack_plus_count'] = UserIndexRecord['chara_list'][z]['attack_plus_count'];
+		Fresh['limit_break_count'] = UserIndexRecord['chara_list'][z]['limit_break_count'];
+		Fresh['is_unlock_edit_skill'] = UserIndexRecord['chara_list'][z]['is_unlock_edit_skill'];
+		Fresh['mana_circle_piece_id_list'] = UserIndexRecord['chara_list'][z]['mana_circle_piece_id_list'];
+
+		UserIndexRecord['chara_list'][z] = Fresh;
+	}
+	
+	for (const z in UserIndexRecord['dragon_reliability_list']) {
+		if (UserIndexRecord['dragon_reliability_list'][z]['reliability_total_exp'] > 0) {
+			UserIndexRecord['dragon_reliability_list'][z]['last_contact_time'] = 1669874400;
+		}
+		
+		if (UserIndexRecord['dragon_reliability_list'][z]['reliability_total_exp'] == 36300) {
+			UserIndexRecord['dragon_reliability_list'][z]['reliability_level'] = 30;
+		}
+		else if (UserIndexRecord['dragon_reliability_list'][z]['reliability_total_exp'] == 2900) {
+			UserIndexRecord['dragon_reliability_list'][z]['reliability_level'] = 30;
+		}
+	}
+	return UserIndexRecord;
 }
 
 const DefaultPrintSet = [
@@ -4328,6 +4455,6 @@ const StickerList = [
 module.exports = { ErasePartyList, DefaultSaveData, CleanIndex, OrchisImport,
 				   ClearInvalidKeyIDs, DefaultPrintSet,
 				   DefaultEquipment, Redoable, Flags,
-				   VoidPassives,
+				   VoidPassives, ErrorCorrection,
 
 				   MinimalFortData, StickerList }
