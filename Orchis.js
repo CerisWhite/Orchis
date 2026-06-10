@@ -42,8 +42,8 @@ else {
 			'IndexPath': "/gameplay/v1/savefile"
 		},
 		'AssetPass': "",
-		'Index': "./static/page/basic.html",
-		'AdvancedIndex': "./static/page/index.html",
+		'Index': "./static/index.html",
+		'AdvancedIndex': "./static/index.html",
 		'PageURLs': [
 			{
 				'function_name': "ability_crest_advice",
