@@ -12,15 +12,20 @@ This server lacks certain login code, and relies on the client to be configured 
 # How to Run
 1. Clone this repository
 2. Install the dependencies through NPM
-3. Copy the Fluoresce driver into the `node_modules` directory
-4. Run Fluoresce + the Server
+3. Run Fluoresce and copy the key into the driver
+4. Copy the Fluoresce driver into the Orchis `node_modules` directory
+5. Run Orchis
 
 The code provided below is a quick copy-paste reference of the steps above:
 ```
 git clone https://github.com/CerisWhite/Orchis --depth=1
 git clone https://github.com/CerisWhite/Fluoresce --depth=1
 cd Orchis && npm install
-cp ./Fluoresce/driver.js ./node_modules/fluoresce.js
+node ../Fluoresce/fluoresce.js & disown
+```
+Copy the key into the "PassKey" variable of the fluoresce driver now, then:
+```
+cp ../Fluoresce/driver.js ./node_modules/fluoresce.js
 node ../Fluoresce/fluoresce.js & node Orchis.js
 ```
 It is recommended to run Fluoresce and Orchis inside of `screen` or another similar program.
@@ -52,7 +57,7 @@ Because other database programs relied on external dependencies, and in order to
 
 I like demonstrating how powerful "bad" hardware actually is in capable hands. I also wanted to make sure my code was well-optimized and the easiest way to do that is develop with constraints that force you to keep resource use low, kinda like ankle weights for the mind.
 
-... And because I really like the colors of the default ChromeOS Text app (or at least did until they planned to "sunset" Chrome apps).
+... And because I really like the colors of the default ChromeOS Text app (or at least did until they planned to "sunset" Chrome apps). It's not possible to run Orchis or Fluoresce on a chromebook with the static NodeJS runtime anymore, as ChromeOS no longer ships with a requisite library. You'd have to use the linux subsystem.
 
 ---
 
@@ -60,4 +65,5 @@ I like demonstrating how powerful "bad" hardware actually is in capable hands. I
 Feel free to open a bug report if you find a problem with the server. Feel free to open a pull request if you can fix said issue.
 
 Do note that I will either manually reformat the code in pull requests or ask you to edit it to match my personal style. I believe code should take as little space as possible without being totally unreadable (and this actually reduces CPU cycles, too).
+
 
