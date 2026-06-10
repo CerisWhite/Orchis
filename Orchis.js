@@ -5,7 +5,6 @@ const msgpack = require('msgpackr');
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
-const zlib = require('zlib');
 const jwt_decode = require('jwt-decode').jwtDecode;
 const Orchis = express();
 global.Config = {}
@@ -13,7 +12,7 @@ if (fs.existsSync('./config.json')) {
 	global.Config = JSON.parse(fs.readFileSync('./config.json'));
 }
 else {
-	global.Config = {
+	fs.writeFileSync('./config.json', JSON.stringify({
 		'URL': "127.0.0.1",
 		'Port': 9000,
 		'Patch': {
@@ -133,8 +132,7 @@ else {
 			'cert': "/path/to/cert.pem",
 			'ca': "/path/to/chain.pem"
 		}
-	}
-	fs.writeFileSync('./config.json', JSON.stringify(global.Config, null, 2));
+	} null, 2));
 	console.log("config.json has been generated. Please edit it accordingly.");
 	return;
 }
@@ -1364,7 +1362,7 @@ Orchis.use(async function (req, res, next) { // Record Manager
 		res.mid.Prefunction = JSON.stringify(res.mid.Persist);
 		
 		const ReqCache = await global.Module.Fluoresce.Read("OrchisReqCache", res.mid.ViewerID);
-		if (req.url == ReqCache['url']) {
+		if (req.get("Request-Token") == ReqCache['r_token']) {
 			if (JSON.stringify(res.mid.Request) == JSON.stringify(ReqCache['request'])) {
 				const Serialized = msgpack.pack({
 					'data_headers': { 'result_code': 1 },
@@ -1621,7 +1619,7 @@ Orchis.post("/load/index", global.Mesh(async (req, res, next) => {
 	next();
 }));
 Orchis.post("/login/index", global.Mesh(async (req, res, next) => {
-	await global.Module.Director.LoginBonus(
+	await global.Module.Director.DailyLogin(
 		res, ActiveBonusList, DragonItem,
 		ResetTimes, LastServerReset,
 		DayEnd, DayNumber
@@ -4972,6 +4970,7 @@ Orchis.use(async function (req, res, next) { // Store
 	if (res.mid.ViewerID != null) {
 		await global.Module.Fluoresce.Write("OrchisReqCache", res.mid.ViewerID, {
 			'url': req.url,
+			'r_token': req.get("Request-Token"),
 			'request': res.mid.Request,
 			'response': res.mid.Data
 		});
@@ -5010,7 +5009,7 @@ Orchis.use(async function (req, res, next) { // Finalize
 			'data_headers': { 'result_code': 1 },
 			'data': res.mid.Data
 		});
-		res.set(SetHeaders(Serialized.length, "JSON"))
+		res.set(SetHeaders(Serialized.length, "JSON"));
 		res.send(Serialized);
 	}
 	else {

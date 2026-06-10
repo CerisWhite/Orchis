@@ -151,7 +151,7 @@ function GetQuestRotation(QuestRotationSet, EventList) {
 	return QuestRotation;
 }
 
-async function LoginBonus(res, BonusList, DragonItem, ResetTimes, DayStart, DayEnd, DayNumber) {
+async function DailyLogin(res, BonusList, DragonItem, ResetTimes, DayStart, DayEnd, DayNumber) {
 	res.mid.Data = {
 		'support_reward': [],
 		'login_bonus_list': [],
@@ -165,7 +165,8 @@ async function LoginBonus(res, BonusList, DragonItem, ResetTimes, DayStart, DayE
 		'update_data_list': {
 			'user_data': res.mid.Persist['User'],
 			'diamond_data': { 'free_diamond': 0, 'paid_diamond': res.mid.Persist['Diamantium'] },
-			'gather_item_list': []
+			'gather_item_list': [],
+			'quest_list': []
 		}
 	}
 	
@@ -258,7 +259,23 @@ async function LoginBonus(res, BonusList, DragonItem, ResetTimes, DayStart, DayE
 			{ 'daily_mission_id': 15070601, 'progress': 0, 'state': 0, 'day_no': DayNumber, 'is_lock_receive_reward': 0, 'is_pickup': 0, 'start_date': DayStart, 'end_date': DayEnd }  //clear all Endeavour
 		];
 		res.mid.Persist['Endeavour']['Tracker']['Daily']['Quests'] = 0;
-		res.mid.Persist['LoginBonus']['Display'] = false;
+		
+		const QuestList = await global.Module.Fluoresce.Read("OrchisIndex", res.mid.ViewerID, "quest_list");
+		QuestList.forEach((Quest) => {
+			let IsUpdated = false;
+			if (Quest['last_daily_reset_time'] < ResetTimes['Daily']) {
+				Quest['daily_play_count'] = 0;
+				Quest['last_daily_reset_time'] = global.ServerTime;
+				IsUpdated = true;
+			}
+			if (Quest['last_weekly_reset_time'] < ResetTimes['Weekly']) {
+				Quest['weekly_play_count'] = 0;
+				Quest['last_weekly_reset_time'] = global.ServerTime;
+				IsUpdated = true;
+			}
+				
+			if (IsUpdated == true) { res.mid.Data['update_data_list']['quest_list'].push(Quest); }
+		});
 		
 		const GatherList = await global.Module.Fluoresce.Read("OrchisIndex", res.mid.ViewerID, "gather_item_list");
 		if (GatherList.length == 0) {
@@ -277,6 +294,8 @@ async function LoginBonus(res, BonusList, DragonItem, ResetTimes, DayStart, DayE
 			}
 			res.mid.Data['update_data_list']['gather_item_list'].push(GatherList[x]);
 		}
+		
+		res.mid.Persist['LoginBonus']['Display'] = false;
 	}
 	return;
 }
@@ -984,6 +1003,84 @@ async function DungeonData(res, PartyNoList, QuestID, SupportID, AssignData) {
 	let UnitList = [];
 	let Settings = [];
 	let EventPassive = [];
+	
+	if (global.Master.QuestData[String(QuestID)]['_QuestOrderPartyGroupId'] != 0) {
+		let FixedUnitList = [];
+		Object.values(global.Master.QuestOrderParty).forEach((Unit) => {
+			if (Unit['_QuestOrderPartyGroupId'] == global.Master.QuestData[String(QuestID)]['_QuestOrderPartyGroupId']) {
+				let NodeList = [];
+				let mc = 1; while (mc <= Unit['_ReleaseManaCircle']) {
+					NodeList.push(mc);
+					mc++;
+				}
+				let FixedUnit = global.Module.Character.RebuildCharacter(Unit['_CharaId'], NodeList);
+				FixedUnit['level'] = Unit['_CharaLevel'];
+				FixedUnit['rarity'] = Unit['_CharaRarity'];
+				FixedUnit['hp_plus_count'] = Unit['_CharaHpPlusCount'];
+				FixedUnit['attack_plus_count'] = Unit['_CharaAttackPlusCount'];
+				FixedUnit['mana_circle_piece_id_list'] = NodeList;
+				const FixedUnitStats = global.Module.Character.CalculateStats(Unit['_CharaId'], FixedUnit);
+				FixedUnit['hp'] = FixedUnitStats['HP'];
+				FixedUnit['attack'] = FixedUnitStats['Attack'];
+				let FixedDragon = global.Module.Dragon.Create(0, Unit['_DragonId'], Unit['_DragonLevel'], Unit['_DragonLimitBreak']);
+				FixedDragon['hp_plus_count'] = Unit['_DragonHpPlusCount'];
+				FixedDragon['attack_plus_count'] = Unit['_DragonAttackPlusCount'];
+				let FixedWeaponBody = global.Module.WeaponBody.Create(Unit['_WeaponBodyId'], Unit['_WeaponBodyBuildupCount'], Unit['_WeaponBodyLimitBreakCount']);
+				FixedWeaponBody['limit_over_count'] = Unit['_WeaponBodyLimitOverCount'];
+				const FixedWeapon = WeaponBody2Weapon(FixedWeaponBody);
+				let FixedWeaponSkin = [];
+				if (Unit['_WeaponSkinId'] != 0) {
+					FixedWeaponSkin = { 'weapon_skin_id': Unit['_WeaponSkinId'], 'is_new': 0, 'gettime': global.ServerTime };
+				}
+				// I'm too lazy to do prints for this
+				FixedUnitList.push({
+					'position': FixedUnitList.length + 1,
+					'chara_data': FixedUnit,
+					'dragon_data': FixedDragon,
+					'dragon_reliability_level': 30,
+					'weapon_body_data': FixedWeapon,
+					'weapon_skin_data': FixedWeaponSkin,
+					'crest_slot_type_1_crest_list': [],
+					'crest_slot_type_2_crest_list': [],
+					'crest_slot_type_3_crest_list': [],
+					'talisman_data': [],
+					'edit_skill_1_chara_data': [],
+					'edit_skill_2_chara_data': [],
+					'game_weapon_passive_ability_list': []
+				});
+			}
+		});
+		/*while (FixedUnitList.length < 4) {
+			FixedUnitList.push({
+				'position': FixedUnitList.length + 1,
+				'chara_data': [],
+				'dragon_data': [],
+				'dragon_reliability_level': 0,
+				'weapon_body_data': [],
+				'weapon_skin_data': [],
+				'crest_slot_type_1_crest_list': [],
+				'crest_slot_type_2_crest_list': [],
+				'crest_slot_type_3_crest_list': [],
+				'talisman_data': [],
+				'edit_skill_1_chara_data': [],
+				'edit_skill_2_chara_data': [],
+				'game_weapon_passive_ability_list': []
+			});
+		}*/
+		
+		return {
+			'Info': {
+				'party_unit_list': FixedUnitList,
+				'fort_bonus_list': await CalculateBonuses(res),
+				'support_data': [],
+				'event_boost': [],
+				'event_passive_grow_list': []
+			},
+			'Setting': [],
+			'Support': { 'Player': [], 'Info': [], 'Setting': [] }
+		}
+	}
+	
 	const PassiveList = await global.Module.Fluoresce.Read("OrchisIndex", ViewerID, "weapon_passive_ability_list");
 	
 	for (const x in PartyNoList) {
@@ -1674,6 +1771,8 @@ async function DungeonRecord(res, PlayCount, IsMulti) {
 			BestTime = res.mid.Request['play_record']['time'];
 		}
 		res.mid.Persist['Dungeon']['QuestData']['play_count'] += PlayCount;
+		res.mid.Persist['Dungeon']['QuestData']['daily_play_count'] += PlayCount;
+		res.mid.Persist['Dungeon']['QuestData']['weekly_play_count'] += PlayCount;
 		res.mid.Persist['Dungeon']['QuestData']['best_clear_time'] = BestTime;
 	}
 	
@@ -2961,7 +3060,7 @@ async function ItemParser(ItemList, res, Prefix) {
 					break;
 					case 10502:
 						Count = global.Module.Util.SaneValue(res.mid.Persist['Event'][EventID]['User']['exchange_item_count_2'] + ItemList[x][AmountName]);
-						res.mid.Persist['Event'][EventID]['User']['exchange_item_count'] = Count;
+						res.mid.Persist['Event'][EventID]['User']['exchange_item_count_2'] = Count;
 					break;
 				}
 			break;
@@ -3125,9 +3224,16 @@ async function ItemParser(ItemList, res, Prefix) {
 				}
 				else {
 					let NewMaterial = {};
-					NewMaterial[TypeName] = global.Master.WeaponSkin[String(ItemList[x][IDName])]['_DuplicateEntityType'];
-					NewMaterial[IDName] = global.Master.WeaponSkin[String(ItemList[x][IDName])]['_DuplicateEntityId'];
-					NewMaterial[AmountName] = global.Master.WeaponSkin[String(ItemList[x][IDName])]['_DuplicateEntityQuantity'];
+					if (global.Master.WeaponSkin[String(ItemList[x][IDName])]['_DuplicateEntityType'] == 0) {
+						NewMaterial[TypeName] = 14;
+						NewMaterial[IDName] = 0;
+						NewMaterial[AmountName] = 10000;
+					}
+					else {
+						NewMaterial[TypeName] = global.Master.WeaponSkin[String(ItemList[x][IDName])]['_DuplicateEntityType'];
+						NewMaterial[IDName] = global.Master.WeaponSkin[String(ItemList[x][IDName])]['_DuplicateEntityId'];
+						NewMaterial[AmountName] = global.Master.WeaponSkin[String(ItemList[x][IDName])]['_DuplicateEntityQuantity'];
+					}
 					ItemList.push(NewMaterial);
 					res.mid.Data['entity_result']['converted_entity_list'].push({
 						'before_entity_type': 37,
@@ -3291,7 +3397,7 @@ async function ItemParser(ItemList, res, Prefix) {
 	return;
 }
 
-module.exports = { LoginBonus, GenerateOdds, KeyIDByTicket, GetQuestRotation,
+module.exports = { DailyLogin, GenerateOdds, KeyIDByTicket, GetQuestRotation,
 				   GetSummonList, GetSigilTrade, PerformSigilTrade,
 				   PerformSummon, CalculateBonuses, GenerateFacilityMax, CreateBuild,
 				   DungeonData, DungeonDataArchaea, CoOpDungeonData,

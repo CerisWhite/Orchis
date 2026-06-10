@@ -12467,5 +12467,97 @@
     "_DuplicateEntityQuantity": 300,
     "_AbilityCrestLevelRarityGroupId": 5,
     "_AbilityCrestBuildupGroupId": 1001
+  },
+  
+  
+  
+  
+  
+  
+  "90010101": {
+    "_Id": 90010101,
+    "_Name": "AMULET_NAME_90010101",
+    "_Rarity": 5,
+    "_AbilityCrestType": 1,
+    "_CrestSlotType": 1,
+    "_UnitType": 0,
+    "_AbilityCrestFeatureGroupId": 8,
+    "_MaxEquipableCount": 4,
+    "_BaseHp": 12,
+    "_MaxHp": 75,
+    "_BaseAtk": 5,
+    "_MaxAtk": 28,
+    "_BaseId": 900001,
+    "_VariationId": 1,
+    "_IsHideChangeImage": 0,
+    "_UnionAbilityGroupId": 1,
+    "_Abilities11": 70020101,
+    "_Abilities12": 70020201,
+    "_Abilities13": 70020301,
+    "_Abilities21": 0,
+    "_Abilities22": 0,
+    "_Abilities23": 0,
+    "_CvInfo": "",
+    "_Text1": "AMULET_DETAIL_01_90010101",
+    "_Text2": "AMULET_DETAIL_02_90010101",
+    "_Text3": "AMULET_DETAIL_03_90010101",
+    "_Text4": "AMULET_DETAIL_04_90010101",
+    "_Text5": "AMULET_DETAIL_05_90010101",
+    "_IsPlayable": 1,
+    "_UniqueBuildupMaterialId": 0,
+    "_DuplicateEntityType": 14,
+    "_DuplicateEntityId": 0,
+    "_DuplicateEntityQuantity": 300,
+    "_AbilityCrestLevelRarityGroupId": 5,
+    "_AbilityCrestBuildupGroupId": 1001
+  },
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  "99900000": {
+    "_Id": 99900000,
+    "_Name": "AMULET_NAME_40050158",
+    "_Rarity": 5,
+    "_AbilityCrestType": 1,
+    "_CrestSlotType": 1,
+    "_UnitType": 0,
+    "_AbilityCrestFeatureGroupId": 4,
+    "_MaxEquipableCount": 4,
+    "_BaseHp": 12,
+    "_MaxHp": 75,
+    "_BaseAtk": 5,
+    "_MaxAtk": 28,
+    "_BaseId": 400383,
+    "_VariationId": 1,
+    "_IsHideChangeImage": 0,
+    "_UnionAbilityGroupId": 5,
+    "_Abilities11": 2721,
+    "_Abilities12": 2722,
+    "_Abilities13": 2723,
+    "_Abilities21": 0,
+    "_Abilities22": 0,
+    "_Abilities23": 0,
+    "_CvInfo": "",
+    "_Text1": "AMULET_DETAIL_01_40050158",
+    "_Text2": "AMULET_DETAIL_02_40050158",
+    "_Text3": "AMULET_DETAIL_03_40050158",
+    "_Text4": "AMULET_DETAIL_04_40050158",
+    "_Text5": "AMULET_DETAIL_05_40050158",
+    "_IsPlayable": 0,
+    "_UniqueBuildupMaterialId": 0,
+    "_DuplicateEntityType": 14,
+    "_DuplicateEntityId": 0,
+    "_DuplicateEntityQuantity": 300,
+    "_AbilityCrestLevelRarityGroupId": 5,
+    "_AbilityCrestBuildupGroupId": 1001
   }
 }
