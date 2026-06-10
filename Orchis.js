@@ -132,7 +132,7 @@ else {
 			'cert': "/path/to/cert.pem",
 			'ca': "/path/to/chain.pem"
 		}
-	} null, 2));
+	}, null, 2));
 	console.log("config.json has been generated. Please edit it accordingly.");
 	return;
 }
