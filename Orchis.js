@@ -171,6 +171,8 @@ global.Module = {
 	'DMode': require('./Library/Module/DMode.js')
 }
 
+if (!fs.existsSync('./Library/Log/')) { fs.mkdirSync('./Library/Log'); }
+
 let AssetList = JSON.parse(fs.readFileSync('./Library/Event/AssetList.json'));
 let SupportData = fs.existsSync('./Library/Event/Support.json') ? JSON.parse(fs.readFileSync('./Library/Event/Support.json')) : {};
 let EventList = JSON.parse(fs.readFileSync('./Library/Event/EventList.json'));
