@@ -1,4 +1,6 @@
 const fs = require('fs');
+if (!fs.existsSync('./Index/')) { fs.mkdirSync('./Index/'); }
+if (!fs.existsSync('./Support/')) { fs.mkdirSync('./Support/'); }
 const Now = Math.floor(Date.now() / 1000);
 global.Master = {};
 let MasterList = fs.readdirSync('../Library/Master');
